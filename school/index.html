@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Академия Agent Permanent — Обучение мастеров ПМ, бровистов, ламимейкеров | Москва</title>
+  <meta name="description" content="Академия Agent Permanent в Москве — профессиональное обучение на мастера перманентного макияжа, бровиста, ламимейкера. 200+ выпускниц. Государственный диплом. Обучение от Арины Шараповой.">
+  <link rel="icon" type="image/png" href="../favicon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    html::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 9999;
+      pointer-events: none;
+      opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 160px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <a href="../" class="nav-logo">
+      <div class="nav-logo-stack">
+        <span class="nav-logo-main">AGENT</span>
+        <span class="nav-logo-mid">PERMANENT</span>
+      </div>
+      <span class="nav-logo-divider"></span>
+      <span class="nav-logo-sub">by Arina Sharapova</span>
+    </a>
+    <div class="nav-links">
+      <a href="../" class="nav-links-a">Agent Permanent</a>
+      <a href="../studio/" class="nav-links-a">Студия</a>
+      <a href="../school/" class="nav-links-a active">Академия</a>
+      <a href="../portfolio/" class="nav-links-a">Портфолио</a>
+      <a href="../contacts/" class="nav-links-a">Контакты</a>
+      <a href="../contacts/" class="nav-links-a nav-cta">Записаться</a>
+    </div>
+    <button class="nav-burger" onclick="toggleMenu()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="../" class="nav-links-a">Agent Permanent</a>
+      <a href="../studio/" class="nav-links-a">Студия</a>
+      <a href="../school/" class="nav-links-a active">Академия</a>
+      <a href="../portfolio/" class="nav-links-a">Портфолио</a>
+      <a href="../contacts/" class="nav-links-a">Контакты</a>
+      <a href="../contacts/" class="nav-cta">Записаться</a>
+    </div>
+  </nav>
+
+  <section class="page-hero" style="background:var(--bg-deep)">
+    <div class="page-hero-inner">
+      <div class="page-hero-badge fade-up">Академия</div>
+      <h1 class="fade-up">Обучение beauty мастеров</h1>
+      <p class="fade-up" style="transition-delay:0.1s">Профессиональные курсы с нуля до практикующего специалиста.<br>Выберите своё направление.</p>
+    </div>
+  </section>
+
+  <div class="parallax-gallery" id="parallaxGallery">
+
+    <a class="prlx-item prlx-link" href="../school/pm/" data-speed="0.3">
+      <div class="prlx-bg pa1"></div>
+      <div class="prlx-overlay">
+        <div class="prlx-text">
+          <div class="prlx-tag">Перманентный макияж</div>
+          <h2 class="prlx-title">Мастер перманентного макияжа</h2>
+          <p class="prlx-desc prlx-sub">Полный базовый курс</p>
+          <p class="prlx-desc" style="margin-top:12px">Брови, губы, межресничка, осветление старого ПМ. От нуля до практики на реальных клиентах. Государственный диплом.</p>
+          <span class="prlx-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="prlx-item prlx-link" href="../school/brows/" data-speed="0.25">
+      <div class="prlx-bg pa2"></div>
+      <div class="prlx-overlay prlx-right">
+        <div class="prlx-text">
+          <div class="prlx-tag">Брови</div>
+          <h2 class="prlx-title">Бровист</h2>
+          <p class="prlx-desc" style="margin-top:12px">Архитектура и моделирование бровей, окрашивание, ламинирование, коррекция. Востребованная специальность с быстрым стартом.</p>
+          <span class="prlx-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="prlx-item prlx-link" href="../school/lami/" data-speed="0.32">
+      <div class="prlx-bg pa3"></div>
+      <div class="prlx-overlay">
+        <div class="prlx-text">
+          <div class="prlx-tag">Ламинирование</div>
+          <h2 class="prlx-title">Ламимейкер</h2>
+          <p class="prlx-desc" style="margin-top:12px">Ламинирование и окрашивание ресниц и бровей. Современное направление с высоким спросом и минимальными вложениями на старте.</p>
+          <span class="prlx-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <style>
+    .parallax-gallery { overflow: hidden; }
+    .prlx-item {
+      position: relative;
+      height: 75vh;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+    .prlx-bg {
+      position: absolute;
+      inset: -20%;
+      transition: transform 0.05s linear;
+    }
+    .prlx-overlay {
+      position: absolute; inset: 0;
+      background: rgba(8,8,10,0.48);
+      display: flex; align-items: center;
+      padding: 0 80px;
+    }
+    .prlx-right { justify-content: flex-end; }
+    .prlx-text { max-width: 520px; }
+    .prlx-tag {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--gold); letter-spacing: 0.25em;
+      text-transform: uppercase; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .prlx-tag::before { content:''; display:block; width:40px; height:1px; background:var(--gold); }
+    .prlx-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      color: var(--text-primary); font-weight: 400;
+      line-height: 1.1; margin-bottom: 16px;
+    }
+    .prlx-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; }
+    .prlx-sub { font-size: 1.25rem; color: #fff; font-weight: 400; letter-spacing: 0.01em; }
+    .prlx-link { display: block; text-decoration: none; cursor: pointer; }
+    .prlx-link .prlx-overlay { transition: background 0.4s; }
+    .prlx-link:hover .prlx-overlay { background: rgba(8,8,10,0.35); }
+    .prlx-arrow {
+      display: inline-block; margin-top: 28px;
+      font-size: 1.6rem; color: var(--gold);
+      transform: translateX(0); transition: transform 0.3s;
+    }
+    .prlx-link:hover .prlx-arrow { transform: translateX(10px); }
+    .pa1 { background: linear-gradient(140deg, #0e0b06 0%, #2a1a08 40%, #1a1008 70%, #0e0b06 100%); }
+    .pa2 { background: linear-gradient(120deg, #0b0b0e 0%, #181220 50%, #0f0c14 80%, #0b0b0e 100%); }
+    .pa3 { background: linear-gradient(155deg, #0a0d0b 0%, #122018 45%, #0d1810 70%, #0a0d0b 100%); }
+    @media (max-width: 768px) {
+      .prlx-overlay { padding: 0 28px; }
+      .prlx-right { justify-content: flex-start; }
+    }
+  </style>
+
+  <section class="cta-section" id="cta">
+    <div class="cta-box fade-up">
+      <div class="section-eyebrow">Первый шаг</div>
+      <h2 class="section-title">Не знаете с чего начать?</h2>
+      <p class="section-subtitle">Оставьте заявку — расскажем о каждой программе и поможем выбрать подходящее направление</p>
+      <form class="cta-form" onsubmit="handleSubmit(event)">
+        <input type="text" placeholder="Ваше имя" required>
+        <input type="tel" placeholder="+7 (___) ___-__-__" required>
+        <button type="submit" class="btn btn-gold">Получить консультацию</button>
+      </form>
+      <p class="cta-disclaimer">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+    </div>
+  </section>
+
+    <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand" style="display:flex;align-items:center;gap:14px;line-height:1">
+        <div style="display:flex;flex-direction:column;gap:0">
+          <span style="font-family:var(--font-display);font-size:1.45rem;font-weight:700;color:var(--gold);letter-spacing:0.06em;text-transform:uppercase">AGENT</span>
+          <span style="font-family:var(--font-body);font-size:0.62rem;font-weight:600;color:var(--text-secondary);letter-spacing:0.35em;text-transform:uppercase;margin-top:1px">PERMANENT</span>
+        </div>
+        <span style="width:1px;height:32px;background:rgba(196,162,101,0.25)"></span>
+        <span style="font-family:var(--font-body);font-size:0.58rem;font-weight:400;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap">by Arina Sharapova</span>
+      </div>
+      <div class="footer-links">
+        <a href="../">Agent Permanent</a>
+        <a href="../studio/">Студия</a>
+        <a href="../school/">Академия</a>
+        <a href="../portfolio/">Портфолио</a>
+        <a href="../contacts/">Контакты</a>
+        <a href="#">Политика конфиденциальности</a>
+      </div>
+      <div class="footer-copy">© 2026 Agent Permanent by Arina Sharapova. Москва.</div>
+    </div>
+  </footer>
+  <script>
+    // Parallax scroll
+    (function() {
+      const items = document.querySelectorAll('.prlx-item');
+      function onScroll() {
+        items.forEach(item => {
+          const bg = item.querySelector('.prlx-bg');
+          if (!bg) return;
+          const speed = parseFloat(item.dataset.speed) || 0.3;
+          const rect = item.getBoundingClientRect();
+          const center = rect.top + rect.height / 2 - window.innerHeight / 2;
+          bg.style.transform = 'translateY(' + (center * speed) + 'px)';
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+    });
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.closest('.faq-item');
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+          item.style.display = (filter === 'all' || item.dataset.cat === filter) ? '' : 'none';
+        });
+      });
+    });
+    function handleSubmit(e) {
+      if (e) e.preventDefault();
+      const btn = e ? e.target.querySelector('button') : document.querySelector('.cta-form button');
+      if (btn) { btn.textContent = 'Заявка отправлена ✓'; btn.disabled = true; }
+      setTimeout(() => alert('Спасибо! Арина свяжется с вами в течение 2 часов.'), 100);
+    }
+    (function() {
+      const c = document.getElementById('particles');
+      if (!c) return;
+      for (let i = 0; i < 20; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.cssText = 'left:' + Math.random()*100 + '%;top:' + Math.random()*100 + '%;width:' + (1+Math.random()*2) + 'px;height:' + (1+Math.random()*2) + 'px;animation-delay:' + Math.random()*8 + 's;animation-duration:' + (6+Math.random()*8) + 's';
+        c.appendChild(p);
+      }
+    })();
+  </script>
+</body>
+</html>
