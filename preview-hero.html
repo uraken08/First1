@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero — 7 вариантов</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08080A; --bg-warm: #15120D; --gold: #C4A265; --gold-light: #D4BA85;
+      --text: #F2EDE7; --muted: #9B958D; --dim: #6B6560;
+      --border: rgba(196,162,101,0.12);
+      --fd: 'Italiana', sans-serif; --fb: 'Raleway', sans-serif; --fs: 'Jost', sans-serif;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#000; font-family: var(--fb); }
+
+    /* NAV between variants */
+    .sticky-nav {
+      position: fixed; top:0; left:0; right:0; z-index:1000;
+      background: rgba(0,0,0,0.9); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(196,162,101,0.15);
+      display: flex; align-items:center; gap:8px;
+      padding: 10px 24px; overflow-x:auto; scrollbar-width:none;
+    }
+    .sticky-nav::-webkit-scrollbar { display:none; }
+    .nav-pill {
+      flex-shrink:0; padding:6px 16px; border-radius:50px;
+      border:1px solid rgba(196,162,101,0.25); background:transparent;
+      color: var(--muted); font-family:var(--fb); font-size:0.75rem;
+      letter-spacing:0.06em; cursor:pointer; transition:all 0.3s; white-space:nowrap;
+      text-decoration:none; display:inline-block;
+    }
+    .nav-pill:hover { border-color:var(--gold); color:var(--gold); }
+
+    /* Section labels */
+    .variant-label {
+      text-align:center; padding:56px 24px 0; background:#000;
+    }
+    .variant-label .num {
+      font-family:var(--fd); font-size:6rem; color:var(--gold); opacity:0.08; line-height:1;
+    }
+    .variant-label h2 {
+      font-family:var(--fd); font-size:1.8rem; color:var(--text); margin-top:-20px;
+    }
+    .variant-label p { color:var(--muted); font-size:0.85rem; margin-top:8px; }
+
+    /* ==================== HERO BASE ==================== */
+    .hero { position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden; }
+    .hero-inner { position:relative; z-index:3; width:100%; max-width:1200px; margin:0 auto; padding:0 48px; }
+    .eyebrow {
+      font-size:0.72rem; font-weight:600; color:var(--gold);
+      letter-spacing:0.25em; text-transform:uppercase; margin-bottom:20px; display:block;
+    }
+    .btn-g { display:inline-block; padding:14px 36px; background:var(--gold); color:#08080A; border-radius:50px; font-size:0.85rem; font-weight:700; letter-spacing:0.06em; text-decoration:none; transition:all 0.3s; }
+    .btn-g:hover { background:var(--gold-light); transform:translateY(-2px); }
+    .btn-o { display:inline-block; padding:13px 36px; border:1px solid rgba(196,162,101,0.4); color:var(--gold); border-radius:50px; font-size:0.85rem; font-weight:500; letter-spacing:0.06em; text-decoration:none; transition:all 0.3s; }
+    .btn-o:hover { border-color:var(--gold); background:rgba(196,162,101,0.08); }
+
+    /* ==================== V1: VIDEO BG ==================== */
+    #v1 { background:var(--bg); }
+    .v1-bg {
+      position:absolute; inset:0; z-index:0;
+      background: linear-gradient(120deg, #0a0704 0%, #1c1208 30%, #0e0b06 60%, #18120a 100%);
+    }
+    .v1-grain {
+      position:absolute; inset:0; z-index:1; opacity:0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .v1-overlay { position:absolute; inset:0; z-index:2; background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(196,162,101,0.06), transparent); }
+    .v1-play {
+      width:80px; height:80px; border-radius:50%;
+      border:1px solid rgba(196,162,101,0.4);
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom:48px; cursor:pointer; transition:all 0.4s;
+      background: rgba(196,162,101,0.06);
+    }
+    .v1-play:hover { border-color:var(--gold); background:rgba(196,162,101,0.12); transform:scale(1.05); }
+    .v1-play::after { content:'▶'; color:var(--gold); font-size:1.2rem; margin-left:4px; }
+    #v1 h1 { font-family:var(--fd); font-size:clamp(2.8rem,7vw,5.5rem); font-weight:400; color:var(--text); line-height:1.05; margin-bottom:24px; }
+    #v1 h1 em { color:var(--gold); font-style:normal; }
+    #v1 p { font-size:1rem; color:var(--muted); max-width:480px; line-height:1.75; margin-bottom:40px; }
+    .v1-note { font-size:0.72rem; color:var(--dim); letter-spacing:0.1em; margin-top:24px; }
+
+    /* ==================== V2: SPLIT SCREEN ==================== */
+    #v2 { padding:0; min-height:100vh; }
+    .split-wrap { display:flex; width:100%; min-height:100vh; }
+    .split-side {
+      flex:1; position:relative; overflow:hidden; cursor:pointer;
+      transition:flex 0.6s cubic-bezier(0.4,0,0.2,1);
+      display:flex; align-items:flex-end; padding:64px 48px;
+    }
+    .split-wrap:hover .split-side-studio { flex:0.45; }
+    .split-wrap:hover .split-side-school { flex:0.45; }
+    .split-wrap .split-side-studio:hover { flex:1.4 !important; }
+    .split-wrap .split-side-school:hover { flex:1.4 !important; }
+    .split-side-studio { background: linear-gradient(160deg, #18120a 0%, #2a1c0c 50%, #18120a 100%); border-right:1px solid rgba(196,162,101,0.15); }
+    .split-side-school { background: linear-gradient(160deg, #0d0c0a 0%, #1a160e 50%, #0d0c0a 100%); }
+    .split-label {
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      text-align:center; pointer-events:none;
+    }
+    .split-label-big { font-family:var(--fd); font-size:clamp(2rem,5vw,4rem); color:var(--text); line-height:1; white-space:nowrap; }
+    .split-label-sub { font-size:0.72rem; color:var(--gold); letter-spacing:0.2em; text-transform:uppercase; margin-top:8px; }
+    .split-content { position:relative; z-index:2; }
+    .split-content p { font-size:0.85rem; color:var(--muted); margin:8px 0 20px; max-width:260px; line-height:1.6; }
+    .split-divider {
+      position:absolute; top:0; left:50%; transform:translateX(-50%);
+      width:1px; height:100%;
+      background:linear-gradient(to bottom, transparent, rgba(196,162,101,0.4), transparent);
+      z-index:10; pointer-events:none;
+    }
+    .split-center-logo {
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      z-index:20; pointer-events:none;
+      width:80px; height:80px; border-radius:50%;
+      background:rgba(8,8,10,0.9); border:1px solid rgba(196,162,101,0.3);
+      display:flex; align-items:center; justify-content:center;
+    }
+    .split-center-logo span { font-family:var(--fd); font-size:1.1rem; color:var(--gold); letter-spacing:0.05em; }
+    #v2 .eyebrow { position:absolute; top:40px; left:50%; transform:translateX(-50%); z-index:20; white-space:nowrap; }
+
+    /* ==================== V3: PORTRAIT ==================== */
+    #v3 { background:var(--bg); }
+    .v3-bg {
+      position:absolute; inset:0; z-index:0;
+      background: linear-gradient(to right, rgba(8,8,10,0.98) 35%, rgba(8,8,10,0.5) 65%, rgba(8,8,10,0.1) 100%),
+                  linear-gradient(135deg, #1a1208 0%, #2e2010 40%, #1a1208 100%);
+    }
+    .v3-portrait {
+      position:absolute; right:0; top:0; bottom:0; width:55%; z-index:1;
+      background: linear-gradient(135deg, #1e160a 0%, #2e200c 40%, #1a1208 100%);
+      display:flex; align-items:center; justify-content:center;
+    }
+    .v3-portrait-placeholder {
+      width:340px; height:500px;
+      border:1px solid rgba(196,162,101,0.15); border-radius:4px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
+    }
+    .v3-portrait-placeholder span:first-child { font-size:3rem; opacity:0.1; color:var(--gold); }
+    .v3-portrait-placeholder span:last-child { font-size:0.72rem; color:var(--dim); letter-spacing:0.12em; text-transform:uppercase; }
+    #v3 h1 { font-family:var(--fd); font-size:clamp(2.6rem,6vw,5rem); font-weight:400; color:var(--text); line-height:1.05; margin-bottom:8px; }
+    #v3 h1 em { color:var(--gold); font-style:normal; display:block; }
+    .v3-title-sub { font-size:0.8rem; color:var(--dim); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:32px; }
+    #v3 p { font-size:0.95rem; color:var(--muted); max-width:420px; line-height:1.75; margin-bottom:40px; }
+    .v3-stats { display:flex; gap:32px; margin-bottom:40px; }
+    .v3-stat-num { font-family:var(--fs); font-size:1.6rem; font-weight:700; color:var(--gold); }
+    .v3-stat-label { font-size:0.7rem; color:var(--dim); letter-spacing:0.08em; text-transform:uppercase; }
+
+    /* ==================== V4: TYPOGRAPHY ==================== */
+    #v4 { background:#000; overflow:hidden; }
+    .v4-bg { position:absolute; inset:0; background:radial-gradient(ellipse 60% 50% at 50% 50%, rgba(196,162,101,0.04), transparent); z-index:0; }
+    .v4-giant {
+      position:absolute; inset:0; z-index:1; overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .v4-word {
+      font-family:var(--fd); font-size:clamp(6rem,18vw,18rem); font-weight:400;
+      color:rgba(196,162,101,0.04); letter-spacing:0.05em; line-height:0.85;
+      text-align:center; user-select:none; white-space:nowrap;
+    }
+    #v4 .hero-inner { z-index:3; text-align:center; display:flex; flex-direction:column; align-items:center; }
+    #v4 h1 { font-family:var(--fd); font-size:clamp(2.4rem,6vw,5.5rem); color:var(--text); line-height:1.05; margin-bottom:16px; }
+    #v4 h1 .gold { color:var(--gold); }
+    .v4-tagline { font-size:1rem; color:var(--muted); letter-spacing:0.06em; margin-bottom:48px; max-width:500px; line-height:1.7; }
+    .v4-line { width:60px; height:1px; background:var(--gold); margin:24px auto; opacity:0.5; }
+    .v4-sub { font-size:0.75rem; color:var(--dim); letter-spacing:0.2em; text-transform:uppercase; }
+
+    /* ==================== V5: BEFORE/AFTER ==================== */
+    #v5 { background:var(--bg); }
+    .ba-wrap {
+      position:absolute; inset:0; z-index:1; overflow:hidden;
+    }
+    .ba-before, .ba-after {
+      position:absolute; inset:0;
+    }
+    .ba-before { background:linear-gradient(160deg, #0d0c0b 0%, #1a1510 100%); }
+    .ba-after { background:linear-gradient(160deg, #1e1508 0%, #2e2010 100%); clip-path: inset(0 50% 0 0); transition: clip-path 0.05s; }
+    .ba-slider-line {
+      position:absolute; top:0; bottom:0; left:50%; transform:translateX(-50%);
+      width:2px; background:var(--gold); z-index:5; transition: left 0.05s;
+    }
+    .ba-handle {
+      position:absolute; top:50%; transform:translate(-50%,-50%);
+      width:44px; height:44px; border-radius:50%;
+      background:var(--gold); z-index:6; cursor:ew-resize;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow: 0 0 20px rgba(196,162,101,0.5);
+      transition: left 0.05s;
+    }
+    .ba-handle span { color:#08080A; font-size:0.9rem; font-weight:700; letter-spacing:-1px; }
+    .ba-label {
+      position:absolute; bottom:40px; z-index:7;
+      font-size:0.68rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);
+    }
+    .ba-label-before { left:40px; }
+    .ba-label-after { right:40px; }
+    .ba-placeholder {
+      position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+      flex-direction:column; gap:12px;
+    }
+    .ba-placeholder span:first-child { font-size:2.5rem; opacity:0.06; color:var(--gold); }
+    .ba-placeholder span:last-child { font-size:0.72rem; color:var(--dim); letter-spacing:0.12em; text-transform:uppercase; }
+    #v5 .hero-inner { z-index:8; }
+    #v5 h1 { font-family:var(--fd); font-size:clamp(2rem,4vw,3.5rem); color:var(--text); margin-bottom:16px; }
+    #v5 p { font-size:0.9rem; color:var(--muted); max-width:360px; margin-bottom:32px; line-height:1.7; }
+
+    /* ==================== V6: SPOTLIGHT CURSOR ==================== */
+    #v6 { background:#000; cursor:none; }
+    .v6-hidden-bg {
+      position:absolute; inset:0; z-index:0;
+      background: linear-gradient(135deg, #1e160a 0%, #2e200c 35%, #1a1208 70%, #2a1c0e 100%);
+      opacity:0;
+    }
+    .v6-spotlight {
+      position:absolute; z-index:1; pointer-events:none;
+      width:400px; height:400px; border-radius:50%;
+      background: radial-gradient(circle, rgba(196,162,101,0.18) 0%, rgba(196,162,101,0.06) 40%, transparent 70%);
+      transform: translate(-50%,-50%);
+      transition: opacity 0.3s;
+      top:50%; left:50%;
+    }
+    .v6-cursor {
+      position:fixed; z-index:100; pointer-events:none;
+      width:12px; height:12px; border-radius:50%;
+      background:var(--gold); transform:translate(-50%,-50%);
+      top:50%; left:50%; opacity:0;
+      transition: opacity 0.3s;
+    }
+    #v6 .hero-inner { z-index:3; }
+    #v6 h1 { font-family:var(--fd); font-size:clamp(2.6rem,6vw,5rem); color:var(--text); line-height:1.05; margin-bottom:20px; }
+    #v6 h1 em { color:var(--gold); font-style:normal; }
+    #v6 p { font-size:0.95rem; color:rgba(255,255,255,0.35); max-width:440px; line-height:1.75; margin-bottom:40px; transition:color 0.4s; }
+    #v6 .hero-inner:hover p { color:var(--muted); }
+    .v6-hint { font-size:0.72rem; color:rgba(196,162,101,0.3); letter-spacing:0.15em; text-transform:uppercase; margin-top:24px; }
+
+    /* ==================== V7: CINEMATIC REVEAL ==================== */
+    #v7 { background:var(--bg); }
+    .v7-curtain-top, .v7-curtain-bot {
+      position:absolute; left:0; right:0; z-index:10;
+      background:#000; transition: height 1.2s cubic-bezier(0.7,0,0.3,1);
+    }
+    .v7-curtain-top { top:0; height:50%; }
+    .v7-curtain-bot { bottom:0; height:50%; }
+    #v7.revealed .v7-curtain-top { height:0; }
+    #v7.revealed .v7-curtain-bot { height:0; }
+    .v7-logo-reveal {
+      position:absolute; inset:0; z-index:11;
+      display:flex; align-items:center; justify-content:center;
+      flex-direction:column; gap:8px; pointer-events:none;
+      transition: opacity 0.6s;
+    }
+    #v7.revealed .v7-logo-reveal { opacity:0; }
+    .v7-logo-text { font-family:var(--fd); font-size:2.5rem; color:var(--gold); letter-spacing:0.15em; }
+    .v7-logo-sub { font-size:0.65rem; color:var(--dim); letter-spacing:0.3em; text-transform:uppercase; }
+    .v7-bg {
+      position:absolute; inset:0; z-index:0;
+      background:linear-gradient(135deg, #18120a 0%, #2e2010 40%, #18120a 100%);
+    }
+    #v7 .hero-inner { z-index:3; opacity:0; transition:opacity 0.8s 0.6s; }
+    #v7.revealed .hero-inner { opacity:1; }
+    #v7 h1 { font-family:var(--fd); font-size:clamp(2.6rem,6vw,5rem); color:var(--text); line-height:1.05; margin-bottom:16px; }
+    #v7 h1 em { color:var(--gold); font-style:normal; }
+    #v7 p { font-size:0.95rem; color:var(--muted); max-width:440px; line-height:1.75; margin-bottom:40px; }
+    .v7-trigger {
+      position:absolute; bottom:40px; left:50%; transform:translateX(-50%);
+      z-index:12; padding:12px 28px; border:1px solid rgba(196,162,101,0.3);
+      background:transparent; color:var(--gold); font-family:var(--fb); font-size:0.78rem;
+      letter-spacing:0.1em; cursor:pointer; border-radius:50px;
+      transition:all 0.3s;
+    }
+    .v7-trigger:hover { background:rgba(196,162,101,0.1); border-color:var(--gold); }
+    #v7.revealed .v7-trigger { display:none; }
+  </style>
+</head>
+<body>
+
+<nav class="sticky-nav">
+  <span style="font-family:'Italiana',sans-serif;color:var(--gold);font-size:1rem;margin-right:8px;flex-shrink:0">AP</span>
+  <a href="#v1" class="nav-pill">1 · Видео-фон</a>
+  <a href="#v2" class="nav-pill">2 · Split-screen</a>
+  <a href="#v3" class="nav-pill">3 · Портрет</a>
+  <a href="#v4" class="nav-pill">4 · Типографика</a>
+  <a href="#v5" class="nav-pill">5 · Before/After</a>
+  <a href="#v6" class="nav-pill">6 · Прожектор</a>
+  <a href="#v7" class="nav-pill">7 · Киношторки</a>
+</nav>
+
+<!-- ==================== V1 ==================== -->
+<div class="variant-label" style="padding-top:80px"><div class="num">1</div><h2>Видео-фон</h2><p>Полноэкранное видео процедуры — рука мастера, результат. Текст поверх.</p></div>
+<section class="hero" id="v1">
+  <div class="v1-bg"></div><div class="v1-grain"></div><div class="v1-overlay"></div>
+  <div class="hero-inner">
+    <div class="v1-play"></div>
+    <span class="eyebrow">Студия-школа в Москве</span>
+    <h1>Перманентный макияж,<br>который выглядит как <em>вы</em></h1>
+    <p>Студия и международная школа Арины Шараповой. 10 000+ процедур. Естественность — прежде всего.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="#" class="btn-g">Записаться на процедуру</a>
+      <a href="#" class="btn-o">Обучение мастеров</a>
+    </div>
+    <div class="v1-note">▶ &nbsp;На сайте — видео процедуры и результатов</div>
+  </div>
+</section>
+
+<!-- ==================== V2 ==================== -->
+<div class="variant-label"><div class="num">2</div><h2>Split-screen</h2><p>Наведи на студию или школу — сторона расширяется</p></div>
+<section class="hero" id="v2" style="padding:0">
+  <span class="eyebrow" style="position:absolute;top:40px;left:50%;transform:translateX(-50%);z-index:20;white-space:nowrap">AGENT PERMANENT</span>
+  <div class="split-wrap">
+    <div class="split-side split-side-studio">
+      <div class="split-label">
+        <div class="split-label-big">Студия</div>
+        <div class="split-label-sub">Процедуры ПМ</div>
+      </div>
+      <div class="split-content">
+        <div class="eyebrow" style="position:static">Для клиентов</div>
+        <p>Брови, губы, межресничка. Авторские техники Арины Шараповой.</p>
+        <a href="#" class="btn-g">Записаться</a>
+      </div>
+    </div>
+    <div class="split-divider"></div>
+    <div class="split-center-logo"><span>AP</span></div>
+    <div class="split-side split-side-school">
+      <div class="split-label" style="text-align:center">
+        <div class="split-label-big">Школа</div>
+        <div class="split-label-sub">Обучение мастеров</div>
+      </div>
+      <div class="split-content">
+        <div class="eyebrow" style="position:static">Для мастеров</div>
+        <p>Курс с нуля до профессии. Гос. диплом, 250+ выпускниц.</p>
+        <a href="#" class="btn-o">Программа</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== V3 ==================== -->
+<div class="variant-label"><div class="num">3</div><h2>Крупный портрет</h2><p>Фото Арины на правой половине, текст слева</p></div>
+<section class="hero" id="v3">
+  <div class="v3-bg"></div>
+  <div class="v3-portrait"><div class="v3-portrait-placeholder"><span>✦</span><span>Фото Арины Шараповой</span></div></div>
+  <div class="hero-inner">
+    <span class="eyebrow">Студия-школа в Москве · с 2016</span>
+    <h1>Арина<em>Шарапова</em></h1>
+    <div class="v3-title-sub">Основатель Agent Permanent</div>
+    <p>Дипломированный топ-тренер по перманентному макияжу. 10 лет опыта. Топ мастеров России 2023–2026.</p>
+    <div class="v3-stats">
+      <div><div class="v3-stat-num">10 000+</div><div class="v3-stat-label">Процедур</div></div>
+      <div><div class="v3-stat-num">250+</div><div class="v3-stat-label">Выпускниц</div></div>
+      <div><div class="v3-stat-num">★★★★★</div><div class="v3-stat-label">700+ отзывов</div></div>
+    </div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="#" class="btn-g">Записаться</a>
+      <a href="#" class="btn-o">Обучение</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== V4 ==================== -->
+<div class="variant-label"><div class="num">4</div><h2>Типографика</h2><p>Огромный текст на фоне, минимализм, только золото и чёрный</p></div>
+<section class="hero" id="v4">
+  <div class="v4-bg"></div>
+  <div class="v4-giant"><div class="v4-word">PERMANENT</div></div>
+  <div class="hero-inner">
+    <span class="eyebrow">Agent Permanent · Москва · 2016</span>
+    <h1>Красота —<br>в <span class="gold">естественности</span></h1>
+    <div class="v4-line"></div>
+    <div class="v4-tagline">Студия и международная школа перманентного макияжа.<br>Место, где красота становится профессией.</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+      <a href="#" class="btn-g">Хочу процедуру</a>
+      <a href="#" class="btn-o">Хочу учиться</a>
+    </div>
+    <div class="v4-sub" style="margin-top:32px">250+ выпускниц · 10 000+ процедур · Топ России</div>
+  </div>
+</section>
+
+<!-- ==================== V5 ==================== -->
+<div class="variant-label"><div class="num">5</div><h2>Before / After слайдер</h2><p>Тяни ползунок — видишь результат до и после</p></div>
+<section class="hero" id="v5">
+  <div class="ba-wrap" id="baWrap">
+    <div class="ba-before"><div class="ba-placeholder"><span>✦</span><span>До процедуры</span></div></div>
+    <div class="ba-after" id="baAfter"><div class="ba-placeholder"><span>✦</span><span>После процедуры</span></div></div>
+    <div class="ba-slider-line" id="baLine"></div>
+    <div class="ba-handle" id="baHandle"><span>⟷</span></div>
+    <div class="ba-label ba-label-before">До</div>
+    <div class="ba-label ba-label-after">После</div>
+  </div>
+  <div class="hero-inner" style="position:relative;z-index:8">
+    <h1 style="font-family:'Italiana',sans-serif;font-size:clamp(1.8rem,4vw,3rem);color:#F2EDE7;margin-bottom:12px">Результат говорит<br>сам за себя</h1>
+    <p>Тяни ползунок и смотри разницу. Каждая работа — авторская техника Арины.</p>
+    <a href="#" class="btn-g">Записаться на процедуру</a>
+  </div>
+</section>
+
+<!-- ==================== V6 ==================== -->
+<div class="variant-label"><div class="num">6</div><h2>Прожектор-курсор</h2><p>Двигай мышью — золотой луч освещает скрытый фон. Только для десктопа.</p></div>
+<section class="hero" id="v6">
+  <div class="v6-hidden-bg" id="v6bg"></div>
+  <div class="v6-spotlight" id="v6spot"></div>
+  <div class="v6-cursor" id="v6cur"></div>
+  <div class="hero-inner">
+    <span class="eyebrow">Студия-школа · Москва</span>
+    <h1>AGENT<br><em>PERMANENT</em></h1>
+    <p id="v6p">Студия и международная школа перманентного макияжа. Двигай курсором — освети то, что скрыто.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="#" class="btn-g">Записаться</a>
+      <a href="#" class="btn-o">Обучение</a>
+    </div>
+    <div class="v6-hint">↑ двигай мышью по экрану</div>
+  </div>
+</section>
+
+<!-- ==================== V7 ==================== -->
+<div class="variant-label"><div class="num">7</div><h2>Кино-заставка</h2><p>Нажми кнопку — шторки расходятся и открывают сайт</p></div>
+<section class="hero" id="v7">
+  <div class="v7-bg"></div>
+  <div class="v7-curtain-top"></div>
+  <div class="v7-curtain-bot"></div>
+  <div class="v7-logo-reveal">
+    <div class="v7-logo-text">AGENT PERMANENT</div>
+    <div class="v7-logo-sub">by Arina Sharapova · Москва</div>
+  </div>
+  <button class="v7-trigger" onclick="document.getElementById('v7').classList.add('revealed')">Войти в студию →</button>
+  <div class="hero-inner">
+    <span class="eyebrow">Студия-школа · Москва · с 2016</span>
+    <h1>Перманентный макияж<br>и обучение от <em>Арины Шараповой</em></h1>
+    <p>Студия с 10 000+ процедур и международная школа с 250+ выпускницами.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="#" class="btn-g">Записаться на процедуру</a>
+      <a href="#" class="btn-o">Обучение мастеров</a>
+    </div>
+  </div>
+</section>
+
+<div style="height:40px;background:#000"></div>
+
+<script>
+  // Before/After slider
+  const baWrap = document.getElementById('baWrap');
+  const baAfter = document.getElementById('baAfter');
+  const baLine = document.getElementById('baLine');
+  const baHandle = document.getElementById('baHandle');
+  let baDragging = false;
+
+  function baSet(x) {
+    const rect = baWrap.getBoundingClientRect();
+    const pct = Math.max(5, Math.min(95, (x - rect.left) / rect.width * 100));
+    baAfter.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+    baLine.style.left = pct + '%';
+    baHandle.style.left = pct + '%';
+  }
+
+  // Auto-animate on load
+  let baAuto = 0;
+  const baTimer = setInterval(() => {
+    baAuto += 1;
+    baSet(baWrap.getBoundingClientRect().left + baWrap.offsetWidth * (0.5 + 0.35 * Math.sin(baAuto * 0.04)));
+    if (baAuto > 120) clearInterval(baTimer);
+  }, 30);
+
+  baHandle.addEventListener('mousedown', () => baDragging = true);
+  window.addEventListener('mouseup', () => baDragging = false);
+  window.addEventListener('mousemove', e => { if (baDragging) baSet(e.clientX); });
+  baWrap.addEventListener('touchmove', e => baSet(e.touches[0].clientX));
+
+  // Spotlight cursor
+  const v6 = document.getElementById('v6');
+  const spot = document.getElementById('v6spot');
+  const cur = document.getElementById('v6cur');
+  const v6bg = document.getElementById('v6bg');
+
+  v6.addEventListener('mousemove', e => {
+    const rect = v6.getBoundingClientRect();
+    const x = e.clientX; const y = e.clientY;
+    spot.style.left = x + 'px'; spot.style.top = y + 'px';
+    cur.style.left = x + 'px'; cur.style.top = y + 'px';
+    cur.style.opacity = '1'; spot.style.opacity = '1';
+    const px = (x - rect.left) / rect.width * 100;
+    const py = (y - rect.top) / rect.height * 100;
+    v6bg.style.opacity = '1';
+    v6bg.style.background = 'radial-gradient(ellipse 60% 60% at ' + px + '% ' + py + '%, rgba(196,162,101,0.25) 0%, transparent 70%), linear-gradient(135deg, #1e160a 0%, #2e200c 35%, #1a1208 70%, #2a1c0e 100%)';
+  });
+  v6.addEventListener('mouseleave', () => {
+    cur.style.opacity = '0'; spot.style.opacity = '0.3';
+    v6bg.style.opacity = '0';
+  });
+</script>
+</body>
+</html>

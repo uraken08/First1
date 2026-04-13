@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Фоны — варианты</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C4A265; --gold-light: #D4BA85; --gold-pale: #E8D5B0;
+      --text: #F2EDE7; --text-s: #F0EDE9; --text-m: #E0DBD6;
+      --border: rgba(196,162,101,0.1);
+      --fd: 'Italiana', sans-serif; --fs: 'Jost', sans-serif; --fb: 'Raleway', sans-serif;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: var(--fb); color: var(--text); }
+
+    /* ── nav ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(8,8,10,0.9); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 8px; padding: 10px 24px;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .nav::-webkit-scrollbar { display: none; }
+    .pill {
+      flex-shrink: 0; padding: 6px 18px; border-radius: 50px;
+      border: 1px solid rgba(196,162,101,0.25); background: transparent;
+      color: var(--text-m); font-family: var(--fb); font-size: 0.75rem;
+      letter-spacing: 0.06em; cursor: pointer; transition: all 0.3s;
+      text-decoration: none;
+    }
+    .pill:hover, .pill.active { border-color: var(--gold); color: var(--gold); background: rgba(196,162,101,0.05); }
+
+    /* ── shared section layout ── */
+    .section {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; padding: 120px 80px 80px;
+      position: relative; overflow: hidden;
+    }
+    .eyebrow {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
+      display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+    }
+    .eyebrow::before { content:''; display:block; width:40px; height:1px; background:var(--gold); }
+    h2 { font-family: var(--fd); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 400; line-height: 1.1; margin-bottom: 20px; }
+    p.body { font-size: 1rem; color: var(--text-s); line-height: 1.8; max-width: 520px; margin-bottom: 14px; }
+
+    .stats-row {
+      display: flex; gap: 0; border-top: 1px solid rgba(196,162,101,0.15);
+      padding-top: 28px; margin-top: 40px; width: fit-content;
+    }
+    .stat { display: flex; flex-direction: column; gap: 6px; padding-right: 40px; }
+    .stat:not(:last-child) { border-right: 1px solid rgba(196,162,101,0.12); margin-right: 40px; }
+    .stat-num { font-family: var(--fs); font-size: 2.4rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .stat-label { font-size: 0.75rem; color: var(--text-m); }
+
+    .label-tag {
+      display: inline-block; font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(196,162,101,0.3);
+      padding: 4px 14px; margin-bottom: 40px; border-radius: 2px;
+    }
+
+    /* ════════════════════════════════
+       ВАРИАНТ A: Зернистость (grain)
+    ════════════════════════════════ */
+    #va1 { background: #08080A; }
+    #va2 { background: #15120D; }
+    #va3 { background: #0A0C10; }
+
+    .grain::after {
+      content: '';
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      opacity: 0.038;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px;
+    }
+    .grain > * { position: relative; z-index: 2; }
+
+    /* ════════════════════════════════
+       ВАРИАНТ B: Градиент на каждой секции
+    ════════════════════════════════ */
+    #vb1 { background: linear-gradient(135deg, #0A0806 0%, #1A1208 50%, #0E0C08 100%); }
+    #vb2 { background: linear-gradient(220deg, #0D0B0E 0%, #16121A 45%, #0A0910 100%); }
+    #vb3 { background: linear-gradient(45deg,  #080B09 0%, #0E1810 50%, #0A0D0A 100%); }
+
+    /* ════════════════════════════════
+       ВАРИАНТ C: Grain + gradient (рекомендую)
+    ════════════════════════════════ */
+    #vc1 {
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(196,162,101,0.05) 0%, transparent 55%),
+        linear-gradient(160deg, #0C0A07 0%, #1C1408 45%, #0E0C08 100%);
+    }
+    #vc2 {
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(196,162,101,0.04) 0%, transparent 50%),
+        linear-gradient(200deg, #0A0B10 0%, #14121C 50%, #0A0910 100%);
+    }
+    #vc3 {
+      background:
+        radial-gradient(ellipse at 60% 40%, rgba(196,162,101,0.06) 0%, transparent 60%),
+        linear-gradient(110deg, #080C09 0%, #101A10 45%, #090D09 100%);
+    }
+
+    /* divider line between sections */
+    .sec-divider {
+      position: absolute; bottom: 0; left: 80px; right: 80px; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(196,162,101,0.15), transparent);
+    }
+
+    /* ── variant labels ── */
+    .v-badge {
+      position: absolute; top: 80px; right: 80px;
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(196,162,101,0.4);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <span style="font-family:'Italiana',sans-serif;color:var(--gold);font-size:1rem;margin-right:12px;flex-shrink:0">AP</span>
+  <a href="#va1" class="pill">A · Зернистость</a>
+  <a href="#vb1" class="pill">B · Градиент</a>
+  <a href="#vc1" class="pill active">C · Grain + Gradient ★</a>
+</nav>
+
+<!-- ══════════ ВАРИАНТ A ══════════ -->
+<div class="section grain" id="va1">
+  <div class="v-badge">A · Чистый тёмный + зернистость — секция 1 (тёплый)</div>
+  <div class="label-tag">A · Зернистость</div>
+  <div class="eyebrow">Академия</div>
+  <h2>Обучение мастеров<br>перманентного макияжа</h2>
+  <p class="body">Профессиональный курс от Арины Шараповой. 14 дней онлайн, 4 дня очно в академии в Москве.</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">250+</div><div class="stat-label">выпускниц</div></div>
+    <div class="stat"><div class="stat-num">1 мес</div><div class="stat-label">до первых клиентов</div></div>
+    <div class="stat"><div class="stat-num">80–150k</div><div class="stat-label">средний доход</div></div>
+  </div>
+  <div class="sec-divider"></div>
+</div>
+
+<div class="section grain" id="va2">
+  <div class="v-badge">A · Тёплый тёмный + зернистость — секция 2</div>
+  <div class="eyebrow">Программа</div>
+  <h2>Что входит в курс</h2>
+  <p class="body">Полный базовый курс «Transformation Make Up» — от нуля до практикующего специалиста с государственным дипломом.</p>
+  <p class="body">Брови · Губы · Межресничка · Осветление ПМ · Бизнес и маркетинг</p>
+  <div class="sec-divider"></div>
+</div>
+
+<div class="section grain" id="va3">
+  <div class="v-badge">A · Холодный тёмный + зернистость — секция 3</div>
+  <div class="eyebrow">Цифры говорят сами за себя</div>
+  <h2>Реальные результаты выпускниц курса</h2>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">300+</div><div class="stat-label">клиентов в базе через год</div></div>
+    <div class="stat"><div class="stat-num">250+</div><div class="stat-label">выпускниц</div></div>
+    <div class="stat"><div class="stat-num">80–150k</div><div class="stat-label">средний доход</div></div>
+    <div class="stat"><div class="stat-num">1 мес</div><div class="stat-label">до первых клиентов</div></div>
+  </div>
+</div>
+
+<!-- ══════════ ВАРИАНТ B ══════════ -->
+<div class="section" id="vb1">
+  <div class="v-badge">B · Тёплый градиент — секция 1</div>
+  <div class="label-tag">B · Градиент</div>
+  <div class="eyebrow">Академия</div>
+  <h2>Обучение мастеров<br>перманентного макияжа</h2>
+  <p class="body">Профессиональный курс от Арины Шараповой. 14 дней онлайн, 4 дня очно в академии в Москве.</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">250+</div><div class="stat-label">выпускниц</div></div>
+    <div class="stat"><div class="stat-num">1 мес</div><div class="stat-label">до первых клиентов</div></div>
+    <div class="stat"><div class="stat-num">80–150k</div><div class="stat-label">средний доход</div></div>
+  </div>
+  <div class="sec-divider"></div>
+</div>
+
+<div class="section" id="vb2">
+  <div class="v-badge">B · Холодный/фиолетовый градиент — секция 2</div>
+  <div class="eyebrow">Программа</div>
+  <h2>Что входит в курс</h2>
+  <p class="body">Полный базовый курс «Transformation Make Up» — от нуля до практикующего специалиста с государственным дипломом.</p>
+  <p class="body">Брови · Губы · Межресничка · Осветление ПМ · Бизнес и маркетинг</p>
+  <div class="sec-divider"></div>
+</div>
+
+<div class="section" id="vb3">
+  <div class="v-badge">B · Зелёный/лесной градиент — секция 3</div>
+  <div class="eyebrow">Цифры говорят сами за себя</div>
+  <h2>Реальные результаты выпускниц курса</h2>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">300+</div><div class="stat-label">клиентов в базе через год</div></div>
+    <div class="stat"><div class="stat-num">250+</div><div class="stat-label">выпускниц</div></div>
+    <div class="stat"><div class="stat-num">80–150k</div><div class="stat-label">средний доход</div></div>
+    <div class="stat"><div class="stat-num">1 мес</div><div class="stat-label">до первых клиентов</div></div>
+  </div>
+</div>
+
+<!-- ══════════ ВАРИАНТ C (рекомендую) ══════════ -->
+<div class="section grain" id="vc1">
+  <div class="v-badge">C ★ Тёплый + золотое гало + зернистость — секция 1</div>
+  <div class="label-tag">C · Grain + Gradient ★</div>
+  <div class="eyebrow">Академия</div>
+  <h2>Обучение мастеров<br>перманентного макияжа</h2>
+  <p class="body">Профессиональный курс от Арины Шараповой. 14 дней онлайн, 4 дня очно в академии в Москве.</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">250+</div><div class="stat-label">выпускниц</div></div>
+    <div class="stat"><div class="stat-num">1 мес</div><div class="stat-label">до первых клиентов</div></div>
+    <div class="stat"><div class="stat-num">80–150k</div><div class="stat-label">средний доход</div></div>
+  </div>
+  <div class="sec-divider"></div>
+</div>
+
+<div class="section grain" id="vc2">
+  <div class="v-badge">C ★ Холодный + золотое гало снизу + зернистость — секция 2</div>
+  <div class="eyebrow">Программа</div>
+  <h2>Что входит в курс</h2>
+  <p class="body">Полный базовый курс «Transformation Make Up» — от нуля до практикующего специалиста с государственным дипломом.</p>
+  <p class="body">Брови · Губы · Межресничка · Осветление ПМ · Бизнес и маркетинг</p>
+  <div class="sec-divider"></div>
+</div>
+
+<div class="section grain" id="vc3">
+  <div class="v-badge">C ★ Зелёный/лесной + золотое гало + зернистость — секция 3</div>
+  <div class="eyebrow">Цифры говорят сами за себя</div>
+  <h2>Реальные результаты выпускниц курса</h2>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">300+</div><div class="stat-label">клиентов в базе через год</div></div>
+    <div class="stat"><div class="stat-num">250+</div><div class="stat-label">выпускниц</div></div>
+    <div class="stat"><div class="stat-num">80–150k</div><div class="stat-label">средний доход</div></div>
+    <div class="stat"><div class="stat-num">1 мес</div><div class="stat-label">до первых клиентов</div></div>
+  </div>
+</div>
+
+</body>
+</html>

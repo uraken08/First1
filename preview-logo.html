@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Логотип — варианты</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08080A; --bg-warm: #15120D; --bg-card: #111113;
+      --gold: #C4A265; --gold-light: #D4BA85; --gold-pale: #E8D5B0;
+      --text: #F2EDE7; --muted: #9B958D; --dim: #6B6560;
+      --border: rgba(196,162,101,0.14);
+      --fd: 'Italiana', sans-serif; --fb: 'Raleway', sans-serif;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background: var(--bg); font-family: var(--fb); color: var(--text); }
+
+    .nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      background:rgba(8,8,10,0.92); backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
+      display:flex; align-items:center; gap:8px; padding:10px 24px;
+      overflow-x:auto; scrollbar-width:none;
+    }
+    .nav::-webkit-scrollbar { display:none; }
+    .pill {
+      flex-shrink:0; padding:6px 16px; border-radius:50px;
+      border:1px solid rgba(196,162,101,0.2); background:transparent;
+      color:var(--muted); font-family:var(--fb); font-size:0.75rem;
+      letter-spacing:0.06em; cursor:pointer; transition:all 0.3s;
+      text-decoration:none;
+    }
+    .pill:hover { border-color:var(--gold); color:var(--gold); }
+
+    .block { position:relative; overflow:hidden; }
+    .label { text-align:center; padding:100px 24px 40px; }
+    .label .n { font-family:var(--fd); font-size:5rem; color:var(--gold); opacity:0.07; line-height:1; }
+    .label h2 { font-family:var(--fd); font-size:2.2rem; color:var(--text); margin-top:-20px; }
+    .label p { color:var(--muted); font-size:0.85rem; margin-top:8px; }
+
+    .demo {
+      display:grid; grid-template-columns:auto 1fr 1fr; gap:56px;
+      align-items:start; max-width:1140px; margin:0 auto; padding:0 48px 80px;
+    }
+    .text-col p { color:var(--muted); line-height:1.85; font-size:0.97rem; margin-top:14px; }
+    .text-col h2 { font-family:var(--fd); font-size:2rem; color:var(--text); margin-bottom:28px; }
+    .text-col .eyebrow {
+      font-size:0.68rem; font-weight:600; color:var(--gold);
+      letter-spacing:0.22em; text-transform:uppercase; margin-bottom:10px;
+    }
+
+    .divider { height:1px; background:linear-gradient(to right,transparent,rgba(196,162,101,0.18),transparent); margin:0 48px; }
+
+    /* ===== V1: CSS GOLD FILTER ===== */
+    .logo-gold {
+      width: clamp(140px, 14vw, 200px);
+      flex-shrink: 0;
+      filter: brightness(0) invert(1) sepia(0.85) saturate(4) hue-rotate(4deg) brightness(0.9);
+      padding-top: 6px;
+    }
+
+    /* ===== V2: FOIL SHIMMER ===== */
+    #v2 { background: #0C0B09; }
+    .foil-wrap {
+      position: relative; flex-shrink:0;
+      width: clamp(140px, 14vw, 200px);
+      padding-top: 6px;
+      overflow: visible;
+    }
+    .foil-img {
+      width: 100%;
+      display: block;
+      filter: brightness(0) invert(1) sepia(0.7) saturate(3) hue-rotate(4deg) brightness(0.85);
+    }
+    .foil-sheen {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(232, 213, 176, 0.55) 50%,
+        rgba(212, 186, 133, 0.35) 56%,
+        transparent 70%
+      );
+      mix-blend-mode: screen;
+      animation: foilMove 3.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes foilMove {
+      0%   { transform: translateX(-120%); }
+      40%  { transform: translateX(120%); }
+      100% { transform: translateX(120%); }
+    }
+
+    /* ===== V3: MEDALLION ===== */
+    #v3 { background: var(--bg); }
+    .medallion {
+      flex-shrink:0;
+      width: clamp(150px, 14vw, 200px);
+      height: clamp(150px, 14vw, 200px);
+      border-radius: 50%;
+      border: 1px solid rgba(196,162,101,0.4);
+      box-shadow:
+        0 0 0 5px rgba(8,8,10,1),
+        0 0 0 6px rgba(196,162,101,0.18),
+        inset 0 0 48px rgba(196,162,101,0.06);
+      background: radial-gradient(ellipse at 40% 35%, #1e1608 0%, #0d0b07 70%, #08080A 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; padding-top: 8px;
+    }
+    .medallion img {
+      width: 62%;
+      filter: brightness(0) invert(1) sepia(0.7) saturate(3) hue-rotate(4deg) brightness(0.9);
+    }
+    .medallion::before {
+      content:'';
+      position: absolute; inset: 7px; border-radius: 50%;
+      border: 1px solid rgba(196,162,101,0.1);
+      pointer-events: none;
+    }
+
+    /* ===== V4: GLOW ===== */
+    #v4 { background: #090808; }
+    .logo-glow {
+      width: clamp(140px, 14vw, 200px);
+      flex-shrink: 0;
+      filter:
+        brightness(0) invert(1)
+        sepia(0.6) saturate(3) hue-rotate(4deg)
+        drop-shadow(0 0 10px rgba(196,162,101,0.65))
+        drop-shadow(0 0 24px rgba(196,162,101,0.3))
+        drop-shadow(0 0 50px rgba(196,162,101,0.12));
+      padding-top: 6px;
+    }
+
+    /* ===== V5: MONOGRAM ===== */
+    #v5 { background: var(--bg-warm); }
+    .monogram {
+      flex-shrink:0; padding-top:4px;
+      display:flex; flex-direction:column; align-items:center; gap:0;
+    }
+    .monogram-letters {
+      font-family: var(--fd);
+      font-size: clamp(5rem, 10vw, 8rem);
+      line-height: 0.88;
+      letter-spacing: 0.02em;
+      background: linear-gradient(155deg, var(--gold-pale) 0%, var(--gold) 40%, var(--gold-light) 70%, var(--gold-pale) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .monogram-sub {
+      font-size: 0.56rem; font-weight: 400; color: var(--dim);
+      letter-spacing: 0.3em; text-transform: uppercase; margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <span style="font-family:'Italiana',sans-serif;color:var(--gold);font-size:1rem;margin-right:8px;flex-shrink:0">AP</span>
+  <a href="#v1" class="pill">1 · Золотой цвет</a>
+  <a href="#v2" class="pill">2 · Фольга (анимация)</a>
+  <a href="#v3" class="pill">3 · Медальон</a>
+  <a href="#v4" class="pill">4 · Золотое свечение</a>
+  <a href="#v5" class="pill">5 · Монограмма AP</a>
+</nav>
+
+<!-- ====== V1: CSS GOLD ====== -->
+<div class="label" style="padding-top:100px" id="v1">
+  <div class="n">1</div>
+  <h2>Золотой цвет</h2>
+  <p>CSS фильтры окрашивают логотип в золото — просто и чисто</p>
+</div>
+<div class="demo">
+  <img src="logo_2000x2000.png" class="logo-gold" alt="Agent Permanent">
+  <div class="text-col">
+    <div class="eyebrow">Что такое Agent Permanent</div>
+    <h2>Больше, чем студия</h2>
+    <p><strong style="color:var(--text)">Agent Permanent</strong> — это бренд, который вырос из одной идеи: красота — в естественности.</p>
+    <p>Основательница <strong style="color:var(--text)">Арина Шарапова</strong> начала с одной процедуры в 2016 году. Сегодня это студия с 10 000+ работ и международная школа.</p>
+    <p><strong style="color:var(--text)">Наша миссия — создавать красоту вокруг и менять жизни к лучшему.</strong></p>
+  </div>
+  <div class="text-col">
+    <p>Для клиентов это значит просыпаться красивой каждый день. Перманентный макияж возвращает уверенность в себе и дарит время на то, что важнее.</p>
+    <p style="margin-top:14px">Для мастеров это значит нечто большее, чем профессия. Это финансовая независимость, своё дело и свобода работать на себя.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====== V2: FOIL SHIMMER ====== -->
+<div class="label" id="v2">
+  <div class="n">2</div>
+  <h2>Фольга</h2>
+  <p>Золотой логотип с бликом который медленно проходит по нему</p>
+</div>
+<div class="demo">
+  <div class="foil-wrap">
+    <img src="logo_2000x2000.png" class="foil-img" alt="Agent Permanent">
+    <div class="foil-sheen"></div>
+  </div>
+  <div class="text-col">
+    <div class="eyebrow">Что такое Agent Permanent</div>
+    <h2>Больше, чем студия</h2>
+    <p><strong style="color:var(--text)">Agent Permanent</strong> — это бренд, который вырос из одной идеи: красота — в естественности.</p>
+    <p>Основательница <strong style="color:var(--text)">Арина Шарапова</strong> начала с одной процедуры в 2016 году. Сегодня это студия с 10 000+ работ и международная школа.</p>
+    <p><strong style="color:var(--text)">Наша миссия — создавать красоту вокруг и менять жизни к лучшему.</strong></p>
+  </div>
+  <div class="text-col">
+    <p>Для клиентов это значит просыпаться красивой каждый день. Перманентный макияж возвращает уверенность в себе и дарит время на то, что важнее.</p>
+    <p style="margin-top:14px">Для мастеров это значит нечто большее, чем профессия. Это финансовая независимость, своё дело и свобода работать на себя.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====== V3: MEDALLION ====== -->
+<div class="label" id="v3">
+  <div class="n">3</div>
+  <h2>Медальон</h2>
+  <p>Круглая золотая рамка — как печать или монета</p>
+</div>
+<div class="demo">
+  <div class="medallion">
+    <img src="logo_2000x2000.png" alt="Agent Permanent">
+  </div>
+  <div class="text-col">
+    <div class="eyebrow">Что такое Agent Permanent</div>
+    <h2>Больше, чем студия</h2>
+    <p><strong style="color:var(--text)">Agent Permanent</strong> — это бренд, который вырос из одной идеи: красота — в естественности.</p>
+    <p>Основательница <strong style="color:var(--text)">Арина Шарапова</strong> начала с одной процедуры в 2016 году.</p>
+    <p><strong style="color:var(--text)">Наша миссия — создавать красоту вокруг и менять жизни к лучшему.</strong></p>
+  </div>
+  <div class="text-col">
+    <p>Для клиентов это значит просыпаться красивой каждый день.</p>
+    <p style="margin-top:14px">Для мастеров — это финансовая независимость, своё дело и свобода.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====== V4: GLOW ====== -->
+<div class="label" id="v4">
+  <div class="n">4</div>
+  <h2>Золотое свечение</h2>
+  <p>Золотой логотип светится мягким гало на тёмном фоне</p>
+</div>
+<div class="demo">
+  <img src="logo_2000x2000.png" class="logo-glow" alt="Agent Permanent">
+  <div class="text-col">
+    <div class="eyebrow">Что такое Agent Permanent</div>
+    <h2>Больше, чем студия</h2>
+    <p><strong style="color:var(--text)">Agent Permanent</strong> — это бренд, который вырос из одной идеи: красота — в естественности.</p>
+    <p>Основательница <strong style="color:var(--text)">Арина Шарапова</strong> начала с одной процедуры в 2016 году.</p>
+    <p><strong style="color:var(--text)">Наша миссия — создавать красоту вокруг и менять жизни к лучшему.</strong></p>
+  </div>
+  <div class="text-col">
+    <p>Для клиентов это значит просыпаться красивой каждый день.</p>
+    <p style="margin-top:14px">Для мастеров — это финансовая независимость, своё дело и свобода.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====== V5: MONOGRAM ====== -->
+<div class="label" id="v5">
+  <div class="n">5</div>
+  <h2>Монограмма AP</h2>
+  <p>Только буквы — крупно, золотой градиент, шрифт Italiana</p>
+</div>
+<div class="demo" style="padding-bottom:120px">
+  <div class="monogram">
+    <div class="monogram-letters">AP</div>
+    <div class="monogram-sub">Agent Permanent</div>
+  </div>
+  <div class="text-col">
+    <div class="eyebrow">Что такое Agent Permanent</div>
+    <h2>Больше, чем студия</h2>
+    <p><strong style="color:var(--text)">Agent Permanent</strong> — это бренд, который вырос из одной идеи: красота — в естественности.</p>
+    <p>Основательница <strong style="color:var(--text)">Арина Шарапова</strong> начала с одной процедуры в 2016 году.</p>
+    <p><strong style="color:var(--text)">Наша миссия — создавать красоту вокруг и менять жизни к лучшему.</strong></p>
+  </div>
+  <div class="text-col">
+    <p>Для клиентов это значит просыпаться красивой каждый день.</p>
+    <p style="margin-top:14px">Для мастеров — это финансовая независимость, своё дело и свобода.</p>
+  </div>
+</div>
+
+</body>
+</html>

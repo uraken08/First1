@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Галерея — варианты</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #08080A;
+      --bg-warm: #15120D;
+      --bg-card: #111113;
+      --gold: #C4A265;
+      --gold-light: #D4BA85;
+      --gold-pale: #E8D5B0;
+      --text-primary: #F2EDE7;
+      --text-secondary: #9B958D;
+      --text-muted: #6B6560;
+      --border: rgba(196,162,101,0.12);
+      --font-display: 'Italiana', sans-serif;
+      --font-body: 'Raleway', sans-serif;
+      --font-stats: 'Jost', sans-serif;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background: var(--bg-deep); color: var(--text-primary); font-family: var(--font-body); }
+
+    .variant-label {
+      text-align: center;
+      padding: 80px 48px 40px;
+    }
+    .variant-label .num {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.15;
+      line-height: 1;
+    }
+    .variant-label h2 {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-top: -20px;
+    }
+    .variant-label p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 60px 48px;
+      opacity: 0.3;
+    }
+
+    /* ===================== VARIANT 2: MASONRY ===================== */
+    .masonry-section {
+      padding: 0 48px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .masonry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 280px 200px 320px;
+      gap: 12px;
+    }
+    .masonry-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .masonry-item:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
+    .masonry-item:nth-child(2) { grid-column: 2; grid-row: 1; }
+    .masonry-item:nth-child(3) { grid-column: 3; grid-row: 1 / 3; }
+    .masonry-item:nth-child(4) { grid-column: 2; grid-row: 2; }
+    .masonry-item:nth-child(5) { grid-column: 1 / 3; grid-row: 3; }
+    .masonry-item:nth-child(6) { grid-column: 3; grid-row: 3; }
+
+    .masonry-bg {
+      width: 100%; height: 100%;
+      transition: transform 0.6s ease;
+    }
+    .masonry-item:hover .masonry-bg { transform: scale(1.05); }
+
+    .masonry-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,8,10,0.9) 0%, rgba(8,8,10,0.1) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+    }
+    .masonry-item:hover .masonry-overlay { opacity: 1; }
+    .masonry-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .masonry-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--text-primary);
+    }
+
+    /* Placeholder colors */
+    .p1 { background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 40%, #1a1208 100%); }
+    .p2 { background: linear-gradient(135deg, #120d06 0%, #261808 60%, #120d06 100%); }
+    .p3 { background: linear-gradient(135deg, #0f0c07 0%, #1e1509 50%, #0f0c07 100%); }
+    .p4 { background: linear-gradient(135deg, #16100a 0%, #2a1c0c 40%, #16100a 100%); }
+    .p5 { background: linear-gradient(135deg, #0d0a06 0%, #221708 60%, #0d0a06 100%); }
+    .p6 { background: linear-gradient(135deg, #14100a 0%, #241a0b 50%, #14100a 100%); }
+
+    .placeholder-inner {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px;
+    }
+    .placeholder-inner span:first-child {
+      font-size: 2rem; opacity: 0.15; color: var(--gold);
+    }
+    .placeholder-inner span:last-child {
+      font-size: 0.7rem; color: var(--text-muted);
+      letter-spacing: 0.15em; text-transform: uppercase;
+    }
+
+    /* ===================== VARIANT 3: HORIZONTAL SCROLL ===================== */
+    .hscroll-section {
+      padding: 0 0 80px;
+      overflow: hidden;
+    }
+    .hscroll-track {
+      display: flex;
+      gap: 16px;
+      padding: 0 48px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      cursor: grab;
+    }
+    .hscroll-track::-webkit-scrollbar { display: none; }
+    .hscroll-track:active { cursor: grabbing; }
+    .hscroll-card {
+      flex-shrink: 0;
+      width: 420px;
+      height: 560px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      scroll-snap-align: start;
+    }
+    .hscroll-card .card-bg {
+      width: 100%; height: 100%;
+      transition: transform 0.5s ease;
+    }
+    .hscroll-card:hover .card-bg { transform: scale(1.04); }
+    .hscroll-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 32px 28px 28px;
+      background: linear-gradient(to top, rgba(8,8,10,0.92) 0%, transparent 100%);
+    }
+    .hscroll-caption .tag {
+      font-size: 0.68rem; font-weight: 600;
+      color: var(--gold); letter-spacing: 0.2em;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .hscroll-caption h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem; color: var(--text-primary);
+      font-weight: 400;
+    }
+    .hscroll-caption p {
+      font-size: 0.82rem; color: var(--text-secondary);
+      margin-top: 6px; line-height: 1.5;
+    }
+    .hscroll-hint {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-top: 20px;
+    }
+
+    /* ===================== VARIANT 4: FULL-BLEED PARALLAX ===================== */
+    .parallax-section { padding: 0 0 80px; }
+    .parallax-item {
+      position: relative;
+      height: 70vh;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+    .parallax-bg {
+      position: absolute;
+      inset: -15%;
+      transition: transform 0.1s linear;
+    }
+    .parallax-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(8,8,10,0.45);
+      display: flex;
+      align-items: flex-end;
+      padding: 60px 80px;
+    }
+    .parallax-text { max-width: 500px; }
+    .parallax-text .tag {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--gold); letter-spacing: 0.25em;
+      text-transform: uppercase; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .parallax-text .tag::before {
+      content: '';
+      display: block;
+      width: 40px; height: 1px;
+      background: var(--gold);
+    }
+    .parallax-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--text-primary); font-weight: 400;
+      line-height: 1.1; margin-bottom: 14px;
+    }
+    .parallax-text p {
+      font-size: 0.95rem; color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .pp1 { background: linear-gradient(160deg, #0d0a05 0%, #2a1a06 40%, #1a1005 70%, #0d0b06 100%); }
+    .pp2 { background: linear-gradient(140deg, #0a0d0a 0%, #0f1a0d 30%, #1a1205 70%, #0d0a05 100%); }
+    .pp3 { background: linear-gradient(120deg, #0d0805 0%, #201408 50%, #150d05 100%); }
+
+    .vote-bar {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 40px 48px 80px;
+      flex-wrap: wrap;
+    }
+    .vote-btn {
+      padding: 14px 36px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .vote-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(196,162,101,0.06);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VARIANT 2 -->
+  <div class="variant-label">
+    <div class="num">2</div>
+    <h2>Masonry + hover-reveal</h2>
+    <p>Наведи на любую ячейку</p>
+  </div>
+
+  <div class="masonry-section">
+    <div class="masonry-grid">
+      <div class="masonry-item">
+        <div class="masonry-bg p1">
+          <div class="placeholder-inner"><span>✦</span><span>Пудровые брови</span></div>
+        </div>
+        <div class="masonry-overlay">
+          <div class="masonry-tag">Брови</div>
+          <div class="masonry-title">Пудровое напыление</div>
+        </div>
+      </div>
+      <div class="masonry-item">
+        <div class="masonry-bg p2">
+          <div class="placeholder-inner"><span>✧</span><span>Губы</span></div>
+        </div>
+        <div class="masonry-overlay">
+          <div class="masonry-tag">Губы</div>
+          <div class="masonry-title">Акварельные губы</div>
+        </div>
+      </div>
+      <div class="masonry-item">
+        <div class="masonry-bg p3">
+          <div class="placeholder-inner"><span>✦</span><span>Омбре брови</span></div>
+        </div>
+        <div class="masonry-overlay">
+          <div class="masonry-tag">Брови</div>
+          <div class="masonry-title">Омбре техника</div>
+        </div>
+      </div>
+      <div class="masonry-item">
+        <div class="masonry-bg p4">
+          <div class="placeholder-inner"><span>◈</span><span>Межресничка</span></div>
+        </div>
+        <div class="masonry-overlay">
+          <div class="masonry-tag">Веки</div>
+          <div class="masonry-title">Межресничная линия</div>
+        </div>
+      </div>
+      <div class="masonry-item">
+        <div class="masonry-bg p5">
+          <div class="placeholder-inner"><span>✦</span><span>Работа мастера</span></div>
+        </div>
+        <div class="masonry-overlay">
+          <div class="masonry-tag">Студия</div>
+          <div class="masonry-title">Agent Permanent</div>
+        </div>
+      </div>
+      <div class="masonry-item">
+        <div class="masonry-bg p6">
+          <div class="placeholder-inner"><span>✧</span><span>Full lips</span></div>
+        </div>
+        <div class="masonry-overlay">
+          <div class="masonry-tag">Губы</div>
+          <div class="masonry-title">Full lips</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- VARIANT 3 -->
+  <div class="variant-label">
+    <div class="num">3</div>
+    <h2>Горизонтальный слайдер</h2>
+    <p>Тяни влево мышкой или свайпай на телефоне</p>
+  </div>
+
+  <div class="hscroll-section">
+    <div class="hscroll-track" id="track">
+      <div class="hscroll-card">
+        <div class="card-bg p1"><div class="placeholder-inner"><span>✦</span><span>Пудровые брови</span></div></div>
+        <div class="hscroll-caption">
+          <div class="tag">Брови</div>
+          <h3>Пудровое напыление</h3>
+          <p>Авторская методика «брови за час»</p>
+        </div>
+      </div>
+      <div class="hscroll-card">
+        <div class="card-bg p2"><div class="placeholder-inner"><span>✧</span><span>Акварельные губы</span></div></div>
+        <div class="hscroll-caption">
+          <div class="tag">Губы</div>
+          <h3>Акварельные губы</h3>
+          <p>Натуральный цвет без кукольного эффекта</p>
+        </div>
+      </div>
+      <div class="hscroll-card">
+        <div class="card-bg p3"><div class="placeholder-inner"><span>✦</span><span>Омбре</span></div></div>
+        <div class="hscroll-caption">
+          <div class="tag">Брови</div>
+          <h3>Омбре техника</h3>
+          <p>Плавный переход от светлого к насыщенному</p>
+        </div>
+      </div>
+      <div class="hscroll-card">
+        <div class="card-bg p4"><div class="placeholder-inner"><span>◈</span><span>Межресничка</span></div></div>
+        <div class="hscroll-caption">
+          <div class="tag">Веки</div>
+          <h3>Межресничная линия</h3>
+          <p>Выразительный взгляд без ежедневного макияжа</p>
+        </div>
+      </div>
+      <div class="hscroll-card">
+        <div class="card-bg p5"><div class="placeholder-inner"><span>✦</span><span>Комби-брови</span></div></div>
+        <div class="hscroll-caption">
+          <div class="tag">Брови</div>
+          <h3>Комбинированная техника</h3>
+          <p>Волоски + пудровое напыление</p>
+        </div>
+      </div>
+      <div class="hscroll-card">
+        <div class="card-bg p6"><div class="placeholder-inner"><span>✧</span><span>Full lips</span></div></div>
+        <div class="hscroll-caption">
+          <div class="tag">Губы</div>
+          <h3>Full lips</h3>
+          <p>Визуальное увеличение и идеальная симметрия</p>
+        </div>
+      </div>
+    </div>
+    <div class="hscroll-hint">← тяни →</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- VARIANT 4 -->
+  <div class="variant-label">
+    <div class="num">4</div>
+    <h2>Full-bleed с parallax</h2>
+    <p>Скролли вниз — фото двигаются медленнее страницы</p>
+  </div>
+
+  <div class="parallax-section" id="parallax-section">
+    <div class="parallax-item" data-speed="0.3">
+      <div class="parallax-bg pp1"><div class="placeholder-inner" style="height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px"><span style="font-size:3rem;opacity:0.1;color:#C4A265">✦</span><span style="font-size:0.8rem;color:#6B6560;letter-spacing:0.15em;text-transform:uppercase">Пудровые брови</span></div></div>
+      <div class="parallax-overlay">
+        <div class="parallax-text">
+          <div class="tag">Брови</div>
+          <h2>Пудровое напыление</h2>
+          <p>Авторская методика Арины Шараповой — точный подбор формы под черты лица. Результат держится до 2–3 лет.</p>
+        </div>
+      </div>
+    </div>
+    <div class="parallax-item" data-speed="0.25">
+      <div class="parallax-bg pp2"><div class="placeholder-inner" style="height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px"><span style="font-size:3rem;opacity:0.1;color:#C4A265">✧</span><span style="font-size:0.8rem;color:#6B6560;letter-spacing:0.15em;text-transform:uppercase">Губы</span></div></div>
+      <div class="parallax-overlay" style="justify-content:center;padding-left:50%">
+        <div class="parallax-text">
+          <div class="tag">Губы</div>
+          <h2>Акварельные губы</h2>
+          <p>Натуральный оттенок, который выглядит как ваш — только совершеннее. Без кукольного эффекта.</p>
+        </div>
+      </div>
+    </div>
+    <div class="parallax-item" data-speed="0.35">
+      <div class="parallax-bg pp3"><div class="placeholder-inner" style="height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px"><span style="font-size:3rem;opacity:0.1;color:#C4A265">◈</span><span style="font-size:0.8rem;color:#6B6560;letter-spacing:0.15em;text-transform:uppercase">Межресничка</span></div></div>
+      <div class="parallax-overlay">
+        <div class="parallax-text">
+          <div class="tag">Веки</div>
+          <h2>Межресничная линия</h2>
+          <p>Выразительный взгляд без ежедневного макияжа. Процедура занимает около часа.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vote-bar">
+    <button class="vote-btn" onclick="this.style.borderColor='#C4A265';this.style.color='#C4A265';this.textContent='✓ Выбрано!'">Вариант 2 — Masonry</button>
+    <button class="vote-btn" onclick="this.style.borderColor='#C4A265';this.style.color='#C4A265';this.textContent='✓ Выбрано!'">Вариант 3 — Слайдер</button>
+    <button class="vote-btn" onclick="this.style.borderColor='#C4A265';this.style.color='#C4A265';this.textContent='✓ Выбрано!'">Вариант 4 — Parallax</button>
+  </div>
+
+  <script>
+    // Drag scroll for horizontal slider
+    const track = document.getElementById('track');
+    let isDown = false, startX, scrollLeft;
+    track.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+    track.addEventListener('mouseleave', () => isDown = false);
+    track.addEventListener('mouseup', () => isDown = false);
+    track.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      track.scrollLeft = scrollLeft - (x - startX) * 1.5;
+    });
+
+    // Parallax effect
+    const parallaxItems = document.querySelectorAll('.parallax-item');
+    window.addEventListener('scroll', () => {
+      parallaxItems.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        const speed = parseFloat(item.dataset.speed) || 0.3;
+        const offset = (window.innerHeight / 2 - rect.top - rect.height / 2) * speed;
+        item.querySelector('.parallax-bg').style.transform = 'translateY(' + offset + 'px)';
+      });
+    });
+  </script>
+</body>
+</html>

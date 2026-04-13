@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTA варианты</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08080A; --bg-warm: #15120D;
+      --gold: #C4A265; --gold-light: #D4BA85; --gold-pale: #E8D5B0;
+      --text: #F2EDE7; --muted: #9B958D; --dim: #6B6560;
+      --border: rgba(196,162,101,0.14);
+      --fd: 'Italiana', sans-serif; --fb: 'Raleway', sans-serif;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background: var(--bg); font-family: var(--fb); color: var(--text); }
+
+    .page { max-width: 900px; margin: 0 auto; padding: 60px 48px 120px; }
+    .label {
+      font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 16px;
+    }
+    .variant { margin-bottom: 64px; }
+    .variant-num {
+      font-family: var(--fd); font-size: 4rem; color: var(--gold);
+      opacity: 0.07; line-height: 1; margin-bottom: -20px;
+    }
+    .variant-name { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 20px; }
+
+    /* ── 1: Золотая плашка (текущая) ── */
+    .v1 {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 32px; background: var(--gold); border-radius: 2px;
+      cursor: pointer; transition: background 0.3s;
+      text-decoration: none;
+    }
+    .v1:hover { background: var(--gold-light); }
+    .v1-text { font-family: var(--fd); font-size: 1.5rem; color: #08080A; letter-spacing: 0.04em; }
+    .v1-arrow { font-size: 1.5rem; color: #08080A; transition: transform 0.3s; }
+    .v1:hover .v1-arrow { transform: translateX(8px); }
+
+    /* ── 2: Контур ── */
+    .v2 {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 32px;
+      border: 1px solid rgba(196,162,101,0.5);
+      cursor: pointer; transition: border-color 0.3s, background 0.3s;
+      text-decoration: none;
+    }
+    .v2:hover { border-color: var(--gold); background: rgba(196,162,101,0.04); }
+    .v2-text { font-family: var(--fd); font-size: 1.5rem; color: var(--gold); letter-spacing: 0.04em; }
+    .v2-arrow { font-size: 1.5rem; color: var(--gold); transition: transform 0.3s; }
+    .v2:hover .v2-arrow { transform: translateX(8px); }
+
+    /* ── 3: Крупный текст + линия ── */
+    .v3 {
+      display: flex; align-items: center; gap: 32px;
+      padding: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      cursor: pointer; text-decoration: none;
+      transition: gap 0.4s;
+    }
+    .v3:hover { gap: 48px; }
+    .v3-text {
+      font-family: var(--fd); font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--text); letter-spacing: 0.03em; line-height: 1.1;
+    }
+    .v3-text em { color: var(--gold); font-style: normal; }
+    .v3-line { flex: 1; height: 1px; background: linear-gradient(to right, var(--gold), transparent); }
+    .v3-arrow { font-size: 1.8rem; color: var(--gold); flex-shrink: 0; }
+
+    /* ── 4: Тёмная карточка с золотой полосой ── */
+    .v4 {
+      display: flex; align-items: center; gap: 0;
+      background: #111009; cursor: pointer; text-decoration: none;
+      transition: background 0.3s;
+      overflow: hidden;
+    }
+    .v4:hover { background: #18150a; }
+    .v4-stripe { width: 5px; background: var(--gold); align-self: stretch; flex-shrink: 0; }
+    .v4-body { padding: 28px 32px; flex: 1; display: flex; align-items: center; justify-content: space-between; }
+    .v4-text { font-family: var(--fd); font-size: 1.5rem; color: var(--text); letter-spacing: 0.04em; }
+    .v4-cta { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 6px; }
+    .v4-arrow { font-size: 1.5rem; color: var(--gold); transition: transform 0.3s; }
+    .v4:hover .v4-arrow { transform: translateX(8px); }
+
+    /* ── 5: Только текст, огромно ── */
+    .v5 {
+      display: block; text-decoration: none; padding: 20px 0;
+      border-top: 1px solid var(--border);
+    }
+    .v5-text {
+      font-family: var(--fd); font-size: clamp(2.5rem, 7vw, 5rem);
+      color: var(--text); letter-spacing: 0.02em; line-height: 1;
+      transition: color 0.3s;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .v5:hover .v5-text { color: var(--gold); }
+    .v5-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+    /* ── 6: Шиммер-анимация ── */
+    .v6 {
+      display: flex; align-items: center; justify-content: center; gap: 20px;
+      padding: 28px 32px;
+      background: linear-gradient(135deg, #1a1610 0%, #120f0a 100%);
+      border: 1px solid rgba(196,162,101,0.2);
+      cursor: pointer; text-decoration: none; position: relative; overflow: hidden;
+    }
+    .v6::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, transparent 35%, rgba(232,213,176,0.12) 50%, transparent 65%);
+      animation: sheen 3s ease-in-out infinite;
+    }
+    @keyframes sheen {
+      0%   { transform: translateX(-100%); }
+      40%  { transform: translateX(100%); }
+      100% { transform: translateX(100%); }
+    }
+    .v6-text { font-family: var(--fd); font-size: 1.5rem; color: var(--gold-pale); letter-spacing: 0.06em; position: relative; z-index: 1; }
+    .v6-arrow { font-size: 1.3rem; color: var(--gold); position: relative; z-index: 1; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="label" style="margin-bottom:48px">Варианты оформления · «Ты читаешь это не случайно»</div>
+
+  <div class="variant">
+    <div class="variant-num">1</div>
+    <div class="variant-name">Текущий — золотая плашка</div>
+    <a href="#" class="v1">
+      <span class="v1-text">Ты читаешь это не случайно</span>
+      <span class="v1-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="variant">
+    <div class="variant-num">2</div>
+    <div class="variant-name">Контур — рамка с золотым текстом</div>
+    <a href="#" class="v2">
+      <span class="v2-text">Ты читаешь это не случайно</span>
+      <span class="v2-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="variant">
+    <div class="variant-num">3</div>
+    <div class="variant-name">Типографика — крупно с линией</div>
+    <a href="#" class="v3">
+      <span class="v3-text">Ты читаешь это<br><em>не случайно</em></span>
+      <span class="v3-line"></span>
+      <span class="v3-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="variant">
+    <div class="variant-num">4</div>
+    <div class="variant-name">Тёмная карточка с золотой полосой</div>
+    <a href="#" class="v4">
+      <div class="v4-stripe"></div>
+      <div class="v4-body">
+        <div>
+          <div class="v4-text">Ты читаешь это не случайно</div>
+          <div class="v4-cta">Записаться на курс</div>
+        </div>
+        <span class="v4-arrow">→</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="variant">
+    <div class="variant-num">5</div>
+    <div class="variant-name">Только текст — большой, минимализм</div>
+    <a href="#" class="v5">
+      <div class="v5-text">
+        <span class="v5-dot"></span>
+        Ты читаешь это не случайно
+      </div>
+    </a>
+  </div>
+
+  <div class="variant" style="margin-bottom:0">
+    <div class="variant-num">6</div>
+    <div class="variant-name">Шиммер — блик проходит по тексту</div>
+    <a href="#" class="v6">
+      <span class="v6-text">Ты читаешь это не случайно</span>
+      <span class="v6-arrow">→</span>
+    </a>
+  </div>
+
+</div>
+</body>
+</html>

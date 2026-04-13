@@ -355,12 +355,12 @@
           <span class="pm-hero-meta-label">выпускниц</span>
         </div>
         <div class="pm-hero-meta-item">
-          <span class="pm-hero-meta-num">∞</span>
-          <span class="pm-hero-meta-label">поддержка Арины</span>
+          <span class="pm-hero-meta-num" style="font-size:1.6rem;letter-spacing:0.04em">НАВСЕГДА</span>
+          <span class="pm-hero-meta-label">поддержка Арины Шараповой</span>
         </div>
       </div>
       <div class="pm-hero-ctas fade-up">
-        <a href="#cta" class="btn btn-gold">Записаться на курс</a>
+        <a href="#cta" class="btn btn-gold">Узнать даты и стоимость</a>
         <a href="#program" class="btn btn-ghost">Программа курса</a>
       </div>
     </div>
@@ -813,6 +813,9 @@
         <span class="fw-note-icon">◈</span>
         Подберём для вас удобные даты для прохождения обучения, мини-группы 2–4 человека для успешного освоения программы
       </div>
+      <div class="fade-up" style="margin-top:40px;text-align:center">
+        <a href="#cta" class="btn btn-gold">Узнать даты и стоимость</a>
+      </div>
     </div>
   </section>
 
@@ -1014,6 +1017,10 @@
           <p class="case-quote">«До курса работала продавцом. Сейчас своя студия, полная запись на 3 недели вперёд. Не верю, что это моя жизнь.»</p>
         </div>
       </div>
+    <div style="text-align:center;margin-top:48px" class="fade-up">
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:20px">Хотите так же? Следующий поток стартует скоро</p>
+        <a href="#cta" class="btn btn-gold">Узнать даты и стоимость</a>
+      </div>
     </div>
   </section>
 
@@ -1154,7 +1161,107 @@
       .pm-gallery-inner > div:first-child { padding: 0 24px !important; }
       .pm-mn-col { min-width: 130px; }
     }
+
+    /* ── FAQ ── */
+    .pm-faq {
+      padding: 100px 80px;
+      background: radial-gradient(ellipse 60% 50% at 20% 50%, rgba(196,162,101,0.05) 0%, transparent 55%), var(--bg-warm);
+      border-top: 1px solid var(--border);
+    }
+    .pm-faq-inner { max-width: 820px; margin: 0 auto; }
+    .pm-faq-top { text-align: center; margin-bottom: 56px; }
+    .pm-faq-top h2 {
+      font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400; color: var(--text-primary); line-height: 1.05;
+    }
+    .pm-faq-list { display: flex; flex-direction: column; }
+    .pm-faq-item {
+      border-top: 1px solid rgba(196,162,101,0.12);
+      cursor: pointer;
+    }
+    .pm-faq-item:last-child { border-bottom: 1px solid rgba(196,162,101,0.12); }
+    .pm-faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; padding: 24px 0;
+      font-size: 1rem; color: var(--text-primary);
+      font-weight: 400; line-height: 1.4; letter-spacing: 0.01em;
+      transition: color 0.25s;
+    }
+    .pm-faq-item:hover .pm-faq-q { color: var(--gold); }
+    .pm-faq-icon {
+      flex-shrink: 0; width: 28px; height: 28px;
+      border: 1px solid rgba(196,162,101,0.25); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.1rem; line-height: 1;
+      transition: transform 0.3s, background 0.25s;
+    }
+    .pm-faq-item.open .pm-faq-icon { transform: rotate(45deg); background: rgba(196,162,101,0.1); }
+    .pm-faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      font-size: 0.93rem; color: var(--text-secondary);
+      line-height: 1.75; padding: 0;
+    }
+    .pm-faq-item.open .pm-faq-a {
+      max-height: 300px;
+      padding-bottom: 24px;
+    }
+    @media (max-width: 768px) { .pm-faq { padding: 80px 24px; } }
   </style>
+
+
+  <!-- FAQ -->
+  <section class="pm-faq">
+    <div class="pm-faq-inner">
+      <div class="pm-faq-top fade-up">
+        <div class="section-eyebrow" style="justify-content:center;margin-bottom:16px">Частые вопросы</div>
+        <h2>Остались вопросы?</h2>
+      </div>
+      <div class="pm-faq-list">
+
+        <div class="pm-faq-item fade-up">
+          <div class="pm-faq-q" onclick="faqToggle(this)">
+            У меня совсем нет опыта — смогу ли я?
+            <span class="pm-faq-icon">+</span>
+          </div>
+          <div class="pm-faq-a">Да, курс создан именно с нуля. Большинство наших выпускниц не имели никакого опыта в бьюти. Арина объясняет каждый шаг — от анатомии кожи до работы с клиентом. Первые 2 недели — теория онлайн, потом 4 дня практики на моделях под личным контролем мастера.</div>
+        </div>
+
+        <div class="pm-faq-item fade-up">
+          <div class="pm-faq-q" onclick="faqToggle(this)">
+            Можно ли учиться из другого города?
+            <span class="pm-faq-icon">+</span>
+          </div>
+          <div class="pm-faq-a">Да. 14 дней теоретической части проходят полностью онлайн — в удобное для вас время. Очная часть (4 дня практики) проводится в Москве в академии Agent Permanent. Многие приезжают из регионов — мы помогаем с расписанием.</div>
+        </div>
+
+        <div class="pm-faq-item fade-up">
+          <div class="pm-faq-q" onclick="faqToggle(this)">
+            Есть ли рассрочка?
+            <span class="pm-faq-icon">+</span>
+          </div>
+          <div class="pm-faq-a">Да, доступна рассрочка без переплат. Уточните актуальные условия у менеджера — они зависят от выбранного потока. Оставьте заявку, и мы подберём удобный вариант оплаты.</div>
+        </div>
+
+        <div class="pm-faq-item fade-up">
+          <div class="pm-faq-q" onclick="faqToggle(this)">
+            Нужно ли покупать материалы отдельно?
+            <span class="pm-faq-icon">+</span>
+          </div>
+          <div class="pm-faq-a">Все расходные материалы для практики предоставляются академией. Список рекомендованных инструментов для самостоятельной работы после курса вы получите на обучении — мы поможем с выбором и поставщиками.</div>
+        </div>
+
+        <div class="pm-faq-item fade-up">
+          <div class="pm-faq-q" onclick="faqToggle(this)">
+            Что если мне не понравится после начала?
+            <span class="pm-faq-icon">+</span>
+          </div>
+          <div class="pm-faq-a">У нас нет случайных учениц — до старта мы проводим короткий звонок, чтобы убедиться, что курс подходит именно вам. Арина лично отвечает на вопросы и поддерживает каждую ученицу на всём пути. За всё время — ни одного запроса на возврат.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- CTA LEAD FORM -->
   <section class="pm-cta-lead" id="cta">
@@ -1241,6 +1348,13 @@
     window.addEventListener('scroll', () => {
       document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
     });
+
+    function faqToggle(el) {
+      const item = el.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.pm-faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
     function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
     function handleSubmit(e) {
       if (e) e.preventDefault();
