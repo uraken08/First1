@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Портфолио работ — Agent Permanent | Арина Шарапова</title>
-  <meta name="description" content="Работы Арины Шараповой — перманентный макияж бровей, губ, межресничной линии в Москве. 6000+ процедур. Реальные фото до и после.">
+  <meta name="description" content="Работы мастеров Agent Permanent — перманентный макияж бровей, губ, межресничной линии, стрелок в Москве. 10 000+ процедур.">
   <link rel="icon" type="image/png" href="../favicon.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +18,213 @@
       opacity: 0.055;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size: 160px;
+    }
+
+    /* ── PORTFOLIO HERO ── */
+    .pf-hero {
+      padding: 140px 48px 60px;
+      text-align: center;
+      position: relative;
+    }
+    .pf-hero-eyebrow {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 16px;
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+    }
+    .pf-hero-eyebrow::before, .pf-hero-eyebrow::after {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--gold);
+    }
+    .pf-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 400; color: var(--text-primary);
+      letter-spacing: 0.03em; margin-bottom: 12px;
+    }
+    .pf-hero h1 em { color: var(--gold); font-style: normal; }
+    .pf-hero-stat {
+      font-family: var(--font-stats);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 700; color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .pf-hero-sub {
+      font-size: 0.95rem; color: var(--text-secondary);
+      max-width: 520px; margin: 0 auto; line-height: 1.7;
+    }
+
+    /* ── FILTERS ── */
+    .pf-filters {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 48px 40px;
+      display: flex; flex-wrap: wrap; gap: 12px;
+      justify-content: center;
+    }
+    .pf-filter-group {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      align-items: center;
+    }
+    .pf-filter-group-label {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-right: 4px;
+    }
+    .pf-filter-btn {
+      padding: 8px 20px;
+      border: 1px solid rgba(196,162,101,0.15);
+      border-radius: 50px;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .pf-filter-btn:hover {
+      border-color: rgba(196,162,101,0.4);
+      color: var(--gold);
+    }
+    .pf-filter-btn.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(196,162,101,0.08);
+    }
+    .pf-filter-divider {
+      width: 100%; height: 8px;
+      margin: 4px 0;
+    }
+
+    /* ── GALLERY ── */
+    .pf-gallery {
+      max-width: 100%; margin: 0 auto;
+      padding: 0 0 80px;
+    }
+    .pf-section {
+      margin-bottom: 48px;
+    }
+    .pf-section-header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 16px;
+      padding: 0 48px 12px;
+      border-bottom: 1px solid rgba(196,162,101,0.12);
+    }
+    .pf-section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 400; color: var(--text-primary);
+      letter-spacing: 0.03em;
+    }
+
+    .pf-row-wrap {
+      position: relative;
+      padding: 0 48px;
+    }
+    .pf-row {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-behavior: auto;
+      -webkit-overflow-scrolling: touch;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .pf-row:active { cursor: grabbing; }
+    .pf-row + .pf-row { margin-top: 6px; }
+    .pf-row::-webkit-scrollbar { height: 2px; }
+    .pf-row::-webkit-scrollbar-track { background: transparent; }
+    .pf-row::-webkit-scrollbar-thumb { background: rgba(196,162,101,0.2); border-radius: 2px; }
+
+    /* ── LIGHTBOX ── */
+    .pf-lb {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(0,0,0,0.95);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .pf-lb.active { opacity: 1; pointer-events: auto; }
+    .pf-lb-img {
+      max-width: 90vw; max-height: 85vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+    .pf-lb-close, .pf-lb-prev, .pf-lb-next {
+      position: absolute;
+      background: none; border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+      font-size: 1.8rem;
+      padding: 16px;
+      transition: color 0.3s;
+      z-index: 2;
+    }
+    .pf-lb-close:hover, .pf-lb-prev:hover, .pf-lb-next:hover { color: var(--gold); }
+    .pf-lb-close { top: 16px; right: 24px; font-size: 2rem; }
+    .pf-lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+    .pf-lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
+    .pf-lb-info {
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+      text-align: center;
+    }
+    .pf-lb-master { font-size: 0.75rem; font-weight: 600; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
+    .pf-lb-cat { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; }
+    .pf-lb-counter {
+      position: absolute; top: 20px; left: 24px;
+      font-family: var(--font-stats); font-size: 0.85rem; color: var(--text-muted);
+    }
+
+    .pf-item {
+      flex-shrink: 0;
+      width: 210px;
+      height: 270px;
+      overflow: hidden;
+      border-radius: 2px;
+      position: relative;
+      cursor: pointer;
+    }
+    .pf-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .pf-item-overlay {
+      position: absolute; inset: 0;
+      background: rgba(8,8,10,0.5);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 10px;
+    }
+    .pf-item:hover .pf-item-overlay { opacity: 1; }
+    .pf-item-master {
+      font-size: 0.65rem; font-weight: 600;
+      color: var(--gold); letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .pf-item-master:hover { text-decoration: underline; }
+    .pf-item-cat {
+      font-size: 0.7rem; color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .pf-item.hidden { display: none; }
+    .pf-section.hidden { display: none; }
+
+    @media (max-width: 768px) {
+      .pf-hero { padding: 120px 24px 40px; }
+      .pf-filters { padding: 0 24px 32px; }
+      .pf-section-header { padding: 0 24px 12px; }
+      .pf-row { padding: 0 24px 8px; }
+      .pf-item { width: 160px; height: 210px; }
+      .pf-filter-divider { display: none; }
     }
   </style>
 </head>
@@ -39,7 +246,7 @@
       <a href="../contacts/" class="nav-links-a">Контакты</a>
       <a href="../contacts/" class="nav-links-a nav-cta">Записаться</a>
     </div>
-    <button class="nav-burger" onclick="toggleMenu()" aria-label="Меню">
+    <button class="nav-burger" data-idx="toggleMenu()" aria-label="Меню">
       <span></span><span></span><span></span>
     </button>
     <div class="nav-mobile" id="mobileMenu">
@@ -52,158 +259,218 @@
     </div>
   </nav>
 
-  <section class="page-hero">
-    <div class="page-hero-inner">
-      <div class="page-hero-badge fade-up">Работы мастера</div>
-      <h1 class="fade-up">Портфолио <em>6 000+ процедур</em></h1>
-      <p class="fade-up" style="transition-delay:0.1s">Каждая работа — индивидуальный подход к форме, технике и цвету. Без шаблонов, без «одинаковых» бровей.</p>
-    </div>
+  <!-- HERO -->
+  <section class="pf-hero">
+    <div class="pf-hero-eyebrow fade-up">Работы мастеров</div>
+    <h1 class="fade-up">Портфолио студии <em>Agent Permanent</em></h1>
+    <div class="pf-hero-stat fade-up">10 000+ процедур</div>
+    <p class="pf-hero-sub fade-up">Каждая работа — индивидуальный подход к форме, технике и цвету</p>
   </section>
 
   <!-- FILTERS -->
-  <section class="section" style="padding-bottom:32px">
-    <div class="section-inner">
-      <div class="portfolio-filter fade-up">
-        <button class="filter-btn active" data-filter="all">Все работы</button>
-        <button class="filter-btn" data-filter="brows">Брови</button>
-        <button class="filter-btn" data-filter="lips">Губы</button>
-        <button class="filter-btn" data-filter="liner">Межресничка</button>
-      </div>
+  <div class="pf-filters fade-up">
+    <div class="pf-filter-group">
+      <span class="pf-filter-group-label">Зона</span>
+      <button class="pf-filter-btn active" data-filter="cat" data-value="all">Все</button>
+      <button class="pf-filter-btn" data-filter="cat" data-value="brows">Брови</button>
+      <button class="pf-filter-btn" data-filter="cat" data-value="lips">Губы</button>
+      <button class="pf-filter-btn" data-filter="cat" data-value="liner">Межресничка</button>
+      <button class="pf-filter-btn" data-filter="cat" data-value="arrows">Стрелки</button>
+      <button class="pf-filter-btn" data-filter="cat" data-value="lighten">Осветление бровей</button>
+      <button class="pf-filter-btn" data-filter="cat" data-value="face">Лицо под ключ</button>
     </div>
-  </section>
+    <div class="pf-filter-divider"></div>
+    <div class="pf-filter-group">
+      <span class="pf-filter-group-label">Мастер</span>
+      <button class="pf-filter-btn active" data-filter="master" data-value="all">Все</button>
+      <button class="pf-filter-btn" data-filter="master" data-value="arina">Арина Шарапова</button>
+      <button class="pf-filter-btn" data-filter="master" data-value="victoria">Виктория Гудовских</button>
+    </div>
+  </div>
 
-  <!-- PARALLAX GALLERY -->
-  <div class="parallax-gallery" id="parallaxGallery">
+  <!-- GALLERY -->
+  <div class="pf-gallery">
 
-    <div class="prlx-item" data-cat="brows" data-speed="0.3">
-      <div class="prlx-bg pb1"></div>
-      <div class="prlx-overlay">
-        <div class="prlx-text">
-          <div class="prlx-tag">Брови</div>
-          <h2 class="prlx-title">Пудровое напыление</h2>
-          <p class="prlx-desc">Точный подбор формы под черты лица. Результат до 2–3 лет.</p>
-          <a href="../contacts/" class="btn btn-gold" style="margin-top:20px">Записаться</a>
+    <!-- БРОВИ -->
+    <div class="pf-section" id="section-brows" data-cat="brows">
+      <div class="pf-section-header">
+        <h2 class="pf-section-title">Брови</h2>
+      </div>
+      <div class="pf-row-wrap">
+        <div class="pf-row">
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_1372.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_1474.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_1484.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_20260410_160820_273.jpg" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_20260410_162829_527.jpg" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_2671.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_5356.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_5402.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+        </div>
+      </div>
+      <div class="pf-row-wrap">
+        <div class="pf-row">
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_7332.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_7333.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_8057.JPG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_8215.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_8257.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_8258.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+          <div class="pf-item" data-cat="brows" data-master="arina"><img src="../Фото/Работы/Арина/Брови/IMG_8273.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Брови</div></div></div>
+          <div class="pf-item" data-cat="brows" data-master="victoria"><img src="../Фото/Работы/Вика/Брови/IMG_4429.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Брови</div></div></div>
         </div>
       </div>
     </div>
 
-    <div class="prlx-item" data-cat="lips" data-speed="0.25">
-      <div class="prlx-bg pb2"></div>
-      <div class="prlx-overlay prlx-right">
-        <div class="prlx-text">
-          <div class="prlx-tag">Губы</div>
-          <h2 class="prlx-title">Акварельные губы</h2>
-          <p class="prlx-desc">Натуральный оттенок, симметрия и объём без кукольного эффекта.</p>
-          <a href="../contacts/" class="btn btn-gold" style="margin-top:20px">Записаться</a>
+    <!-- ГУБЫ -->
+    <div class="pf-section" id="section-lips" data-cat="lips">
+      <div class="pf-section-header">
+        <h2 class="pf-section-title">Губы</h2>
+      </div>
+      <div class="pf-row-wrap">
+        <div class="pf-row">
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_1365.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_1371.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_1372.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_1474.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_1482.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_1483.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_2260.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_3848.JPG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_4839.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_5323.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_5356.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_5765.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+        </div>
+      </div>
+      <div class="pf-row-wrap">
+        <div class="pf-row">
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_7332.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_7335.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_8057.JPG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_8138.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_8257.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_8299.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="arina"><img src="../Фото/Работы/Арина/Губы/IMG_9873.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="victoria"><img src="../Фото/Работы/Вика/Губы/IMG_0021.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="victoria"><img src="../Фото/Работы/Вика/Губы/IMG_4429.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="victoria"><img src="../Фото/Работы/Вика/Губы/IMG_4430.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="victoria"><img src="../Фото/Работы/Вика/Губы/IMG_8709.JPG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Губы</div></div></div>
+          <div class="pf-item" data-cat="lips" data-master="victoria"><img src="../Фото/Работы/Вика/Губы/IMG_8716.JPG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Губы</div></div></div>
         </div>
       </div>
     </div>
 
-    <div class="prlx-item" data-cat="brows" data-speed="0.35">
-      <div class="prlx-bg pb3"></div>
-      <div class="prlx-overlay">
-        <div class="prlx-text">
-          <div class="prlx-tag">Брови</div>
-          <h2 class="prlx-title">Омбре техника</h2>
-          <p class="prlx-desc">Плавный переход от светлого к насыщенному. Мягкий и естественный результат.</p>
-          <a href="../contacts/" class="btn btn-gold" style="margin-top:20px">Записаться</a>
+    <!-- МЕЖРЕСНИЧКА -->
+    <div class="pf-section" id="section-liner" data-cat="liner">
+      <div class="pf-section-header">
+        <h2 class="pf-section-title">Межресничка</h2>
+      </div>
+      <div class="pf-row-wrap">
+        <div class="pf-row">
+          <div class="pf-item" data-cat="liner" data-master="victoria"><img src="../Фото/Работы/Вика/Межресничка/IMG_20241007_232918_521.jpg" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Межресничка</div></div></div>
+          <div class="pf-item" data-cat="liner" data-master="victoria"><img src="../Фото/Работы/Вика/Межресничка/IMG_4429.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Межресничка</div></div></div>
         </div>
       </div>
     </div>
 
-    <div class="prlx-item" data-cat="liner" data-speed="0.28">
-      <div class="prlx-bg pb4"></div>
-      <div class="prlx-overlay prlx-right">
-        <div class="prlx-text">
-          <div class="prlx-tag">Веки</div>
-          <h2 class="prlx-title">Межресничная линия</h2>
-          <p class="prlx-desc">Выразительный взгляд без ежедневного макияжа. Около часа.</p>
-          <a href="../contacts/" class="btn btn-gold" style="margin-top:20px">Записаться</a>
+    <!-- СТРЕЛКИ -->
+    <div class="pf-section" id="section-arrows" data-cat="arrows">
+      <div class="pf-section-header">
+        <h2 class="pf-section-title">Стрелки</h2>
+      </div>
+      <div class="pf-row-wrap">
+        <div class="pf-row">
+          <div class="pf-item" data-cat="arrows" data-master="arina"><img src="../Фото/Работы/Арина/Стрелки/IMG_0157.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Стрелки</div></div></div>
+          <div class="pf-item" data-cat="arrows" data-master="arina"><img src="../Фото/Работы/Арина/Стрелки/IMG_1800.JPG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Стрелки</div></div></div>
+          <div class="pf-item" data-cat="arrows" data-master="arina"><img src="../Фото/Работы/Арина/Стрелки/IMG_20250916_201926_442.jpg" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Стрелки</div></div></div>
+          <div class="pf-item" data-cat="arrows" data-master="arina"><img src="../Фото/Работы/Арина/Стрелки/IMG_2257.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Стрелки</div></div></div>
+          <div class="pf-item" data-cat="arrows" data-master="arina"><img src="../Фото/Работы/Арина/Стрелки/IMG_8057.JPG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Стрелки</div></div></div>
+          <div class="pf-item" data-cat="arrows" data-master="arina"><img src="../Фото/Работы/Арина/Стрелки/IMG_8276.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Стрелки</div></div></div>
+        </div>
+      </div>
+      <div class="pf-row-wrap">
+        <div class="pf-row">
+          <div class="pf-item" data-cat="arrows" data-master="victoria"><img src="../Фото/Работы/Вика/Стрелки/IMG_20250916_201926_442.jpg" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Стрелки</div></div></div>
+          <div class="pf-item" data-cat="arrows" data-master="victoria"><img src="../Фото/Работы/Вика/Стрелки/IMG_2267.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Стрелки</div></div></div>
+          <div class="pf-item" data-cat="arrows" data-master="victoria"><img src="../Фото/Работы/Вика/Стрелки/IMG_5356.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Стрелки</div></div></div>
+          <div class="pf-item" data-cat="arrows" data-master="victoria"><img src="../Фото/Работы/Вика/Стрелки/IMG_7332.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Стрелки</div></div></div>
+          <div class="pf-item" data-cat="arrows" data-master="victoria"><img src="../Фото/Работы/Вика/Стрелки/IMG_8215.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Стрелки</div></div></div>
+          <div class="pf-item" data-cat="arrows" data-master="victoria"><img src="../Фото/Работы/Вика/Стрелки/IMG_8276.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Стрелки</div></div></div>
         </div>
       </div>
     </div>
 
-    <div class="prlx-item" data-cat="lips" data-speed="0.32">
-      <div class="prlx-bg pb5"></div>
-      <div class="prlx-overlay">
-        <div class="prlx-text">
-          <div class="prlx-tag">Губы</div>
-          <h2 class="prlx-title">Full lips</h2>
-          <p class="prlx-desc">Визуальное увеличение и идеальная симметрия. Полное закрашивание губ.</p>
-          <a href="../contacts/" class="btn btn-gold" style="margin-top:20px">Записаться</a>
+    <!-- ЛИЦО ПОД КЛЮЧ -->
+    <div class="pf-section" id="section-face" data-cat="face">
+      <div class="pf-section-header">
+        <h2 class="pf-section-title">Лицо под ключ</h2>
+      </div>
+      <div class="pf-row-wrap">
+        <div class="pf-row">
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_1372.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_1474.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_1484.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_20260410_160820_273.jpg" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_20260410_162829_527.jpg" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_2671.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_5356.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_5402.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+        </div>
+      </div>
+      <div class="pf-row-wrap">
+        <div class="pf-row">
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_7332.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_7333.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_8057.JPG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_8215.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_8257.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_8258.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+          <div class="pf-item" data-cat="face" data-master="arina"><img src="../Фото/Работы/Арина/Все лицо/IMG_8273.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
+          <div class="pf-item" data-cat="face" data-master="victoria"><img src="../Фото/Работы/Вика/Все лицо/IMG_4429.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Виктория Гудовских</div><div class="pf-item-cat">Лицо под ключ</div></div></div>
         </div>
       </div>
     </div>
 
-    <div class="prlx-item" data-cat="brows" data-speed="0.27">
-      <div class="prlx-bg pb6"></div>
-      <div class="prlx-overlay prlx-right">
-        <div class="prlx-text">
-          <div class="prlx-tag">Брови</div>
-          <h2 class="prlx-title">Комбинированная техника</h2>
-          <p class="prlx-desc">Волоски + пудровое напыление. Максимально натуральный эффект.</p>
-          <a href="../contacts/" class="btn btn-gold" style="margin-top:20px">Записаться</a>
+    <!-- ОСВЕТЛЕНИЕ БРОВЕЙ -->
+    <div class="pf-section" id="section-lighten" data-cat="lighten">
+      <div class="pf-section-header">
+        <h2 class="pf-section-title">Осветление бровей</h2>
+      </div>
+      <div class="pf-row-wrap">
+        <div class="pf-row">
+          <div class="pf-item" data-cat="lighten" data-master="arina"><img src="../Фото/Работы/Арина/Осветление/IMG_20241007_232918_521.jpg" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Осветление бровей</div></div></div>
+          <div class="pf-item" data-cat="lighten" data-master="arina"><img src="../Фото/Работы/Арина/Осветление/IMG_4429.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Осветление бровей</div></div></div>
+          <div class="pf-item" data-cat="lighten" data-master="arina"><img src="../Фото/Работы/Удаления/IMG_9898.JPG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Осветление бровей</div></div></div>
+          <div class="pf-item" data-cat="lighten" data-master="arina"><img src="../Фото/Работы/Удаления/IMG_9908.JPG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Осветление бровей</div></div></div>
+          <div class="pf-item" data-cat="lighten" data-master="arina"><img src="../Фото/Работы/Удаления/IMG_9909.JPG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Осветление бровей</div></div></div>
+          <div class="pf-item" data-cat="lighten" data-master="arina"><img src="../Фото/Работы/Удаления/IMG_9936.JPG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Осветление бровей</div></div></div>
+          <div class="pf-item" data-cat="lighten" data-master="arina"><img src="../Фото/Работы/Удаления/IMG_9937.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Осветление бровей</div></div></div>
+          <div class="pf-item" data-cat="lighten" data-master="arina"><img src="../Фото/Работы/Удаления/IMG_9938.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Осветление бровей</div></div></div>
+        </div>
+      </div>
+      <div class="pf-row-wrap">
+        <div class="pf-row">
+          <div class="pf-item" data-cat="lighten" data-master="arina"><img src="../Фото/Работы/Удаления/IMG_9939.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Осветление бровей</div></div></div>
+          <div class="pf-item" data-cat="lighten" data-master="arina"><img src="../Фото/Работы/Удаления/IMG_9940.PNG" alt=""><div class="pf-item-overlay"><div class="pf-item-master">Арина Шарапова</div><div class="pf-item-cat">Осветление бровей</div></div></div>
         </div>
       </div>
     </div>
 
   </div>
 
-  <style>
-    .parallax-gallery { overflow: hidden; }
-    .prlx-item {
-      position: relative;
-      height: 75vh;
-      overflow: hidden;
-      margin-bottom: 4px;
-    }
-    .prlx-bg {
-      position: absolute;
-      inset: -20%;
-      transition: transform 0.05s linear;
-    }
-    .prlx-overlay {
-      position: absolute; inset: 0;
-      background: rgba(8,8,10,0.42);
-      display: flex; align-items: center;
-      padding: 0 80px;
-    }
-    .prlx-right { justify-content: flex-end; }
-    .prlx-text { max-width: 480px; }
-    .prlx-tag {
-      font-size: 0.7rem; font-weight: 600;
-      color: var(--gold); letter-spacing: 0.25em;
-      text-transform: uppercase; margin-bottom: 16px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .prlx-tag::before { content:''; display:block; width:40px; height:1px; background:var(--gold); }
-    .prlx-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4vw, 3.8rem);
-      color: var(--text-primary); font-weight: 400;
-      line-height: 1.1; margin-bottom: 16px;
-    }
-    .prlx-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; }
-    .pb1 { background: linear-gradient(140deg, #18120a 0%, #2e1e0a 45%, #18120a 100%); }
-    .pb2 { background: linear-gradient(120deg, #12100a 0%, #241806 55%, #12100a 100%); }
-    .pb3 { background: linear-gradient(160deg, #100d07 0%, #201508 50%, #100d07 100%); }
-    .pb4 { background: linear-gradient(130deg, #0e0c09 0%, #1c1508 45%, #0e0c09 100%); }
-    .pb5 { background: linear-gradient(150deg, #0f0c07 0%, #231706 55%, #0f0c07 100%); }
-    .pb6 { background: linear-gradient(125deg, #14110a 0%, #271b09 50%, #14110a 100%); }
-  </style>
-  <section class="cta-section" id="cta">
-    <div class="cta-box fade-up">
-      <div class="section-eyebrow">Запись</div>
-      <h2 class="section-title">Хотите такой же результат?</h2>
-      <p class="section-subtitle">Запишитесь на бесплатную консультацию — подберём технику и обсудим желаемый результат</p>
-      <form class="cta-form" onsubmit="handleSubmit(event)">
-        <input type="text" placeholder="Ваше имя" required>
-        <input type="tel" placeholder="+7 (___) ___-__-__" required>
-        <button type="submit" class="btn btn-gold">Отправить заявку</button>
-      </form>
-      <p class="cta-disclaimer">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+  <!-- LIGHTBOX -->
+  <div class="pf-lb" id="pfLb">
+    <button class="pf-lb-close" id="pfLbClose">✕</button>
+    <button class="pf-lb-prev" id="pfLbPrev">‹</button>
+    <img class="pf-lb-img" id="pfLbImg" src="" alt="">
+    <button class="pf-lb-next" id="pfLbNext">›</button>
+    <div class="pf-lb-info">
+      <div class="pf-lb-master" id="pfLbMaster"></div>
+      <div class="pf-lb-cat" id="pfLbCat"></div>
     </div>
-  </section>
+    <div class="pf-lb-counter" id="pfLbCounter"></div>
+  </div>
 
   <footer class="footer">
     <div class="footer-inner">
@@ -221,81 +488,187 @@
         <a href="../school/">Академия</a>
         <a href="../portfolio/">Портфолио</a>
         <a href="../contacts/">Контакты</a>
-        <a href="#">Политика конфиденциальности</a>
       </div>
       <div class="footer-copy">© 2026 Agent Permanent by Arina Sharapova. Москва.</div>
     </div>
   </footer>
+
   <script>
+    // Fade-up observer
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+    // Nav scroll
     window.addEventListener('scroll', () => {
       document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
     });
+
+    // Mobile menu
     function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
-    document.querySelectorAll('.faq-q').forEach(q => {
-      q.addEventListener('click', () => {
-        const item = q.closest('.faq-item');
-        const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!wasOpen) item.classList.add('open');
-      });
-    });
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-          item.style.display = (filter === 'all' || item.dataset.cat === filter) ? '' : 'none';
-        });
-      });
-    });
-    // Parallax scroll
-    (function() {
-      const items = document.querySelectorAll('.prlx-item');
-      if (!items.length) return;
-      window.addEventListener('scroll', () => {
-        items.forEach(item => {
-          const rect = item.getBoundingClientRect();
-          const speed = parseFloat(item.dataset.speed) || 0.3;
-          const offset = (window.innerHeight / 2 - rect.top - rect.height / 2) * speed;
-          const bg = item.querySelector('.prlx-bg');
-          if (bg) bg.style.transform = 'translateY(' + offset + 'px)';
-        });
-      }, { passive: true });
-    })();
 
-    // Portfolio filter — show/hide parallax items
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('.prlx-item').forEach(item => {
-          item.style.display = (filter === 'all' || item.dataset.cat === filter) ? '' : 'none';
-        });
-      });
-    });
+    // ── FILTERS ──
+    let activeCat = 'all';
+    let activeMaster = 'all';
 
-        function handleSubmit(e) {
-      if (e) e.preventDefault();
-      const btn = e ? e.target.querySelector('button') : document.querySelector('.cta-form button');
-      if (btn) { btn.textContent = 'Заявка отправлена ✓'; btn.disabled = true; }
-      setTimeout(() => alert('Спасибо! Арина свяжется с вами в течение 2 часов.'), 100);
+    function applyFilters() {
+      const items = document.querySelectorAll('.pf-item');
+      const sections = document.querySelectorAll('.pf-section');
+
+      items.forEach(item => {
+        const cat = item.dataset.cat;
+        const master = item.dataset.master;
+        const catMatch = activeCat === 'all' || cat === activeCat;
+        const masterMatch = activeMaster === 'all' || master === activeMaster;
+        item.classList.toggle('hidden', !(catMatch && masterMatch));
+      });
+
+      // Hide empty sections
+      sections.forEach(section => {
+        const cat = section.dataset.cat;
+        const catMatch = activeCat === 'all' || cat === activeCat;
+        const visibleItems = section.querySelectorAll('.pf-item:not(.hidden)');
+        section.classList.toggle('hidden', !catMatch || visibleItems.length === 0);
+      });
     }
+
+    document.querySelectorAll('.pf-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filterType = btn.dataset.filter;
+        const value = btn.dataset.value;
+
+        // Update active state within group
+        document.querySelectorAll('.pf-filter-btn[data-filter="' + filterType + '"]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        if (filterType === 'cat') {
+          activeCat = value;
+          if (value !== 'all') {
+            // Scroll to section
+            const section = document.getElementById('section-' + value);
+            if (section) {
+              setTimeout(() => {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }, 100);
+            }
+          }
+        } else {
+          activeMaster = value;
+        }
+
+        applyFilters();
+      });
+    });
+
+    // ── CLICK MASTER NAME TO FILTER ──
+    document.querySelector('.pf-gallery').addEventListener('click', function(e) {
+      const masterEl = e.target.closest('.pf-item-master');
+      if (!masterEl) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const item = masterEl.closest('.pf-item');
+      if (!item) return;
+      const master = item.dataset.master;
+      activeMaster = master;
+      document.querySelectorAll('.pf-filter-btn[data-filter="master"]').forEach(b => {
+        b.classList.toggle('active', b.dataset.value === master);
+      });
+      applyFilters();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ── DRAG TO SCROLL ──
+    document.querySelectorAll('.pf-row').forEach(row => {
+      let isDown = false, startX, scrollLeft;
+      row.addEventListener('mousedown', e => {
+        isDown = true;
+        startX = e.pageX - row.offsetLeft;
+        scrollLeft = row.scrollLeft;
+      });
+      row.addEventListener('mouseleave', () => { isDown = false; });
+      row.addEventListener('mouseup', () => { isDown = false; });
+      row.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - row.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        row.scrollLeft = scrollLeft - walk;
+      });
+    });
+
+    // ── LIGHTBOX ──
     (function() {
-      const c = document.getElementById('particles');
-      if (!c) return;
-      for (let i = 0; i < 20; i++) {
-        const p = document.createElement('div');
-        p.className = 'particle';
-        p.style.cssText = 'left:' + Math.random()*100 + '%;top:' + Math.random()*100 + '%;width:' + (1+Math.random()*2) + 'px;height:' + (1+Math.random()*2) + 'px;animation-delay:' + Math.random()*8 + 's;animation-duration:' + (6+Math.random()*8) + 's';
-        c.appendChild(p);
+      const lb = document.getElementById('pfLb');
+      const lbImg = document.getElementById('pfLbImg');
+      const lbCounter = document.getElementById('pfLbCounter');
+      const lbMaster = document.getElementById('pfLbMaster');
+      const lbCat = document.getElementById('pfLbCat');
+      let imgs = [], masters = [], cats = [], cur = 0;
+
+      function getVisibleItems() {
+        return Array.from(document.querySelectorAll('.pf-item:not(.hidden)'));
       }
+
+      function show(items, i) {
+        imgs = items.map(el => {
+          const img = el.querySelector('img');
+          return img ? img.src : '';
+        });
+        masters = items.map(el => {
+          const m = el.querySelector('.pf-item-master');
+          return m ? m.textContent : '';
+        });
+        cats = items.map(el => {
+          const c = el.querySelector('.pf-item-cat');
+          return c ? c.textContent : '';
+        });
+        cur = (i + imgs.length) % imgs.length;
+        lbImg.src = imgs[cur];
+        lbMaster.textContent = masters[cur];
+        lbCat.textContent = cats[cur];
+        lbCounter.textContent = (cur + 1) + ' / ' + imgs.length;
+        lb.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function hide() {
+        lb.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      window.pfLbShow = function(el) {
+        const items = getVisibleItems();
+        const idx = items.indexOf(el);
+        show(items, idx >= 0 ? idx : 0);
+      };
+      window.pfLbHide = hide;
+      window.pfLbStep = function(d) {
+        show(getVisibleItems(), cur + d);
+      };
+
+      // Event delegation on static gallery container
+      document.querySelector('.pf-gallery').addEventListener('click', function(e) {
+        if (e.target.closest('.pf-item-master')) return;
+        const item = e.target.closest('.pf-item');
+        if (!item) return;
+        pfLbShow(item);
+      });
+
+      // Lightbox buttons
+      document.getElementById('pfLbClose').addEventListener('click', hide);
+      document.getElementById('pfLbPrev').addEventListener('click', function() { pfLbStep(-1); });
+      document.getElementById('pfLbNext').addEventListener('click', function() { pfLbStep(1); });
+      lb.addEventListener('click', function(e) { if (e.target === lb) hide(); });
+
+      document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('active')) return;
+        if (e.key === 'Escape') hide();
+        if (e.key === 'ArrowRight') pfLbStep(1);
+        if (e.key === 'ArrowLeft') pfLbStep(-1);
+      });
     })();
+
   </script>
 </body>
 </html>

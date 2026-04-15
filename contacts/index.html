@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Контакты — Agent Permanent | Записаться к Арине Шараповой</title>
-  <meta name="description" content="Записаться на процедуру или обучение к Арине Шараповой. Москва. Телефон, WhatsApp, Telegram, Instagram. Онлайн-запись.">
+  <meta name="description" content="Свяжитесь с нами для консультации или записи. Москва, ул.Новопесчанная 6к2. Телефон, WhatsApp, Telegram, VK, Instagram.">
   <link rel="icon" type="image/png" href="../favicon.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +19,92 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size: 160px;
     }
+
+    .social-buttons {
+      display: flex; flex-wrap: wrap; gap: 16px;
+      margin: 40px 0;
+      justify-content: center;
+    }
+    .social-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 18px 36px; border-radius: 60px;
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 600;
+      letter-spacing: 0.04em; text-decoration: none;
+      cursor: pointer; border: none; transition: all 0.4s ease;
+      min-width: 180px;
+    }
+    .social-btn--tg {
+      background: linear-gradient(135deg, #2AABEE, #1E8FD5);
+      color: #fff; box-shadow: 0 4px 24px rgba(42,171,238,0.25);
+    }
+    .social-btn--tg:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(42,171,238,0.35); }
+    .social-btn--wa {
+      background: linear-gradient(135deg, #25D366, #1EBE57);
+      color: #fff; box-shadow: 0 4px 24px rgba(37,211,102,0.25);
+    }
+    .social-btn--wa:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(37,211,102,0.35); }
+    .social-btn--max {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000; box-shadow: 0 4px 24px rgba(196,162,101,0.25);
+    }
+    .social-btn--max:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(196,162,101,0.35); }
+    .social-btn--vk {
+      background: linear-gradient(135deg, #0077FF, #0066DD);
+      color: #fff; box-shadow: 0 4px 24px rgba(0,119,255,0.25);
+    }
+    .social-btn--vk:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(0,119,255,0.35); }
+    .social-btn--ig {
+      background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF);
+      color: #fff; box-shadow: 0 4px 24px rgba(221,42,123,0.25);
+    }
+    .social-btn--ig:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(221,42,123,0.35); }
+
+    .callback-section {
+      text-align: center;
+      margin-top: 60px;
+    }
+    .callback-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 400; color: var(--text-primary);
+      letter-spacing: 0.03em; margin-bottom: 12px;
+    }
+    .callback-section p {
+      font-size: 0.95rem; color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+    .callback-form {
+      max-width: 440px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .callback-form input {
+      padding: 16px 24px; border-radius: 60px;
+      border: 1px solid rgba(196,162,101,0.2);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+      font-family: var(--font-body); font-size: 0.9rem;
+      outline: none; transition: all 0.3s;
+    }
+    .callback-form input::placeholder { color: var(--text-muted); }
+    .callback-form input:focus { border-color: var(--gold); background: rgba(196,162,101,0.05); }
+
+    .contact-info {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(196,162,101,0.12);
+      text-align: center;
+    }
+    .contact-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 400;
+      color: var(--text-primary); margin-bottom: 16px;
+    }
+    .contact-info p {
+      font-size: 0.9rem; color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .contact-info a { color: var(--gold); text-decoration: none; }
+    .contact-info a:hover { opacity: 0.8; }
   </style>
 </head>
 <body>
@@ -52,115 +138,60 @@
     </div>
   </nav>
 
+  <!-- HERO -->
   <section class="page-hero" style="background:var(--bg-deep)">
     <div class="page-hero-inner">
       <div class="page-hero-badge fade-up">Контакты</div>
-      <h1 class="fade-up">Запишитесь на <em>процедуру или обучение</em></h1>
-      <p class="fade-up" style="transition-delay:0.1s">Отвечаем в WhatsApp и Telegram в течение 2 часов. Если хотите — оставьте заявку ниже, перезвоним сами.</p>
+      <h1 class="fade-up">Свяжитесь с нами для <em>консультации или записи</em></h1>
+      <p class="fade-up" style="transition-delay:0.1s">Выберите удобный способ связи — ответим быстро.</p>
     </div>
   </section>
 
+  <!-- SOCIAL BUTTONS -->
   <section class="section">
     <div class="section-inner">
-      <div class="contacts-grid">
-        <div class="contact-block fade-up">
-          <h3>Связаться с нами</h3>
-          <div class="contact-line">
-            <div class="contact-icon">📍</div>
-            <div>
-              <div class="contact-label">Адрес студии</div>
-              <div class="contact-val">Москва (адрес уточняется при записи)</div>
-            </div>
-          </div>
-          <div class="contact-line">
-            <div class="contact-icon">📱</div>
-            <div>
-              <div class="contact-label">Телефон / WhatsApp</div>
-              <div class="contact-val"><a href="tel:+7XXXXXXXXXX">+7 (XXX) XXX-XX-XX</a></div>
-            </div>
-          </div>
-          <div class="contact-line">
-            <div class="contact-icon">✈️</div>
-            <div>
-              <div class="contact-label">Telegram</div>
-              <div class="contact-val"><a href="https://t.me/agentpermanent">@agentpermanent</a></div>
-            </div>
-          </div>
-          <div class="contact-line">
-            <div class="contact-icon">📸</div>
-            <div>
-              <div class="contact-label">Instagram</div>
-              <div class="contact-val"><a href="#">@agentpermanent</a></div>
-            </div>
-          </div>
-          <div class="contact-line">
-            <div class="contact-icon">🕐</div>
-            <div>
-              <div class="contact-label">Время работы</div>
-              <div class="contact-val">Пн–Сб: 9:00 — 20:00</div>
-            </div>
-          </div>
-          <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
-            <a href="https://wa.me/7XXXXXXXXXX" class="btn btn-gold">WhatsApp</a>
-            <a href="https://t.me/agentpermanent" class="btn btn-ghost">Telegram</a>
-          </div>
-        </div>
-
-        <div class="fade-up" style="transition-delay:0.15s">
-          <div class="map-placeholder">
-            <span style="font-size:2rem;opacity:0.3">📍</span>
-            <span>Карта — Москва</span>
-            <span style="font-size:0.75rem;color:var(--text-muted)">Точный адрес студии уточняется при записи</span>
-          </div>
-        </div>
+      <div class="social-buttons fade-up">
+        <a href="https://t.me/+79998200421" class="social-btn social-btn--tg" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.28-.02-.12.02-2.02 1.28-5.7 3.77-.54.37-1.03.55-1.47.54-.48-.01-1.41-.27-2.1-.5-.85-.28-1.52-.43-1.46-.91.03-.25.38-.51 1.05-.77 4.12-1.79 6.87-2.97 8.26-3.54 3.93-1.62 4.75-1.9 5.28-1.91.12 0 .38.03.55.17.14.12.18.28.2.45-.01.06.01.24 0 .38z"/></svg>
+          Telegram
+        </a>
+        <a href="https://wa.me/79998200421" class="social-btn social-btn--wa" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="#" class="social-btn social-btn--max" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2v-6h2v6zm-2-8c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
+          MAX
+        </a>
+        <a href="#" class="social-btn social-btn--vk" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.587-1.496c.598-.188 1.368 1.259 2.184 1.814.616.42 1.084.328 1.084.328l2.178-.03s1.14-.07.599-.964c-.044-.073-.314-.661-1.618-1.869-1.366-1.265-1.183-1.06.462-3.246.999-1.33 1.398-2.142 1.273-2.489-.12-.331-.857-.244-.857-.244l-2.45.015s-.182-.025-.317.056c-.131.079-.216.263-.216.263s-.387 1.028-.903 1.903c-1.089 1.85-1.524 1.948-1.702 1.834-.414-.265-.31-1.065-.31-1.634 0-1.776.27-2.517-.525-2.708-.264-.064-.459-.106-1.135-.113-.867-.009-1.602.003-2.017.207-.277.136-.491.439-.361.456.161.021.525.098.718.36.249.338.24 1.096.24 1.096s.143 2.09-.334 2.349c-.327.178-.775-.185-1.737-1.845-.492-.85-.864-1.79-.864-1.79s-.072-.176-.2-.271c-.155-.115-.372-.151-.372-.151l-2.328.015s-.33.009-.451.153c-.108.128-.009.393-.009.393s1.818 4.258 3.877 6.403c1.887 1.965 4.032 1.835 4.032 1.835h.971z"/></svg>
+          VK
+        </a>
+        <a href="#" class="social-btn social-btn--ig" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          Instagram
+        </a>
       </div>
-    </div>
-  </section>
 
-  <section class="section" style="background:var(--bg-warm)">
-    <div class="section-inner">
-      <div class="section-eyebrow fade-up">Запись</div>
-      <h2 class="section-title fade-up">Оставьте заявку</h2>
-      <p class="section-subtitle fade-up">Укажите, что вас интересует — процедура или обучение. Перезвоним в течение 2 часов.</p>
-      <div style="max-width:560px;margin:0 auto">
-        <form class="cta-form fade-up" onsubmit="handleSubmit(event)" style="display:flex;flex-direction:column;gap:16px;margin-top:40px">
+      <!-- CALLBACK FORM -->
+      <div class="callback-section fade-up">
+        <h2>Или оставьте заявку — мы перезвоним!</h2>
+        <p>Укажите имя и телефон, и мы свяжемся с вами в ближайшее время.</p>
+        <form class="callback-form" onsubmit="handleSubmit(event)">
           <input type="text" placeholder="Ваше имя" required>
           <input type="tel" placeholder="+7 (___) ___-__-__" required>
-          <select style="padding:16px 20px;background:rgba(255,255,255,0.04);border:1px solid rgba(196,162,101,0.2);border-radius:50px;color:var(--text-secondary);font-family:var(--font-body);font-size:0.88rem;-webkit-appearance:none;cursor:pointer">
-            <option value="">Что вас интересует?</option>
-            <option value="procedure">Процедура перманентного макияжа</option>
-            <option value="training">Обучение — курс мастера ПМ</option>
-            <option value="consultation">Просто консультация</option>
-          </select>
-          <textarea placeholder="Ваш вопрос или комментарий (необязательно)" rows="3" style="padding:16px 20px;background:rgba(255,255,255,0.04);border:1px solid rgba(196,162,101,0.2);border-radius:20px;color:var(--text-primary);font-family:var(--font-body);font-size:0.88rem;resize:vertical"></textarea>
-          <button type="submit" class="btn btn-gold" style="align-self:flex-start">Отправить заявку</button>
-          <p style="font-size:0.75rem;color:var(--text-muted)">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+          <button type="submit" class="btn btn-gold" style="align-self:center">Отправить заявку</button>
+          <p style="font-size:0.72rem;color:var(--text-muted)">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
         </form>
       </div>
-    </div>
-  </section>
 
-  <section class="section" id="faq">
-    <div class="section-inner">
-      <div class="section-eyebrow fade-up">FAQ</div>
-      <h2 class="section-title fade-up">Быстрые ответы</h2>
-      <div class="faq-list fade-up">
-        <div class="faq-item">
-          <div class="faq-q"><span>Как быстро можно записаться?</span></div>
-          <div class="faq-a"><p>Обычно ближайшее окно — в течение 1–2 недель. В период высокого спроса может быть очередь. Напишите сейчас — скажем ближайшую дату.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q"><span>Принимаете из других городов?</span></div>
-          <div class="faq-a"><p>Да, клиенты приезжают из разных городов России. Консультацию проводим онлайн, сама процедура — в студии в Москве. Арина помогает с рекомендациями по логистике.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q"><span>Как оплатить?</span></div>
-          <div class="faq-a"><p>Наличными или картой в студии. Для обучения доступна рассрочка. Предоплата при записи — обсуждается индивидуально.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q"><span>Можно перенести или отменить запись?</span></div>
-          <div class="faq-a"><p>Да, за 24 часа до процедуры без штрафа. Пожалуйста, предупреждайте заранее — это позволяет принять другого клиента на освободившееся время.</p></div>
-        </div>
+      <!-- ADDRESS -->
+      <div class="contact-info fade-up">
+        <h3>Адрес студии</h3>
+        <p>
+          Москва, ул.Новопесчанная 6к2<br>
+          Телефон / WhatsApp / Telegram: <a href="tel:+79998200421">+7 (999) 820-04-21</a>
+        </p>
       </div>
     </div>
   </section>
@@ -181,11 +212,11 @@
         <a href="../school/">Академия</a>
         <a href="../portfolio/">Портфолио</a>
         <a href="../contacts/">Контакты</a>
-        <a href="#">Политика конфиденциальности</a>
       </div>
       <div class="footer-copy">© 2026 Agent Permanent by Arina Sharapova. Москва.</div>
     </div>
   </footer>
+
   <script>
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -195,40 +226,12 @@
       document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
     });
     function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
-    document.querySelectorAll('.faq-q').forEach(q => {
-      q.addEventListener('click', () => {
-        const item = q.closest('.faq-item');
-        const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!wasOpen) item.classList.add('open');
-      });
-    });
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-          item.style.display = (filter === 'all' || item.dataset.cat === filter) ? '' : 'none';
-        });
-      });
-    });
     function handleSubmit(e) {
       if (e) e.preventDefault();
-      const btn = e ? e.target.querySelector('button') : document.querySelector('.cta-form button');
+      const btn = e ? e.target.querySelector('button') : document.querySelector('.callback-form button');
       if (btn) { btn.textContent = 'Заявка отправлена ✓'; btn.disabled = true; }
-      setTimeout(() => alert('Спасибо! Арина свяжется с вами в течение 2 часов.'), 100);
+      setTimeout(() => alert('Спасибо! Мы свяжемся с вами в ближайшее время.'), 100);
     }
-    (function() {
-      const c = document.getElementById('particles');
-      if (!c) return;
-      for (let i = 0; i < 20; i++) {
-        const p = document.createElement('div');
-        p.className = 'particle';
-        p.style.cssText = 'left:' + Math.random()*100 + '%;top:' + Math.random()*100 + '%;width:' + (1+Math.random()*2) + 'px;height:' + (1+Math.random()*2) + 'px;animation-delay:' + Math.random()*8 + 's;animation-duration:' + (6+Math.random()*8) + 's';
-        c.appendChild(p);
-      }
-    })();
   </script>
 </body>
 </html>
