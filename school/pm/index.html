@@ -468,7 +468,7 @@
         </div>
       </div>
       <div class="pm-hero-ctas fade-up hero-reveal" style="animation-delay:1.1s">
-        <a href="#cta" class="btn btn-gold">Узнать даты и стоимость</a>
+        <button class="btn btn-gold" onclick="openBookingPopup('академия-пм')">Узнать дату и стоимость</button>
         <a href="#program" class="btn btn-ghost">Программа курса</a>
       </div>
     </div>
@@ -1391,6 +1391,7 @@
           <input type="tel" placeholder="+7 (___) ___-__-__" required>
           <button type="submit" class="btn btn-gold">Записаться на курс</button>
         </form>
+        <button class="btn btn-gold" style="width:100%;margin-top:16px;padding:16px;" onclick="openBookingPopup('академия-пм')">Записаться на курс</button>
         <p class="pm-disclaimer">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
       </div>
 
@@ -1449,6 +1450,7 @@
     </div>
   </footer>
 
+  <script src="../../js/booking.js"></script>
   <script>
     // Hero particles
     (function() {
