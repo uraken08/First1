@@ -633,7 +633,7 @@
     let cur = 0;
     function show(i) {
       cur = (i + allSrcs.length) % allSrcs.length;
-      lbImg.src = allSrcs[cur].replace('about/', '');
+      lbImg.src = allSrcs[cur];
       lbCounter.textContent = (cur + 1) + ' / ' + allSrcs.length;
       lb.classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -660,7 +660,7 @@
     <div class="section-inner">
       <div style="display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:center" class="fade-up">
         <div style="flex-shrink:0;display:flex;align-items:center;justify-content:center">
-          <img src="logo_2000x2000.png" alt="Agent Permanent Logo" style="width:clamp(160px,14vw,200px);filter:brightness(0) invert(1) sepia(0.6) saturate(3) hue-rotate(4deg) drop-shadow(0 0 10px rgba(196,162,101,0.65)) drop-shadow(0 0 24px rgba(196,162,101,0.3)) drop-shadow(0 0 50px rgba(196,162,101,0.12));opacity:0.95">
+          <img src="logo_2000x2000.png" alt="Agent Permanent Logo" style="width:clamp(160px,14vw,200px);filter:grayscale(1) brightness(1.1) sepia(1) saturate(3) hue-rotate(4deg) drop-shadow(0 0 10px rgba(196,162,101,0.65)) drop-shadow(0 0 24px rgba(196,162,101,0.3)) drop-shadow(0 0 50px rgba(196,162,101,0.12));opacity:0.95">
         </div>
         <div>
           <div class="section-eyebrow">Что такое Agent Permanent</div>
@@ -1049,24 +1049,6 @@
       document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
     });
     function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
-    document.querySelectorAll('.faq-q').forEach(q => {
-      q.addEventListener('click', () => {
-        const item = q.closest('.faq-item');
-        const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!wasOpen) item.classList.add('open');
-      });
-    });
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-          item.style.display = (filter === 'all' || item.dataset.cat === filter) ? '' : 'none';
-        });
-      });
-    });
     function handleSubmit(e) {
       if (e) e.preventDefault();
       const btn = e ? e.target.querySelector('button') : document.querySelector('.cta-form button');
@@ -1203,7 +1185,7 @@
         'rgba(180,120,50,',   // deep amber
       ];
 
-      for (let i = 0; i < 180; i++) {
+      for (let i = 0; i < 70; i++) {
         const s = document.createElement('div');
         s.className = 'sparkle';
 
@@ -1264,5 +1246,10 @@
       }
     })();
   </script>
+  <div class="float-messengers">
+    <a class="float-btn float-btn--tg" href="https://t.me/agentpermanent" target="_blank" rel="noopener" aria-label="Написать в Telegram">✈</a>
+    <a class="float-btn float-btn--max" href="https://max.ru/agentpermanent" target="_blank" rel="noopener" aria-label="Написать в Макс">М</a>
+    <a class="float-btn float-btn--vk" href="https://vk.com/agentpermanent" target="_blank" rel="noopener" aria-label="Написать ВКонтакте">ВК</a>
+  </div>
 </body>
 </html>

@@ -521,3 +521,33 @@
 @media (max-width: 768px) {
   .booking-cards { grid-template-columns: 1fr; }
 }
+
+/* ── Floating Messenger Buttons (mobile) ── */
+.float-messengers {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  right: 16px;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 8000;
+}
+@media (max-width: 768px) {
+  .float-messengers { display: flex; }
+}
+.float-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  transition: transform 0.2s;
+}
+.float-btn:hover { transform: scale(1.1); }
+.float-btn--tg  { background: #229ED9; }
+.float-btn--max { background: #005FF9; }
+.float-btn--vk  { background: #0077FF; }
