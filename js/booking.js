@@ -87,7 +87,7 @@ function injectPopup() {
       position: relative;
       width: 100%;
       max-width: 460px;
-      background: #111113;
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 40%, #1a1208 100%);
       border: 1px solid rgba(196,162,101,0.2);
       border-radius: 28px;
       padding: 48px 40px 40px;
