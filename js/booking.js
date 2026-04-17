@@ -4,7 +4,7 @@
    ============================================================ */
 
 const TG_TOKEN   = '8009961717:AAG8WDDRp1g_Y6zoXYaO0WseU9mf33JCyqA';
-const TG_CHAT_ID = '542272277';
+const TG_CHAT_ID = '-1003923624579';
 
 /* ── Telegram ─────────────────────────────────────────────── */
 async function sendToTelegram(name, phone, source) {
