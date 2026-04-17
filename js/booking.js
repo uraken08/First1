@@ -72,9 +72,9 @@ function injectPopup() {
       position: fixed;
       inset: 0;
       z-index: 9999;
-      background: rgba(0, 0, 0, 0.72);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+      background: rgba(8, 8, 10, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       align-items: center;
       justify-content: center;
       padding: 16px;
@@ -86,45 +86,63 @@ function injectPopup() {
     #ap-booking-box {
       position: relative;
       width: 100%;
-      max-width: 480px;
-      background: #12100d;
-      border: 1px solid rgba(196,162,101,0.25);
-      border-radius: 4px;
+      max-width: 460px;
+      background: #111113;
+      border: 1px solid rgba(196,162,101,0.2);
+      border-radius: 28px;
       padding: 48px 40px 40px;
       box-sizing: border-box;
       font-family: 'Raleway', sans-serif;
-      color: #f0ece4;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.7);
+      color: #F2EDE7;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(196,162,101,0.06);
     }
     #ap-booking-close {
       position: absolute;
-      top: 16px;
-      right: 18px;
-      background: none;
-      border: none;
-      color: rgba(196,162,101,0.7);
-      font-size: 22px;
+      top: 20px;
+      right: 22px;
+      background: rgba(196,162,101,0.08);
+      border: 1px solid rgba(196,162,101,0.15);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(196,162,101,0.6);
+      font-size: 14px;
       line-height: 1;
       cursor: pointer;
-      padding: 4px 8px;
-      transition: color 0.2s;
+      transition: all 0.2s;
     }
-    #ap-booking-close:hover { color: #c4a265; }
+    #ap-booking-close:hover {
+      background: rgba(196,162,101,0.15);
+      color: #c4a265;
+    }
     #ap-popup-eyebrow {
       font-family: 'Raleway', sans-serif;
       font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
+      font-weight: 600;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: #c4a265;
-      margin: 0 0 10px;
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #ap-popup-eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: #c4a265;
+      flex-shrink: 0;
     }
     #ap-popup-title {
       font-family: 'Italiana', serif;
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 400;
-      line-height: 1.2;
-      color: #f0ece4;
+      line-height: 1.15;
+      color: #F2EDE7;
       margin: 0 0 28px;
     }
     #ap-popup-form {
@@ -134,37 +152,41 @@ function injectPopup() {
     }
     .ap-field {
       width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(196,162,101,0.2);
-      border-radius: 2px;
-      padding: 13px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(196,162,101,0.18);
+      border-radius: 60px;
+      padding: 14px 20px;
       font-family: 'Raleway', sans-serif;
       font-size: 14px;
-      color: #f0ece4;
+      color: #F2EDE7;
       outline: none;
       box-sizing: border-box;
-      transition: border-color 0.2s;
+      transition: border-color 0.25s, background 0.25s;
     }
-    .ap-field::placeholder { color: rgba(240,236,228,0.35); }
-    .ap-field:focus { border-color: rgba(196,162,101,0.55); }
+    .ap-field::placeholder { color: rgba(242,237,231,0.3); }
+    .ap-field:focus {
+      border-color: rgba(196,162,101,0.5);
+      background: rgba(196,162,101,0.05);
+    }
     #ap-popup-btn {
       width: 100%;
       margin-top: 4px;
-      padding: 15px 20px;
-      background: linear-gradient(135deg, #c4a265 0%, #e8c88c 100%);
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #C4A265, #D4BA85);
       border: none;
-      border-radius: 2px;
+      border-radius: 60px;
       font-family: 'Raleway', sans-serif;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.14em;
-      color: #12100d;
+      letter-spacing: 0.1em;
+      color: #08080A;
       cursor: pointer;
-      transition: opacity 0.2s, transform 0.15s;
+      box-shadow: 0 4px 24px rgba(196,162,101,0.28);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.2s;
     }
-    #ap-popup-btn:hover  { opacity: 0.88; }
+    #ap-popup-btn:hover  { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(196,162,101,0.38); }
     #ap-popup-btn:active { transform: scale(0.98); }
-    #ap-popup-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+    #ap-popup-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
     #ap-popup-status {
       font-size: 13px;
       color: #c4a265;
@@ -177,8 +199,8 @@ function injectPopup() {
       gap: 12px;
       margin: 20px 0 16px;
       font-size: 11px;
-      letter-spacing: 0.1em;
-      color: rgba(240,236,228,0.35);
+      letter-spacing: 0.12em;
+      color: rgba(242,237,231,0.3);
       text-transform: uppercase;
     }
     .ap-divider::before,
@@ -186,7 +208,7 @@ function injectPopup() {
       content: '';
       flex: 1;
       height: 1px;
-      background: rgba(196,162,101,0.18);
+      background: rgba(196,162,101,0.15);
     }
     .ap-messenger-links {
       display: flex;
@@ -197,24 +219,24 @@ function injectPopup() {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 11px 8px;
-      border-radius: 2px;
+      padding: 12px 8px;
+      border-radius: 60px;
       font-family: 'Raleway', sans-serif;
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.06em;
       color: #fff;
       text-decoration: none;
-      transition: opacity 0.2s, transform 0.15s;
+      transition: opacity 0.2s, transform 0.2s;
     }
-    .ap-messenger-links a:hover  { opacity: 0.85; }
+    .ap-messenger-links a:hover  { opacity: 0.85; transform: translateY(-1px); }
     .ap-messenger-links a:active { transform: scale(0.97); }
     #ap-tg-link  { background: #229ED9; }
     #ap-max-link { background: #005FF9; }
     #ap-vk-link  { background: #0077FF; }
     @media (max-width: 480px) {
-      #ap-booking-box { padding: 40px 24px 32px; }
-      #ap-popup-title { font-size: 24px; }
+      #ap-booking-box { padding: 40px 24px 32px; border-radius: 20px; }
+      #ap-popup-title { font-size: 26px; }
     }
   `;
   document.head.appendChild(style);
