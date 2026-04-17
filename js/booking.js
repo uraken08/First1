@@ -14,8 +14,23 @@ async function sendToTelegram(name, phone, source) {
     'академия-брови': '#академия #брови',
   }[source] || '#заявка';
 
+  const now = new Date().toLocaleString('ru-RU', {
+    timeZone: 'Europe/Moscow',
+    day: '2-digit', month: '2-digit', year: 'numeric',
+    hour: '2-digit', minute: '2-digit',
+  });
+
+  const utmSource = new URLSearchParams(window.location.search).get('utm_source');
+  const utmMedium = new URLSearchParams(window.location.search).get('utm_medium');
+  const utmCampaign = new URLSearchParams(window.location.search).get('utm_campaign');
+  const utmLine = (utmSource || utmMedium || utmCampaign)
+    ? `\nUTM: ${[utmSource, utmMedium, utmCampaign].filter(Boolean).join(' / ')}`
+    : '';
+
+  const referer = document.referrer ? `\nОткуда: ${document.referrer}` : '';
+
   const text =
-    `📩 Новая заявка ${tag}\n\nИмя: ${name}\nТелефон: ${phone}\n──────────────────\nИсточник: ${source}`;
+    `📩 Новая заявка ${tag}\n\nИмя: ${name}\nТелефон: ${phone}\n──────────────────\nСтраница: ${source}\nВремя: ${now} МСК${utmLine}${referer}`;
 
   const res = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
     method:  'POST',
