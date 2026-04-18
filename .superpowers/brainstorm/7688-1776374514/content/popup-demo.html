@@ -1,0 +1,62 @@
+<h2>Попап — это вот что</h2>
+<p class="subtitle">Нажми кнопку ниже чтобы увидеть как это работает</p>
+
+<div style="position:relative;border:1px solid rgba(255,255,255,0.1);overflow:hidden;border-radius:4px">
+
+  <!-- Имитация страницы сайта -->
+  <div id="site-bg" style="padding:40px;background:#0a0805;filter:none;transition:filter 0.3s">
+    <div style="color:#c4a265;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:16px">Agent Permanent · Студия</div>
+    <div style="font-family:serif;font-size:1.8rem;color:white;margin-bottom:8px">AGENT<br><em style="color:#c4a265">PERMANENT</em></div>
+    <div style="color:rgba(255,255,255,0.4);font-size:0.75rem;margin-bottom:24px">Студия и международная академия перманентного макияжа</div>
+    <div style="display:flex;gap:10px">
+      <button onclick="openPopup()" style="background:linear-gradient(90deg,#c4a265,#e8c88c);border:none;padding:10px 20px;font-size:0.7rem;color:#0a0805;font-weight:700;letter-spacing:0.15em;cursor:pointer">ЗАПИСАТЬСЯ</button>
+      <button style="background:transparent;border:1px solid rgba(196,162,101,0.3);padding:10px 20px;font-size:0.7rem;color:#c4a265;letter-spacing:0.15em">АКАДЕМИЯ</button>
+    </div>
+    <div style="margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+      <div style="background:rgba(255,255,255,0.03);height:50px;border-radius:2px"></div>
+      <div style="background:rgba(255,255,255,0.03);height:50px;border-radius:2px"></div>
+      <div style="background:rgba(255,255,255,0.03);height:50px;border-radius:2px"></div>
+    </div>
+  </div>
+
+  <!-- Попап -->
+  <div id="popup-overlay" style="display:none;position:absolute;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);z-index:10;align-items:center;justify-content:center">
+    <div style="background:#12100d;border:1px solid rgba(196,162,101,0.25);padding:28px;width:280px;position:relative">
+      <button onclick="closePopup()" style="position:absolute;top:12px;right:14px;background:none;border:none;color:rgba(255,255,255,0.3);font-size:1rem;cursor:pointer">✕</button>
+      <div style="color:#c4a265;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:16px">Запись на процедуру</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+        <input placeholder="Ваше имя" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:10px 12px;color:white;font-size:0.75rem;outline:none">
+        <input placeholder="+7 (___) ___-__-__" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:10px 12px;color:white;font-size:0.75rem;outline:none">
+        <select style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:10px 12px;color:rgba(255,255,255,0.5);font-size:0.75rem;outline:none">
+          <option>Выберите услугу</option>
+          <option>Брови</option>
+          <option>Губы</option>
+          <option>Межресничка</option>
+        </select>
+      </div>
+      <button style="width:100%;background:linear-gradient(90deg,#c4a265,#e8c88c);border:none;padding:12px;font-size:0.7rem;color:#0a0805;font-weight:700;letter-spacing:0.2em;cursor:pointer">ОТПРАВИТЬ ЗАЯВКУ</button>
+      <div style="text-align:center;margin-top:14px;color:rgba(255,255,255,0.25);font-size:0.6rem">или свяжитесь напрямую</div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <div style="flex:1;background:#25D366;padding:8px;text-align:center;font-size:0.65rem;color:white;font-weight:600;cursor:pointer">WhatsApp</div>
+        <div style="flex:1;background:#229ED9;padding:8px;text-align:center;font-size:0.65rem;color:white;font-weight:600;cursor:pointer">Telegram</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openPopup(){
+  var o=document.getElementById('popup-overlay');
+  var b=document.getElementById('site-bg');
+  o.style.display='flex';
+  b.style.filter='blur(2px)';
+}
+function closePopup(){
+  var o=document.getElementById('popup-overlay');
+  var b=document.getElementById('site-bg');
+  o.style.display='none';
+  b.style.filter='none';
+}
+</script>
+
+<p class="subtitle" style="margin-top:20px">Нажми ЗАПИСАТЬСЯ выше чтобы увидеть попап в действии</p>

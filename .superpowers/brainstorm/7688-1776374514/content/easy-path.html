@@ -1,0 +1,60 @@
+<h2>Лёгкий путь клиента</h2>
+<p class="subtitle">Чем меньше шагов — тем выше конверсия</p>
+
+<div class="split">
+
+  <div class="mockup">
+    <div class="mockup-header" style="color:#ff6b6b">✗ Тяжело — 5 действий</div>
+    <div class="mockup-body" style="background:#0a0805;padding:16px;display:flex;flex-direction:column;gap:8px">
+      <input placeholder="1. Введи имя" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,100,100,0.3);padding:8px 10px;color:rgba(255,255,255,0.5);font-size:0.7rem;outline:none">
+      <input placeholder="2. Введи телефон" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,100,100,0.3);padding:8px 10px;color:rgba(255,255,255,0.5);font-size:0.7rem;outline:none">
+      <select style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,100,100,0.3);padding:8px 10px;color:rgba(255,255,255,0.3);font-size:0.7rem;outline:none">
+        <option>3. Выбери курс</option>
+      </select>
+      <select style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,100,100,0.3);padding:8px 10px;color:rgba(255,255,255,0.3);font-size:0.7rem;outline:none">
+        <option>4. Выбери формат</option>
+      </select>
+      <textarea placeholder="5. Напиши вопрос..." style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,100,100,0.3);padding:8px 10px;color:rgba(255,255,255,0.3);font-size:0.7rem;outline:none;height:50px;resize:none"></textarea>
+      <div style="background:#c4a265;padding:8px;text-align:center;font-size:0.65rem;color:#0a0805;font-weight:700;letter-spacing:0.15em">ОТПРАВИТЬ</div>
+      <div style="color:rgba(255,100,100,0.6);font-size:0.6rem;text-align:center">Устала — закрыла вкладку</div>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header" style="color:#4ade80">✓ Легко — 2 действия</div>
+    <div class="mockup-body" style="background:#0a0805;padding:16px;display:flex;flex-direction:column;gap:8px">
+      <div style="color:rgba(255,255,255,0.4);font-size:0.65rem;line-height:1.5;margin-bottom:4px">Оставьте номер — Арина или менеджер свяжутся с вами и ответят на все вопросы</div>
+      <input placeholder="1. Телефон или @telegram" style="background:rgba(255,255,255,0.05);border:1px solid rgba(196,162,101,0.3);padding:10px 12px;color:white;font-size:0.75rem;outline:none">
+      <div style="background:linear-gradient(90deg,#c4a265,#e8c88c);padding:11px;text-align:center;font-size:0.7rem;color:#0a0805;font-weight:700;letter-spacing:0.15em;cursor:pointer">2. ХОЧУ УЧИТЬСЯ →</div>
+      <div style="color:rgba(255,255,255,0.2);font-size:0.58rem;text-align:center">Свяжемся в течение часа</div>
+      <div style="border-top:1px solid rgba(255,255,255,0.07);padding-top:8px;display:flex;gap:8px">
+        <div style="flex:1;background:#25D366;padding:7px;text-align:center;font-size:0.6rem;color:white;font-weight:600">WhatsApp</div>
+        <div style="flex:1;background:#229ED9;padding:7px;text-align:center;font-size:0.6rem;color:white;font-weight:600">Telegram</div>
+      </div>
+      <div style="color:rgba(75,222,128,0.6);font-size:0.6rem;text-align:center">Оставила номер за 5 секунд ✓</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="section" style="margin-top:24px">
+  <h3>Логика лёгкого пути</h3>
+  <p class="subtitle">Зачем спрашивать курс в форме — если менеджер спросит сам при звонке?<br>Цель формы — получить контакт. Всё остальное выяснится в разговоре.</p>
+
+  <div class="options" style="margin-top:16px">
+    <div class="option" data-choice="phone-only" onclick="toggleSelect(this)">
+      <div class="letter">A</div>
+      <div class="content">
+        <h3>Только телефон → перезвон</h3>
+        <p>Максимально просто. 1 поле. Менеджер сам уточнит всё при звонке</p>
+      </div>
+    </div>
+    <div class="option" data-choice="name-phone" onclick="toggleSelect(this)">
+      <div class="letter">B</div>
+      <div class="content">
+        <h3>Имя + телефон → перезвон</h3>
+        <p>Чуть теплее — менеджер обратится по имени. 2 поля — всё ещё быстро</p>
+      </div>
+    </div>
+  </div>
+</div>

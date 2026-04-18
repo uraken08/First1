@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C4A265;
+      --gold-light: #D4BA85;
+      --text-primary: #F2EDE7;
+      --text-secondary: #9B958D;
+      --text-muted: #6B6560;
+      --font-display: 'Italiana', sans-serif;
+      --font-body: 'Raleway', sans-serif;
+      --font-stats: 'Jost', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000; color: var(--text-primary); font-family: var(--font-body); }
+
+    .variant-label {
+      text-align: center;
+      padding: 80px 48px 40px;
+    }
+    .variant-label .num {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.15;
+      line-height: 1;
+    }
+    .variant-label h2 {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-top: -20px;
+    }
+    .variant-label p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 60px 48px;
+      opacity: 0.3;
+    }
+
+    /* Shared hero base */
+    .v-hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 100px 0 80px;
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    .v-hero-base {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0d0a05 0%, #1a1208 30%, #1e160a 55%, #1a1208 80%, #0d0a05 100%);
+      z-index: 0;
+    }
+    .v-hero-photos {
+      position: absolute; inset: 0; z-index: 1;
+      pointer-events: none; overflow: hidden;
+    }
+    .v-hero-photo {
+      position: absolute; top: 0; bottom: 0;
+      width: 220px; overflow: hidden;
+    }
+    .v-hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .v-hero-photo--1 {
+      right: 48px; opacity: 0.55;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 80%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 80%, transparent 100%);
+    }
+    .v-hero-photo--2 {
+      right: 284px; opacity: 0.35;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 75%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 75%, transparent 100%);
+    }
+    .v-hero-photo--3 {
+      right: 520px; opacity: 0.18;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 70%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 70%, transparent 100%);
+    }
+    .v-hero-inner {
+      position: relative; z-index: 3;
+      width: 100%; padding: 0 48px; max-width: 1400px; margin: 0 auto;
+    }
+    .v-hero-eyebrow {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .v-hero-eyebrow::before { content:''; display:block; width:40px; height:1px; background:var(--gold); }
+    .v-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-weight: 400; line-height: 1;
+      color: var(--text-primary); letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+    .v-hero-sub {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      color: rgba(196,162,101,0.75); font-weight: 400; letter-spacing: 0.06em;
+      margin-bottom: 40px;
+    }
+    .v-hero-meta {
+      display: grid; grid-template-columns: repeat(5, auto);
+      width: fit-content; gap: 0; margin-bottom: 48px;
+      border-top: 1px solid rgba(196,162,101,0.15); padding-top: 28px;
+    }
+    .v-hero-meta-item {
+      display: flex; flex-direction: column; gap: 6px; padding-right: 40px;
+    }
+    .v-hero-meta-item:not(:last-child) {
+      border-right: 1px solid rgba(196,162,101,0.12); margin-right: 40px;
+    }
+    .v-hero-meta-num {
+      font-family: var(--font-stats); font-size: 2.6rem; font-weight: 700;
+      color: var(--gold); line-height: 1;
+    }
+    .v-hero-meta-label {
+      font-size: 0.78rem; color: var(--text-muted);
+      letter-spacing: 0.04em; font-weight: 400; line-height: 1.35;
+    }
+    .v-hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; border-radius: 60px;
+      font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em;
+      text-decoration: none; cursor: pointer; border: none; transition: all 0.4s ease;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000; box-shadow: 0 4px 24px rgba(196,162,101,0.25);
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(196,162,101,0.35); }
+    .btn-ghost {
+      background: transparent; color: var(--gold);
+      border: 1px solid rgba(196,162,101,0.25);
+    }
+    .btn-ghost:hover { background: rgba(196,162,101,0.06); border-color: var(--gold); }
+
+    /* ===== VARIANT 1: ANIMATED SHIMMER SWEEP ===== */
+    .v1-shimmer {
+      position: absolute; inset: 0; z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(105deg,
+        transparent 0%,
+        transparent 40%,
+        rgba(196,162,101,0.06) 45%,
+        rgba(196,162,101,0.12) 50%,
+        rgba(196,162,101,0.06) 55%,
+        transparent 60%,
+        transparent 100%
+      );
+      background-size: 200% 100%;
+      animation: shimmerSweep 8s ease-in-out infinite;
+    }
+    @keyframes shimmerSweep {
+      0%, 100% { background-position: 200% 0; }
+      50% { background-position: -200% 0; }
+    }
+    .v1-glow {
+      position: absolute; inset: 0; z-index: 2;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 30% 60%, rgba(196,162,101,0.06) 0%, transparent 55%);
+      animation: glowPulse 6s ease-in-out infinite alternate;
+    }
+    @keyframes glowPulse {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    /* ===== VARIANT 2: FLOATING PARTICLES ===== */
+    .v2-particles {
+      position: absolute; inset: 0; z-index: 2;
+      pointer-events: none; overflow: hidden;
+    }
+    .v2-particle {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: 0;
+      animation: particleFloat 6s ease-in-out infinite;
+    }
+    @keyframes particleFloat {
+      0% { opacity: 0; transform: translateY(0) scale(0.5); }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.3; }
+      100% { opacity: 0; transform: translateY(-120px) scale(1); }
+    }
+    .v2-glow {
+      position: absolute; inset: 0; z-index: 2;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 30% 60%, rgba(196,162,101,0.06) 0%, transparent 55%);
+    }
+
+    /* ===== VARIANT 3: SILK RIBBON ===== */
+    .v3-silk {
+      position: absolute; top: -50%; right: -10%;
+      width: 600px; height: 200%;
+      z-index: 2; pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(196,162,101,0.08) 0%, transparent 60%);
+      animation: silkDrift 14s ease-in-out infinite alternate;
+    }
+    @keyframes silkDrift {
+      0% { transform: translate(0, 0) rotate(-3deg); }
+      100% { transform: translate(-80px, 40px) rotate(3deg); }
+    }
+    .v3-silk-2 {
+      position: absolute; top: -30%; right: 5%;
+      width: 400px; height: 160%;
+      z-index: 2; pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(196,162,101,0.05) 0%, transparent 55%);
+      animation: silkDrift2 18s ease-in-out infinite alternate;
+    }
+    @keyframes silkDrift2 {
+      0% { transform: translate(0, 0) rotate(2deg); }
+      100% { transform: translate(-60px, -30px) rotate(-2deg); }
+    }
+    .v3-glow {
+      position: absolute; inset: 0; z-index: 2;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 30% 60%, rgba(196,162,101,0.06) 0%, transparent 55%);
+    }
+
+    /* ===== VARIANT 4: PARALLAX PHOTOS ===== */
+    .v4-photos {
+      position: absolute; inset: 0; z-index: 1;
+      pointer-events: none; overflow: hidden;
+    }
+    .v4-photo {
+      position: absolute; top: 0; bottom: 0;
+      width: 220px; overflow: hidden;
+      transition: transform 0.1s linear;
+    }
+    .v4-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .v4-photo--1 {
+      right: 48px; opacity: 0.55;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 80%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 80%, transparent 100%);
+    }
+    .v4-photo--2 {
+      right: 284px; opacity: 0.35;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 75%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 75%, transparent 100%);
+    }
+    .v4-photo--3 {
+      right: 520px; opacity: 0.18;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 70%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 70%, transparent 100%);
+    }
+    .v4-glow {
+      position: absolute; inset: 0; z-index: 2;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 30% 60%, rgba(196,162,101,0.06) 0%, transparent 55%);
+    }
+
+    /* ===== VARIANT 5: REVEAL ANIMATION ===== */
+    .v5-photos {
+      position: absolute; inset: 0; z-index: 1;
+      pointer-events: none; overflow: hidden;
+    }
+    .v5-photo {
+      position: absolute; top: 0; bottom: 0;
+      width: 220px; overflow: hidden;
+      opacity: 0;
+      animation: photoReveal 1.2s ease-out forwards;
+    }
+    .v5-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .v5-photo--1 {
+      right: 48px;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 80%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 80%, transparent 100%);
+      animation-delay: 0.3s;
+    }
+    .v5-photo--2 {
+      right: 284px;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 75%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 75%, transparent 100%);
+      animation-delay: 0.6s;
+    }
+    .v5-photo--3 {
+      right: 520px;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 70%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 70%, transparent 100%);
+      animation-delay: 0.9s;
+    }
+    @keyframes photoReveal {
+      0% { opacity: 0; transform: scale(1.08); }
+      100% { opacity: 0.55; transform: scale(1); }
+    }
+    .v5-photo--2 { animation-name: photoReveal2; }
+    @keyframes photoReveal2 {
+      0% { opacity: 0; transform: scale(1.08); }
+      100% { opacity: 0.35; transform: scale(1); }
+    }
+    .v5-photo--3 { animation-name: photoReveal3; }
+    @keyframes photoReveal3 {
+      0% { opacity: 0; transform: scale(1.08); }
+      100% { opacity: 0.18; transform: scale(1); }
+    }
+    .v5-glow {
+      position: absolute; inset: 0; z-index: 2;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 30% 60%, rgba(196,162,101,0.06) 0%, transparent 55%);
+      opacity: 0;
+      animation: glowFadeIn 2s ease-out 1s forwards;
+    }
+    @keyframes glowFadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .v5-text .v-hero-eyebrow,
+    .v5-text .v-hero h1,
+    .v5-text .v-hero-sub,
+    .v5-text .v-hero-meta,
+    .v5-text .v-hero-ctas {
+      opacity: 0;
+      animation: textFadeUp 0.8s ease-out forwards;
+    }
+    .v5-text .v-hero-eyebrow { animation-delay: 0.2s; }
+    .v5-text .v-hero h1 { animation-delay: 0.4s; }
+    .v5-text .v-hero-sub { animation-delay: 0.6s; }
+    .v5-text .v-hero-meta { animation-delay: 0.8s; }
+    .v5-text .v-hero-ctas { animation-delay: 1s; }
+    @keyframes textFadeUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 1100px) {
+      .v-hero-photo--2, .v-hero-photo--3,
+      .v4-photo--2, .v4-photo--3,
+      .v5-photo--2, .v5-photo--3 { display: none; }
+      .v-hero-photo--1, .v4-photo--1, .v5-photo--1 { opacity: 0.4; }
+    }
+    @media (max-width: 768px) {
+      .v-hero-photos, .v4-photos, .v5-photos { display: none; }
+      .v-hero-inner, .v5-text { padding: 0 24px; }
+      .v-hero-meta { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VARIANT 1: SHIMMER SWEEP -->
+  <div class="variant-label">
+    <div class="num">1</div>
+    <h2>Shimmer Sweep</h2>
+    <p>Медленный блик пробегает по экрану каждые 8 секунд</p>
+  </div>
+
+  <section class="v-hero">
+    <div class="v-hero-base"></div>
+    <div class="v-hero-photos">
+      <div class="v-hero-photo v-hero-photo--3"><img src="hero_1464.jpg" alt=""></div>
+      <div class="v-hero-photo v-hero-photo--2"><img src="hero_1463.jpg" alt=""></div>
+      <div class="v-hero-photo v-hero-photo--1"><img src="hero_1462.jpg" alt=""></div>
+    </div>
+    <div class="v1-shimmer"></div>
+    <div class="v1-glow"></div>
+    <div class="v-hero-inner">
+      <div class="v-hero-eyebrow">Академия · Мастер ПМ</div>
+      <h1>Мастер перманентного макияжа</h1>
+      <p class="v-hero-sub">Полный базовый курс</p>
+      <div class="v-hero-meta">
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">14</span><span class="v-hero-meta-label">дней онлайн</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">4</span><span class="v-hero-meta-label">дня очно</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">7</span><span class="v-hero-meta-label">моделей</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">200+</span><span class="v-hero-meta-label">выпускниц</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num" style="font-size:1.6rem">НАВСЕГДА</span><span class="v-hero-meta-label">поддержка</span></div>
+      </div>
+      <div class="v-hero-ctas">
+        <a href="#" class="btn btn-gold">Узнать даты и стоимость</a>
+        <a href="#" class="btn btn-ghost">Программа курса</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VARIANT 2: FLOATING PARTICLES -->
+  <div class="variant-label">
+    <div class="num">2</div>
+    <h2>Floating Particles</h2>
+    <p>Золотые частицы плавно поднимаются вверх</p>
+  </div>
+
+  <section class="v-hero">
+    <div class="v-hero-base"></div>
+    <div class="v-hero-photos">
+      <div class="v-hero-photo v-hero-photo--3"><img src="hero_1464.jpg" alt=""></div>
+      <div class="v-hero-photo v-hero-photo--2"><img src="hero_1463.jpg" alt=""></div>
+      <div class="v-hero-photo v-hero-photo--1"><img src="hero_1462.jpg" alt=""></div>
+    </div>
+    <div class="v2-particles" id="v2particles"></div>
+    <div class="v2-glow"></div>
+    <div class="v-hero-inner">
+      <div class="v-hero-eyebrow">Академия · Мастер ПМ</div>
+      <h1>Мастер перманентного макияжа</h1>
+      <p class="v-hero-sub">Полный базовый курс</p>
+      <div class="v-hero-meta">
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">14</span><span class="v-hero-meta-label">дней онлайн</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">4</span><span class="v-hero-meta-label">дня очно</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">7</span><span class="v-hero-meta-label">моделей</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">200+</span><span class="v-hero-meta-label">выпускниц</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num" style="font-size:1.6rem">НАВСЕГДА</span><span class="v-hero-meta-label">поддержка</span></div>
+      </div>
+      <div class="v-hero-ctas">
+        <a href="#" class="btn btn-gold">Узнать даты и стоимость</a>
+        <a href="#" class="btn btn-ghost">Программа курса</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VARIANT 3: SILK RIBBON -->
+  <div class="variant-label">
+    <div class="num">3</div>
+    <h2>Silk Ribbon</h2>
+    <p>Два мягких золотистых «облака» плавно дрейфуют</p>
+  </div>
+
+  <section class="v-hero">
+    <div class="v-hero-base"></div>
+    <div class="v-hero-photos">
+      <div class="v-hero-photo v-hero-photo--3"><img src="hero_1464.jpg" alt=""></div>
+      <div class="v-hero-photo v-hero-photo--2"><img src="hero_1463.jpg" alt=""></div>
+      <div class="v-hero-photo v-hero-photo--1"><img src="hero_1462.jpg" alt=""></div>
+    </div>
+    <div class="v3-silk"></div>
+    <div class="v3-silk-2"></div>
+    <div class="v3-glow"></div>
+    <div class="v-hero-inner">
+      <div class="v-hero-eyebrow">Академия · Мастер ПМ</div>
+      <h1>Мастер перманентного макияжа</h1>
+      <p class="v-hero-sub">Полный базовый курс</p>
+      <div class="v-hero-meta">
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">14</span><span class="v-hero-meta-label">дней онлайн</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">4</span><span class="v-hero-meta-label">дня очно</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">7</span><span class="v-hero-meta-label">моделей</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">200+</span><span class="v-hero-meta-label">выпускниц</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num" style="font-size:1.6rem">НАВСЕГДА</span><span class="v-hero-meta-label">поддержка</span></div>
+      </div>
+      <div class="v-hero-ctas">
+        <a href="#" class="btn btn-gold">Узнать даты и стоимость</a>
+        <a href="#" class="btn btn-ghost">Программа курса</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VARIANT 4: PARALLAX PHOTOS -->
+  <div class="variant-label">
+    <div class="num">4</div>
+    <h2>Parallax Photos</h2>
+    <p>Фото двигаются с разной скоростью при скролле</p>
+  </div>
+
+  <section class="v-hero" id="v4hero">
+    <div class="v-hero-base"></div>
+    <div class="v4-photos">
+      <div class="v4-photo v4-photo--3" data-speed="0.15"><img src="hero_1464.jpg" alt=""></div>
+      <div class="v4-photo v4-photo--2" data-speed="0.25"><img src="hero_1463.jpg" alt=""></div>
+      <div class="v4-photo v4-photo--1" data-speed="0.35"><img src="hero_1462.jpg" alt=""></div>
+    </div>
+    <div class="v4-glow"></div>
+    <div class="v-hero-inner">
+      <div class="v-hero-eyebrow">Академия · Мастер ПМ</div>
+      <h1>Мастер перманентного макияжа</h1>
+      <p class="v-hero-sub">Полный базовый курс</p>
+      <div class="v-hero-meta">
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">14</span><span class="v-hero-meta-label">дней онлайн</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">4</span><span class="v-hero-meta-label">дня очно</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">7</span><span class="v-hero-meta-label">моделей</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">200+</span><span class="v-hero-meta-label">выпускниц</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num" style="font-size:1.6rem">НАВСЕГДА</span><span class="v-hero-meta-label">поддержка</span></div>
+      </div>
+      <div class="v-hero-ctas">
+        <a href="#" class="btn btn-gold">Узнать даты и стоимость</a>
+        <a href="#" class="btn btn-ghost">Программа курса</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VARIANT 5: REVEAL ANIMATION -->
+  <div class="variant-label">
+    <div class="num">5</div>
+    <h2>Cinematic Reveal</h2>
+    <p>Фото и текст появляются каскадом при загрузке</p>
+  </div>
+
+  <section class="v-hero">
+    <div class="v-hero-base"></div>
+    <div class="v5-photos">
+      <div class="v5-photo v5-photo--3"><img src="hero_1464.jpg" alt=""></div>
+      <div class="v5-photo v5-photo--2"><img src="hero_1463.jpg" alt=""></div>
+      <div class="v5-photo v5-photo--1"><img src="hero_1462.jpg" alt=""></div>
+    </div>
+    <div class="v5-glow"></div>
+    <div class="v-hero-inner v5-text">
+      <div class="v-hero-eyebrow">Академия · Мастер ПМ</div>
+      <h1>Мастер перманентного макияжа</h1>
+      <p class="v-hero-sub">Полный базовый курс</p>
+      <div class="v-hero-meta">
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">14</span><span class="v-hero-meta-label">дней онлайн</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">4</span><span class="v-hero-meta-label">дня очно</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">7</span><span class="v-hero-meta-label">моделей</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num">200+</span><span class="v-hero-meta-label">выпускниц</span></div>
+        <div class="v-hero-meta-item"><span class="v-hero-meta-num" style="font-size:1.6rem">НАВСЕГДА</span><span class="v-hero-meta-label">поддержка</span></div>
+      </div>
+      <div class="v-hero-ctas">
+        <a href="#" class="btn btn-gold">Узнать даты и стоимость</a>
+        <a href="#" class="btn btn-ghost">Программа курса</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Variant 2: Generate particles
+    (function() {
+      const container = document.getElementById('v2particles');
+      if (!container) return;
+      for (let i = 0; i < 30; i++) {
+        const p = document.createElement('div');
+        p.className = 'v2-particle';
+        p.style.left = (20 + Math.random() * 60) + '%';
+        p.style.top = (30 + Math.random() * 60) + '%';
+        p.style.animationDelay = (Math.random() * 6) + 's';
+        p.style.animationDuration = (4 + Math.random() * 4) + 's';
+        p.style.width = p.style.height = (1 + Math.random() * 2) + 'px';
+        container.appendChild(p);
+      }
+    })();
+
+    // Variant 4: Parallax on scroll
+    (function() {
+      const photos = document.querySelectorAll('.v4-photo');
+      window.addEventListener('scroll', () => {
+        const hero = document.getElementById('v4hero');
+        if (!hero) return;
+        const rect = hero.getBoundingClientRect();
+        const scrollProgress = -rect.top / window.innerHeight;
+        photos.forEach(photo => {
+          const speed = parseFloat(photo.dataset.speed) || 0.2;
+          const offset = scrollProgress * speed * 200;
+          photo.style.transform = 'translateY(' + offset + 'px)';
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

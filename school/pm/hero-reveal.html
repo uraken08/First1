@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero — Cinematic Reveal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C4A265;
+      --gold-light: #D4BA85;
+      --text-primary: #F2EDE7;
+      --text-secondary: #9B958D;
+      --text-muted: #6B6560;
+      --font-display: 'Italiana', sans-serif;
+      --font-body: 'Raleway', sans-serif;
+      --font-stats: 'Jost', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000; color: var(--text-primary); font-family: var(--font-body); }
+
+    .pm-hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 100px 0 80px;
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* Layer 1: warm gradient base */
+    .pm-hero-base {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0d0a05 0%, #1a1208 30%, #1e160a 55%, #1a1208 80%, #0d0a05 100%);
+      z-index: 0;
+    }
+
+    /* Layer 2: photos — reveal one by one */
+    .pm-hero-photos {
+      position: absolute; inset: 0; z-index: 1;
+      pointer-events: none; overflow: hidden;
+    }
+    .pm-hero-photo {
+      position: absolute; top: 0; bottom: 0;
+      width: 220px; overflow: hidden;
+      opacity: 0;
+      animation: photoReveal 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    .pm-hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .pm-hero-photo--1 {
+      right: 48px;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 80%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 80%, transparent 100%);
+      animation-delay: 0.4s;
+    }
+    .pm-hero-photo--2 {
+      right: 284px;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 75%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 75%, transparent 100%);
+      animation-delay: 0.7s;
+    }
+    .pm-hero-photo--3 {
+      right: 520px;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 70%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 70%, transparent 100%);
+      animation-delay: 1.0s;
+    }
+    @keyframes photoReveal {
+      0% { opacity: 0; transform: scale(1.1); filter: blur(8px); }
+      100% { opacity: 0.55; transform: scale(1); filter: blur(0); }
+    }
+    .pm-hero-photo--2 { animation-name: photoReveal2; }
+    @keyframes photoReveal2 {
+      0% { opacity: 0; transform: scale(1.1); filter: blur(8px); }
+      100% { opacity: 0.35; transform: scale(1); filter: blur(0); }
+    }
+    .pm-hero-photo--3 { animation-name: photoReveal3; }
+    @keyframes photoReveal3 {
+      0% { opacity: 0; transform: scale(1.1); filter: blur(8px); }
+      100% { opacity: 0.18; transform: scale(1); filter: blur(0); }
+    }
+
+    /* Layer 3: glow fades in */
+    .pm-hero-glow {
+      position: absolute; inset: 0; z-index: 2;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 30% 60%, rgba(196,162,101,0.06) 0%, transparent 55%);
+      opacity: 0;
+      animation: glowFadeIn 2s ease-out 1.2s forwards;
+    }
+    @keyframes glowFadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Layer 4: text cascade */
+    .pm-hero-inner {
+      position: relative; z-index: 3;
+      width: 100%; padding: 0 48px; max-width: 1400px; margin: 0 auto;
+    }
+    .pm-hero-eyebrow {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+      opacity: 0;
+      animation: textReveal 0.8s ease-out 0.3s forwards;
+    }
+    .pm-hero-eyebrow::before { content:''; display:block; width:40px; height:1px; background:var(--gold); }
+    .pm-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-weight: 400; line-height: 1;
+      color: var(--text-primary); letter-spacing: 0.04em;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: textReveal 0.8s ease-out 0.5s forwards;
+    }
+    .pm-hero-sub {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      color: rgba(196,162,101,0.75); font-weight: 400; letter-spacing: 0.06em;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: textReveal 0.8s ease-out 0.7s forwards;
+    }
+    .pm-hero-meta {
+      display: grid; grid-template-columns: repeat(5, auto);
+      width: fit-content; gap: 0; margin-bottom: 48px;
+      border-top: 1px solid rgba(196,162,101,0.15); padding-top: 28px;
+      opacity: 0;
+      animation: textReveal 0.8s ease-out 0.9s forwards;
+    }
+    .pm-hero-meta-item {
+      display: flex; flex-direction: column; gap: 6px; padding-right: 40px;
+    }
+    .pm-hero-meta-item:not(:last-child) {
+      border-right: 1px solid rgba(196,162,101,0.12); margin-right: 40px;
+    }
+    .pm-hero-meta-num {
+      font-family: var(--font-stats); font-size: 2.6rem; font-weight: 700;
+      color: var(--gold); line-height: 1;
+    }
+    .pm-hero-meta-label {
+      font-size: 0.78rem; color: var(--text-muted);
+      letter-spacing: 0.04em; font-weight: 400; line-height: 1.35;
+    }
+    .pm-hero-ctas {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      opacity: 0;
+      animation: textReveal 0.8s ease-out 1.1s forwards;
+    }
+    @keyframes textReveal {
+      0% { opacity: 0; transform: translateY(24px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; border-radius: 60px;
+      font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em;
+      text-decoration: none; cursor: pointer; border: none; transition: all 0.4s ease;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000; box-shadow: 0 4px 24px rgba(196,162,101,0.25);
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(196,162,101,0.35); }
+    .btn-ghost {
+      background: transparent; color: var(--gold);
+      border: 1px solid rgba(196,162,101,0.25);
+    }
+    .btn-ghost:hover { background: rgba(196,162,101,0.06); border-color: var(--gold); }
+
+    @media (max-width: 1100px) {
+      .pm-hero-photo--2, .pm-hero-photo--3 { display: none; }
+      .pm-hero-photo--1 { opacity: 0.4; }
+    }
+    @media (max-width: 768px) {
+      .pm-hero-photos { display: none; }
+      .pm-hero-inner { padding: 0 24px; }
+      .pm-hero-meta { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="pm-hero">
+    <div class="pm-hero-base"></div>
+    <div class="pm-hero-photos">
+      <div class="pm-hero-photo pm-hero-photo--3"><img src="hero_1464.jpg" alt=""></div>
+      <div class="pm-hero-photo pm-hero-photo--2"><img src="hero_1463.jpg" alt=""></div>
+      <div class="pm-hero-photo pm-hero-photo--1"><img src="hero_1462.jpg" alt=""></div>
+    </div>
+    <div class="pm-hero-glow"></div>
+    <div class="pm-hero-inner">
+      <div class="pm-hero-eyebrow">Академия · Мастер ПМ</div>
+      <h1>Мастер перманентного макияжа</h1>
+      <p class="pm-hero-sub">Полный базовый курс</p>
+      <div class="pm-hero-meta">
+        <div class="pm-hero-meta-item"><span class="pm-hero-meta-num">14</span><span class="pm-hero-meta-label">дней онлайн-подготовки</span></div>
+        <div class="pm-hero-meta-item"><span class="pm-hero-meta-num">4</span><span class="pm-hero-meta-label">дня очного обучения</span></div>
+        <div class="pm-hero-meta-item"><span class="pm-hero-meta-num">7</span><span class="pm-hero-meta-label">реальных моделей</span></div>
+        <div class="pm-hero-meta-item"><span class="pm-hero-meta-num">200+</span><span class="pm-hero-meta-label">выпускниц</span></div>
+        <div class="pm-hero-meta-item"><span class="pm-hero-meta-num" style="font-size:1.6rem">НАВСЕГДА</span><span class="pm-hero-meta-label">поддержка Арины</span></div>
+      </div>
+      <div class="pm-hero-ctas">
+        <a href="#" class="btn btn-gold">Узнать даты и стоимость</a>
+        <a href="#" class="btn btn-ghost">Программа курса</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

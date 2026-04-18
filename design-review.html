@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Review — Agent Permanent</title>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #C4A265; --gold-l: #D4BA85; --gold-p: #E8D5B0;
+    --bg: #08080A; --bg-w: #15120D; --bg-c: #111113;
+    --t1: #F2EDE7; --t2: rgba(242,237,231,0.55); --t3: rgba(242,237,231,0.28);
+    --border: rgba(196,162,101,0.12);
+  }
+  html { background: var(--bg); color: var(--t1); font-family: 'Raleway', sans-serif; }
+  body { max-width: 1200px; margin: 0 auto; padding: 48px 40px 120px; }
+
+  /* Header */
+  .page-title {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.0;
+    color: var(--t1);
+    margin-bottom: 12px;
+  }
+  .page-title em { color: var(--gold); font-style: italic; }
+  .page-sub {
+    font-size: 0.9rem; color: var(--t2); font-weight: 300;
+    margin-bottom: 64px; line-height: 1.6;
+  }
+  .eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 32px; display: flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::before { content:''; width:32px; height:1px; background:var(--gold); flex-shrink:0; }
+
+  /* Sections */
+  .chapter { margin-bottom: 96px; }
+  .chapter-title {
+    font-family: 'Italiana', serif;
+    font-size: 2rem; font-weight: 400;
+    color: var(--t1); margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Two-col */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+
+  /* Cards */
+  .card {
+    background: linear-gradient(135deg, #1a1208, #2d1f0a 50%, #1a1208);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(196,162,101,0.3), transparent);
+  }
+  .card-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+  }
+  .card-title {
+    font-family: 'Italiana', serif;
+    font-size: 1.4rem; color: var(--t1); margin-bottom: 12px; line-height: 1.15;
+  }
+  .card-body { font-size: 0.83rem; color: var(--t2); line-height: 1.7; font-weight: 300; }
+
+  /* Issue card */
+  .issue { border-color: rgba(255,80,80,0.2); background: linear-gradient(135deg, #1a0808, #2d0f0f 50%, #1a0808); }
+  .issue .card-label { color: #ff6b6b; }
+  .issue .card-label::before { content: '✗ '; }
+  .idea { border-color: rgba(196,162,101,0.3); }
+  .idea .card-label::before { content: '✦ '; }
+  .win { border-color: rgba(80,200,120,0.2); background: linear-gradient(135deg, #081a0d, #0f2d15 50%, #081a0d); }
+  .win .card-label { color: #4ade80; }
+  .win .card-label::before { content: '✓ '; }
+
+  /* Comparison */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 20px 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .compare-side { padding: 24px; background: #0f0e0c; }
+  .compare-side + .compare-side { background: linear-gradient(135deg, #1a1208, #2a1c0a); }
+  .compare-head { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px; }
+  .compare-side:first-child .compare-head { color: rgba(255,80,80,0.7); }
+  .compare-side:last-child .compare-head { color: var(--gold); }
+
+  /* Mock hero */
+  .mock {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #0a0805;
+  }
+  .mock-bar {
+    background: #1a1208;
+    padding: 8px 14px;
+    display: flex; align-items: center; gap: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .mock-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .mock-body { padding: 24px; }
+  .mock-eyebrow { font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .mock-h { font-family: 'Italiana', serif; color: var(--t1); margin-bottom: 8px; line-height: 1.1; }
+  .mock-sub { font-size: 10px; color: var(--t2); line-height: 1.6; margin-bottom: 16px; }
+  .mock-btn {
+    display: inline-block; padding: 8px 18px; border-radius: 40px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-l));
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em; color: #08080A;
+  }
+  .mock-btn-ghost {
+    display: inline-block; padding: 8px 18px; border-radius: 40px;
+    border: 1px solid rgba(196,162,101,0.3);
+    font-size: 9px; letter-spacing: 0.1em; color: var(--gold);
+    margin-left: 8px;
+  }
+
+  /* Priority table */
+  .priority-list { display: flex; flex-direction: column; gap: 0; }
+  .priority-item {
+    display: grid; grid-template-columns: 32px 1fr auto;
+    align-items: center; gap: 20px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+  }
+  .priority-item:last-child { border-bottom: 1px solid var(--border); }
+  .priority-num {
+    font-family: 'Italiana', serif;
+    font-size: 1.8rem; color: rgba(196,162,101,0.25); line-height: 1;
+  }
+  .priority-body {}
+  .priority-title { font-size: 0.95rem; color: var(--t1); margin-bottom: 4px; font-weight: 500; }
+  .priority-desc { font-size: 0.78rem; color: var(--t2); font-weight: 300; line-height: 1.5; }
+  .badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 20px;
+    white-space: nowrap;
+  }
+  .badge-high { background: rgba(196,162,101,0.15); color: var(--gold); border: 1px solid rgba(196,162,101,0.3); }
+  .badge-med  { background: rgba(100,150,255,0.1); color: #88aaff; border: 1px solid rgba(100,150,255,0.2); }
+  .badge-low  { background: rgba(100,100,100,0.1); color: var(--t3); border: 1px solid rgba(255,255,255,0.08); }
+
+  /* Divider */
+  .divider { height: 1px; background: var(--border); margin: 64px 0; }
+
+  /* Full-width mock */
+  .full-mock {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 24px;
+  }
+  .full-mock-nav {
+    background: rgba(8,8,10,0.95);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .full-mock-logo { font-family: 'Italiana', serif; font-size: 14px; color: var(--gold); letter-spacing: 0.12em; }
+  .full-mock-links { display: flex; gap: 16px; }
+  .full-mock-links span { font-size: 9px; color: var(--t3); letter-spacing: 0.1em; }
+  .full-mock-links span.act { color: var(--t1); }
+  .full-mock-cta { font-size: 9px; font-weight: 700; color: #08080A; background: var(--gold); padding: 5px 12px; border-radius: 20px; letter-spacing: 0.1em; }
+
+  .stat-row { display: flex; gap: 1px; background: var(--border); margin-top: 24px; }
+  .stat-cell { flex: 1; background: #0f0c08; padding: 16px 20px; }
+  .stat-n { font-family: 'Italiana', serif; font-size: 1.8rem; color: var(--gold); line-height: 1; }
+  .stat-l { font-size: 9px; color: var(--t3); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+
+  /* Service list mock */
+  .svc-list { margin-top: 16px; }
+  .svc-row {
+    display: grid; grid-template-columns: 28px 1fr 80px;
+    align-items: center; gap: 16px;
+    padding: 12px 0;
+    border-top: 1px solid var(--border);
+    font-size: 10px;
+  }
+  .svc-row:last-child { border-bottom: 1px solid var(--border); }
+  .svc-n { font-family: 'Italiana', serif; font-size: 1.2rem; color: rgba(196,162,101,0.2); }
+  .svc-name { color: var(--t1); font-weight: 400; font-size: 11px; }
+  .svc-price { color: var(--gold); text-align: right; font-size: 10px; font-family: 'Italiana', serif; font-size: 0.95rem; }
+
+  /* Timeline */
+  .timeline { display: flex; align-items: flex-start; gap: 0; margin-top: 24px; }
+  .tl-item { flex: 1; position: relative; padding: 0 16px 24px; }
+  .tl-item::before {
+    content: '';
+    position: absolute; top: 12px; right: 0; left: 50%;
+    height: 1px; background: rgba(196,162,101,0.2);
+  }
+  .tl-item:last-child::before { display: none; }
+  .tl-dot {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-l));
+    margin: 0 auto 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700; color: #08080A;
+    position: relative; z-index: 1;
+  }
+  .tl-label { font-size: 9px; text-align: center; color: var(--t2); line-height: 1.4; }
+  .tl-title { font-family: 'Italiana', serif; font-size: 1rem; color: var(--t1); text-align: center; margin-bottom: 4px; }
+
+  /* Marquee */
+  .marquee-wrap { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 12px 0; margin-top: 24px; }
+  .marquee-inner {
+    display: flex; gap: 48px; width: max-content;
+    animation: marquee 18s linear infinite;
+    font-size: 10px; color: var(--t2); letter-spacing: 0.08em;
+  }
+  .marquee-inner span em { color: var(--gold); font-style: normal; font-weight: 600; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* Gradient showcase */
+  .grad-row { display: flex; gap: 12px; margin-top: 16px; }
+  .grad-swatch {
+    flex: 1; height: 80px; border-radius: 10px;
+    border: 1px solid var(--border);
+    display: flex; align-items: flex-end; padding: 8px 10px;
+    font-size: 8px; color: var(--t3); font-family: monospace;
+  }
+
+  @media (max-width: 700px) {
+    body { padding: 24px 20px 80px; }
+    .two-col, .three-col { grid-template-columns: 1fr; }
+    .compare { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="eyebrow">Agent Permanent · Design Review</div>
+<h1 class="page-title">Что можно<br>сделать <em>лучше</em></h1>
+<p class="page-sub">Анализ текущего состояния сайта и предложения по улучшению дизайна и концепции.<br>Страница студии уже обновлена — здесь разбираем что делать дальше.</p>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- 1. ЧТО РАБОТАЕТ ХОРОШО -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="chapter">
+  <div class="chapter-title">Что уже работает хорошо</div>
+  <div class="three-col">
+    <div class="card win">
+      <div class="card-label">Цвета и атмосфера</div>
+      <div class="card-title">Тёплый тёмный люкс</div>
+      <div class="card-body">Палитра #08080A + золото #C4A265 работает точно под бренд. Зерновая текстура добавляет глубины. Это нужно сохранить и усилить.</div>
+    </div>
+    <div class="card win">
+      <div class="card-label">Типографика</div>
+      <div class="card-title">Italiana + Raleway</div>
+      <div class="card-body">Сочетание серифного Italiana для заголовков и гуманистической Raleway для текста — правильное. Italiana редкая, создаёт уникальный характер.</div>
+    </div>
+    <div class="card win">
+      <div class="card-label">Курс ПМ</div>
+      <div class="card-title">Реальные фото в hero</div>
+      <div class="card-body">Три фото работ в hero-блоке курса — сильное решение. Это доверие. Нужно расширить этот принцип на всем сайте.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- 2. ПРОБЛЕМЫ -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="chapter">
+  <div class="chapter-title">Проблемы, которые нужно решить</div>
+  <div class="two-col">
+
+    <div class="card issue">
+      <div class="card-label">Проблема 1 — Плейсхолдеры</div>
+      <div class="card-title">Портфолио без фотографий</div>
+      <div class="card-body">На странице студии и в превью-галерее — пустые тёмные прямоугольники с иконками. Это самое слабое место: у Арины 6000+ работ, а сайт их не показывает. Доверие строится на реальных результатах, не на заглушках.</div>
+      <div style="margin-top:16px;display:flex;gap:8px;align-items:center;justify-content:center;border:1px solid rgba(255,80,80,0.15);padding:16px;border-radius:8px">
+        <span style="font-size:2rem;opacity:0.08">✦</span>
+        <span style="font-size:8px;color:rgba(255,80,80,0.5);letter-spacing:0.12em;text-transform:uppercase">Брови · placeholder</span>
+      </div>
+    </div>
+
+    <div class="card issue">
+      <div class="card-label">Проблема 2 — Несогласованность</div>
+      <div class="card-title">Студия и курс — разный стиль</div>
+      <div class="card-body">Страница студии сейчас editorial с нумерованным списком услуг. Страница курса — другой визуальный язык. Посетитель не чувствует, что это один бренд. Нужна общая дизайн-система.</div>
+      <div class="compare" style="margin-top:16px">
+        <div class="compare-side">
+          <div class="compare-head">Студия (новый)</div>
+          <div style="font-family:'Italiana',serif;font-size:1.1rem;color:#F2EDE7;margin-bottom:4px">Перманент бровей</div>
+          <div style="font-size:8px;color:rgba(242,237,231,0.4)">editorial list · numbered</div>
+        </div>
+        <div class="compare-side">
+          <div class="compare-head">Курс ПМ (старый)</div>
+          <div style="font-size:10px;color:rgba(242,237,231,0.6);border:1px solid rgba(196,162,101,0.15);padding:8px;border-radius:4px">module block · different layout</div>
+          <div style="font-size:8px;color:rgba(242,237,231,0.3);margin-top:4px">другой паттерн</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card issue">
+      <div class="card-label">Проблема 3 — Hero курса</div>
+      <div class="card-title">Слабый заголовок</div>
+      <div class="card-body">«Мастер перманентного макияжа / Полный базовый курс» — функционально, но не вдохновляет. На странице курса человек должен захотеть изменить свою жизнь. Сейчас заголовок говорит что, а не зачем.</div>
+      <div class="mock" style="margin-top:16px">
+        <div class="mock-body">
+          <div class="mock-eyebrow" style="color:rgba(255,80,80,0.6)">Сейчас — слабо</div>
+          <div class="mock-h" style="font-size:1.1rem">Мастер перманентного<br>макияжа</div>
+          <div class="mock-sub">Полный базовый курс</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card issue">
+      <div class="card-label">Проблема 4 — Главная страница</div>
+      <div class="card-title">Слабее остальных</div>
+      <div class="card-body">Главная (index.html) — точка входа для большинства посетителей, но визуально проигрывает странице студии и курса. Нет чёткой иерархии: студия или академия — что важнее показать в первую очередь?</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- 3. ИДЕИ ДЛЯ КУРСА ПМ -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="chapter">
+  <div class="chapter-title">Идеи для страницы курса ПМ</div>
+
+  <div style="margin-bottom:32px">
+    <div class="card idea" style="margin-bottom:16px">
+      <div class="card-label">Идея A — Эмоциональный заголовок</div>
+      <div class="card-title">Переписать hero на язык трансформации</div>
+      <div class="card-body">Вместо описания курса — ответ на вопрос «зачем». Человек приходит не за курсом, а за новой жизнью.</div>
+    </div>
+    <div class="compare">
+      <div class="compare-side">
+        <div class="compare-head">Сейчас</div>
+        <div style="font-family:'Italiana',serif;font-size:1.3rem;color:rgba(242,237,231,0.6);line-height:1.2">Мастер перманентного макияжа</div>
+        <div style="font-size:9px;color:rgba(242,237,231,0.3);margin-top:8px;font-style:italic">Полный базовый курс</div>
+      </div>
+      <div class="compare-side">
+        <div class="compare-head">Предложение</div>
+        <div style="font-family:'Italiana',serif;font-size:1.3rem;color:#F2EDE7;line-height:1.2">Стань мастером,<br>за которым <em style="color:#C4A265">очередь</em></div>
+        <div style="font-size:9px;color:rgba(196,162,101,0.6);margin-top:8px">Курс Арины Шараповой · Москва</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:32px">
+    <div class="card idea" style="margin-bottom:16px">
+      <div class="card-label">Идея B — Таймлайн формата обучения</div>
+      <div class="card-title">Показать путь от заявки до диплома</div>
+      <div class="card-body">Вместо сухого «14 дней + 4 дня» — визуальный маршрут. Так понятно что происходит и когда.</div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">1</div>
+        <div class="tl-title">Заявка</div>
+        <div class="tl-label">Запись · согласование даты</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2</div>
+        <div class="tl-title">Онлайн</div>
+        <div class="tl-label">14 дней подготовки теория</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">3</div>
+        <div class="tl-title">Практика</div>
+        <div class="tl-label">4 дня очно · 7 моделей</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">4</div>
+        <div class="tl-title">Диплом</div>
+        <div class="tl-label">Гос. образца · поддержка</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:32px">
+    <div class="card idea" style="margin-bottom:16px">
+      <div class="card-label">Идея C — Бегущая строка выпускниц</div>
+      <div class="card-title">Social proof в движении</div>
+      <div class="card-body">250+ выпускниц — это огромный актив. Анимированная строка с именами и городами создаёт ощущение масштаба и живого сообщества.</div>
+    </div>
+    <div class="marquee-wrap">
+      <div class="marquee-inner">
+        <span>Анна · Москва · <em>от 0 до клиентов за 3 мес</em></span>
+        <span>✦</span>
+        <span>Катерина · СПб · <em>открыла свой кабинет</em></span>
+        <span>✦</span>
+        <span>Виктория · Екатеринбург · <em>80 000 ₽ в первый месяц</em></span>
+        <span>✦</span>
+        <span>Мария · Казань · <em>запись на 2 мес вперёд</em></span>
+        <span>✦</span>
+        <span>Ольга · Новосибирск · <em>тренер в своём городе</em></span>
+        <span>✦</span>
+        <span>Анна · Москва · <em>от 0 до клиентов за 3 мес</em></span>
+        <span>✦</span>
+        <span>Катерина · СПб · <em>открыла свой кабинет</em></span>
+        <span>✦</span>
+        <span>Виктория · Екатеринбург · <em>80 000 ₽ в первый месяц</em></span>
+        <span>✦</span>
+        <span>Мария · Казань · <em>запись на 2 мес вперёд</em></span>
+        <span>✦</span>
+        <span>Ольга · Новосибирск · <em>тренер в своём городе</em></span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="card idea" style="margin-bottom:16px">
+      <div class="card-label">Идея D — Секция «До и после карьеры»</div>
+      <div class="card-title">Показать трансформацию жизни, не только работ</div>
+      <div class="card-body">Не «до/после бровей» — а до/после карьеры. Была бухгалтером → стала мастером с очередью. Это эмоциональный якорь, который работает на целевую аудиторию курса.</div>
+    </div>
+    <div class="two-col">
+      <div style="background:#0f0e0c;border:1px solid rgba(255,80,80,0.1);border-radius:12px;padding:24px">
+        <div style="font-size:9px;letter-spacing:0.15em;color:rgba(255,80,80,0.5);text-transform:uppercase;margin-bottom:12px">До курса</div>
+        <div style="font-family:'Italiana',serif;font-size:1.1rem;color:rgba(242,237,231,0.5)">«Я не понимала как вообще начать»</div>
+        <div style="font-size:9px;color:rgba(242,237,231,0.25);margin-top:8px">Работала менеджером · Москва</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#1a1208,#2d1f0a);border:1px solid rgba(196,162,101,0.25);border-radius:12px;padding:24px">
+        <div style="font-size:9px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:12px">После курса</div>
+        <div style="font-family:'Italiana',serif;font-size:1.1rem;color:#F2EDE7">«Первые 60 000 ₽ уже в первый месяц»</div>
+        <div style="font-size:9px;color:rgba(196,162,101,0.6);margin-top:8px">Мастер ПМ · запись на 6 недель вперёд</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- 4. КОНЦЕПЦИЯ ГЛАВНОЙ СТРАНИЦЫ -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="chapter">
+  <div class="chapter-title">Главная страница — концепция</div>
+
+  <div class="card idea" style="margin-bottom:24px">
+    <div class="card-label">Концепция — Два мира, один бренд</div>
+    <div class="card-title">Разделить студию и академию как два входа</div>
+    <div class="card-body">Сейчас главная — просто ещё одна страница. Предложение: сделать её «развилкой» — слева студия (хочу красоту), справа академия (хочу профессию). Большой split-screen с визуальным характером каждой части.</div>
+  </div>
+
+  <div class="full-mock">
+    <div class="full-mock-nav">
+      <div class="full-mock-logo">AGENT PERMANENT</div>
+      <div class="full-mock-links">
+        <span>Студия</span><span>Академия</span><span>Портфолио</span><span>Контакты</span>
+      </div>
+      <span class="full-mock-cta">Записаться</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;height:320px">
+      <!-- Left: Studio -->
+      <div style="background:linear-gradient(160deg,#1a1208,#0d0a05);padding:40px;display:flex;flex-direction:column;justify-content:flex-end;border-right:1px solid rgba(196,162,101,0.1);position:relative;overflow:hidden">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Italiana',serif;font-size:8rem;color:rgba(196,162,101,0.05);white-space:nowrap;user-select:none">STUDIO</div>
+        <div style="font-size:8px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:10px">Студия · Москва</div>
+        <div style="font-family:'Italiana',serif;font-size:1.6rem;color:#F2EDE7;line-height:1.1;margin-bottom:8px">Перманентный<br>макияж</div>
+        <div style="font-size:9px;color:rgba(242,237,231,0.4);margin-bottom:16px;line-height:1.5">Брови, губы, межресничка<br>от Арины Шараповой</div>
+        <span class="mock-btn">Записаться →</span>
+      </div>
+      <!-- Right: Academy -->
+      <div style="background:linear-gradient(160deg,#0a0d0a,#080808);padding:40px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Italiana',serif;font-size:7rem;color:rgba(196,162,101,0.04);white-space:nowrap;user-select:none">ACADEMY</div>
+        <div style="font-size:8px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:10px">Академия · Обучение</div>
+        <div style="font-family:'Italiana',serif;font-size:1.6rem;color:#F2EDE7;line-height:1.1;margin-bottom:8px">Стань мастером<br>за которым очередь</div>
+        <div style="font-size:9px;color:rgba(242,237,231,0.4);margin-bottom:16px;line-height:1.5">Курс мастера ПМ<br>250+ выпускниц · Диплом</div>
+        <span class="mock-btn">Узнать о курсе →</span>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-cell"><div class="stat-n">6 000+</div><div class="stat-l">процедур</div></div>
+      <div class="stat-cell"><div class="stat-n">250+</div><div class="stat-l">выпускниц</div></div>
+      <div class="stat-cell"><div class="stat-n">10</div><div class="stat-l">лет опыта</div></div>
+      <div class="stat-cell"><div class="stat-n">TOP</div><div class="stat-l">мастер России</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- 5. ПРИОРИТЕТЫ -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="chapter">
+  <div class="chapter-title">С чего начать — приоритеты</div>
+  <div class="priority-list">
+    <div class="priority-item">
+      <div class="priority-num">1</div>
+      <div class="priority-body">
+        <div class="priority-title">Добавить реальные фотографии работ</div>
+        <div class="priority-desc">Портфолио, hero студии, секция работ на курсе — всё должно показывать реальные результаты Арины. Без этого весь дизайн работает вполсилы.</div>
+      </div>
+      <span class="badge badge-high">Критично</span>
+    </div>
+    <div class="priority-item">
+      <div class="priority-num">2</div>
+      <div class="priority-body">
+        <div class="priority-title">Редизайн страницы курса ПМ</div>
+        <div class="priority-desc">Новый hero с эмоциональным заголовком, таймлайн формата, бегущая строка выпускниц, секция «до/после карьеры». Согласовать визуальный язык со страницей студии.</div>
+      </div>
+      <span class="badge badge-high">Высокий</span>
+    </div>
+    <div class="priority-item">
+      <div class="priority-num">3</div>
+      <div class="priority-body">
+        <div class="priority-title">Редизайн главной страницы</div>
+        <div class="priority-desc">Split-screen концепция «два мира» — студия и академия как два равноценных входа. Это усилит навигацию и создаст правильное первое впечатление.</div>
+      </div>
+      <span class="badge badge-med">Средний</span>
+    </div>
+    <div class="priority-item">
+      <div class="priority-num">4</div>
+      <div class="priority-body">
+        <div class="priority-title">Фотосессия для Арины</div>
+        <div class="priority-desc">На всём сайте используется одна фотография (arina.jpg). Нужна серия: в работе в студии, в процессе обучения, с учениками. Это создаёт личную связь.</div>
+      </div>
+      <span class="badge badge-med">Средний</span>
+    </div>
+    <div class="priority-item">
+      <div class="priority-num">5</div>
+      <div class="priority-body">
+        <div class="priority-title">Страницы других курсов (брови, ламинирование)</div>
+        <div class="priority-desc">По спецификации есть курс бровиста и курс ламимейкера — их страницы нужно создать в едином стиле.</div>
+      </div>
+      <span class="badge badge-low">Позже</span>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center;padding-top:48px;border-top:1px solid var(--border)">
+  <div style="font-family:'Italiana',serif;font-size:1.5rem;color:rgba(196,162,101,0.4)">Agent Permanent · Design Review</div>
+  <div style="font-size:9px;color:rgba(242,237,231,0.15);margin-top:8px;letter-spacing:0.1em">Сгенерировано Claude · 2026</div>
+</div>
+
+</body>
+</html>

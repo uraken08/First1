@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Академия Agent Permanent — Обучение мастеров ПМ, бровистов, ламимейкеров | Москва</title>
   <meta name="description" content="Академия Agent Permanent в Москве — профессиональное обучение на мастера перманентного макияжа, бровиста, ламимейкера. 200+ выпускниц. Государственный диплом. Обучение от Арины Шараповой.">
-  <link rel="icon" type="image/png" href="../favicon.jpg">
+  <link rel="icon" type="image/png" href="../favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -216,24 +216,6 @@
       document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
     });
     function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
-    document.querySelectorAll('.faq-q').forEach(q => {
-      q.addEventListener('click', () => {
-        const item = q.closest('.faq-item');
-        const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!wasOpen) item.classList.add('open');
-      });
-    });
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-          item.style.display = (filter === 'all' || item.dataset.cat === filter) ? '' : 'none';
-        });
-      });
-    });
     function handleSubmit(e) {
       if (e) e.preventDefault();
       const btn = e ? e.target.querySelector('button') : document.querySelector('.cta-form button');

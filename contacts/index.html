@@ -5,106 +5,383 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Контакты — Agent Permanent | Записаться к Арине Шараповой</title>
   <meta name="description" content="Свяжитесь с нами для консультации или записи. Москва, ул.Новопесчанная 6к2. Телефон, WhatsApp, Telegram, VK, Instagram.">
-  <link rel="icon" type="image/png" href="../favicon.jpg">
+  <link rel="icon" type="image/png" href="../favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <style>
+    /* grain overlay */
     html::after {
       content: '';
       position: fixed; inset: 0; z-index: 9999;
-      pointer-events: none;
-      opacity: 0.055;
+      pointer-events: none; opacity: 0.045;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size: 160px;
     }
 
-    .social-buttons {
-      display: flex; flex-wrap: wrap; gap: 16px;
-      margin: 40px 0;
-      justify-content: center;
+    /* ── CONTACTS HERO ── */
+    .ct-hero {
+      padding: 140px 0 80px;
+      background: var(--bg-deep);
+      position: relative; overflow: hidden;
     }
-    .social-btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      padding: 18px 36px; border-radius: 60px;
-      font-family: var(--font-body); font-size: 0.9rem; font-weight: 600;
-      letter-spacing: 0.04em; text-decoration: none;
-      cursor: pointer; border: none; transition: all 0.4s ease;
-      min-width: 180px;
+    .ct-hero::before {
+      content: 'СВЯЗЬ';
+      position: absolute; right: -2vw; top: 50%; transform: translateY(-50%);
+      font-family: var(--font-display); font-size: clamp(8rem, 18vw, 18rem);
+      font-weight: 400; color: rgba(196,162,101,0.04);
+      pointer-events: none; white-space: nowrap; line-height: 1;
     }
-    .social-btn--tg {
-      background: linear-gradient(135deg, #2AABEE, #1E8FD5);
-      color: #fff; box-shadow: 0 4px 24px rgba(42,171,238,0.25);
+    .ct-hero-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 48px;
     }
-    .social-btn--tg:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(42,171,238,0.35); }
-    .social-btn--wa {
-      background: linear-gradient(135deg, #25D366, #1EBE57);
-      color: #fff; box-shadow: 0 4px 24px rgba(37,211,102,0.25);
+    .ct-hero-eyebrow {
+      font-family: var(--font-body); font-size: 0.75rem;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 16px;
     }
-    .social-btn--wa:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(37,211,102,0.35); }
-    .social-btn--max {
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      color: #000; box-shadow: 0 4px 24px rgba(196,162,101,0.25);
+    .ct-hero-eyebrow::after {
+      content: ''; flex: 1; max-width: 60px;
+      height: 1px; background: var(--gold); opacity: 0.4;
     }
-    .social-btn--max:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(196,162,101,0.35); }
-    .social-btn--vk {
-      background: linear-gradient(135deg, #0077FF, #0066DD);
-      color: #fff; box-shadow: 0 4px 24px rgba(0,119,255,0.25);
-    }
-    .social-btn--vk:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(0,119,255,0.35); }
-    .social-btn--ig {
-      background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF);
-      color: #fff; box-shadow: 0 4px 24px rgba(221,42,123,0.25);
-    }
-    .social-btn--ig:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(221,42,123,0.35); }
-
-    .callback-section {
-      text-align: center;
-      margin-top: 60px;
-    }
-    .callback-section h2 {
+    .ct-hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-size: clamp(3rem, 6vw, 6rem);
       font-weight: 400; color: var(--text-primary);
-      letter-spacing: 0.03em; margin-bottom: 12px;
+      line-height: 1.05; letter-spacing: 0.01em;
+      max-width: 700px;
     }
-    .callback-section p {
-      font-size: 0.95rem; color: var(--text-secondary);
-      margin-bottom: 32px;
+    .ct-hero h1 em {
+      font-style: normal; color: var(--gold);
     }
-    .callback-form {
-      max-width: 440px; margin: 0 auto;
-      display: flex; flex-direction: column; gap: 14px;
+    .ct-hero-sub {
+      margin-top: 24px;
+      font-family: var(--font-body); font-size: 1rem;
+      color: var(--text-secondary); font-weight: 300;
     }
-    .callback-form input {
-      padding: 16px 24px; border-radius: 60px;
-      border: 1px solid rgba(196,162,101,0.2);
-      background: rgba(255,255,255,0.04);
-      color: var(--text-primary);
-      font-family: var(--font-body); font-size: 0.9rem;
-      outline: none; transition: all 0.3s;
-    }
-    .callback-form input::placeholder { color: var(--text-muted); }
-    .callback-form input:focus { border-color: var(--gold); background: rgba(196,162,101,0.05); }
 
-    .contact-info {
-      margin-top: 60px;
-      padding-top: 40px;
-      border-top: 1px solid rgba(196,162,101,0.12);
-      text-align: center;
+    /* ── MAIN GRID ── */
+    .ct-main {
+      background: var(--bg-base);
+      padding: 80px 0 100px;
     }
-    .contact-info h3 {
+    .ct-main-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 48px;
+      display: grid; grid-template-columns: 1fr 480px; gap: 80px;
+      align-items: start;
+    }
+
+    /* ── LEFT: channels + address ── */
+    .ct-left {}
+    .ct-section-label {
+      font-family: var(--font-body); font-size: 0.7rem;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 28px;
+    }
+
+    /* channel card wrapper */
+    .ct-channels-card {
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 60%, #1a1208 100%);
+      border: 1px solid rgba(196,162,101,0.15);
+      border-radius: 20px; padding: 28px 32px 12px;
+      margin-bottom: 24px;
+    }
+    .ct-channels-card-title {
       font-family: var(--font-display);
-      font-size: 1.3rem; font-weight: 400;
-      color: var(--text-primary); margin-bottom: 16px;
+      font-size: clamp(1.6rem, 2.5vw, 2rem); font-weight: 400;
+      color: var(--text-primary); margin-bottom: 4px;
     }
-    .contact-info p {
-      font-size: 0.9rem; color: var(--text-secondary);
-      line-height: 1.8;
+    .ct-channels-card-sub {
+      font-family: var(--font-body); font-size: 0.8rem;
+      color: var(--text-muted); margin-bottom: 20px;
     }
-    .contact-info a { color: var(--gold); text-decoration: none; }
-    .contact-info a:hover { opacity: 0.8; }
+    /* channel cards */
+    .ct-channels {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .ct-channel {
+      display: flex; align-items: center; gap: 20px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(196,162,101,0.1);
+      text-decoration: none; color: inherit;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .ct-channel:first-child { border-top: 1px solid rgba(196,162,101,0.1); }
+    .ct-channel:hover { padding-left: 8px; }
+    .ct-channel:hover .ct-ch-icon { background: var(--gold); color: #08080a; }
+    .ct-ch-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      border: 1px solid rgba(196,162,101,0.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+      transition: all 0.3s ease;
+    }
+    .ct-ch-body { flex: 1; }
+    .ct-ch-name {
+      font-family: var(--font-body); font-size: 0.95rem;
+      font-weight: 500; color: var(--text-primary);
+      letter-spacing: 0.01em;
+    }
+    .ct-ch-handle {
+      font-family: var(--font-body); font-size: 0.82rem;
+      color: var(--text-muted); margin-top: 2px;
+    }
+    .ct-ch-arrow {
+      color: rgba(196,162,101,0.3);
+      transition: all 0.3s ease;
+    }
+    .ct-channel:hover .ct-ch-arrow { color: var(--gold); transform: translateX(4px); }
+
+    /* yclients card */
+    .ct-yclients-card {
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 60%, #1a1208 100%);
+      border: 1px solid rgba(196,162,101,0.15);
+      border-radius: 20px; padding: 32px 32px 28px;
+    }
+    .ct-yclients-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 2.5vw, 2rem); font-weight: 400;
+      color: var(--text-primary); margin-bottom: 6px;
+    }
+    .ct-yclients-sub {
+      font-family: var(--font-body); font-size: 0.82rem;
+      color: var(--text-muted); margin-bottom: 20px;
+    }
+    .ct-yclients-widget {
+      border-radius: 12px; overflow: hidden;
+      background: rgba(0,0,0,0.2);
+    }
+    .ct-yclients-widget iframe {
+      width: 100%; border: none; display: block;
+      min-height: 420px;
+    }
+
+    /* map + reviews section */
+    .ct-map-strip {
+      background: var(--bg-base);
+      border-top: 1px solid rgba(196,162,101,0.08);
+      padding: 60px 0 80px;
+    }
+    .ct-map-strip-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 48px;
+      display: grid; grid-template-columns: 2fr 1fr; gap: 24px;
+      align-items: start;
+    }
+    .ct-map-left {}
+    .ct-map-card {
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 60%, #1a1208 100%);
+      border: 1px solid rgba(196,162,101,0.15);
+      border-radius: 20px; overflow: hidden;
+    }
+    .ct-map-frame {
+      aspect-ratio: 1 / 1; overflow: hidden;
+      filter: grayscale(0.3) contrast(1.05) brightness(0.75) sepia(0.15);
+    }
+    .ct-map-frame iframe {
+      width: 100%; height: 100%; border: none; display: block;
+    }
+    .ct-map-info {
+      padding: 28px 32px 32px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .ct-map-label {
+      font-family: var(--font-body); font-size: 0.7rem;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .ct-map-address {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2vw, 1.8rem);
+      font-weight: 400; color: var(--text-primary); line-height: 1.2;
+    }
+    .ct-map-details {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .ct-map-detail-row {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-body); font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+    .ct-map-metro-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #e63946; flex-shrink: 0;
+    }
+    .ct-map-hours {
+      padding-top: 14px; border-top: 1px solid rgba(196,162,101,0.1);
+    }
+    .ct-map-hours-item { display: flex; flex-direction: column; gap: 2px; }
+    .ct-map-hours-day {
+      font-family: var(--font-body); font-size: 0.68rem;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted);
+    }
+    .ct-map-hours-time {
+      font-family: var(--font-stats); font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+    .ct-map-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 0.82rem;
+      color: var(--gold); text-decoration: none;
+      border-bottom: 1px solid rgba(196,162,101,0.3);
+      padding-bottom: 2px; width: fit-content;
+      transition: opacity 0.2s;
+    }
+    .ct-map-link:hover { opacity: 0.7; }
+
+    /* reviews column */
+    .ct-reviews-col { }
+    .ct-reviews-card {
+      display: flex; flex-direction: column;
+      height: 100%; min-height: 600px;
+    }
+    .ct-reviews-card > div { flex: 1; }
+
+    /* ── RIGHT: form ── */
+    .ct-form-wrap {
+      position: sticky; top: 100px;
+    }
+    .ct-form-card {
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 60%, #1a1208 100%);
+      border: 1px solid rgba(196,162,101,0.18);
+      border-radius: 24px; padding: 48px 40px;
+    }
+    .ct-form-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 2.5vw, 2rem);
+      font-weight: 400; color: var(--text-primary);
+      line-height: 1.2; margin-bottom: 8px;
+    }
+    .ct-form-sub {
+      font-family: var(--font-body); font-size: 0.85rem;
+      color: var(--text-muted); margin-bottom: 32px;
+    }
+    .ct-form { display: flex; flex-direction: column; gap: 12px; }
+    .ct-input {
+      padding: 15px 22px; border-radius: 60px;
+      border: 1px solid rgba(196,162,101,0.18);
+      background: rgba(255,255,255,0.03);
+      color: var(--text-primary);
+      font-family: var(--font-body); font-size: 0.88rem;
+      outline: none; transition: all 0.3s; width: 100%; box-sizing: border-box;
+    }
+    .ct-input::placeholder { color: var(--text-muted); }
+    .ct-input:focus { border-color: var(--gold); background: rgba(196,162,101,0.05); }
+    .ct-select {
+      padding: 15px 22px; border-radius: 60px;
+      border: 1px solid rgba(196,162,101,0.18);
+      background: rgba(255,255,255,0.03);
+      color: var(--text-muted);
+      font-family: var(--font-body); font-size: 0.88rem;
+      outline: none; transition: all 0.3s; width: 100%;
+      cursor: pointer; appearance: none;
+    }
+    .ct-select:focus { border-color: var(--gold); color: var(--text-primary); }
+    .ct-select option { background: #1a1208; color: #fff; }
+    .ct-submit {
+      margin-top: 8px;
+      padding: 16px 32px; border-radius: 60px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #08080a; border: none; cursor: pointer;
+      font-family: var(--font-body); font-size: 0.88rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      transition: all 0.3s; width: 100%;
+    }
+    .ct-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(196,162,101,0.3); }
+    .ct-form-legal {
+      font-size: 0.7rem; color: var(--text-muted);
+      text-align: center; margin-top: 4px; line-height: 1.6;
+    }
+
+    /* form service tags */
+    .ct-tags {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px;
+    }
+    .ct-tag {
+      padding: 7px 16px; border-radius: 60px;
+      border: 1px solid rgba(196,162,101,0.2);
+      font-family: var(--font-body); font-size: 0.78rem;
+      color: var(--text-secondary); cursor: pointer;
+      transition: all 0.25s; background: transparent;
+      white-space: nowrap;
+    }
+    .ct-tag:hover, .ct-tag.active {
+      border-color: var(--gold); color: var(--gold);
+      background: rgba(196,162,101,0.06);
+    }
+    .ct-tag-label {
+      font-family: var(--font-body); font-size: 0.72rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 10px;
+    }
+
+    /* ── MAP STRIP ── */
+    .ct-map-strip {
+      background: #0d0d0f;
+      border-top: 1px solid rgba(196,162,101,0.08);
+    }
+    .ct-map-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 48px;
+      display: grid; grid-template-columns: 1fr 400px;
+      align-items: center; gap: 0;
+    }
+    .ct-map-frame {
+      height: 340px; overflow: hidden;
+      filter: grayscale(1) contrast(1.1) brightness(0.45) sepia(0.3);
+    }
+    .ct-map-frame iframe {
+      width: 100%; height: 100%; border: none; display: block;
+    }
+    .ct-map-info {
+      padding: 48px; display: flex; flex-direction: column; gap: 20px;
+    }
+    .ct-map-label {
+      font-family: var(--font-body); font-size: 0.7rem;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .ct-map-address {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 400; color: var(--text-primary); line-height: 1.2;
+    }
+    .ct-map-metro {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-body); font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .ct-map-metro-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #e63946; flex-shrink: 0;
+    }
+    .ct-map-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 0.82rem;
+      color: var(--gold); text-decoration: none;
+      border-bottom: 1px solid rgba(196,162,101,0.3);
+      padding-bottom: 2px; width: fit-content;
+      transition: all 0.2s;
+    }
+    .ct-map-link:hover { opacity: 0.7; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 960px) {
+      .ct-main-inner { grid-template-columns: 1fr; gap: 48px; }
+      .ct-form-wrap { position: static; }
+      .ct-map-strip-inner { grid-template-columns: 1fr; }
+      .ct-map-frame { height: 260px; }
+      .ct-map-info { padding: 32px 24px; border-left: none; border-top: 1px solid rgba(196,162,101,0.08); }
+      .ct-hero-inner, .ct-main-inner { padding: 0 24px; }
+    }
+    @media (max-width: 600px) {
+      .ct-hero { padding: 120px 0 60px; }
+      .ct-map-hours { grid-template-columns: 1fr; }
+      .ct-form-card { padding: 32px 24px; }
+      .ct-channels-card { padding: 20px 20px 8px; }
+    }
   </style>
 </head>
 <body>
@@ -139,62 +416,183 @@
   </nav>
 
   <!-- HERO -->
-  <section class="page-hero" style="background:var(--bg-deep)">
-    <div class="page-hero-inner">
-      <div class="page-hero-badge fade-up">Контакты</div>
-      <h1 class="fade-up">Свяжитесь с нами для <em>консультации или записи</em></h1>
-      <p class="fade-up" style="transition-delay:0.1s">Выберите удобный способ связи — ответим быстро.</p>
+  <section class="ct-hero">
+    <div class="ct-hero-inner">
+      <div class="ct-hero-eyebrow fade-up">Контакты</div>
+      <h1 class="fade-up" style="transition-delay:0.1s">Мы на связи</h1>
+      <p class="ct-hero-sub fade-up" style="transition-delay:0.2s">
+        Ответим в течение 30 минут в рабочее время
+      </p>
     </div>
   </section>
 
-  <!-- SOCIAL BUTTONS -->
-  <section class="section">
-    <div class="section-inner">
-      <div class="social-buttons fade-up">
-        <a href="https://t.me/+79998200421" class="social-btn social-btn--tg" target="_blank">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.28-.02-.12.02-2.02 1.28-5.7 3.77-.54.37-1.03.55-1.47.54-.48-.01-1.41-.27-2.1-.5-.85-.28-1.52-.43-1.46-.91.03-.25.38-.51 1.05-.77 4.12-1.79 6.87-2.97 8.26-3.54 3.93-1.62 4.75-1.9 5.28-1.91.12 0 .38.03.55.17.14.12.18.28.2.45-.01.06.01.24 0 .38z"/></svg>
-          Telegram
-        </a>
-        <a href="https://wa.me/79998200421" class="social-btn social-btn--wa" target="_blank">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          WhatsApp
-        </a>
-        <a href="#" class="social-btn social-btn--max" target="_blank">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2v-6h2v6zm-2-8c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
-          MAX
-        </a>
-        <a href="#" class="social-btn social-btn--vk" target="_blank">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.587-1.496c.598-.188 1.368 1.259 2.184 1.814.616.42 1.084.328 1.084.328l2.178-.03s1.14-.07.599-.964c-.044-.073-.314-.661-1.618-1.869-1.366-1.265-1.183-1.06.462-3.246.999-1.33 1.398-2.142 1.273-2.489-.12-.331-.857-.244-.857-.244l-2.45.015s-.182-.025-.317.056c-.131.079-.216.263-.216.263s-.387 1.028-.903 1.903c-1.089 1.85-1.524 1.948-1.702 1.834-.414-.265-.31-1.065-.31-1.634 0-1.776.27-2.517-.525-2.708-.264-.064-.459-.106-1.135-.113-.867-.009-1.602.003-2.017.207-.277.136-.491.439-.361.456.161.021.525.098.718.36.249.338.24 1.096.24 1.096s.143 2.09-.334 2.349c-.327.178-.775-.185-1.737-1.845-.492-.85-.864-1.79-.864-1.79s-.072-.176-.2-.271c-.155-.115-.372-.151-.372-.151l-2.328.015s-.33.009-.451.153c-.108.128-.009.393-.009.393s1.818 4.258 3.877 6.403c1.887 1.965 4.032 1.835 4.032 1.835h.971z"/></svg>
-          VK
-        </a>
-        <a href="#" class="social-btn social-btn--ig" target="_blank">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          Instagram
-        </a>
+  <!-- MAIN -->
+  <section class="ct-main">
+    <div class="ct-main-inner">
+
+      <!-- LEFT -->
+      <div class="ct-left">
+        <div class="ct-channels-card fade-up">
+          <div class="ct-channels-card-title">Способы связи</div>
+          <div class="ct-channels-card-sub">Ответим в течение 30 минут в рабочее время</div>
+        <div class="ct-channels">
+
+          <a href="https://t.me/+79998200421" class="ct-channel" target="_blank">
+            <div class="ct-ch-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.28-.02-.12.02-2.02 1.28-5.7 3.77-.54.37-1.03.55-1.47.54-.48-.01-1.41-.27-2.1-.5-.85-.28-1.52-.43-1.46-.91.03-.25.38-.51 1.05-.77 4.12-1.79 6.87-2.97 8.26-3.54 3.93-1.62 4.75-1.9 5.28-1.91.12 0 .38.03.55.17.14.12.18.28.2.45-.01.06.01.24 0 .38z"/></svg>
+            </div>
+            <div class="ct-ch-body">
+              <div class="ct-ch-name">Telegram</div>
+              <div class="ct-ch-handle">+7 (999) 820-04-21</div>
+            </div>
+            <svg class="ct-ch-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+          <a href="https://wa.me/79998200421" class="ct-channel" target="_blank">
+            <div class="ct-ch-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <div class="ct-ch-body">
+              <div class="ct-ch-name">WhatsApp</div>
+              <div class="ct-ch-handle">+7 (999) 820-04-21</div>
+            </div>
+            <svg class="ct-ch-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+          <a href="tel:+79998200421" class="ct-channel">
+            <div class="ct-ch-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.67a19.79 19.79 0 01-3.07-8.72A2 2 0 012 .93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div class="ct-ch-body">
+              <div class="ct-ch-name">Позвонить</div>
+              <div class="ct-ch-handle">+7 (999) 820-04-21</div>
+            </div>
+            <svg class="ct-ch-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+          <a href="#" class="ct-channel" target="_blank">
+            <div class="ct-ch-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </div>
+            <div class="ct-ch-body">
+              <div class="ct-ch-name">Instagram</div>
+              <div class="ct-ch-handle">@agentpermanent</div>
+            </div>
+            <svg class="ct-ch-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+          <a href="#" class="ct-channel" target="_blank">
+            <div class="ct-ch-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.587-1.496c.598-.188 1.368 1.259 2.184 1.814.616.42 1.084.328 1.084.328l2.178-.03s1.14-.07.599-.964c-.044-.073-.314-.661-1.618-1.869-1.366-1.265-1.183-1.06.462-3.246.999-1.33 1.398-2.142 1.273-2.489-.12-.331-.857-.244-.857-.244l-2.45.015s-.182-.025-.317.056c-.131.079-.216.263-.216.263s-.387 1.028-.903 1.903c-1.089 1.85-1.524 1.948-1.702 1.834-.414-.265-.31-1.065-.31-1.634 0-1.776.27-2.517-.525-2.708-.264-.064-.459-.106-1.135-.113-.867-.009-1.602.003-2.017.207-.277.136-.491.439-.361.456.161.021.525.098.718.36.249.338.24 1.096.24 1.096s.143 2.09-.334 2.349c-.327.178-.775-.185-1.737-1.845-.492-.85-.864-1.79-.864-1.79s-.072-.176-.2-.271c-.155-.115-.372-.151-.372-.151l-2.328.015s-.33.009-.451.153c-.108.128-.009.393-.009.393s1.818 4.258 3.877 6.403c1.887 1.965 4.032 1.835 4.032 1.835h.971z"/></svg>
+            </div>
+            <div class="ct-ch-body">
+              <div class="ct-ch-name">ВКонтакте</div>
+              <div class="ct-ch-handle">vk.com/agentpermanent</div>
+            </div>
+            <svg class="ct-ch-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+        </div>
+        </div>
+
+        <!-- yclients booking -->
+        <div class="ct-yclients-card fade-up" style="transition-delay:0.1s">
+          <div class="ct-yclients-title">Онлайн-запись</div>
+          <div class="ct-yclients-sub">Выберите услугу, мастера и удобное время</div>
+          <div class="ct-yclients-widget">
+            <!-- Замените XXXXXX на ваш company_id из личного кабинета YClients -->
+            <iframe
+              src="https://n1234567.yclients.com/company/1234567/personal/select-master?support_sid=XXXXXX"
+              frameborder="0"
+              scrolling="yes"
+              style="width:100%;min-height:420px;border-radius:12px">
+            </iframe>
+          </div>
+        </div>
       </div>
 
-      <!-- CALLBACK FORM -->
-      <div class="callback-section fade-up">
-        <h2>Или оставьте заявку — мы перезвоним!</h2>
-        <p>Укажите имя и телефон, и мы свяжемся с вами в ближайшее время.</p>
-        <form class="callback-form" onsubmit="handleSubmit(event)">
-          <input type="text" placeholder="Ваше имя" required>
-          <input type="tel" placeholder="+7 (___) ___-__-__" required>
-          <button type="submit" class="btn btn-gold" style="align-self:center">Отправить заявку</button>
-          <p style="font-size:0.72rem;color:var(--text-muted)">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
-        </form>
+      <!-- RIGHT: form -->
+      <div class="ct-form-wrap fade-up" style="transition-delay:0.15s">
+        <div class="ct-form-card">
+          <div class="ct-form-title">Оставить заявку</div>
+          <div class="ct-form-sub">Мы свяжемся с вами в течение 30 минут</div>
+
+          <form class="ct-form" onsubmit="handleSubmit(event)">
+            <div class="ct-tag-label">Что вас интересует?</div>
+            <div class="ct-tags" id="tagGroup">
+              <button type="button" class="ct-tag" onclick="toggleTag(this)">Брови</button>
+              <button type="button" class="ct-tag" onclick="toggleTag(this)">Губы</button>
+              <button type="button" class="ct-tag" onclick="toggleTag(this)">Межресничка</button>
+              <button type="button" class="ct-tag" onclick="toggleTag(this)">Обучение</button>
+              <button type="button" class="ct-tag" onclick="toggleTag(this)">Консультация</button>
+            </div>
+
+            <input type="text" class="ct-input" placeholder="Ваше имя" required>
+            <input type="tel" class="ct-input" placeholder="+7 (___) ___-__-__" required>
+            <button type="submit" class="ct-submit" id="ctSubmitBtn">Записаться</button>
+            <p class="ct-form-legal">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+          </form>
+        </div>
       </div>
 
-      <!-- ADDRESS -->
-      <div class="contact-info fade-up">
-        <h3>Адрес студии</h3>
-        <p>
-          Москва, ул.Новопесчанная 6к2<br>
-          Телефон / WhatsApp / Telegram: <a href="tel:+79998200421">+7 (999) 820-04-21</a>
-        </p>
-      </div>
     </div>
   </section>
+
+  <!-- MAP + REVIEWS -->
+  <div class="ct-map-strip">
+    <div class="ct-map-strip-inner">
+
+      <!-- LEFT: map + info (2/3) -->
+      <div class="ct-map-left">
+        <div class="ct-map-card">
+          <div class="ct-map-frame">
+            <iframe
+              src="https://yandex.com.tr/map-widget/v1/?ll=37.516653%2C55.801122&mode=search&oid=123024463523&ol=biz&z=15.5"
+              allowfullscreen="true" loading="lazy">
+            </iframe>
+          </div>
+          <div class="ct-map-info">
+            <div class="ct-map-label">Как добраться</div>
+            <div class="ct-map-address">Москва, ул. Новопесчанная, 6к2</div>
+            <div class="ct-map-details">
+              <div class="ct-map-detail-row">
+                <div class="ct-map-metro-dot"></div>
+                м. Сокол — 7 минут пешком
+              </div>
+            </div>
+            <div class="ct-map-hours">
+              <div class="ct-map-hours-item">
+                <div class="ct-map-hours-day">Пн — Вск</div>
+                <div class="ct-map-hours-time">10:00 — 21:00</div>
+              </div>
+            </div>
+            <a href="https://yandex.com.tr/maps/org/agent_permanent/123024463523/" target="_blank" class="ct-map-link">
+              Открыть в Яндекс Картах
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: reviews (1/3) -->
+      <div class="ct-reviews-col">
+        <div class="ct-map-card ct-reviews-card">
+          <div class="ct-map-label" style="padding:28px 28px 0">Отзывы клиентов</div>
+          <div style="overflow:hidden;flex:1;position:relative;">
+            <iframe
+              style="width:100%;height:100%;border:none;display:block;"
+              src="https://yandex.ru/maps-reviews-widget/123024463523?comments">
+            </iframe>
+          </div>
+          <a href="https://yandex.com.tr/maps/org/agent_permanent/123024463523/" target="_blank"
+             style="display:block;text-align:center;font-size:10px;color:var(--text-muted);padding:8px 0;text-decoration:none;font-family:var(--font-body)">
+            Agent Permanent на Яндекс Картах
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="footer-inner">
@@ -222,15 +620,24 @@
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
     window.addEventListener('scroll', () => {
       document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
     });
+
     function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
+
+    function toggleTag(btn) {
+      btn.classList.toggle('active');
+    }
+
     function handleSubmit(e) {
-      if (e) e.preventDefault();
-      const btn = e ? e.target.querySelector('button') : document.querySelector('.callback-form button');
-      if (btn) { btn.textContent = 'Заявка отправлена ✓'; btn.disabled = true; }
-      setTimeout(() => alert('Спасибо! Мы свяжемся с вами в ближайшее время.'), 100);
+      e.preventDefault();
+      const btn = document.getElementById('ctSubmitBtn');
+      btn.textContent = 'Заявка отправлена ✓';
+      btn.disabled = true;
+      btn.style.background = 'rgba(196,162,101,0.3)';
+      btn.style.color = 'var(--gold)';
     }
   </script>
 </body>

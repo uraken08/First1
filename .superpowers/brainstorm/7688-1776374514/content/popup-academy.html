@@ -1,0 +1,77 @@
+<h2>Попап записи на обучение</h2>
+<p class="subtitle">Нажми кнопку «Записаться на курс» чтобы увидеть</p>
+
+<div style="position:relative;border:1px solid rgba(255,255,255,0.1);overflow:hidden;border-radius:4px">
+
+  <!-- Страница академии -->
+  <div id="site-bg2" style="padding:40px;background:#0a0805;transition:filter 0.3s">
+    <div style="color:#c4a265;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:12px">Академия · Курс ПМ</div>
+    <div style="font-family:serif;font-size:1.5rem;color:white;margin-bottom:6px">Обучение на мастера<br><em style="color:#c4a265">перманентного макияжа</em></div>
+    <div style="color:rgba(255,255,255,0.35);font-size:0.7rem;margin-bottom:20px">Следующий поток · Москва · Гос. диплом</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px">
+      <div style="border:1px solid rgba(196,162,101,0.15);padding:10px">
+        <div style="color:#c4a265;font-size:1rem;font-weight:700">250+</div>
+        <div style="color:rgba(255,255,255,0.3);font-size:0.55rem">выпускниц</div>
+      </div>
+      <div style="border:1px solid rgba(196,162,101,0.15);padding:10px">
+        <div style="color:#c4a265;font-size:1rem;font-weight:700">4 мес</div>
+        <div style="color:rgba(255,255,255,0.3);font-size:0.55rem">обучения</div>
+      </div>
+      <div style="border:1px solid rgba(196,162,101,0.15);padding:10px">
+        <div style="color:#c4a265;font-size:1rem;font-weight:700">Диплом</div>
+        <div style="color:rgba(255,255,255,0.3);font-size:0.55rem">гос. образца</div>
+      </div>
+    </div>
+    <button onclick="openAcadPopup()" style="background:linear-gradient(90deg,#c4a265,#e8c88c);border:none;padding:10px 20px;font-size:0.7rem;color:#0a0805;font-weight:700;letter-spacing:0.15em;cursor:pointer">ЗАПИСАТЬСЯ НА КУРС</button>
+  </div>
+
+  <!-- Попап -->
+  <div id="popup-acad" style="display:none;position:absolute;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(6px);z-index:10;align-items:center;justify-content:center">
+    <div style="background:#12100d;border:1px solid rgba(196,162,101,0.25);padding:28px;width:300px;position:relative">
+      <button onclick="closeAcadPopup()" style="position:absolute;top:12px;right:14px;background:none;border:none;color:rgba(255,255,255,0.3);font-size:1rem;cursor:pointer">✕</button>
+
+      <div style="color:#c4a265;font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:4px">Академия Agent Permanent</div>
+      <div style="font-family:serif;font-size:1.1rem;color:white;margin-bottom:16px">Хочу учиться у Арины</div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+        <input placeholder="Ваше имя" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:10px 12px;color:white;font-size:0.75rem;outline:none">
+        <input placeholder="+7 (___) ___-__-__" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:10px 12px;color:white;font-size:0.75rem;outline:none">
+        <select style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:10px 12px;color:rgba(255,255,255,0.5);font-size:0.75rem;outline:none">
+          <option>Выберите курс</option>
+          <option>Базовый курс ПМ — брови, губы, межресничка</option>
+          <option>Курс бровиста</option>
+          <option>Курс ламимейкера</option>
+          <option>Тренерский курс</option>
+        </select>
+        <select style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:10px 12px;color:rgba(255,255,255,0.5);font-size:0.75rem;outline:none">
+          <option>Удобный формат</option>
+          <option>Очно · Москва</option>
+          <option>Онлайн</option>
+          <option>Индивидуально</option>
+        </select>
+      </div>
+
+      <button style="width:100%;background:linear-gradient(90deg,#c4a265,#e8c88c);border:none;padding:12px;font-size:0.7rem;color:#0a0805;font-weight:700;letter-spacing:0.2em;cursor:pointer;margin-bottom:10px">ХОЧУ УЧИТЬСЯ</button>
+
+      <div style="color:rgba(255,255,255,0.2);font-size:0.58rem;text-align:center;margin-bottom:10px">Арина или менеджер свяжутся с вами в течение часа</div>
+
+      <div style="display:flex;gap:8px">
+        <div style="flex:1;background:#25D366;padding:7px;text-align:center;font-size:0.6rem;color:white;font-weight:600;cursor:pointer">WhatsApp</div>
+        <div style="flex:1;background:#229ED9;padding:7px;text-align:center;font-size:0.6rem;color:white;font-weight:600;cursor:pointer">Telegram</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openAcadPopup(){
+  document.getElementById('popup-acad').style.display='flex';
+  document.getElementById('site-bg2').style.filter='blur(2px)';
+}
+function closeAcadPopup(){
+  document.getElementById('popup-acad').style.display='none';
+  document.getElementById('site-bg2').style.filter='none';
+}
+</script>
+
+<p class="subtitle" style="margin-top:16px">Нажми «ЗАПИСАТЬСЯ НА КУРС» выше чтобы увидеть попап</p>

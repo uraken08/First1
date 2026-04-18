@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Variants — Agent Permanent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=DM+Serif+Display:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jost:wght@200;300;400;700&family=Forum&family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #C4A265; --gold-l: #D4BA85;
+  --bg: #08080A; --bg-w: #15120D; --bg-c: #111113;
+  --t1: #F2EDE7; --t2: rgba(242,237,231,0.52); --t3: rgba(242,237,231,0.25);
+  --border: rgba(196,162,101,0.12);
+}
+html { background: var(--bg); color: var(--t1); font-size: 16px; }
+body { max-width: 1300px; margin: 0 auto; padding: 56px 48px 120px; }
+
+/* grain */
+html::after {
+  content: ''; position: fixed; inset: 0; z-index: 999; pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px;
+}
+
+/* page header */
+.ph-eyebrow {
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+}
+.ph-eyebrow::before { content:''; width:28px; height:1px; background:var(--gold); }
+.ph-title { font-family: 'Italiana', serif; font-size: clamp(2rem,3.5vw,3.2rem); color: var(--t1); margin-bottom: 8px; }
+.ph-sub { font-family: 'Raleway', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--t2); line-height: 1.6; margin-bottom: 72px; }
+
+/* variant container */
+.variant {
+  margin-bottom: 0;
+  border-top: 1px solid var(--border);
+  padding: 64px 0;
+}
+.variant:last-of-type { border-bottom: 1px solid var(--border); }
+
+.v-meta {
+  display: flex; align-items: baseline; gap: 20px; margin-bottom: 40px;
+}
+.v-num { font-family: 'Italiana', serif; font-size: 3rem; color: rgba(196,162,101,0.18); line-height: 1; }
+.v-badge {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px;
+  background: rgba(196,162,101,0.1); color: var(--gold); border: 1px solid rgba(196,162,101,0.25);
+}
+.v-name { font-size: 0.88rem; font-weight: 500; color: var(--t1); }
+.v-desc { font-size: 0.78rem; font-weight: 300; color: var(--t2); margin-top: 2px; line-height: 1.5; }
+
+/* the preview card itself */
+.preview-card {
+  background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 45%, #1a1208 100%);
+  border: 1px solid rgba(196,162,101,0.15);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* nav strip */
+.preview-nav {
+  padding: 16px 40px;
+  border-bottom: 1px solid rgba(196,162,101,0.08);
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(8,8,10,0.5);
+}
+.preview-nav-logo { font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+.preview-nav-links { display: flex; gap: 20px; }
+.preview-nav-links span { font-family: 'Raleway', sans-serif; font-size: 9px; color: var(--t3); letter-spacing: 0.1em; }
+.preview-nav-cta { font-family: 'Raleway', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; color: #08080A; background: var(--gold); padding: 6px 14px; border-radius: 24px; }
+
+/* content area */
+.preview-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  padding: 48px 40px;
+}
+.preview-left {}
+.preview-right {
+  border-left: 1px solid rgba(196,162,101,0.08);
+  padding-left: 48px;
+}
+
+/* shared text styles */
+.p-eyebrow {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+}
+.p-eyebrow::before { content:''; width:24px; height:1px; background:var(--gold); flex-shrink:0; }
+
+.p-h1 { line-height: 1.0; margin-bottom: 16px; }
+.p-sub { font-size: 0.82rem; font-weight: 300; line-height: 1.75; color: var(--t2); margin-bottom: 20px; }
+.p-small { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--t3); margin-bottom: 20px; }
+
+.p-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.p-btn {
+  display: inline-flex; align-items: center; padding: 11px 22px; border-radius: 50px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-l));
+  font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; color: #08080A; border: none; cursor: default;
+}
+.p-btn-g {
+  display: inline-flex; align-items: center; padding: 11px 22px; border-radius: 50px;
+  border: 1px solid rgba(196,162,101,0.3); font-family: 'Raleway', sans-serif;
+  font-size: 10px; letter-spacing: 0.08em; color: var(--gold); cursor: default;
+}
+
+/* stat strip */
+.p-stats {
+  display: flex; gap: 0;
+  border-top: 1px solid rgba(196,162,101,0.12);
+  padding-top: 20px; margin-top: 20px;
+}
+.p-stat { padding-right: 24px; margin-right: 24px; border-right: 1px solid rgba(196,162,101,0.08); }
+.p-stat:last-child { border: none; }
+.p-stat-n { font-family: 'Jost', sans-serif; font-size: 1.4rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 3px; }
+.p-stat-l { font-size: 7px; color: var(--t3); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* service list */
+.p-svc { margin-top: 8px; }
+.p-svc-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 10px 0; border-top: 1px solid rgba(196,162,101,0.07);
+  gap: 16px;
+}
+.p-svc-row:last-child { border-bottom: 1px solid rgba(196,162,101,0.07); }
+.p-svc-name { font-size: 13px; color: var(--t1); }
+.p-svc-price { font-size: 11px; color: var(--gold); white-space: nowrap; }
+.p-svc-num { font-size: 1.1rem; color: rgba(196,162,101,0.18); width: 20px; flex-shrink: 0; }
+
+/* section head */
+.p-section-eyebrow {
+  font-size: 8px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px;
+}
+.p-section-title { line-height: 1.1; margin-bottom: 10px; }
+.p-section-sub { font-size: 0.75rem; color: var(--t2); font-weight: 300; line-height: 1.6; margin-bottom: 16px; }
+
+/* quote */
+.p-quote { font-size: 0.82rem; font-style: italic; color: var(--t2); line-height: 1.7; font-weight: 300; }
+
+/* tag pills */
+.p-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.p-tag { font-family: 'Raleway', sans-serif; font-size: 8px; font-weight: 500; letter-spacing: 0.1em; padding: 5px 10px; border-radius: 24px; border: 1px solid rgba(196,162,101,0.2); color: rgba(196,162,101,0.65); }
+
+/* ════════════════════════════════════
+   CURRENT — Italiana + Raleway
+   ════════════════════════════════════ */
+.f-italiana .p-h1    { font-family: 'Italiana', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); color: var(--t1); font-weight: 400; }
+.f-italiana .p-svc-name { font-family: 'Italiana', serif; }
+.f-italiana .p-section-title { font-family: 'Italiana', serif; font-size: 1.5rem; color: var(--t1); font-weight: 400; }
+.f-italiana .p-svc-num { font-family: 'Italiana', serif; }
+.f-italiana .p-quote { font-family: 'Raleway', sans-serif; }
+.f-italiana .preview-nav-logo { font-family: 'Italiana', serif; font-size: 13px; letter-spacing: 0.1em; font-weight: 400; }
+
+/* ════════════════════════════════════
+   VARIANT A — Cormorant Garamond + Raleway
+   ════════════════════════════════════ */
+.f-cormorant .p-h1    { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.6rem); color: var(--t1); font-weight: 300; letter-spacing: 0.03em; }
+.f-cormorant .p-h1 em { font-style: italic; color: var(--gold); }
+.f-cormorant .p-svc-name { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 400; }
+.f-cormorant .p-section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; color: var(--t1); font-weight: 300; }
+.f-cormorant .p-svc-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; }
+.f-cormorant .p-quote { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-weight: 300; }
+.f-cormorant .preview-nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 0.15em; font-weight: 400; }
+
+/* ════════════════════════════════════
+   VARIANT B — Playfair Display + Raleway
+   ════════════════════════════════════ */
+.f-playfair .p-h1    { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); color: var(--t1); font-weight: 400; }
+.f-playfair .p-h1 em { font-style: italic; color: var(--gold); }
+.f-playfair .p-svc-name { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 400; }
+.f-playfair .p-section-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--t1); font-weight: 400; }
+.f-playfair .p-svc-num { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 400; }
+.f-playfair .p-quote { font-family: 'Playfair Display', serif; font-size: 0.88rem; font-weight: 400; font-style: italic; }
+.f-playfair .preview-nav-logo { font-family: 'Playfair Display', serif; font-size: 13px; letter-spacing: 0.1em; }
+
+/* ════════════════════════════════════
+   VARIANT C — DM Serif Display + Raleway
+   ════════════════════════════════════ */
+.f-dm .p-h1    { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 3.2vw, 3rem); color: var(--t1); font-weight: 400; }
+.f-dm .p-h1 em { font-style: italic; color: var(--gold); }
+.f-dm .p-svc-name { font-family: 'DM Serif Display', serif; font-size: 14px; }
+.f-dm .p-section-title { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--t1); }
+.f-dm .p-svc-num { font-family: 'DM Serif Display', serif; font-size: 1.3rem; }
+.f-dm .p-quote { font-family: 'DM Serif Display', serif; font-size: 0.88rem; font-style: italic; }
+.f-dm .preview-nav-logo { font-family: 'DM Serif Display', serif; font-size: 13px; letter-spacing: 0.08em; }
+
+/* ════════════════════════════════════
+   VARIANT D — EB Garamond + Raleway
+   ════════════════════════════════════ */
+.f-garamond .p-h1    { font-family: 'EB Garamond', serif; font-size: clamp(2.2rem, 3.8vw, 3.5rem); color: var(--t1); font-weight: 400; letter-spacing: 0.02em; }
+.f-garamond .p-h1 em { font-style: italic; color: var(--gold); }
+.f-garamond .p-svc-name { font-family: 'EB Garamond', serif; font-size: 15px; font-weight: 400; }
+.f-garamond .p-section-title { font-family: 'EB Garamond', serif; font-size: 1.6rem; color: var(--t1); font-weight: 400; }
+.f-garamond .p-svc-num { font-family: 'EB Garamond', serif; font-size: 1.4rem; }
+.f-garamond .p-quote { font-family: 'EB Garamond', serif; font-size: 0.95rem; }
+.f-garamond .preview-nav-logo { font-family: 'EB Garamond', serif; font-size: 15px; letter-spacing: 0.1em; }
+
+/* ════════════════════════════════════
+   VARIANT E — Forum + Raleway
+   ════════════════════════════════════ */
+.f-forum .p-h1    { font-family: 'Forum', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); color: var(--t1); font-weight: 400; letter-spacing: 0.04em; }
+.f-forum .p-h1 em { font-style: normal; color: var(--gold); }
+.f-forum .p-svc-name { font-family: 'Forum', serif; font-size: 14px; letter-spacing: 0.03em; }
+.f-forum .p-section-title { font-family: 'Forum', serif; font-size: 1.5rem; color: var(--t1); letter-spacing: 0.04em; }
+.f-forum .p-svc-num { font-family: 'Forum', serif; font-size: 1.3rem; }
+.f-forum .p-quote { font-family: 'Forum', serif; font-size: 0.9rem; }
+.f-forum .preview-nav-logo { font-family: 'Forum', serif; font-size: 13px; letter-spacing: 0.18em; }
+
+@media (max-width: 768px) {
+  body { padding: 32px 20px 80px; }
+  .preview-body { grid-template-columns: 1fr; gap: 32px; }
+  .preview-right { border-left: none; border-top: 1px solid rgba(196,162,101,0.08); padding-left: 0; padding-top: 32px; }
+}
+</style>
+</head>
+<body>
+
+<div class="ph-eyebrow">Agent Permanent · Шрифты</div>
+<h1 class="ph-title">Варианты шрифтов</h1>
+<p class="ph-sub">Каждый вариант показан на реальном контексте — заголовок, список услуг, секция, цитата. Шрифт тела (Raleway) остаётся во всех вариантах — меняется только серифный дисплейный.</p>
+
+<!-- ══ CURRENT ══════════════════════════════════════ -->
+<div class="variant f-italiana">
+  <div class="v-meta">
+    <div class="v-num">00</div>
+    <div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
+        <div class="v-name">Italiana — текущий</div>
+        <span class="v-badge">Сейчас</span>
+      </div>
+      <div class="v-desc">Редкая, узнаваемая. Создаёт очень сильный характер. Минус — работает лучше на крупных размерах, на мелком теряет читаемость.</div>
+    </div>
+  </div>
+  <div class="preview-card">
+    <div class="preview-nav">
+      <div class="preview-nav-logo">AGENT PERMANENT</div>
+      <div class="preview-nav-links"><span>Студия</span><span>Академия</span><span>Портфолио</span></div>
+      <span class="preview-nav-cta">Записаться</span>
+    </div>
+    <div class="preview-body">
+      <div class="preview-left">
+        <div class="p-eyebrow">Академия · Мастер ПМ</div>
+        <h1 class="p-h1">Мастер перманентного макияжа</h1>
+        <p class="p-sub">Полный курс от Арины Шараповой. 250+ выпускниц. Диплом государственного образца. Поддержка навсегда.</p>
+        <div class="p-stats">
+          <div class="p-stat"><div class="p-stat-n">250+</div><div class="p-stat-l">выпускниц</div></div>
+          <div class="p-stat"><div class="p-stat-n">14+4</div><div class="p-stat-l">дня</div></div>
+          <div class="p-stat"><div class="p-stat-n">7</div><div class="p-stat-l">моделей</div></div>
+        </div>
+        <div class="p-btns" style="margin-top:20px">
+          <span class="p-btn">Узнать дату и стоимость</span>
+          <span class="p-btn-g">Программа курса</span>
+        </div>
+      </div>
+      <div class="preview-right">
+        <div class="p-section-eyebrow">Услуги студии</div>
+        <h2 class="p-section-title">Перманентный<br>макияж</h2>
+        <div class="p-svc">
+          <div class="p-svc-row"><span class="p-svc-num">01</span><span class="p-svc-name">Перманент бровей</span><span class="p-svc-price">от 8 000 ₽</span></div>
+          <div class="p-svc-row"><span class="p-svc-num">02</span><span class="p-svc-name">Перманент губ</span><span class="p-svc-price">от 9 000 ₽</span></div>
+          <div class="p-svc-row"><span class="p-svc-num">03</span><span class="p-svc-name">Межресничная линия</span><span class="p-svc-price">от 6 000 ₽</span></div>
+        </div>
+        <p class="p-quote" style="margin-top:16px">«Делала брови у Арины — очень довольна результатом. Форма идеально подходит моему лицу.»</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ A — CORMORANT GARAMOND ══════════════════════ -->
+<div class="variant f-cormorant">
+  <div class="v-meta">
+    <div class="v-num">A</div>
+    <div>
+      <div class="v-name">Cormorant Garamond</div>
+      <div class="v-desc">Элегантнее Italiana, лучше работает на всех размерах. Тонкие засечки, аристократичность. Часто используется в haute couture. Курсив особенно красивый.</div>
+    </div>
+  </div>
+  <div class="preview-card">
+    <div class="preview-nav">
+      <div class="preview-nav-logo">AGENT PERMANENT</div>
+      <div class="preview-nav-links"><span>Студия</span><span>Академия</span><span>Портфолио</span></div>
+      <span class="preview-nav-cta">Записаться</span>
+    </div>
+    <div class="preview-body">
+      <div class="preview-left">
+        <div class="p-eyebrow">Академия · Мастер ПМ</div>
+        <h1 class="p-h1">Мастер перманентного<br><em>макияжа</em></h1>
+        <p class="p-sub">Полный курс от Арины Шараповой. 250+ выпускниц. Диплом государственного образца. Поддержка навсегда.</p>
+        <div class="p-stats">
+          <div class="p-stat"><div class="p-stat-n">250+</div><div class="p-stat-l">выпускниц</div></div>
+          <div class="p-stat"><div class="p-stat-n">14+4</div><div class="p-stat-l">дня</div></div>
+          <div class="p-stat"><div class="p-stat-n">7</div><div class="p-stat-l">моделей</div></div>
+        </div>
+        <div class="p-btns" style="margin-top:20px">
+          <span class="p-btn">Узнать дату и стоимость</span>
+          <span class="p-btn-g">Программа курса</span>
+        </div>
+      </div>
+      <div class="preview-right">
+        <div class="p-section-eyebrow">Услуги студии</div>
+        <h2 class="p-section-title">Перманентный<br>макияж</h2>
+        <div class="p-svc">
+          <div class="p-svc-row"><span class="p-svc-num">01</span><span class="p-svc-name">Перманент бровей</span><span class="p-svc-price">от 8 000 ₽</span></div>
+          <div class="p-svc-row"><span class="p-svc-num">02</span><span class="p-svc-name">Перманент губ</span><span class="p-svc-price">от 9 000 ₽</span></div>
+          <div class="p-svc-row"><span class="p-svc-num">03</span><span class="p-svc-name">Межресничная линия</span><span class="p-svc-price">от 6 000 ₽</span></div>
+        </div>
+        <p class="p-quote" style="margin-top:16px">«Делала брови у Арины — очень довольна результатом. Форма идеально подходит моему лицу.»</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ B — PLAYFAIR DISPLAY ════════════════════════ -->
+<div class="variant f-playfair">
+  <div class="v-meta">
+    <div class="v-num">B</div>
+    <div>
+      <div class="v-name">Playfair Display</div>
+      <div class="v-desc">Контрастные засечки, отлично читается на тёмном фоне. Более широкий, солидный. Популярен в premium beauty, Vogue-стилистика.</div>
+    </div>
+  </div>
+  <div class="preview-card">
+    <div class="preview-nav">
+      <div class="preview-nav-logo">AGENT PERMANENT</div>
+      <div class="preview-nav-links"><span>Студия</span><span>Академия</span><span>Портфолио</span></div>
+      <span class="preview-nav-cta">Записаться</span>
+    </div>
+    <div class="preview-body">
+      <div class="preview-left">
+        <div class="p-eyebrow">Академия · Мастер ПМ</div>
+        <h1 class="p-h1">Мастер перманентного<br><em>макияжа</em></h1>
+        <p class="p-sub">Полный курс от Арины Шараповой. 250+ выпускниц. Диплом государственного образца. Поддержка навсегда.</p>
+        <div class="p-stats">
+          <div class="p-stat"><div class="p-stat-n">250+</div><div class="p-stat-l">выпускниц</div></div>
+          <div class="p-stat"><div class="p-stat-n">14+4</div><div class="p-stat-l">дня</div></div>
+          <div class="p-stat"><div class="p-stat-n">7</div><div class="p-stat-l">моделей</div></div>
+        </div>
+        <div class="p-btns" style="margin-top:20px">
+          <span class="p-btn">Узнать дату и стоимость</span>
+          <span class="p-btn-g">Программа курса</span>
+        </div>
+      </div>
+      <div class="preview-right">
+        <div class="p-section-eyebrow">Услуги студии</div>
+        <h2 class="p-section-title">Перманентный<br>макияж</h2>
+        <div class="p-svc">
+          <div class="p-svc-row"><span class="p-svc-num">01</span><span class="p-svc-name">Перманент бровей</span><span class="p-svc-price">от 8 000 ₽</span></div>
+          <div class="p-svc-row"><span class="p-svc-num">02</span><span class="p-svc-name">Перманент губ</span><span class="p-svc-price">от 9 000 ₽</span></div>
+          <div class="p-svc-row"><span class="p-svc-num">03</span><span class="p-svc-name">Межресничная линия</span><span class="p-svc-price">от 6 000 ₽</span></div>
+        </div>
+        <p class="p-quote" style="margin-top:16px">«Делала брови у Арины — очень довольна результатом. Форма идеально подходит моему лицу.»</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ C — DM SERIF DISPLAY ═══════════════════════ -->
+<div class="variant f-dm">
+  <div class="v-meta">
+    <div class="v-num">C</div>
+    <div>
+      <div class="v-name">DM Serif Display</div>
+      <div class="v-desc">Современная интерпретация классической антиквы. Более геометричный, уверенный. Хорошо работает в цифровых продуктах premium сегмента.</div>
+    </div>
+  </div>
+  <div class="preview-card">
+    <div class="preview-nav">
+      <div class="preview-nav-logo">AGENT PERMANENT</div>
+      <div class="preview-nav-links"><span>Студия</span><span>Академия</span><span>Портфолио</span></div>
+      <span class="preview-nav-cta">Записаться</span>
+    </div>
+    <div class="preview-body">
+      <div class="preview-left">
+        <div class="p-eyebrow">Академия · Мастер ПМ</div>
+        <h1 class="p-h1">Мастер перманентного<br><em>макияжа</em></h1>
+        <p class="p-sub">Полный курс от Арины Шараповой. 250+ выпускниц. Диплом государственного образца. Поддержка навсегда.</p>
+        <div class="p-stats">
+          <div class="p-stat"><div class="p-stat-n">250+</div><div class="p-stat-l">выпускниц</div></div>
+          <div class="p-stat"><div class="p-stat-n">14+4</div><div class="p-stat-l">дня</div></div>
+          <div class="p-stat"><div class="p-stat-n">7</div><div class="p-stat-l">моделей</div></div>
+        </div>
+        <div class="p-btns" style="margin-top:20px">
+          <span class="p-btn">Узнать дату и стоимость</span>
+          <span class="p-btn-g">Программа курса</span>
+        </div>
+      </div>
+      <div class="preview-right">
+        <div class="p-section-eyebrow">Услуги студии</div>
+        <h2 class="p-section-title">Перманентный<br>макияж</h2>
+        <div class="p-svc">
+          <div class="p-svc-row"><span class="p-svc-num">01</span><span class="p-svc-name">Перманент бровей</span><span class="p-svc-price">от 8 000 ₽</span></div>
+          <div class="p-svc-row"><span class="p-svc-num">02</span><span class="p-svc-name">Перманент губ</span><span class="p-svc-price">от 9 000 ₽</span></div>
+          <div class="p-svc-row"><span class="p-svc-num">03</span><span class="p-svc-name">Межресничная линия</span><span class="p-svc-price">от 6 000 ₽</span></div>
+        </div>
+        <p class="p-quote" style="margin-top:16px">«Делала брови у Арины — очень довольна результатом. Форма идеально подходит моему лицу.»</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ D — EB GARAMOND ════════════════════════════ -->
+<div class="variant f-garamond">
+  <div class="v-meta">
+    <div class="v-num">D</div>
+    <div>
+      <div class="v-name">EB Garamond</div>
+      <div class="v-desc">Классическая книжная антиква с историей с 16 века. Очень органичный, «живой». Хорошо передаёт авторский характер и мастерство — в отличие от безликих шрифтов.</div>
+    </div>
+  </div>
+  <div class="preview-card">
+    <div class="preview-nav">
+      <div class="preview-nav-logo">AGENT PERMANENT</div>
+      <div class="preview-nav-links"><span>Студия</span><span>Академия</span><span>Портфолио</span></div>
+      <span class="preview-nav-cta">Записаться</span>
+    </div>
+    <div class="preview-body">
+      <div class="preview-left">
+        <div class="p-eyebrow">Академия · Мастер ПМ</div>
+        <h1 class="p-h1">Мастер перманентного<br><em>макияжа</em></h1>
+        <p class="p-sub">Полный курс от Арины Шараповой. 250+ выпускниц. Диплом государственного образца. Поддержка навсегда.</p>
+        <div class="p-stats">
+          <div class="p-stat"><div class="p-stat-n">250+</div><div class="p-stat-l">выпускниц</div></div>
+          <div class="p-stat"><div class="p-stat-n">14+4</div><div class="p-stat-l">дня</div></div>
+          <div class="p-stat"><div class="p-stat-n">7</div><div class="p-stat-l">моделей</div></div>
+        </div>
+        <div class="p-btns" style="margin-top:20px">
+          <span class="p-btn">Узнать дату и стоимость</span>
+          <span class="p-btn-g">Программа курса</span>
+        </div>
+      </div>
+      <div class="preview-right">
+        <div class="p-section-eyebrow">Услуги студии</div>
+        <h2 class="p-section-title">Перманентный<br>макияж</h2>
+        <div class="p-svc">
+          <div class="p-svc-row"><span class="p-svc-num">01</span><span class="p-svc-name">Перманент бровей</span><span class="p-svc-price">от 8 000 ₽</span></div>
+          <div class="p-svc-row"><span class="p-svc-num">02</span><span class="p-svc-name">Перманент губ</span><span class="p-svc-price">от 9 000 ₽</span></div>
+          <div class="p-svc-row"><span class="p-svc-num">03</span><span class="p-svc-name">Межресничная линия</span><span class="p-svc-price">от 6 000 ₽</span></div>
+        </div>
+        <p class="p-quote" style="margin-top:16px">«Делала брови у Арины — очень довольна результатом. Форма идеально подходит моему лицу.»</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ E — FORUM ═══════════════════════════════════ -->
+<div class="variant f-forum">
+  <div class="v-meta">
+    <div class="v-num">E</div>
+    <div>
+      <div class="v-name">Forum</div>
+      <div class="v-desc">Редкий — вдохновлён надписями на античных колоннах. Прямой, без курсива, заглавные особенно сильные. Создаёт ощущение вечности и монументальности. Нестандартный выбор.</div>
+    </div>
+  </div>
+  <div class="preview-card">
+    <div class="preview-nav">
+      <div class="preview-nav-logo">AGENT PERMANENT</div>
+      <div class="preview-nav-links"><span>Студия</span><span>Академия</span><span>Портфолио</span></div>
+      <span class="preview-nav-cta">Записаться</span>
+    </div>
+    <div class="preview-body">
+      <div class="preview-left">
+        <div class="p-eyebrow">Академия · Мастер ПМ</div>
+        <h1 class="p-h1">Мастер перманентного <em>макияжа</em></h1>
+        <p class="p-sub">Полный курс от Арины Шараповой. 250+ выпускниц. Диплом государственного образца. Поддержка навсегда.</p>
+        <div class="p-stats">
+          <div class="p-stat"><div class="p-stat-n">250+</div><div class="p-stat-l">выпускниц</div></div>
+          <div class="p-stat"><div class="p-stat-n">14+4</div><div class="p-stat-l">дня</div></div>
+          <div class="p-stat"><div class="p-stat-n">7</div><div class="p-stat-l">моделей</div></div>
+        </div>
+        <div class="p-btns" style="margin-top:20px">
+          <span class="p-btn">Узнать дату и стоимость</span>
+          <span class="p-btn-g">Программа курса</span>
+        </div>
+      </div>
+      <div class="preview-right">
+        <div class="p-section-eyebrow">Услуги студии</div>
+        <h2 class="p-section-title">Перманентный макияж</h2>
+        <div class="p-svc">
+          <div class="p-svc-row"><span class="p-svc-num">01</span><span class="p-svc-name">Перманент бровей</span><span class="p-svc-price">от 8 000 ₽</span></div>
+          <div class="p-svc-row"><span class="p-svc-num">02</span><span class="p-svc-name">Перманент губ</span><span class="p-svc-price">от 9 000 ₽</span></div>
+          <div class="p-svc-row"><span class="p-svc-num">03</span><span class="p-svc-name">Межресничная линия</span><span class="p-svc-price">от 6 000 ₽</span></div>
+        </div>
+        <p class="p-quote" style="margin-top:16px">«Делала брови у Арины — очень довольна результатом. Форма идеально подходит моему лицу.»</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center;padding-top:56px;border-top:1px solid rgba(196,162,101,0.08)">
+  <div style="font-family:'Italiana',serif;font-size:1.2rem;color:rgba(196,162,101,0.3)">Назови букву — переведу весь сайт на этот шрифт</div>
+</div>
+
+</body>
+</html>

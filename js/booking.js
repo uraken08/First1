@@ -330,6 +330,29 @@ function injectPopup() {
   });
 }
 
+/* ── Phone input helper ───────────────────────────────────── */
+function initPhoneInput(input) {
+  if (!input.value) input.value = '+7 ';
+  function positionAfterCode() {
+    if (input.value === '+7 ' || input.value === '+7') {
+      const pos = input.value.length;
+      setTimeout(function() { input.setSelectionRange(pos, pos); }, 0);
+    }
+  }
+  input.addEventListener('focus', positionAfterCode);
+  input.addEventListener('click', positionAfterCode);
+}
+
+function initAllPhoneInputs() {
+  document.querySelectorAll('[type="tel"]').forEach(initPhoneInput);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAllPhoneInputs);
+} else {
+  initAllPhoneInputs();
+}
+
 /* ── Escape handler (stored so we can remove it on close) ─── */
 function _apEscHandler(e) {
   if (e.key === 'Escape') closeBookingPopup();
@@ -354,6 +377,10 @@ window.openBookingPopup = function (source) {
   document.getElementById('ap-popup-form').reset();
   document.getElementById('ap-popup-status').textContent = '';
   document.getElementById('ap-popup-btn').disabled       = false;
+
+  /* Init phone field */
+  const phoneField = document.getElementById('ap-popup-phone');
+  if (phoneField) initPhoneInput(phoneField);
 
   /* Save source for form handler */
   overlay.dataset.source = source || 'сайт';
