@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Sub — Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Raleway:wght@200;300;400;500;600;700&family=Jost:wght@200;300;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C4A265;
+  --text:#F2EDE7;
+}
+
+html::after{
+  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0.05;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:160px;
+}
+
+body{ font-family:'Raleway',sans-serif; color:var(--text); }
+
+/* ── NAV ── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex; background:rgba(10,8,5,0.9);
+  border-bottom:1px solid rgba(196,162,101,0.1);
+  backdrop-filter:blur(12px);
+}
+.nav a{
+  flex:1;text-align:center;padding:14px 8px;
+  font-size:0.62rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;
+  text-decoration:none;color:rgba(196,162,101,0.5);
+  border-right:1px solid rgba(196,162,101,0.08);
+  transition:color 0.2s,background 0.2s;
+}
+.nav a:last-child{border-right:none}
+.nav a:hover,.nav a.active{color:var(--gold);background:rgba(196,162,101,0.04)}
+
+/* ── HERO BASE ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:100px 0 80px;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#0d0a05 0%,#1a1208 30%,#1e160a 55%,#1a1208 80%,#0d0a05 100%);
+}
+.hero-inner{
+  position:relative;z-index:3;
+  width:100%;padding:0 48px;max-width:1400px;margin:0 auto;
+}
+.hero-stan{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.8rem,5vw,5.5rem);
+  font-weight:300;font-style:italic;
+  color:var(--gold);line-height:0.9;letter-spacing:0.01em;
+  display:block;margin-bottom:4px;
+}
+.hero-h1{
+  font-family:'Italiana',serif;
+  font-size:clamp(2.6rem,4.5vw,4.8rem);
+  font-weight:400;line-height:1;
+  color:var(--text);letter-spacing:0.02em;
+  margin-bottom:40px;
+}
+
+
+/* ══════════════════════════════════
+   ТЕКУЩИЙ вариант (pill)
+══════════════════════════════════ */
+.current-sub{
+  font-family:'Raleway',sans-serif;
+  font-size:clamp(1.23rem,1.8vw,1.43rem);
+  font-weight:400;letter-spacing:0.02em;
+  color:rgba(242,237,231,0.95);
+  display:inline-block;
+  padding:14px 28px;
+  border-radius:6px;
+  border:1px solid rgba(196,162,101,0.5);
+  background:rgba(196,162,101,0.12);
+  backdrop-filter:blur(4px);
+  margin-bottom:40px;
+  position:relative;line-height:1.5;
+}
+.current-sub::before{
+  content:'';position:absolute;top:0;left:28px;right:28px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(196,162,101,0.4),transparent);
+}
+
+
+/* ══════════════════════════════════
+   ВАРИАНТ А — Editorial Drop
+══════════════════════════════════ */
+.editorial-sub{
+  display:flex;flex-direction:column;
+  align-items:flex-start;
+  gap:0;
+  margin-bottom:40px;
+}
+.editorial-sub-label{
+  font-family:'Raleway',sans-serif;
+  font-size:clamp(0.68rem,1vw,0.82rem);
+  font-weight:500;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:rgba(196,162,101,0.55);
+  line-height:1;
+  margin-bottom:12px;
+}
+.editorial-sub-num{
+  font-family:'Italiana',serif;
+  font-size:clamp(5rem,11vw,11rem);
+  font-weight:400;
+  color:var(--gold);
+  line-height:0.85;
+  letter-spacing:-0.02em;
+  position:relative;
+}
+.editorial-sub-num sup{
+  font-family:'Raleway',sans-serif;
+  font-size:0.22em;
+  font-weight:300;
+  letter-spacing:0.08em;
+  vertical-align:super;
+  color:rgba(196,162,101,0.65);
+  margin-left:4px;
+}
+.editorial-sub-caption{
+  font-family:'Raleway',sans-serif;
+  font-size:clamp(0.75rem,1.1vw,0.9rem);
+  font-weight:300;
+  letter-spacing:0.12em;
+  color:rgba(242,237,231,0.4);
+  text-transform:uppercase;
+  margin-top:10px;
+}
+
+
+/* ══════════════════════════════════
+   ВАРИАНТ Б — Cascade
+══════════════════════════════════ */
+.cascade-sub{
+  display:flex;flex-direction:column;
+  align-items:flex-start;
+  gap:4px;
+  margin-bottom:40px;
+}
+.cascade-line1{
+  font-family:'Raleway',sans-serif;
+  font-size:clamp(1rem,1.5vw,1.25rem);
+  font-weight:300;
+  color:rgba(242,237,231,0.6);
+  letter-spacing:0.06em;
+  line-height:1.55;
+}
+.cascade-line2{
+  font-family:'Raleway',sans-serif;
+  font-size:clamp(1rem,1.5vw,1.25rem);
+  font-weight:300;
+  color:rgba(242,237,231,0.6);
+  letter-spacing:0.06em;
+  line-height:1.55;
+}
+.cascade-num{
+  font-family:'Italiana',serif;
+  font-size:clamp(4.5rem,9vw,9rem);
+  font-weight:400;
+  color:var(--text);
+  line-height:0.88;
+  letter-spacing:-0.01em;
+}
+.cascade-num em{
+  font-style:normal;
+  font-family:'Raleway',sans-serif;
+  font-size:0.25em;
+  font-weight:300;
+  color:rgba(242,237,231,0.5);
+  letter-spacing:0.1em;
+  vertical-align:middle;
+  margin-left:6px;
+}
+
+
+/* ══════════════════════════════════
+   META (одинаковый для всех)
+══════════════════════════════════ */
+.hero-meta{
+  display:grid;grid-template-columns:repeat(4,auto);
+  width:fit-content;gap:0;
+  border-top:1px solid rgba(196,162,101,0.15);
+  padding-top:28px;align-items:flex-start;
+}
+.hero-meta-item{
+  display:flex;flex-direction:column;gap:6px;
+  padding-right:40px;align-items:center;text-align:center;
+}
+.hero-meta-item:not(:last-child){
+  border-right:1px solid rgba(196,162,101,0.12);
+  margin-right:40px;
+}
+.hero-meta-num{
+  font-family:'Jost',sans-serif;
+  font-size:2.6rem;font-weight:700;
+  color:var(--gold);line-height:1;
+}
+.hero-meta-label{
+  font-size:0.88rem;color:rgba(242,237,231,0.5);
+  letter-spacing:0.02em;font-weight:300;line-height:1.4;
+}
+
+/* ══════════════════════════════════
+   ВАРИАНТ В — Inline Burst
+══════════════════════════════════ */
+.burst-sub{
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:0 14px;
+  margin-bottom:40px;
+  line-height:1;
+}
+.burst-text{
+  font-family:'Raleway',sans-serif;
+  font-size:clamp(1rem,1.4vw,1.2rem);
+  font-weight:300;
+  color:rgba(242,237,231,0.55);
+  letter-spacing:0.05em;
+  line-height:1.6;
+}
+.burst-num{
+  font-family:'Italiana',serif;
+  font-size:clamp(4rem,8.5vw,9rem);
+  font-weight:400;
+  color:var(--gold);
+  line-height:0.85;
+  letter-spacing:-0.02em;
+  position:relative;
+  top:0.08em;
+}
+.burst-num-sign{
+  font-family:'Raleway',sans-serif;
+  font-size:0.22em;
+  font-weight:300;
+  color:rgba(196,162,101,0.6);
+  letter-spacing:0.05em;
+  vertical-align:super;
+}
+
+/* ── section label ── */
+.section-label{
+  position:absolute;top:80px;left:48px;
+  font-size:0.58rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;
+  color:rgba(196,162,101,0.22);
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#current" class="active">Текущий</a>
+  <a href="#varA">А — Editorial Drop</a>
+  <a href="#varB">Б — Cascade</a>
+  <a href="#varC">В — Inline Burst</a>
+</nav>
+
+
+<!-- ══ ТЕКУЩИЙ ══ -->
+<section class="hero" id="current">
+  <div class="hero-bg"></div>
+  <div class="section-label">Текущий вариант — pill</div>
+  <div class="hero-inner">
+    <h1 class="hero-h1">
+      <span class="hero-stan">Стань</span>
+      Мастером перманентного макияжа
+    </h1>
+    <p class="current-sub">За 20 дней получи новую профессию и начни зарабатывать от 120 тысяч руб!</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="hero-meta-num">20</span><span class="hero-meta-label">дней обучения</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-num">7</span><span class="hero-meta-label">реальных моделей</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-num">250+</span><span class="hero-meta-label">выпускниц</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-num">10</span><span class="hero-meta-label">лет опыта тренера</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ВАРИАНТ А — EDITORIAL DROP ══ -->
+<section class="hero" id="varA">
+  <div class="hero-bg"></div>
+  <div class="section-label">Вариант А — Editorial Drop</div>
+  <div class="hero-inner">
+    <h1 class="hero-h1">
+      <span class="hero-stan">Стань</span>
+      Мастером перманентного макияжа
+    </h1>
+    <div class="editorial-sub">
+      <span class="editorial-sub-label">За 20 дней получи профессию и зарабатывай от</span>
+      <span class="editorial-sub-num">120 000<sup>₽</sup></span>
+      <span class="editorial-sub-caption">в месяц</span>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="hero-meta-num">20</span><span class="hero-meta-label">дней обучения</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-num">7</span><span class="hero-meta-label">реальных моделей</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-num">250+</span><span class="hero-meta-label">выпускниц</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-num">10</span><span class="hero-meta-label">лет опыта тренера</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ВАРИАНТ Б — CASCADE ══ -->
+<section class="hero" id="varB">
+  <div class="hero-bg"></div>
+  <div class="section-label">Вариант Б — Cascade</div>
+  <div class="hero-inner">
+    <h1 class="hero-h1">
+      <span class="hero-stan">Стань</span>
+      Мастером перманентного макияжа
+    </h1>
+    <div class="cascade-sub">
+      <span class="cascade-line1">За 20 дней получи новую профессию</span>
+      <span class="cascade-line2">и начни зарабатывать от</span>
+      <span class="cascade-num">120 000<em>₽</em></span>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="hero-meta-num">20</span><span class="hero-meta-label">дней обучения</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-num">7</span><span class="hero-meta-label">реальных моделей</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-num">250+</span><span class="hero-meta-label">выпускниц</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-num">10</span><span class="hero-meta-label">лет опыта тренера</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ВАРИАНТ В — INLINE BURST ══ -->
+<section class="hero" id="varC">
+  <div class="hero-bg"></div>
+  <div class="section-label">Вариант В — Inline Burst</div>
+  <div class="hero-inner">
+    <h1 class="hero-h1">
+      <span class="hero-stan">Стань</span>
+      Мастером перманентного макияжа
+    </h1>
+    <div class="burst-sub">
+      <span class="burst-text">За 20 дней получи новую профессию<br>и начни зарабатывать от</span>
+      <span class="burst-num">120 000<span class="burst-num-sign">₽</span></span>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="hero-meta-num">20</span><span class="hero-meta-label">дней обучения</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-num">7</span><span class="hero-meta-label">реальных моделей</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-num">250+</span><span class="hero-meta-label">выпускниц</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-num">10</span><span class="hero-meta-label">лет опыта тренера</span></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const links = document.querySelectorAll('.nav a');
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav a[href="#${e.target.id}"]`);
+        if(active) active.classList.add('active');
+      }
+    });
+  },{threshold:0.5});
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

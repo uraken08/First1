@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belief — 5 Variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Raleway:wght@200;300;400;500;600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C4A265;
+  --gold2:rgba(196,162,101,0.55);
+  --gold3:rgba(196,162,101,0.18);
+  --text:#F2EDE7;
+}
+
+/* ── GRAIN overlay ── */
+html::after{
+  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0.05;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:160px;
+}
+
+body{background:#0a0806;color:var(--text);font-family:'Raleway',sans-serif}
+
+/* ── NAV ── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;gap:0;
+  background:rgba(10,8,6,0.95);
+  border-bottom:1px solid rgba(196,162,101,0.1);
+  backdrop-filter:blur(12px);
+}
+.nav a{
+  flex:1;text-align:center;padding:16px 8px;
+  font-size:0.62rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;
+  text-decoration:none;color:rgba(196,162,101,0.5);
+  border-right:1px solid rgba(196,162,101,0.08);
+  transition:color 0.2s,background 0.2s;
+}
+.nav a:last-child{border-right:none}
+.nav a:hover{color:var(--gold);background:rgba(196,162,101,0.04)}
+
+/* ── VIDEO PLACEHOLDER (same for all) ── */
+.vp{
+  position:relative;width:100%;
+  background:#0a0806;
+  cursor:pointer;overflow:hidden;
+}
+.vp video{width:100%;display:block}
+.vp-overlay{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,0.3);
+  transition:background 0.4s;
+}
+.vp:hover .vp-overlay{background:rgba(0,0,0,0.1)}
+.vp-overlay.gone{display:none}
+.vp-btn{
+  width:64px;height:64px;border-radius:50%;
+  border:1px solid rgba(196,162,101,0.6);
+  background:rgba(10,8,6,0.7);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform 0.3s,border-color 0.3s;
+}
+.vp:hover .vp-btn{transform:scale(1.08);border-color:var(--gold)}
+.vp-btn svg{width:22px;height:22px;margin-left:3px}
+
+/* ── variant label ── */
+.vlabel{
+  position:absolute;top:28px;left:48px;
+  font-size:0.6rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;
+  color:rgba(196,162,101,0.25);
+}
+
+/* ═══════════════════════════════════════
+   VARIANT 1 — «MAISON»
+   Асимметрия. Огромный заголовок. Видео — деталь.
+═══════════════════════════════════════ */
+.v1{
+  min-height:100vh;padding:100px 60px 80px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;
+  background:#08060400;
+  background-color:#08060400;
+}
+.v1::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 90% 70% at 30% 50%, #0d0a06 0%, #080604 100%),
+    linear-gradient(135deg, #0f0c08 0%, #080604 60%, #0c0908 100%);
+}
+.v1-inner{position:relative;z-index:1;max-width:1300px;margin:0 auto;width:100%}
+
+.v1-whisper{
+  font-family:'Cormorant Garamond',serif;
+  font-size:0.7rem;font-weight:400;font-style:italic;
+  letter-spacing:0.3em;text-transform:uppercase;
+  color:rgba(196,162,101,0.5);
+  margin-bottom:32px;
+  display:flex;align-items:center;gap:20px;
+}
+.v1-whisper span{display:block;width:48px;height:1px;background:rgba(196,162,101,0.25)}
+
+.v1-grid{display:grid;grid-template-columns:1fr 340px;gap:60px;align-items:end}
+
+.v1-headline{
+  font-family:'Italiana',serif;
+  font-size:clamp(3.8rem,8vw,8.5rem);
+  font-weight:400;line-height:0.92;
+  letter-spacing:-0.01em;
+  color:var(--text);
+}
+.v1-headline em{
+  display:block;
+  font-style:italic;
+  font-family:'Cormorant Garamond',serif;
+  font-size:0.52em;
+  font-weight:300;
+  color:var(--gold);
+  letter-spacing:0.04em;
+  margin-bottom:4px;
+}
+
+.v1-right{
+  display:flex;flex-direction:column;gap:28px;
+  padding-bottom:8px;
+}
+.v1-video{border-radius:12px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.7)}
+.v1-cta{
+  display:flex;flex-direction:column;gap:10px;
+  align-items:flex-start;
+}
+.v1 .btn{
+  font-size:0.7rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;
+  text-decoration:none;color:var(--gold);
+  padding:12px 28px;border:1px solid rgba(196,162,101,0.4);
+  transition:background 0.3s,color 0.3s;display:inline-block;
+}
+.v1 .btn:hover{background:var(--gold);color:#080604}
+.v1-note{font-size:0.65rem;font-weight:300;letter-spacing:0.14em;color:rgba(196,162,101,0.38);text-transform:uppercase}
+
+
+/* ═══════════════════════════════════════
+   VARIANT 2 — «VELOURS»
+   Центр. Тепло. Симметрия. Как парфюмерная реклама.
+═══════════════════════════════════════ */
+.v2{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:100px 60px 80px;position:relative;
+}
+.v2::before{
+  content:'';position:absolute;inset:0;
+  background:#0c0905;
+}
+.v2::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 60% at 50% 40%, rgba(196,162,101,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 30% 30% at 50% 90%, rgba(196,162,101,0.04) 0%, transparent 60%);
+}
+.v2-inner{position:relative;z-index:1;max-width:780px;width:100%;text-align:center}
+
+.v2-whisper{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.6rem,3vw,2.4rem);
+  font-weight:300;font-style:italic;
+  color:rgba(196,162,101,0.8);
+  line-height:1.3;margin-bottom:36px;
+}
+
+.v2-ornament{
+  display:flex;align-items:center;justify-content:center;gap:20px;
+  margin-bottom:36px;
+}
+.v2-ornament-line{
+  width:80px;height:1px;
+  background:linear-gradient(to right,transparent,rgba(196,162,101,0.3));
+}
+.v2-ornament-line:last-child{
+  background:linear-gradient(to left,transparent,rgba(196,162,101,0.3));
+}
+.v2-ornament-center{
+  display:flex;gap:8px;align-items:center;
+}
+.v2-ornament-center span{
+  display:block;width:4px;height:4px;border-radius:50%;background:rgba(196,162,101,0.4);
+}
+.v2-ornament-center span:nth-child(2){
+  width:5px;height:5px;background:rgba(196,162,101,0.7);
+}
+
+.v2-headline{
+  font-family:'Italiana',serif;
+  font-size:clamp(2.6rem,5.5vw,5.2rem);
+  font-weight:400;line-height:1.05;
+  letter-spacing:0.02em;
+  color:var(--text);
+  margin-bottom:52px;
+}
+
+.v2-video-wrap{
+  width:380px;margin:0 auto 40px;
+  position:relative;
+}
+.v2-video{border-radius:50% / 40%;overflow:hidden;position:relative}
+.v2-video-frame{
+  position:absolute;inset:-6px;
+  border-radius:calc(50% + 6px) / calc(40% + 6px);
+  border:1px solid rgba(196,162,101,0.2);
+  pointer-events:none;
+}
+.v2-video-frame2{
+  position:absolute;inset:-14px;
+  border-radius:calc(50% + 14px) / calc(40% + 14px);
+  border:1px solid rgba(196,162,101,0.08);
+  pointer-events:none;
+}
+
+.v2-cta{display:flex;flex-direction:column;align-items:center;gap:14px}
+.v2 .btn{
+  font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;
+  text-decoration:none;padding:14px 44px;
+  background:var(--gold);color:#0c0905;
+  transition:background 0.3s,transform 0.2s;display:inline-block;
+}
+.v2 .btn:hover{background:#d4b278;transform:translateY(-1px)}
+.v2-note{font-size:0.65rem;font-weight:300;letter-spacing:0.15em;text-transform:uppercase;color:rgba(196,162,101,0.38)}
+
+
+/* ═══════════════════════════════════════
+   VARIANT 3 — «COUTURE WALL»
+   Золотая стена делит экран. Слева — текст. Справа — видео.
+═══════════════════════════════════════ */
+.v3{
+  min-height:100vh;position:relative;display:flex;overflow:hidden;
+}
+.v3-left{
+  width:50%;padding:100px 72px 80px 60px;
+  display:flex;flex-direction:column;justify-content:center;
+  background:linear-gradient(135deg, #0a0806 0%, #0e0b07 100%);
+  position:relative;
+}
+.v3-left::after{
+  content:'';
+  position:absolute;top:0;right:0;bottom:0;width:1px;
+  background:linear-gradient(to bottom,
+    transparent 0%,
+    rgba(196,162,101,0.15) 15%,
+    rgba(196,162,101,0.5) 35%,
+    rgba(196,162,101,0.5) 65%,
+    rgba(196,162,101,0.15) 85%,
+    transparent 100%);
+}
+.v3-right{
+  width:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:32px;
+  padding:100px 60px 80px 72px;
+  background:linear-gradient(135deg, #100d09 0%, #0d0a06 100%);
+}
+
+.v3-label{
+  font-size:0.62rem;font-weight:600;letter-spacing:0.4em;text-transform:uppercase;
+  color:rgba(196,162,101,0.25);margin-bottom:48px;
+}
+.v3-whisper{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,2.8vw,2.8rem);
+  font-weight:200;font-style:italic;
+  color:rgba(196,162,101,0.75);
+  line-height:1.2;margin-bottom:0;
+}
+.v3-rule{
+  width:48px;height:1px;
+  background:rgba(196,162,101,0.3);
+  margin:28px 0;
+}
+.v3-headline{
+  font-family:'Italiana',serif;
+  font-size:clamp(2.4rem,4vw,4.2rem);
+  font-weight:400;line-height:1.05;
+  letter-spacing:0.02em;
+  color:var(--text);
+  margin-bottom:48px;
+}
+.v3 .btn{
+  font-size:0.7rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;
+  text-decoration:none;color:#0a0806;background:var(--gold);
+  padding:13px 32px;display:inline-block;
+  transition:background 0.3s;
+}
+.v3 .btn:hover{background:#d4b278}
+
+.v3-video-wrap{width:100%;border-radius:16px;overflow:hidden;position:relative}
+.v3-video-wrap::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:2;
+  background:linear-gradient(90deg,transparent,rgba(196,162,101,0.4),transparent);
+}
+.v3-video-wrap::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;z-index:2;
+  background:linear-gradient(90deg,transparent,rgba(196,162,101,0.25),transparent);
+}
+.v3-note{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(196,162,101,0.35);font-weight:300}
+
+
+/* ═══════════════════════════════════════
+   VARIANT 4 — «OVERLAP»
+   Заголовок перекрывает видео. Глубина. Editorial.
+═══════════════════════════════════════ */
+.v4{
+  min-height:100vh;padding:100px 60px 80px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;
+}
+.v4::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(160deg, #0b0906 0%, #0f0c08 50%, #080605 100%);
+}
+.v4-inner{position:relative;z-index:1;max-width:1280px;margin:0 auto;width:100%}
+
+.v4-whisper{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,1.6vw,1.4rem);
+  font-weight:300;font-style:italic;
+  color:rgba(196,162,101,0.6);
+  letter-spacing:0.06em;
+  margin-bottom:40px;
+  padding-left:2px;
+}
+
+.v4-stage{
+  display:grid;
+  grid-template-columns:1fr 440px;
+  grid-template-rows:auto auto;
+  gap:0;
+  align-items:start;
+}
+.v4-headline{
+  font-family:'Italiana',serif;
+  font-size:clamp(3.2rem,7vw,7.5rem);
+  font-weight:400;line-height:0.9;
+  letter-spacing:0.01em;
+  color:var(--text);
+  grid-column:1;
+  grid-row:1;
+  z-index:2;
+  padding-right:20px;
+  padding-bottom:40px;
+  /* overlap */
+  margin-right:-80px;
+  position:relative;
+}
+
+.v4-video-col{
+  grid-column:2;
+  grid-row:1 / 3;
+  z-index:1;
+  display:flex;flex-direction:column;gap:24px;
+  padding-top:80px;
+}
+.v4-video{
+  border-radius:12px;overflow:hidden;
+  box-shadow:-40px 0 80px rgba(0,0,0,0.6);
+  position:relative;
+}
+.v4-video::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:80px;
+  background:linear-gradient(to right,#0b0906,transparent);
+  pointer-events:none;z-index:2;
+}
+
+.v4-cta-row{
+  grid-column:1;
+  grid-row:2;
+  display:flex;align-items:center;gap:24px;
+  padding-top:4px;
+}
+.v4 .btn{
+  font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;
+  text-decoration:none;color:var(--text);
+  padding:13px 32px;border:1px solid rgba(196,162,101,0.35);
+  display:inline-block;transition:border-color 0.3s,color 0.3s,background 0.3s;
+}
+.v4 .btn:hover{border-color:var(--gold);background:rgba(196,162,101,0.08);color:var(--gold)}
+.v4-note{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(196,162,101,0.35);font-weight:300}
+
+
+/* ═══════════════════════════════════════
+   VARIANT 5 — «WHISPER GIANT»
+   Шёпот — огромный. Заголовок — маленький. Reversal.
+═══════════════════════════════════════ */
+.v5{
+  min-height:100vh;padding:100px 60px 80px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.v5::before{
+  content:'';position:absolute;inset:0;
+  background:#09070500;
+  background:radial-gradient(ellipse 100% 80% at 50% 50%, #0e0b07 0%, #080604 100%);
+}
+/* большие буквы на фоне */
+.v5-bg-text{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Italiana',serif;
+  font-size:28vw;font-weight:400;
+  color:rgba(196,162,101,0.025);
+  white-space:nowrap;
+  pointer-events:none;
+  user-select:none;
+  letter-spacing:-0.03em;
+  line-height:1;
+}
+.v5-inner{
+  position:relative;z-index:1;
+  max-width:1300px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:center;
+}
+.v5-left{}
+
+.v5-whisper{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4rem,2vw,2rem);
+  font-weight:300;font-style:italic;
+  color:rgba(196,162,101,0.6);
+  line-height:1.3;
+  letter-spacing:0.02em;
+  margin-bottom:32px;
+}
+
+.v5-divider{
+  width:100%;height:1px;
+  background:linear-gradient(to right,rgba(196,162,101,0.4),transparent);
+  margin-bottom:32px;
+  position:relative;
+}
+.v5-divider::after{
+  content:'PM';
+  position:absolute;right:0;top:50%;transform:translateY(-50%);
+  font-size:0.55rem;font-weight:600;letter-spacing:0.3em;
+  color:rgba(196,162,101,0.25);
+}
+
+.v5-headline{
+  font-family:'Italiana',serif;
+  font-size:clamp(3.2rem,6.5vw,7.5rem);
+  font-weight:400;
+  color:var(--text);
+  line-height:0.95;
+  letter-spacing:0.01em;
+  margin-bottom:52px;
+}
+
+.v5-cta{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.v5 .btn{
+  font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;
+  text-decoration:none;color:#09070500;color:#080604;
+  background:var(--gold);
+  padding:13px 34px;display:inline-block;
+  transition:background 0.3s,transform 0.2s;
+}
+.v5 .btn:hover{background:#d4b278;transform:translateY(-1px)}
+.v5-note{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(196,162,101,0.35);font-weight:300}
+
+.v5-right{display:flex;flex-direction:column;gap:0}
+.v5-video{
+  border-radius:4px;overflow:hidden;
+  box-shadow:0 40px 100px rgba(0,0,0,0.7);
+  position:relative;
+}
+.v5-video::before{
+  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(196,162,101,0.15);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#v1">01 — Maison</a>
+  <a href="#v2">02 — Velours</a>
+  <a href="#v3">03 — Couture Wall</a>
+  <a href="#v4">04 — Overlap</a>
+  <a href="#v5">05 — Whisper Giant</a>
+</nav>
+
+
+<!-- ══ V1 — MAISON ══ -->
+<section class="v1" id="v1">
+  <div class="vlabel">01 — Maison — огромный заголовок, видео как деталь</div>
+  <div class="v1-inner">
+    <div class="v1-whisper">
+      <span></span>
+      Ты читаешь это не случайно
+      <span></span>
+    </div>
+    <div class="v1-grid">
+      <div>
+        <h2 class="v1-headline">
+          <em>Это обучение,</em>
+          которое<br>изменит<br>твою жизнь
+        </h2>
+      </div>
+      <div class="v1-right">
+        <div class="v1-video">
+          <div class="vp">
+            <video src="../../Видео/Intro video.MP4" poster="video_poster.jpg" preload="metadata" playsinline></video>
+            <div class="vp-overlay">
+              <div class="vp-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M6 4l14 8-14 8V4z" fill="#C4A265"/></svg></div>
+            </div>
+          </div>
+        </div>
+        <div class="v1-cta">
+          <a href="#" class="btn">Записаться на курс</a>
+          <span class="v1-note">Старт потока совсем скоро!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ V2 — VELOURS ══ -->
+<section class="v2" id="v2">
+  <div class="vlabel">02 — Velours — центр, симметрия, как парфюмерная реклама</div>
+  <div class="v2-inner">
+    <p class="v2-whisper">Ты читаешь это не случайно</p>
+
+    <div class="v2-ornament">
+      <span class="v2-ornament-line"></span>
+      <div class="v2-ornament-center">
+        <span></span><span></span><span></span>
+      </div>
+      <span class="v2-ornament-line"></span>
+    </div>
+
+    <h2 class="v2-headline">Это обучение,<br>которое изменит<br>твою жизнь</h2>
+
+    <div class="v2-video-wrap">
+      <div class="v2-video">
+        <div class="vp">
+          <video src="../../Видео/Intro video.MP4" poster="video_poster.jpg" preload="metadata" playsinline></video>
+          <div class="vp-overlay">
+            <div class="vp-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M6 4l14 8-14 8V4z" fill="#C4A265"/></svg></div>
+          </div>
+        </div>
+      </div>
+      <div class="v2-video-frame"></div>
+      <div class="v2-video-frame2"></div>
+    </div>
+
+    <div class="v2-cta">
+      <a href="#" class="btn">Записаться на курс</a>
+      <span class="v2-note">Старт потока совсем скоро!</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ V3 — COUTURE WALL ══ -->
+<section class="v3" id="v3">
+  <div class="v3-left">
+    <div class="vlabel" style="position:relative;top:auto;left:auto;margin-bottom:64px">03 — Couture Wall — золотая стена делит экран</div>
+    <p class="v3-whisper">Ты читаешь<br>это не случайно</p>
+    <div class="v3-rule"></div>
+    <h2 class="v3-headline">Это обучение,<br>которое изменит<br>твою жизнь</h2>
+    <a href="#" class="btn">Записаться на курс</a>
+  </div>
+  <div class="v3-right">
+    <div class="v3-video-wrap">
+      <div class="vp">
+        <video src="../../Видео/Intro video.MP4" poster="video_poster.jpg" preload="metadata" playsinline></video>
+        <div class="vp-overlay">
+          <div class="vp-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M6 4l14 8-14 8V4z" fill="#C4A265"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <span class="v3-note">Старт потока совсем скоро!</span>
+  </div>
+</section>
+
+
+<!-- ══ V4 — OVERLAP ══ -->
+<section class="v4" id="v4">
+  <div class="vlabel">04 — Overlap — заголовок перекрывает видео, глубина</div>
+  <div class="v4-inner">
+    <p class="v4-whisper">— Ты читаешь это не случайно</p>
+    <div class="v4-stage">
+      <h2 class="v4-headline">Это<br>обучение,<br>которое<br>изменит<br>жизнь</h2>
+
+      <div class="v4-video-col">
+        <div class="v4-video">
+          <div class="vp">
+            <video src="../../Видео/Intro video.MP4" poster="video_poster.jpg" preload="metadata" playsinline></video>
+            <div class="vp-overlay">
+              <div class="vp-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M6 4l14 8-14 8V4z" fill="#C4A265"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="v4-cta-row">
+        <a href="#" class="btn">Записаться на курс</a>
+        <span class="v4-note">Старт потока совсем скоро!</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ V5 — WHISPER GIANT ══ -->
+<section class="v5" id="v5">
+  <div class="vlabel">05 — Whisper Giant — шёпот огромный, заголовок — небольшой</div>
+  <div class="v5-bg-text">AP</div>
+  <div class="v5-inner">
+    <div class="v5-left">
+      <p class="v5-whisper">Ты читаешь<br>это не<br>случайно</p>
+      <div class="v5-divider"></div>
+      <h2 class="v5-headline">Это обучение,<br>которое изменит твою жизнь</h2>
+      <div class="v5-cta">
+        <a href="#" class="btn">Записаться на курс</a>
+        <span class="v5-note">Старт потока совсем скоро!</span>
+      </div>
+    </div>
+    <div class="v5-right">
+      <div class="v5-video">
+        <div class="vp">
+          <video src="../../Видео/Intro video.MP4" poster="video_poster.jpg" preload="metadata" playsinline></video>
+          <div class="vp-overlay">
+            <div class="vp-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M6 4l14 8-14 8V4z" fill="#C4A265"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  // video play for all .vp elements
+  document.querySelectorAll('.vp').forEach(vp => {
+    vp.addEventListener('click', () => {
+      const vid = vp.querySelector('video');
+      const ov = vp.querySelector('.vp-overlay');
+      if (vid.paused) { vid.play(); ov.classList.add('gone'); }
+      else { vid.pause(); ov.classList.remove('gone'); }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belief Block — Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C4A265;
+      --gold-dim: rgba(196,162,101,0.45);
+      --gold-faint: rgba(196,162,101,0.12);
+      --bg: #0c0a07;
+      --text: #F2EDE7;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Raleway', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── GRAIN ── */
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 9999;
+      pointer-events: none;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 160px;
+    }
+
+    /* ── SECTION ── */
+    .belief {
+      width: 100%;
+      max-width: 1200px;
+      padding: 80px 48px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* центральный прожектор */
+    .belief::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 30%, rgba(196,162,101,0.06) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 50% 80%, rgba(196,162,101,0.03) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* ── GRID ── */
+    .belief-grid {
+      display: grid;
+      grid-template-columns: 55fr 45fr;
+      gap: 72px;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* ── LEFT ── */
+    .belief-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    /* WHISPER */
+    .belief-whisper {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 3.5vw, 3.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold);
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+      padding-bottom: 32px;
+      position: relative;
+      white-space: nowrap;
+    }
+    .belief-whisper::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: linear-gradient(to right, rgba(196,162,101,0.5), rgba(196,162,101,0.05) 75%, transparent);
+      transition: width 0.8s cubic-bezier(0.4,0,0.2,1) 0.2s;
+    }
+    .belief-whisper.line-drawn::after { width: 100%; }
+
+    /* каждый символ */
+    .belief-whisper .char {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.25s ease, transform 0.3s ease;
+    }
+    .belief-whisper.typed .char { opacity: 1; transform: translateY(0); }
+
+    /* DIVIDER */
+    .belief-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0 24px;
+      opacity: 0;
+      transition: opacity 0.5s ease 0.1s;
+    }
+    .belief-divider.visible { opacity: 1; }
+    .belief-divider-line {
+      width: 0;
+      height: 1px;
+      background: var(--gold-dim);
+      transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    .belief-divider.visible .belief-divider-line { width: 28px; }
+    .belief-divider-glyph {
+      font-size: 0.6rem;
+      color: var(--gold-dim);
+      line-height: 1;
+    }
+
+    /* HEADLINE */
+    .belief-headline {
+      font-family: 'Italiana', serif;
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2,0,0,1);
+    }
+    .belief-headline.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RIGHT ── */
+    .belief-right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      opacity: 0;
+      transform: translateX(16px);
+      transition: opacity 0.8s ease 0.4s, transform 0.8s cubic-bezier(0.2,0,0,1) 0.4s;
+    }
+    .belief-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* VIDEO FRAME */
+    .belief-video-wrap {
+      position: relative;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #090806;
+      cursor: pointer;
+    }
+
+    /* угловые орнаменты */
+    .belief-video-wrap::before,
+    .belief-video-wrap::after {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .belief-video-wrap::before {
+      top: 0; left: 0;
+      border-top: 1px solid rgba(196,162,101,0.55);
+      border-left: 1px solid rgba(196,162,101,0.55);
+    }
+    .belief-video-wrap::after {
+      bottom: 0; right: 0;
+      border-bottom: 1px solid rgba(196,162,101,0.55);
+      border-right: 1px solid rgba(196,162,101,0.55);
+    }
+
+    /* дополнительные углы через span */
+    .belief-video-corner-tr,
+    .belief-video-corner-bl {
+      position: absolute;
+      width: 20px; height: 20px;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .belief-video-corner-tr {
+      top: 0; right: 0;
+      border-top: 1px solid rgba(196,162,101,0.55);
+      border-right: 1px solid rgba(196,162,101,0.55);
+    }
+    .belief-video-corner-bl {
+      bottom: 0; left: 0;
+      border-bottom: 1px solid rgba(196,162,101,0.55);
+      border-left: 1px solid rgba(196,162,101,0.55);
+    }
+
+    .belief-video-wrap video {
+      width: 100%;
+      display: block;
+    }
+
+    .belief-video-overlay {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(8,8,10,0.38);
+      transition: background 0.4s;
+    }
+    .belief-video-wrap:hover .belief-video-overlay { background: rgba(8,8,10,0.15); }
+    .belief-video-overlay.hidden { display: none; }
+
+    /* glow при hover */
+    .belief-video-glow {
+      position: absolute; inset: -1px;
+      border-radius: 17px;
+      opacity: 0;
+      transition: opacity 0.5s;
+      box-shadow: 0 0 40px rgba(196,162,101,0.18), 0 0 80px rgba(196,162,101,0.08);
+      pointer-events: none;
+    }
+    .belief-video-wrap:hover .belief-video-glow { opacity: 1; }
+
+    .belief-play {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      border: 1px solid rgba(196,162,101,0.55);
+      background: rgba(8,8,10,0.6);
+      backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.35s, border-color 0.35s, background 0.35s;
+    }
+    .belief-video-wrap:hover .belief-play {
+      transform: scale(1.1);
+      border-color: var(--gold);
+      background: rgba(196,162,101,0.14);
+    }
+    .belief-play svg { width: 26px; height: 26px; margin-left: 3px; }
+
+    /* ── CTA ── */
+    .belief-cta {
+      margin-top: 52px;
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease 0.7s, transform 0.6s ease 0.7s;
+    }
+    .belief-cta.visible { opacity: 1; transform: translateY(0); }
+
+    .btn-gold {
+      display: inline-block;
+      padding: 14px 36px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #0c0a07;
+      background: var(--gold);
+      border-radius: 3px;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-gold:hover { background: #d4b278; transform: translateY(-1px); }
+
+    .belief-cta-note {
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(196,162,101,0.45);
+    }
+  </style>
+</head>
+<body>
+
+<section class="belief">
+  <div class="belief-grid">
+
+    <!-- LEFT -->
+    <div class="belief-left">
+      <div class="belief-whisper" id="whisper">Ты читаешь это не случайно</div>
+
+      <div class="belief-divider" id="divider">
+        <span class="belief-divider-line"></span>
+        <span class="belief-divider-glyph">✦</span>
+        <span class="belief-divider-line"></span>
+      </div>
+
+      <h2 class="belief-headline" id="headline">Это обучение,<br>которое изменит<br>твою жизнь</h2>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="belief-right" id="beliefRight">
+      <div class="belief-video-wrap" id="videoWrap">
+        <span class="belief-video-corner-tr"></span>
+        <span class="belief-video-corner-bl"></span>
+        <div class="belief-video-glow"></div>
+        <video src="../../Видео/Intro video.MP4" poster="video_poster.jpg" preload="metadata" playsinline id="beliefVideo"></video>
+        <div class="belief-video-overlay" id="overlay">
+          <div class="belief-play">
+            <svg viewBox="0 0 26 26" fill="none">
+              <path d="M7 4l16 9-16 9V4z" fill="#C4A265"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="belief-cta" id="beliefCta">
+    <a href="#" class="btn-gold">Записаться на курс</a>
+    <span class="belief-cta-note">Старт потока совсем скоро!</span>
+  </div>
+</section>
+
+<script>
+  // Typewriter effect
+  function initTypewriter(el) {
+    const text = el.textContent.trim();
+    el.textContent = '';
+
+    text.split('').forEach((ch, i) => {
+      const span = document.createElement('span');
+      span.className = 'char';
+      span.textContent = ch === ' ' ? ' ' : ch;
+      span.style.transitionDelay = `${i * 38}ms`;
+      el.appendChild(span);
+    });
+
+    // trigger after tiny delay
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        el.classList.add('typed');
+        // draw underline after last char
+        const lastDelay = (text.length - 1) * 38;
+        setTimeout(() => el.classList.add('line-drawn'), lastDelay + 120);
+
+        // then show divider
+        setTimeout(() => {
+          document.getElementById('divider').classList.add('visible');
+        }, lastDelay + 320);
+
+        // then headline
+        setTimeout(() => {
+          document.getElementById('headline').classList.add('visible');
+        }, lastDelay + 560);
+
+        // then right column
+        setTimeout(() => {
+          document.getElementById('beliefRight').classList.add('visible');
+        }, lastDelay + 500);
+
+        // then CTA
+        setTimeout(() => {
+          document.getElementById('beliefCta').classList.add('visible');
+        }, lastDelay + 750);
+      });
+    });
+  }
+
+  // Intersection Observer
+  const whisperEl = document.getElementById('whisper');
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      initTypewriter(whisperEl);
+      observer.disconnect();
+    }
+  }, { threshold: 0.4 });
+  observer.observe(whisperEl);
+
+  // Video play
+  document.getElementById('videoWrap').addEventListener('click', () => {
+    const vid = document.getElementById('beliefVideo');
+    const overlay = document.getElementById('overlay');
+    vid.play();
+    overlay.classList.add('hidden');
+  });
+</script>
+</body>
+</html>

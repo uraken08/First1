@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Обучение на мастера перманентного макияжа — Академия Agent Permanent</title>
   <meta name="description" content="Полный базовый курс мастера перманентного макияжа от Арины Шараповой. Брови, губы, межресничка. Государственный диплом. 200+ выпускниц. Москва.">
-  <link rel="icon" type="image/png" href="../../favicon.jpg">
+  <link rel="icon" type="image/png" href="../../favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,500;1,300;1,400&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/style.css">
   <style>
     /* ── GRAIN ── */
@@ -54,21 +54,61 @@
     }
     .pm-hero-stan {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 5vw, 5.5rem);
+      font-size: clamp(2.1rem, 3.8vw, 4.2rem);
       font-weight: 300;
       font-style: italic;
-      color: var(--gold);
+      color: rgba(196,162,101,0.65);
       line-height: 0.9;
       letter-spacing: 0.01em;
       display: block;
       margin-bottom: 4px;
     }
     .pm-hero-sub {
-      font-family: 'Raleway', sans-serif;
-      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-      color: rgba(196,162,101,0.55); font-weight: 600;
-      letter-spacing: 0.28em; text-transform: uppercase;
+      display: flex; flex-direction: column;
+      align-items: flex-start; gap: 0;
       margin-bottom: 40px;
+    }
+    .pm-hero-sub-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(0.68rem, 1vw, 0.82rem);
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(196,162,101,0.55);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .pm-hero-sub-num {
+      font-family: 'Italiana', serif;
+      font-size: clamp(5rem, 11vw, 11rem);
+      font-weight: 400;
+      color: var(--gold);
+      line-height: 0.85;
+      letter-spacing: -0.02em;
+    }
+    .pm-hero-sub-num sup {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.22em;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      vertical-align: super;
+      color: rgba(196,162,101,0.65);
+      margin-left: 4px;
+    }
+    .pm-hero-sub-caption {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: rgba(242,237,231,0.58);
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+    .pm-hero-meta-sep {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, rgba(196,162,101,0.2), transparent 60%);
+      margin-bottom: 28px;
     }
     .pm-hero-meta {
       display: grid; grid-template-columns: repeat(5, auto);
@@ -76,11 +116,12 @@
       gap: 0; margin-bottom: 48px;
       border-top: 1px solid rgba(196,162,101,0.15);
       padding-top: 28px;
-      align-items: end;
+      align-items: flex-start;
     }
     .pm-hero-meta-item {
       display: flex; flex-direction: column; gap: 6px;
       padding-right: 40px;
+      align-items: center; text-align: center;
     }
     .pm-hero-meta-item:not(:last-child) {
       border-right: 1px solid rgba(196,162,101,0.12);
@@ -92,8 +133,8 @@
       color: var(--gold); line-height: 1;
     }
     .pm-hero-meta-label {
-      font-size: 0.78rem; color: var(--text-muted);
-      letter-spacing: 0.04em; font-weight: 400; line-height: 1.35;
+      font-size: 0.88rem; color: var(--text-muted);
+      letter-spacing: 0.02em; font-weight: 400; line-height: 1.4;
     }
     .pm-hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 
@@ -242,7 +283,7 @@
       font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3rem);
       color: var(--text-primary); font-weight: 400; margin-bottom: 8px;
     }
-    .pm-program-sub { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 48px; }
+    .pm-program-sub { font-family: 'Raleway', sans-serif; font-size: 1.05rem; color: rgba(242,237,231,0.72); line-height: 1.6; margin-bottom: 48px; }
     .modules { display: flex; flex-direction: column; }
     .module {
       display: grid; grid-template-columns: 80px 1fr;
@@ -455,20 +496,20 @@
     <div class="pm-hero-glow"></div>
     <div class="pm-hero-particles" id="heroParticles"></div>
     <div class="pm-hero-inner">
-      <div class="pm-hero-eyebrow fade-up hero-reveal" style="animation-delay:0.3s">Академия Agent Permanent · Москва</div>
       <h1 class="fade-up hero-reveal" style="animation-delay:0.5s">
         <span class="pm-hero-stan">Стань</span>
         Мастером перманентного макияжа
       </h1>
-      <p class="pm-hero-sub fade-up hero-reveal" style="animation-delay:0.7s">Полный базовый курс</p>
+      <div class="pm-hero-sub fade-up hero-reveal" style="animation-delay:0.7s">
+        <span class="pm-hero-sub-label">За 20 дней получи профессию и зарабатывай от</span>
+        <span class="pm-hero-sub-num">120 000<sup>₽</sup></span>
+        <span class="pm-hero-sub-caption">в месяц</span>
+      </div>
+      <div class="pm-hero-meta-sep fade-up hero-reveal" style="animation-delay:0.85s"></div>
       <div class="pm-hero-meta fade-up hero-reveal" style="animation-delay:0.9s">
         <div class="pm-hero-meta-item">
-          <span class="pm-hero-meta-num">14</span>
-          <span class="pm-hero-meta-label">дней онлайн-подготовки</span>
-        </div>
-        <div class="pm-hero-meta-item">
-          <span class="pm-hero-meta-num">4</span>
-          <span class="pm-hero-meta-label">дня очного обучения в академии</span>
+          <span class="pm-hero-meta-num">20</span>
+          <span class="pm-hero-meta-label">дней обучения<br>(онлайн + очно)</span>
         </div>
         <div class="pm-hero-meta-item">
           <span class="pm-hero-meta-num">7</span>
@@ -479,8 +520,12 @@
           <span class="pm-hero-meta-label">выпускниц</span>
         </div>
         <div class="pm-hero-meta-item">
-          <span class="pm-hero-meta-num" style="font-size:1.6rem;letter-spacing:0.04em">НАВСЕГДА</span>
-          <span class="pm-hero-meta-label">поддержка Арины Шараповой</span>
+          <span class="pm-hero-meta-num">30 000₽</span>
+          <span class="pm-hero-meta-label">стоимость<br>стартового набора</span>
+        </div>
+        <div class="pm-hero-meta-item">
+          <span class="pm-hero-meta-num">0%</span>
+          <span class="pm-hero-meta-label">рассрочка<br>от банков</span>
         </div>
       </div>
       <div class="pm-hero-ctas fade-up hero-reveal" style="animation-delay:1.1s">
@@ -524,7 +569,7 @@
 
   <style>
     .arina-intro {
-      background: var(--bg-deep);
+      background: #0e0b07;
       padding: 100px 0;
       border-top: 1px solid var(--border);
     }
@@ -540,7 +585,8 @@
     }
     .arina-intro-h2 em { color: var(--gold); font-style: normal; }
     .arina-intro-role {
-      font-size: 0.93rem; color: var(--text-secondary); line-height: 1.6;
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.05rem; color: rgba(242,237,231,0.72); line-height: 1.6;
       margin-bottom: 32px; padding-bottom: 32px;
       border-bottom: 1px solid var(--border);
     }
@@ -549,40 +595,133 @@
       display: flex; flex-direction: column; gap: 12px;
     }
     .arina-creds li {
-      font-size: 0.87rem; color: var(--text-secondary); line-height: 1.55;
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.05rem; color: rgba(242,237,231,0.72); line-height: 1.6;
       padding-left: 18px; position: relative;
     }
     .arina-creds li::before {
       content: '✦'; position: absolute; left: 0;
       color: var(--gold); font-size: 0.55rem; top: 4px;
     }
-    .arina-cta-strip {
+    /* ── BELIEF SECTION (variant 5) ── */
+    .pm-belief-section {
+      padding: 90px 60px;
+      display: flex; flex-direction: column; align-items: center;
+      position: relative; overflow: hidden;
+      background: #0e0b07;
+    }
+    .pm-belief-section::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 60% at 25% 50%, rgba(196,162,101,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 75% 50%, rgba(196,162,101,0.03) 0%, transparent 55%);
+    }
+    .pm-belief-bg-text {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      font-family: var(--font-display);
+      font-size: 28vw; font-weight: 400;
+      color: rgba(196,162,101,0.06);
+      white-space: nowrap; pointer-events: none; user-select: none;
+      letter-spacing: -0.03em; line-height: 1;
+    }
+    .pm-belief-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 80px;
+      align-items: center;
+      width: 100%; max-width: 1280px;
+      position: relative; z-index: 1;
+    }
+    .pm-belief-left { display: flex; flex-direction: column; }
+    .pm-belief-whisper {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      font-weight: 300; font-style: italic;
+      color: rgba(196,162,101,0.6);
+      line-height: 1.3; letter-spacing: 0.02em;
+      margin-bottom: 28px;
+      display: block;
+    }
+    .pm-belief-whisper::before, .pm-belief-whisper::after { display: none; }
+    .pm-belief-divider {
+      width: 100%; height: 1px;
+      background: linear-gradient(to right, rgba(196,162,101,0.4), transparent);
+      margin-bottom: 28px; position: relative;
+    }
+    .pm-belief-divider::after {
+      content: 'PM';
+      position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+      font-size: 0.55rem; font-weight: 600; letter-spacing: 0.3em;
+      color: rgba(196,162,101,0.2);
+    }
+    .pm-belief-headline {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 6.5vw, 7.5rem);
+      font-weight: 400; line-height: 0.95;
+      letter-spacing: 0.01em;
+      color: var(--text-primary);
+      margin-bottom: 0;
+    }
+    .pm-belief-right {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0;
+      position: relative; z-index: 1;
+    }
+    .pm-belief-video {
+      width: 100%;
+      position: relative; border-radius: 4px; overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+      cursor: pointer; background: #080604;
+    }
+    .pm-belief-video::before {
+      content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(196,162,101,0.15);
+    }
+    .pm-belief-video video { width: 100%; display: block; }
+    .pm-belief-video-overlay {
+      position: absolute; inset: 0;
       display: flex; align-items: center; justify-content: center;
-      width: 100%;
-      padding: 22px 48px;
-      background: var(--gold);
-      font-family: var(--font-display);
-      font-size: clamp(1.6rem, 3.5vw, 3rem);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: #08080A;
-      white-space: nowrap;
+      background: rgba(8,8,10,0.35); transition: background 0.35s;
     }
-    .arina-cta-strip-2 {
-      width: 100%;
-      padding: 28px 48px;
-      background: #fff;
-      font-family: var(--font-display);
-      font-size: clamp(1.6rem, 3.5vw, 3rem);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: #08080A;
-      text-align: center;
+    .pm-belief-video:hover .pm-belief-video-overlay { background: rgba(8,8,10,0.12); }
+    .pm-belief-video-overlay.hidden { display: none; }
+    .pm-belief-play {
+      width: 72px; height: 72px; border-radius: 50%;
+      border: 1px solid rgba(196,162,101,0.55);
+      background: rgba(8,8,10,0.6); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.3s, border-color 0.3s, background 0.3s;
     }
-    .arina-strip-arrow {
-      font-size: 1.3rem; transition: transform 0.3s; flex-shrink: 0;
+    .pm-belief-video:hover .pm-belief-play {
+      transform: scale(1.1); border-color: var(--gold);
+      background: rgba(196,162,101,0.14);
     }
-    .arina-cta-strip:hover .arina-strip-arrow { transform: translateX(8px); }
+    .pm-belief-play svg { width: 26px; height: 26px; margin-left: 3px; }
+    .pm-belief-arrow-to-video {
+      display: flex; align-items: center; gap: 10px;
+      margin-top: 28px;
+      opacity: 0.45;
+    }
+    .pm-belief-arrow-to-video span {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .pm-belief-arrow-to-video svg {
+      flex-shrink: 0;
+    }
+    .pm-belief-cta {
+      margin-top: 52px;
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+      width: 100%; position: relative; z-index: 1;
+    }
+    .pm-belief-cta-note {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem; font-weight: 300;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(196,162,101,0.4);
+    }
     .arina-intro-photo { position: relative; }
     .arina-photo-wrap {
       position: relative;
@@ -593,21 +732,26 @@
       display: block; border-radius: 2px;
       filter: grayscale(15%) contrast(1.05);
     }
+    @keyframes badgePulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(196,162,101,0.3), 0 0 0 0 rgba(196,162,101,0.25); }
+      50% { box-shadow: 0 0 60px rgba(196,162,101,0.45), 0 0 0 18px rgba(196,162,101,0); }
+    }
     .arina-badge {
-      position: absolute; bottom: -20px; right: -20px;
-      width: 130px; height: 130px; border-radius: 50%;
+      position: absolute; bottom: -28px; right: -28px;
+      width: 170px; height: 170px; border-radius: 50%;
+      animation: badgePulse 2.8s ease-in-out infinite;
       background: var(--gold);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center; padding: 12px;
       box-shadow: 0 0 40px rgba(196,162,101,0.3);
     }
     .arina-badge-num {
-      font-family: var(--font-display); font-size: 1.5rem;
+      font-family: var(--font-display); font-size: 1.9rem;
       color: #08080A; line-height: 1; font-weight: 400;
     }
     .arina-badge-label {
-      font-size: 0.58rem; color: #08080A; line-height: 1.3;
-      letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px;
+      font-size: 0.64rem; color: #08080A; line-height: 1.3;
+      letter-spacing: 0.06em; text-transform: uppercase; margin-top: 5px;
     }
     @media (max-width: 900px) {
       .arina-intro-inner { grid-template-columns: 1fr; gap: 48px; }
@@ -616,104 +760,38 @@
     }
   </style>
 
-  <div class="arina-cta-strip">
-    Ты читаешь это не случайно
-  </div>
-
-  <div class="arina-cta-strip-2">
-    Это обучение, которое изменит твою жизнь
-  </div>
-
-  <!-- ZONES -->
-  <section class="pm-zones">
-    <div class="pm-zones-eyebrow fade-up">
-      <div class="section-eyebrow" style="margin-bottom:10px">Что входит в курс</div>
-      <h2>Три основные зоны перманентного макияжа</h2>
-      <p style="font-family:'Raleway',sans-serif;font-size:0.9rem;font-weight:300;color:var(--text-muted);line-height:1.7;margin-top:14px;white-space:nowrap">Освоив эти самые востребованные три зоны, вы закроете потребности большинства клиентов с первого дня</p>
+  <!-- BELIEF + VIDEO -->
+  <section class="pm-belief-section">
+    <div class="pm-belief-bg-text">AP</div>
+    <div class="pm-belief-layout">
+      <div class="pm-belief-left">
+        <div class="pm-belief-whisper">Ты читаешь это не случайно</div>
+        <div class="pm-belief-divider"></div>
+        <h2 class="pm-belief-headline">Это обучение,<br>которое изменит<br>твою жизнь</h2>
+        <div class="pm-belief-arrow-to-video">
+          <span>смотри видео</span>
+          <svg width="48" height="14" viewBox="0 0 48 14" fill="none">
+            <line x1="0" y1="7" x2="40" y2="7" stroke="#C4A265" stroke-width="0.8"/>
+            <path d="M36 2 L44 7 L36 12" stroke="#C4A265" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+      </div>
+      <div class="pm-belief-right">
+        <div class="pm-belief-video" id="ivPlayer" onclick="ivPlay()">
+          <video id="ivVideo" src="../../Видео/Intro video.MP4" poster="video_poster.jpg" preload="metadata" playsinline></video>
+          <div class="pm-belief-video-overlay" id="ivOverlay">
+            <div class="pm-belief-play">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M8 5l20 11L8 27V5z" fill="#C4A265"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="pm-zones-inner">
-      <div class="pm-zone fade-up">
-        <div class="pm-zone-imgs pm-zone-imgs--1">
-          <img src="works/lips_zone.jpg" alt="Губы — перманентный макияж">
-        </div>
-        <h3 class="pm-zone-title">Губы</h3>
-        <p class="pm-zone-desc">Акварельные губы, помадный прокрас, чёткий контур — естественный результат, который держится годами</p>
-      </div>
-      <div class="pm-zone-divider"></div>
-      <div class="pm-zone fade-up" style="transition-delay:0.12s">
-        <div class="pm-zone-imgs pm-zone-imgs--1">
-          <img src="works/brows_zone.jpg" alt="Брови — перманентный макияж">
-        </div>
-        <h3 class="pm-zone-title">Брови</h3>
-        <p class="pm-zone-desc">Пудровое напыление, градиент, графика, комбинированная техника — форма и объём под любой тип лица</p>
-      </div>
-      <div class="pm-zone-divider"></div>
-      <div class="pm-zone fade-up" style="transition-delay:0.24s">
-        <div class="pm-zone-imgs pm-zone-imgs--1">
-          <img src="works/lash_zone.jpg" alt="Межресничка — перманентный макияж">
-        </div>
-        <h3 class="pm-zone-title">Межресничка</h3>
-        <p class="pm-zone-desc">Тонкая деликатная линия вдоль ресниц — взгляд становится глубже без видимого макияжа</p>
-      </div>
+    <div class="pm-belief-cta">
+      <a href="#" class="btn btn-gold" onclick="openBookingPopup('академия-пм');return false;">Записаться на курс</a>
+      <span class="pm-belief-cta-note">Старт потока совсем скоро!</span>
     </div>
   </section>
-
-  <style>
-    .pm-zones {
-      background: radial-gradient(ellipse 90% 60% at 50% 100%, rgba(196,162,101,0.06) 0%, transparent 60%), var(--bg-warm);
-      padding: 48px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .pm-zones-eyebrow {
-      max-width: 1200px; margin: 0 auto; padding: 0 48px 36px;
-    }
-    .pm-zones-eyebrow h2 {
-      font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700; color: var(--text-primary); letter-spacing: 0.02em;
-    }
-    .pm-zones-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 48px;
-      display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr;
-      gap: 0; align-items: start;
-    }
-    .pm-zone {
-      padding: 28px 32px;
-      text-align: center;
-      display: flex; flex-direction: column; align-items: center; gap: 18px;
-      transition: background 0.3s;
-    }
-    .pm-zone:hover { background: rgba(196,162,101,0.04); }
-    .pm-zone-imgs {
-      width: 100%; overflow: hidden; border-radius: 2px;
-    }
-    .pm-zone-imgs--1 { display: block; }
-    .pm-zone-imgs img {
-      width: 100%; height: 420px; object-fit: cover; object-position: center center;
-      display: block; transition: transform 0.4s ease;
-    }
-    .pm-zone:hover .pm-zone-imgs img { transform: scale(1.04); }
-    .pm-zone-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 400; color: var(--text-primary);
-      letter-spacing: 0.04em; line-height: 1;
-    }
-    .pm-zone-desc {
-      font-size: 0.88rem; color: var(--text-muted);
-      line-height: 1.7; max-width: 260px;
-    }
-    .pm-zone-divider {
-      width: 1px; height: 160px;
-      background: linear-gradient(to bottom, transparent, rgba(196,162,101,0.2), transparent);
-    }
-    @media (max-width: 768px) {
-      .pm-zones-inner { grid-template-columns: 1fr; }
-      .pm-zone-divider { width: 60px; height: 1px; margin: 0 auto;
-        background: linear-gradient(to right, transparent, rgba(196,162,101,0.2), transparent);
-      }
-      .pm-zones-inner { padding: 0 24px; }
-    }
-  </style>
 
   <!-- WHAT'S INCLUDED -->
   <section class="pm-included">
@@ -722,77 +800,181 @@
       <!-- LEFT STICKY -->
       <div class="pm-sticky-left">
         <div class="pm-sticky-content">
-          <div class="section-eyebrow" style="margin-bottom:20px">Самое важное</div>
-          <h2 class="pm-sticky-title"><span class="pm-brand-logo">
-              <span class="pm-brand-agent">AGENT</span>
-              <span class="pm-brand-permanent">PERMANENT</span>
-            </span>
-          </h2>
-          <div class="pm-sticky-dur">
-            <div class="pm-dur-row"><span class="pm-dur-check">✓</span><span><strong>14 дней</strong> онлайн-подготовки</span></div>
-            <div class="pm-dur-row"><span class="pm-dur-check">✓</span><span><strong>4 дня</strong> очного обучения в академии</span></div>
-            <div class="pm-dur-row"><span class="pm-dur-check">✓</span><span><strong>7</strong> реальных моделей</span></div>
-            <div class="pm-dur-row"><span class="pm-dur-check">✓</span><span><strong>Профессиональный</strong> стартовый набор</span></div>
-            <div class="pm-dur-row"><span class="pm-dur-check">✓</span><span><strong>Курс</strong> по удалению ПМ</span></div>
+          <div class="section-eyebrow" style="margin-bottom:24px">Самое важное</div>
+          <h2 class="pm-sticky-title">Что входит в обучение</h2>
+          <div class="pm-sticky-from">от</div>
+          <div class="pm-brand-logo">
+            <span class="pm-brand-agent">AGENT</span>
+            <span class="pm-brand-permanent">PERMANENT</span>
           </div>
-          <a href="#" class="btn btn-gold" style="margin-top:32px;display:inline-block" onclick="openBookingPopup('академия-пм');return false;">Записаться на курс</a>
+          <a href="#" class="btn btn-gold" style="margin-top:40px;display:inline-block" onclick="openBookingPopup('академия-пм');return false;">Записаться на курс</a>
         </div>
       </div>
 
       <!-- RIGHT SCROLLING -->
       <div class="pm-scroll-right">
+
+        <!-- 01: Три зоны -->
         <div class="pm-item-card">
           <div class="pm-item-body">
-            <h4>Много практики на реальных моделях</h4>
-            <p>Работа с разными типами кожи под личным наблюдением Арины</p>
+            <div class="pm-card-num">01</div>
+            <div class="pm-card-divider"></div>
+            <h4>Обучение по <span class="pm-num-accent">3</span> основным зонам перманентного макияжа</h4>
+            <div class="pm-zones-strip">
+              <div class="pm-zone-mini"><img src="works/lips_zone.jpg" alt="Губы"><span class="pm-zone-mini-label">Губы</span></div>
+              <div class="pm-zone-mini"><img src="works/brows_zone.jpg" alt="Брови"><span class="pm-zone-mini-label">Брови</span></div>
+              <div class="pm-zone-mini"><img src="works/lash_zone.jpg" alt="Межресничка"><span class="pm-zone-mini-label">Межресничка</span></div>
+            </div>
           </div>
         </div>
-        <div class="pm-item-card">
+
+        <!-- 02: Стартовый набор + видео -->
+        <div class="pm-item-card pm-card-media">
           <div class="pm-item-body">
-            <h4>Видеоуроки по техникам + теория</h4>
-            <p>14 дней онлайн в удобном темпе из любой точки мира</p>
+            <div class="pm-card-num">02</div>
+            <div class="pm-card-divider"></div>
+            <h4>Стартовый набор стоимостью</h4>
+            <span class="pm-kit-price" style="display:block;margin-top:6px;">30 000₽</span>
+            <span class="pm-kit-gift" style="margin-top:14px;display:inline-block">В ПОДАРОК!</span>
+          </div>
+          <div class="pm-card-media-slot pm-video-thumb" onclick="pmOpenVideo('video_0574.mov')">
+            <video muted loop playsinline preload="metadata" style="pointer-events:none">
+              <source src="video_0574.mov" type="video/mp4">
+            </video>
+            <div class="pm-video-label">Смотри видео!</div>
+            <div class="pm-play-btn" aria-label="Смотреть видео">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><polygon points="5,3 17,10 5,17" fill="#08080A"/></svg>
+            </div>
           </div>
         </div>
-        <div class="pm-item-card">
+
+        <!-- 03: Диплом + фото -->
+        <div class="pm-item-card pm-card-media">
           <div class="pm-item-body">
-            <h4>Гос. диплом, свидетельство и сертификат</h4>
-            <p>С присвоением профессии — полный пакет документов специалиста</p>
+            <div class="pm-card-num">03</div>
+            <div class="pm-card-divider"></div>
+            <h4>Диплом государственного образца о присвоении профессии и сертификат</h4>
+          </div>
+          <div class="pm-card-media-slot pm-card-media-slot--diploma" onclick="pmOpenImg('diploma_photo.jpg')" title="Нажмите для увеличения">
+            <img src="diploma_thumb.jpg" alt="Диплом Agent Permanent">
+            <div class="pm-img-zoom">&#x2922;</div>
           </div>
         </div>
-        <div class="pm-item-card">
+
+        <!-- 04: Практика -->
+        <div class="pm-item-card pm-card-media">
           <div class="pm-item-body">
-            <h4>Стартовый набор в подарок</h4>
-            <p>Машинка, пигменты и всё необходимое — с первого дня готова к работе</p>
+            <div class="pm-card-num">04</div>
+            <div class="pm-card-divider"></div>
+            <h4>Практика на <span class="pm-num-accent">7</span> реальных моделях</h4>
+            <p>Работа с разными типами кожи под наблюдением тренера</p>
+          </div>
+          <div class="pm-card-media-slot pm-card-media-slot--practice">
+            <img src="practice_photo.jpg" alt="Практика на моделях">
           </div>
         </div>
-        <div class="pm-item-card">
+
+        <!-- 05: Онлайн-подготовка -->
+        <div class="pm-item-card pm-card-media">
           <div class="pm-item-body">
-            <h4>Психолог, стилист, маркетолог</h4>
-            <p>Отдельные уроки с профильными специалистами — уникальный блок курса</p>
+            <div class="pm-card-num">05</div>
+            <div class="pm-card-divider"></div>
+            <h4><span class="pm-num-accent">16</span> дней насыщенной онлайн-подготовки</h4>
+            <p>Теория, видеоуроки по техникам и материалам — в удобном темпе из любой точки мира</p>
+          </div>
+          <div class="pm-card-media-slot pm-card-media-slot--online">
+            <div class="pm-online-gallery">
+              <div class="pm-online-col pm-online-col--a">
+                <img src="online_1.png" alt="">
+                <img src="online_3.png" alt="">
+              </div>
+              <div class="pm-online-col pm-online-col--b">
+                <img src="online_2.png" alt="">
+                <img src="online_4.png" alt="">
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- 06: Бонусы -->
         <div class="pm-item-card">
           <div class="pm-item-body">
-            <h4>Гайд по фото и упаковке соцсетей</h4>
-            <p>Как снимать работы и вести Instagram — готовый инструмент привлечения клиентов</p>
+            <div class="pm-card-num">06</div>
+            <div class="pm-card-divider"></div>
+            <h4>Бонусные видео-уроки и гайды</h4>
+            <div class="pm-bonus-cols">
+              <div class="pm-bonus-col">
+                <div class="pm-bonus-group">Видео-уроки</div>
+                <ul class="pm-bonus-list">
+                  <li>СММ — продвижение и упаковка</li>
+                  <li>Курс по фото</li>
+                  <li>Урок от психолога</li>
+                </ul>
+              </div>
+              <div class="pm-bonus-col">
+                <div class="pm-bonus-group">Гайды</div>
+                <ul class="pm-bonus-list">
+                  <li>Упаковка сообщества VK</li>
+                  <li>Как открыть самозанятость</li>
+                  <li>Поиск клиентов</li>
+                  <li>Оформление соцсетей</li>
+                  <li>Продающие фото / видео</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="pm-item-card">
+
+        <!-- 07: Удаление ПМ -->
+        <div class="pm-item-card pm-card-media">
           <div class="pm-item-body">
-            <h4>Урок по удалению некачественного ПМ</h4>
-            <p>Востребованная услуга, которой обучают единицы — плюс к доходу с первых месяцев</p>
+            <div class="pm-card-num">07</div>
+            <div class="pm-card-divider"></div>
+            <h4>Курс по удалению ПМ с отработкой на модели</h4>
+            <span class="pm-kit-gift" style="margin-top:14px;display:inline-block">В ПОДАРОК!</span>
+          </div>
+          <div class="pm-card-media-slot">
+            <img src="../../Фото/IMG_3099.jpg" alt="Удаление ПМ">
           </div>
         </div>
+
+        <!-- 08: Документы -->
         <div class="pm-item-card">
           <div class="pm-item-body">
-            <h4>Как набрать базу клиентов и зарабатывать от 150 000 ₽</h4>
-            <p>Пошаговая система — где искать, как привлекать, сколько брать</p>
-          </div>
-        </div>
-        <div class="pm-item-card">
-          <div class="pm-item-body">
+            <div class="pm-card-num">08</div>
+            <div class="pm-card-divider"></div>
             <h4>Пакет документов для работы с клиентами</h4>
-            <p>Договоры, согласия, противопоказания — работаешь безопасно и профессионально</p>
+            <p>Договоры, согласия, противопоказания — работай безопасно и профессионально</p>
+            <span class="pm-kit-gift" style="margin-top:14px;display:inline-block">В ПОДАРОК!</span>
+          </div>
+        </div>
+
+        <!-- 09: Онлайн-курс по перекрытию -->
+        <div class="pm-item-card pm-card-media">
+          <div class="pm-item-body">
+            <div class="pm-card-num">09</div>
+            <div class="pm-card-divider"></div>
+            <h4>Онлайн-курс по перекрытию</h4>
+            <span class="pm-kit-gift" style="margin-top:14px;display:inline-block">В ПОДАРОК!</span>
+          </div>
+          <div class="pm-card-media-slot">
+            <img src="../../Фото/IMG_3100.jpg" alt="Перекрытие ПМ" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+          </div>
+        </div>
+
+        <!-- 10: Портфолио -->
+        <div class="pm-item-card pm-card-media">
+          <div class="pm-item-body">
+            <div class="pm-card-num">10</div>
+            <div class="pm-card-divider"></div>
+            <h4>Готовое профессиональное портфолио после обучения</h4>
+            <span class="pm-kit-gift" style="margin-top:14px;display:inline-block">В ПОДАРОК!</span>
+          </div>
+          <div class="pm-card-media-slot pm-card-media-slot--portfolio">
+            <img src="../../Фото/Работы/Ученики/IMG_1680.PNG" alt="" onclick="pmOpenImg('../../Фото/Работы/Ученики/IMG_1680.PNG')">
+            <img src="../../Фото/Работы/Ученики/IMG_1678.PNG" alt="" onclick="pmOpenImg('../../Фото/Работы/Ученики/IMG_1678.PNG')">
+            <img src="../../Фото/Работы/Ученики/IMG_1674.PNG" alt="" onclick="pmOpenImg('../../Фото/Работы/Ученики/IMG_1674.PNG')">
+            <img src="../../Фото/Работы/Ученики/IMG_1673.PNG" alt="" onclick="pmOpenImg('../../Фото/Работы/Ученики/IMG_1673.PNG')">
           </div>
         </div>
 
@@ -808,13 +990,12 @@
 
   <style>
     .pm-included {
-      background: var(--bg-deep);
-      border-top: 1px solid var(--border);
+      background: #0e0b07;
     }
     .pm-included-wrap {
       max-width: 1400px; margin: 0 auto; padding: 0 48px;
-      display: grid; grid-template-columns: 420px 1fr;
-      gap: 80px;
+      display: grid; grid-template-columns: 320px 1fr;
+      gap: 60px;
     }
     .pm-sticky-left { padding: 100px 0; }
     .pm-sticky-content {
@@ -837,32 +1018,327 @@
       font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3rem);
       font-weight: 700; color: var(--gold); letter-spacing: 0.06em; line-height: 1;
     }
-    .pm-sticky-dur { display: flex; flex-direction: column; gap: 12px; }
-    .pm-dur-row { display: flex; align-items: center; gap: 10px; font-size: 0.93rem; color: var(--text-secondary); }
-    .pm-dur-row strong { color: var(--text-primary); font-weight: 600; }
-    .pm-dur-check { color: var(--gold); }
-
-    .pm-scroll-right { padding: 100px 0; border-left: 1px solid var(--border); }
-    .pm-item-card {
-      border-bottom: 1px solid var(--border);
-      transition: background 0.25s;
+    .pm-sticky-from {
+      font-family: var(--font-body);
+      font-size: 0.8rem; font-weight: 300;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(196,162,101,0.55);
+      margin: 20px 0 10px;
     }
-    .pm-item-card:first-child { border-top: 1px solid var(--border); }
-    .pm-item-card:hover { background: linear-gradient(135deg, rgba(196,162,101,0.18) 0%, rgba(196,162,101,0.06) 100%) !important; }
-    .pm-item-card:hover .pm-item-body h4 { color: var(--gold) !important; }
-    .pm-item-card:hover .pm-item-body p { color: var(--text-secondary) !important; }
+
+    .pm-scroll-right {
+      padding: 80px 0 80px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pm-item-card {
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 50%, #1a1208 100%);
+      border: 1px solid rgba(196,162,101,0.25);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .pm-item-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,162,101,0.35), transparent);
+      pointer-events: none;
+    }
+    .pm-card-num {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      color: rgba(196,162,101,0.5);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+    .pm-card-divider { display: none; }
+    .pm-item-card:hover {
+      border-color: rgba(196,162,101,0.5);
+      box-shadow: 0 16px 48px rgba(196,162,101,0.1), 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .pm-item-card:hover .pm-item-body h4,
+    .pm-item-card:hover .pm-kit-label { color: var(--gold); }
+    .pm-num-accent {
+      font-family: var(--font-stats, 'Jost'), sans-serif;
+      font-size: 1.1em;
+      font-weight: 700;
+      color: inherit;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      vertical-align: baseline;
+    }
+    .pm-card-media-slot--online {
+      padding: 0;
+      background: #0a0806;
+      display: flex;
+      align-self: stretch;
+    }
+    .pm-online-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 2px;
+      width: 100%;
+      height: 100%;
+    }
+    .pm-online-col {
+      display: contents;
+    }
+    .pm-online-col--b {
+      margin-top: 0;
+    }
+    .pm-online-col img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 0;
+      display: block;
+      object-fit: cover;
+      border: none;
+      transition: transform 0.3s ease;
+    }
+    .pm-online-col img:hover { transform: scale(1.02); }
+    .pm-kit-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .pm-kit-row {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .pm-kit-gift {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(196,162,101,0.1);
+      border: 1px solid rgba(196,162,101,0.28);
+      border-radius: 4px;
+      padding: 6px 16px;
+    }
+    .pm-kit-price {
+      font-family: var(--font-stats, 'Jost'), sans-serif;
+      font-size: clamp(1.3rem, 2vw, 1.65rem);
+      font-weight: 700; color: var(--gold);
+      letter-spacing: -0.02em;
+    }
     .pm-item-body {
-      padding: 32px 40px;
+      padding: 14px 32px 28px;
     }
     .pm-item-body h4 {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 2.5vw, 2rem);
-      font-weight: 400; color: var(--text-primary);
-      margin-bottom: 8px; line-height: 1.2; letter-spacing: 0.02em;
-      transition: color 0.25s;
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+      font-weight: 600; color: var(--text-primary);
+      margin-bottom: 8px; line-height: 1.3; letter-spacing: 0.01em;
+      transition: color 0.3s ease;
     }
-    .pm-item-body p {
-      font-size: 0.9rem; color: var(--text-muted); line-height: 1.65;
+    .pm-item-body > p {
+      font-size: 1.05rem; color: rgba(242,237,231,0.72); line-height: 1.6;
+      margin-top: 1.5em;
+    }
+
+    /* Зоны-стрип (карточка 01) */
+    .pm-zones-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .pm-zone-mini {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+    .pm-zone-mini img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .pm-item-card:hover .pm-zone-mini img { transform: scale(1.04); }
+    .pm-zone-mini::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,10,0.55) 0%, transparent 55%);
+    }
+    .pm-zone-mini-label {
+      position: absolute;
+      bottom: 12px; left: 14px; z-index: 1;
+      font-family: var(--font-display);
+      font-size: 1.15rem; font-weight: 400;
+      color: #fff; letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    /* Медиа-карточки (02, 03) */
+    .pm-card-media {
+      display: grid;
+      grid-template-columns: 1fr 38%;
+    }
+    .pm-card-media::before {
+      grid-column: 1 / -1;
+    }
+    .pm-card-media-slot {
+      position: relative;
+      background: rgba(196,162,101,0.06);
+      border-left: 1px solid rgba(196,162,101,0.1);
+      overflow: hidden;
+    }
+    .pm-card-media-slot--practice {
+      background: #0e0b06;
+      overflow: hidden;
+    }
+    .pm-card-media-slot--practice img {
+      width: 100%; height: 167%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .pm-card-media-slot--portfolio {
+      background: #0a0806;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 2px;
+      align-self: stretch;
+    }
+    .pm-card-media-slot--portfolio img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+    .pm-card-media-slot--portfolio img:hover { opacity: 0.85; }
+    .pm-card-media-slot--diploma {
+      background: #0e0b06;
+      padding: 0; cursor: pointer; position: relative;
+    }
+    .pm-card-media-slot--diploma img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 100%;
+      transition: transform 0.4s ease;
+    }
+    .pm-card-media-slot--diploma:hover img { transform: scale(1.03); }
+    .pm-img-zoom {
+      position: absolute; bottom: 10px; right: 12px;
+      font-size: 1rem; color: rgba(196,162,101,0.6);
+      background: rgba(8,8,10,0.55); backdrop-filter: blur(4px);
+      border: 1px solid rgba(196,162,101,0.2); border-radius: 6px;
+      width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+    }
+    .pm-video-thumb { cursor: pointer; position: relative; }
+    .pm-video-label {
+      position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+      z-index: 2;
+      font-family: var(--font-body); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--bg-deep);
+      background: linear-gradient(135deg, var(--gold), #e8d08a);
+      padding: 8px 20px; border-radius: 60px;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(196,162,101,0.3);
+    }
+    .pm-video-thumb video { width:100%; height:100%; object-fit:cover; display:block; }
+    .pm-play-btn {
+      position: absolute; inset:0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(8,8,10,0.35);
+      transition: background 0.2s;
+    }
+    .pm-play-btn svg {
+      width: 52px; height: 52px;
+      background: var(--gold); border-radius: 50%;
+      padding: 16px;
+      box-shadow: 0 4px 24px rgba(196,162,101,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pm-video-thumb:hover .pm-play-btn { background: rgba(8,8,10,0.15); }
+    .pm-video-thumb:hover .pm-play-btn svg { transform: scale(1.08); box-shadow: 0 6px 32px rgba(196,162,101,0.55); }
+
+    /* Lightbox */
+    #pm-lightbox {
+      display: none; position: fixed; inset: 0; z-index: 99999;
+      background: rgba(8,8,10,0.93); backdrop-filter: blur(12px);
+      align-items: center; justify-content: center;
+      cursor: pointer;
+    }
+    #pm-lightbox.open { display: flex; }
+    #pm-lightbox img, #pm-lightbox video {
+      max-width: 92vw; max-height: 88vh;
+      border-radius: 12px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+      cursor: default;
+    }
+    #pm-lightbox video { width: 88vw; max-height: 85vh; }
+    #pm-lb-close {
+      position: absolute; top: 20px; right: 24px;
+      font-size: 1.5rem; color: rgba(242,237,231,0.5);
+      background: rgba(255,255,255,0.06); border: none;
+      border-radius: 50%; width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: color 0.2s;
+    }
+    #pm-lb-close:hover { color: var(--gold); }
+    .pm-card-media-slot img,
+    .pm-card-media-slot video {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .pm-media-ph {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-body);
+      font-size: 0.78rem; letter-spacing: 0.1em;
+      color: rgba(196,162,101,0.35);
+      text-transform: uppercase;
+    }
+
+    .pm-card-full-img {
+      width: 100%; overflow: hidden; max-height: 340px;
+    }
+    .pm-card-full-img img {
+      width: 100%; height: 340px;
+      object-fit: cover; object-position: center;
+      display: block;
+    }
+    /* Бонусы (карточка 06) */
+    .pm-bonus-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 16px;
+    }
+    .pm-bonus-group {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px; opacity: 0.85;
+    }
+    .pm-bonus-list {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 7px;
+    }
+    .pm-bonus-list li {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.84rem; font-weight: 300;
+      color: var(--text-muted); line-height: 1.6;
+      padding-left: 14px; position: relative;
+    }
+    .pm-bonus-list li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: rgba(196,162,101,0.5);
+      font-size: 0.75rem;
     }
 
     .pm-outcome-banner {
@@ -884,27 +1360,37 @@
     }
 
     /* program toggle */
-    .pm-prog-toggle { border-top: 1px solid rgba(196,162,101,0.2); }
+    .pm-prog-toggle { }
     .pm-prog-btn {
-      width: 100%; background: none; border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 0; text-align: left;
+      background: rgba(196,162,101,0.08);
+      border: 1px solid rgba(196,162,101,0.35);
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 14px 24px; text-align: left;
+      margin-bottom: 0;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .pm-prog-btn:hover {
+      background: rgba(196,162,101,0.14);
+      border-color: rgba(196,162,101,0.6);
     }
     .pm-prog-btn-text {
-      font-family: var(--font-body); font-size: 0.9rem; font-weight: 500;
-      color: var(--text-secondary); letter-spacing: 0.04em;
+      font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+      color: var(--gold); letter-spacing: 0.03em;
     }
     .pm-acc-icon {
-      width: 18px; height: 18px; position: relative; flex-shrink: 0;
+      width: 20px; height: 20px; position: relative; flex-shrink: 0;
     }
     .pm-acc-icon::before, .pm-acc-icon::after {
       content: ''; position: absolute;
       background: var(--gold); border-radius: 1px;
       transition: transform 0.3s ease, opacity 0.3s ease;
     }
-    .pm-acc-icon::before { width: 18px; height: 1px; top: 50%; left: 0; transform: translateY(-50%); }
-    .pm-acc-icon::after  { width: 1px; height: 18px; left: 50%; top: 0; transform: translateX(-50%); }
+    .pm-acc-icon::before { width: 20px; height: 1.5px; top: 50%; left: 0; transform: translateY(-50%); }
+    .pm-acc-icon::after  { width: 1.5px; height: 20px; left: 50%; top: 0; transform: translateX(-50%); }
     .pm-prog-toggle.open .pm-acc-icon::after { transform: translateX(-50%) rotate(90deg); opacity: 0; }
+    .pm-prog-list { margin-top: 20px; }
     .pm-prog-list {
       overflow: hidden; max-height: 0;
       transition: max-height 0.5s ease;
@@ -912,27 +1398,76 @@
     }
     .pm-prog-toggle.open .pm-prog-list { max-height: 1200px; }
     .pm-prog-module {
-      display: grid; grid-template-columns: 48px 1fr;
-      gap: 16px; padding: 18px 0;
+      display: flex; align-items: center;
+      gap: 0; padding: 4px 0;
       border-top: 1px solid rgba(196,162,101,0.1);
     }
     .pm-acc-num {
-      font-family: var(--font-stats); font-size: 0.78rem;
-      color: var(--gold); letter-spacing: 0.08em; padding-top: 2px;
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 3.5vw, 3rem);
+      font-weight: 400;
+      color: rgba(196,162,101,0.22);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      user-select: none;
+      min-width: 72px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
     }
-    .pm-prog-module strong {
-      font-family: var(--font-body); font-size: 0.95rem;
-      color: var(--text-primary); font-weight: 500; display: block; margin-bottom: 6px;
+    .pm-mod-body { width: 100%; min-width: 0; }
+    .pm-mod-btn {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0; text-align: left; gap: 16px;
     }
-    .pm-prog-module p {
-      font-family: var(--font-body); font-size: 0.88rem;
-      color: var(--text-muted); line-height: 1.7; margin: 0;
+    .pm-mod-btn strong {
+      font-family: var(--font-body); font-size: 1.05rem;
+      color: var(--text-primary); font-weight: 600;
+      transition: color 0.2s;
+    }
+    .pm-mod-btn:hover strong { color: var(--gold); }
+    .pm-mod-icon {
+      width: 16px; height: 16px; position: relative; flex-shrink: 0;
+    }
+    .pm-mod-icon::before, .pm-mod-icon::after {
+      content: ''; position: absolute;
+      background: rgba(196,162,101,0.5); border-radius: 1px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .pm-mod-icon::before { width: 16px; height: 1px; top: 50%; left: 0; transform: translateY(-50%); }
+    .pm-mod-icon::after  { width: 1px; height: 16px; left: 50%; top: 0; transform: translateX(-50%); }
+    .pm-prog-module.mod-open .pm-mod-icon::after { transform: translateX(-50%) rotate(90deg); opacity: 0; }
+    .pm-mod-detail {
+      overflow: hidden; max-height: 0;
+      transition: max-height 0.45s ease;
+    }
+    .pm-mod-list {
+      list-style: none; padding: 0 0 16px; margin: 0;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .pm-mod-list--cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px 20px;
+    }
+    .pm-mod-list li {
+      font-family: 'Raleway', sans-serif; font-size: 1.05rem;
+      color: rgba(242,237,231,0.72); line-height: 1.6;
+      padding-left: 14px; position: relative;
+    }
+    .pm-mod-list li::before {
+      content: '—'; position: absolute; left: 0;
+      color: rgba(196,162,101,0.4); font-size: 0.75rem;
     }
 
     @media (max-width: 900px) {
       .pm-included-wrap { grid-template-columns: 1fr; gap: 0; padding: 0 24px; }
       .pm-sticky-left { padding: 60px 0 0; }
-      .pm-scroll-right { border-left: none; padding: 40px 0 60px; }
+      .pm-scroll-right { padding: 40px 0 60px; }
+      .pm-card-media { grid-template-columns: 1fr; }
+      .pm-card-media-slot { min-height: 200px; border-left: none; border-top: 1px solid rgba(196,162,101,0.1); }
+      .pm-bonus-cols { grid-template-columns: 1fr; gap: 16px; }
       .pm-sticky-content { position: static; }
     }
   </style>
@@ -941,20 +1476,210 @@
   <section class="pm-program" id="program">
     <div class="pm-program-inner">
       <div class="section-eyebrow fade-up" style="margin-bottom:12px">Программа</div>
-      <h2 class="fade-up">Программа курса</h2>
-      <p class="pm-program-sub fade-up">«Transformation Make Up» — 14 дней онлайн + 4 дня очно в Москве</p>
+      <h2 class="fade-up">Программа курса «Transformation Make Up»</h2>
+      <p class="pm-program-sub fade-up">14 дней онлайн + 4 дня очно в Москве</p>
       <div class="pm-prog-toggle fade-up">
         <button class="pm-prog-btn" onclick="pmProgToggle(this)">
           <span class="pm-prog-btn-text">Посмотреть подробную программу</span>
           <span class="pm-acc-icon"></span>
         </button>
         <div class="pm-prog-list">
-          <div class="pm-prog-module"><span class="pm-acc-num">01</span><div><strong>Теория и база</strong><p>Анатомия кожи, пигменты и их поведение, санитария, противопоказания, работа с цветом и формой, психология клиента. 14 дней онлайн в удобном темпе.</p></div></div>
-          <div class="pm-prog-module"><span class="pm-acc-num">02</span><div><strong>Техники: брови</strong><p>Пудровое напыление, комбинированная техника, омбре. Подбор формы по типу лица. Работа на 7 реальных моделях под руководством Арины.</p></div></div>
-          <div class="pm-prog-module"><span class="pm-acc-num">03</span><div><strong>Техники: губы и межресничка</strong><p>Акварельные губы, full lips, межресничная линия. Работа с симметрией. Практика на моделях с разными типами кожи.</p></div></div>
-          <div class="pm-prog-module"><span class="pm-acc-num">04</span><div><strong>Осветление старого ПМ</strong><p>Коррекция и перекрытие неудачных работ — одна из самых востребованных услуг. Отдельный практический урок.</p></div></div>
-          <div class="pm-prog-module"><span class="pm-acc-num">05</span><div><strong>Бизнес и маркетинг</strong><p>Как найти первых клиентов, Instagram и Telegram для мастера, ценообразование. Уроки со стилистом, психологом и маркетологом.</p></div></div>
-          <div class="pm-prog-module"><span class="pm-acc-num">06</span><div><strong>Итоговая аттестация и диплом</strong><p>Финальные работы, фотосессия портфолио, государственный диплом + именной сертификат Agent Permanent. Стартовый набор материалов в подарок.</p></div></div>
+
+          <div class="pm-prog-module">
+            <span class="pm-acc-num">01</span>
+            <div class="pm-mod-body">
+              <button class="pm-mod-btn" onclick="pmModToggle(this)">
+                <strong>Теория и база</strong>
+                <span class="pm-mod-icon"></span>
+              </button>
+              <div class="pm-mod-detail">
+                <ul class="pm-mod-list pm-mod-list--cols">
+                  <li>Что такое перманентный макияж</li>
+                  <li>Виды перманентного макияжа</li>
+                  <li>Место мастера</li>
+                  <li>Аптечка первой помощи</li>
+                  <li>Асептика</li>
+                  <li>Организация рабочего места</li>
+                  <li>Перекрёстное заражение и гигиена рук</li>
+                  <li>Утилизация</li>
+                  <li>Противопоказания к перманентному макияжу</li>
+                  <li>Осложнения после перманентного макияжа</li>
+                  <li>Виды новообразований</li>
+                  <li>Все о коже</li>
+                  <li>Рубцы</li>
+                  <li>Восприятие цвета</li>
+                  <li>Фильтры в коже</li>
+                  <li>Цветотипы</li>
+                  <li>Анестетики</li>
+                  <li>Аппараты</li>
+                  <li>Иглы, системы</li>
+                  <li>Болевой порог</li>
+                  <li>Техники в ПМ: брови, губы</li>
+                  <li>Анатомия бровей</li>
+                  <li>Чем делать эскиз</li>
+                  <li>Опорные точки</li>
+                  <li>Уход за бровями</li>
+                  <li>Схема штрихования на брови</li>
+                  <li>Процесс заживления</li>
+                  <li>Особенности работы</li>
+                  <li>Подбор цвета, перекрытие</li>
+                  <li>Аппараты и иглы при работе с бровями</li>
+                  <li>Рекомендации</li>
+                  <li>Миксы на брови</li>
+                  <li>Анатомия губ</li>
+                  <li>Эскиз на губы</li>
+                  <li>Виды губ, особенности работы</li>
+                  <li>Схемы штрихования на губы</li>
+                  <li>Фильтры в губах</li>
+                  <li>Миксы на губы</li>
+                  <li>Процесс заживления губ</li>
+                  <li>Рекомендации по уходу</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="pm-prog-module">
+            <span class="pm-acc-num">02</span>
+            <div class="pm-mod-body">
+              <button class="pm-mod-btn" onclick="pmModToggle(this)">
+                <strong>Отработка штрихов на латексе</strong>
+                <span class="pm-mod-icon"></span>
+              </button>
+              <div class="pm-mod-detail">
+                <ul class="pm-mod-list">
+                  <li>Маятник</li>
+                  <li>Штрих на себя</li>
+                  <li>Штрих от себя</li>
+                  <li>Перекрёстный</li>
+                  <li>Точечный</li>
+                  <li>Линия</li>
+                  <li>Разряженный</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="pm-prog-module">
+            <span class="pm-acc-num">03</span>
+            <div class="pm-mod-body">
+              <button class="pm-mod-btn" onclick="pmModToggle(this)">
+                <strong>Техники: брови</strong>
+                <span class="pm-mod-icon"></span>
+              </button>
+              <div class="pm-mod-detail">
+                <ul class="pm-mod-list">
+                  <li>Пудровое напыление</li>
+                  <li>Комбинированная техника</li>
+                  <li>Градиент</li>
+                  <li>Графика</li>
+                  <li>Перекрытие</li>
+                  <li>Коррекция и рефреш</li>
+                  <li>Подбор формы по типу лица</li>
+                  <li>Эскизирование</li>
+                  <li>Практика на моделях с разными типами кожи</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="pm-prog-module">
+            <span class="pm-acc-num">04</span>
+            <div class="pm-mod-body">
+              <button class="pm-mod-btn" onclick="pmModToggle(this)">
+                <strong>Техники: губы</strong>
+                <span class="pm-mod-icon"></span>
+              </button>
+              <div class="pm-mod-detail">
+                <ul class="pm-mod-list">
+                  <li>Акварельные губы</li>
+                  <li>Помадный прокрас</li>
+                  <li>Восстановление контура</li>
+                  <li>Эскизирование</li>
+                  <li>Перекрытие</li>
+                  <li>Коррекция и рефреш</li>
+                  <li>Практика на моделях с разными типами кожи</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="pm-prog-module">
+            <span class="pm-acc-num">05</span>
+            <div class="pm-mod-body">
+              <button class="pm-mod-btn" onclick="pmModToggle(this)">
+                <strong>Техники: межресничка</strong>
+                <span class="pm-mod-icon"></span>
+              </button>
+              <div class="pm-mod-detail">
+                <ul class="pm-mod-list">
+                  <li>Заполнение межресничного пространства</li>
+                  <li>Эффект «несмывшейся туши»</li>
+                  <li>Работа с симметрией</li>
+                  <li>Перекрытие</li>
+                  <li>Коррекция и рефреш</li>
+                  <li>Практика на моделях с разными типами кожи</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="pm-prog-module">
+            <span class="pm-acc-num">06</span>
+            <div class="pm-mod-body">
+              <button class="pm-mod-btn" onclick="pmModToggle(this)">
+                <strong>Осветление старого ПМ</strong>
+                <span class="pm-mod-icon"></span>
+              </button>
+              <div class="pm-mod-detail">
+                <ul class="pm-mod-list">
+                  <li>Демонстрация удаления ремувером на модели</li>
+                  <li>Работа со сложным цветом и перекрытием</li>
+                  <li>Практика на модели</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="pm-prog-module">
+            <span class="pm-acc-num">07</span>
+            <div class="pm-mod-body">
+              <button class="pm-mod-btn" onclick="pmModToggle(this)">
+                <strong>Бизнес и маркетинг</strong>
+                <span class="pm-mod-icon"></span>
+              </button>
+              <div class="pm-mod-detail">
+                <ul class="pm-mod-list">
+                  <li>Как найти первых клиентов</li>
+                  <li>Instagram и Telegram для мастера</li>
+                  <li>Ценообразование</li>
+                  <li>Урок с психологом</li>
+                  <li>Урок с SMM-специалистом</li>
+                  <li>Урок по фото и видео</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="pm-prog-module">
+            <span class="pm-acc-num">08</span>
+            <div class="pm-mod-body">
+              <button class="pm-mod-btn" onclick="pmModToggle(this)">
+                <strong>Заключительная часть</strong>
+                <span class="pm-mod-icon"></span>
+              </button>
+              <div class="pm-mod-detail">
+                <ul class="pm-mod-list">
+                  <li>Итоговая аттестация и награждение</li>
+                  <li>Фотосессия</li>
+                  <li>Выдача государственного диплома</li>
+                  <li>Именной сертификат Agent Permanent</li>
+                  <li>Вручение подарков</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -1004,10 +1729,6 @@
           </ul>
         </div>
 
-      </div>
-      <div class="fw-note fade-up">
-        <span class="fw-note-icon">◈</span>
-        Подберём для вас удобные даты для прохождения обучения, мини-группы 2–4 человека для успешного освоения программы
       </div>
       <div class="fade-up" style="margin-top:40px;text-align:center">
         <a href="#" class="btn btn-gold" onclick="openBookingPopup('академия-пм');return false;">Узнать даты и стоимость</a>
@@ -1068,7 +1789,8 @@
       display: flex; flex-direction: column; gap: 10px;
     }
     .fw-list li {
-      font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;
+      font-family: 'Raleway', sans-serif; font-size: 1.05rem;
+      color: rgba(242,237,231,0.72); line-height: 1.6;
       padding-left: 16px; position: relative;
       transition: color 0.3s;
     }
@@ -1082,7 +1804,7 @@
       border-radius: 2px;
     }
     .fw-note-icon { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
-    .fw-note p, .fw-note { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; }
+    .fw-note p, .fw-note { font-family: 'Raleway', sans-serif; font-size: 1.05rem; color: rgba(242,237,231,0.72); line-height: 1.6; }
     @media (max-width: 900px) {
       .pm-for-whom-inner { padding: 0 24px; }
       .fw-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1111,58 +1833,13 @@
           <div class="result-label">до первых платных клиентов</div>
         </div>
         <div class="result-card">
-          <div class="result-num">70–120k</div>
+          <div class="result-num">от 120k</div>
           <div class="result-label">средний доход мастера через 3 месяца</div>
         </div>
         <div class="result-card">
           <div class="result-num">150+</div>
           <div class="result-label">в среднем клиентов в базе через год</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CASES -->
-  <section class="pm-cases" id="cases">
-    <div class="pm-cases-inner">
-      <div class="section-eyebrow fade-up" style="margin-bottom:12px">Выпускницы</div>
-      <h2 class="fade-up">Они уже зарабатывают</h2>
-      <p class="pm-cases-sub fade-up">Реальные истории — без прикрас</p>
-      <div class="cases-grid">
-        <div class="case-card fade-up">
-          <div class="case-photo">А</div>
-          <div>
-            <div class="case-name">Анастасия</div>
-            <div class="case-city">Москва</div>
-          </div>
-          <div class="case-income">110 000 ₽</div>
-          <div class="case-income-label">в месяц через 4 месяца после курса</div>
-          <p class="case-quote">«Пришла из HR. Боялась, что не получится. Арина объясняла каждый шаг — через 2 месяца уже принимала клиентов.»</p>
-        </div>
-        <div class="case-card fade-up" style="transition-delay:0.1s">
-          <div class="case-photo">М</div>
-          <div>
-            <div class="case-name">Мария</div>
-            <div class="case-city">Санкт-Петербург</div>
-          </div>
-          <div class="case-income">85 000 ₽</div>
-          <div class="case-income-label">в месяц, работает из дома</div>
-          <p class="case-quote">«Мама двух детей. Курс прошла онлайн во время декрета. Теперь работаю на себя и сама выбираю клиентов.»</p>
-        </div>
-        <div class="case-card fade-up" style="transition-delay:0.2s">
-          <div class="case-photo">Е</div>
-          <div>
-            <div class="case-name">Екатерина</div>
-            <div class="case-city">Казань</div>
-          </div>
-          <div class="case-income">130 000 ₽</div>
-          <div class="case-income-label">в месяц, открыла свой кабинет</div>
-          <p class="case-quote">«До курса работала продавцом. Сейчас своя студия, полная запись на 3 недели вперёд. Не верю, что это моя жизнь.»</p>
-        </div>
-      </div>
-    <div style="text-align:center;margin-top:48px" class="fade-up">
-        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:20px">Хотите так же? Следующий поток стартует скоро</p>
-        <a href="#" class="btn btn-gold" onclick="openBookingPopup('академия-пм');return false;">Узнать даты и стоимость</a>
       </div>
     </div>
   </section>
@@ -1174,22 +1851,33 @@
         <div class="section-eyebrow fade-up" style="margin-bottom:12px">Наши ученики</div>
         <h2 class="pm-gallery-title fade-up">Академия</h2>
       </div>
-      <div class="pm-masonry" id="stMasonry">
-        <div class="pm-mn-col">
+      <div class="pm-st-rows" id="stMasonry">
+        <div class="pm-st-row">
           <div class="pm-mn-item" onclick="pmLbShow(0)"><img src="students/IMG_1449.jpg" alt=""></div>
-          <div class="pm-mn-item" onclick="pmLbShow(1)"><img src="students/IMG_1452.jpg" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(1)"><img src="../../about/studio/IMG_1465.JPG" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(2)"><img src="students/IMG_1452.jpg" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(3)"><img src="../../about/studio/IMG_1464.JPG" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(4)"><img src="students/IMG_1447.jpg" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(5)"><img src="../../about/studio/IMG_1463.JPG" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(6)"><img src="students/IMG_4452.JPG" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(7)"><img src="../../about/studio/IMG_1462.JPG" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(8)"><img src="students/IMG_1448.jpg" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(9)"><img src="../../about/studio/IMG_1461.jpg" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(10)"><img src="students/IMG_1451.JPG" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(11)"><img src="../../about/studio/IMG_1460.jpg" alt=""></div>
         </div>
-        <div class="pm-mn-col">
-          <div class="pm-mn-item" onclick="pmLbShow(2)"><img src="students/IMG_1447.jpg" alt=""></div>
-          <div class="pm-mn-item" onclick="pmLbShow(3)"><img src="students/IMG_4452.JPG" alt=""></div>
-        </div>
-        <div class="pm-mn-col">
-          <div class="pm-mn-item" onclick="pmLbShow(4)"><img src="students/IMG_1448.jpg" alt=""></div>
-          <div class="pm-mn-item" onclick="pmLbShow(5)"><img src="students/IMG_1451.JPG" alt=""></div>
-        </div>
-        <div class="pm-mn-col">
-          <div class="pm-mn-item" onclick="pmLbShow(6)"><img src="students/IMG_6563.jpg" alt=""></div>
-          <div class="pm-mn-item" onclick="pmLbShow(7)"><img src="students/IMG_8142.JPG" alt=""></div>
+        <div class="pm-st-row">
+          <div class="pm-mn-item" onclick="pmLbShow(12)"><img src="students/IMG_6563.jpg" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(13)"><img src="../../about/studio/IMG_1458.jpg" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(14)"><img src="students/IMG_8142.JPG" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(15)"><img src="../../about/studio/IMG_1457.jpg" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(16)"><img src="../../about/studio/IMG_1456.jpg" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(17)"><img src="../../about/studio/IMG_1454.jpg" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(18)"><img src="../../about/studio/IMG_1453.jpg" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(19)"><img src="../../about/studio/IMG_1445.jpg" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(20)"><img src="../../about/studio/IMG_1444.jpg" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(21)"><img src="../../about/studio/IMG_1455.jpg" alt=""></div>
+          <div class="pm-mn-item" onclick="pmLbShow(22)"><img src="../../about/studio/IMG_6274.JPG" alt=""></div>
         </div>
       </div>
     </div>
@@ -1227,6 +1915,112 @@
     </div>
   </section>
 
+  <!-- VIDEO REVIEWS -->
+  <section class="pm-video-reviews">
+    <div class="pm-vr-inner">
+      <div class="section-eyebrow fade-up" style="margin-bottom:12px">Отзывы</div>
+      <h2 class="fade-up">Говорят выпускницы</h2>
+      <div class="pm-vr-grid">
+        <div class="pm-vr-card fade-up" onclick="vrLbShow('../../Видео/IMG_4465.MOV')">
+          <video src="../../Видео/IMG_4465.MOV" preload="metadata" playsinline muted></video>
+          <div class="pm-vr-play"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="29" stroke="rgba(196,162,101,0.6)" stroke-width="1.5" fill="rgba(0,0,0,0.35)"/><path d="M24 19l18 11-18 11V19z" fill="#C4A265"/></svg></div>
+        </div>
+        <div class="pm-vr-card fade-up" style="transition-delay:0.08s" onclick="vrLbShow('../../Видео/IMG_7769.MOV')">
+          <video src="../../Видео/IMG_7769.MOV" preload="metadata" playsinline muted></video>
+          <div class="pm-vr-play"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="29" stroke="rgba(196,162,101,0.6)" stroke-width="1.5" fill="rgba(0,0,0,0.35)"/><path d="M24 19l18 11-18 11V19z" fill="#C4A265"/></svg></div>
+        </div>
+        <div class="pm-vr-card fade-up" style="transition-delay:0.16s" onclick="vrLbShow('../../Видео/IMG_4466.MOV')">
+          <video src="../../Видео/IMG_4466.MOV" preload="metadata" playsinline muted></video>
+          <div class="pm-vr-play"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="29" stroke="rgba(196,162,101,0.6)" stroke-width="1.5" fill="rgba(0,0,0,0.35)"/><path d="M24 19l18 11-18 11V19z" fill="#C4A265"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO LIGHTBOX -->
+  <div class="pm-vr-lb" id="vrLb" onclick="if(event.target===this)vrLbHide()">
+    <button class="pm-vr-lb-close" onclick="vrLbHide()">✕</button>
+    <video class="pm-vr-lb-video" id="vrLbVideo" controls playsinline></video>
+  </div>
+
+  <style>
+    .pm-video-reviews {
+      padding: 80px 0;
+      background: var(--bg-deep);
+    }
+    .pm-vr-inner {
+      max-width: 1060px; margin: 0 auto; padding: 0 48px;
+    }
+    .pm-video-reviews h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400; color: var(--text-primary);
+      margin-bottom: 40px;
+    }
+    .pm-vr-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .pm-vr-card {
+      flex: 0 0 calc(33.333% - 14px);
+      max-width: 300px;
+      position: relative;
+      cursor: pointer;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(196,162,101,0.15);
+      background: #0a0a0c;
+      transition: border-color 0.3s;
+    }
+    .pm-vr-card:hover { border-color: rgba(196,162,101,0.4); }
+    .pm-vr-card video {
+      width: 100%;
+      aspect-ratio: 9/16;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+    .pm-vr-play {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: transparent;
+      transition: background 0.3s;
+    }
+    .pm-vr-play svg { width: 64px; height: 64px; transition: transform 0.3s; }
+    .pm-vr-card:hover .pm-vr-play { background: rgba(0,0,0,0.15); }
+    .pm-vr-card:hover .pm-vr-play svg { transform: scale(1.08); }
+
+    /* Video lightbox */
+    .pm-vr-lb {
+      display: none; position: fixed; inset: 0; z-index: 10000;
+      background: rgba(0,0,0,0.92);
+      align-items: center; justify-content: center;
+    }
+    .pm-vr-lb.open { display: flex; }
+    .pm-vr-lb-video {
+      max-width: 92vw;
+      max-height: 92vh;
+      width: auto; height: auto;
+      border-radius: 10px;
+      outline: none;
+    }
+    .pm-vr-lb-close {
+      position: absolute; top: 20px; right: 28px;
+      background: none; border: none; cursor: pointer;
+      color: rgba(242,237,231,0.7); font-size: 1.8rem;
+      line-height: 1; padding: 8px;
+      transition: color 0.2s;
+    }
+    .pm-vr-lb-close:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .pm-vr-inner { padding: 0 24px; }
+      .pm-vr-grid { flex-direction: column; align-items: center; gap: 16px; }
+      .pm-vr-card { flex: none; width: 100%; max-width: 340px; }
+    }
+  </style>
+
   <!-- PM LIGHTBOX -->
   <div class="pm-lb" id="pmLb" onclick="if(event.target===this)pmLbHide()">
     <button class="pm-lb-close" onclick="pmLbHide()">✕</button>
@@ -1237,6 +2031,15 @@
   </div>
 
   <style>
+    .pm-st-rows { display: flex; flex-direction: column; gap: 4px; }
+    .pm-st-row {
+      display: flex; gap: 4px;
+      overflow-x: auto; scrollbar-width: none;
+      cursor: grab;
+    }
+    .pm-st-row::-webkit-scrollbar { display: none; }
+    .pm-st-row:active { cursor: grabbing; }
+    .pm-st-row .pm-mn-item { flex: 0 0 240px; }
     .pm-students {
       background: var(--bg-deep);
       padding: 60px 0 0;
@@ -1326,8 +2129,8 @@
     .pm-faq-q {
       display: flex; align-items: center; justify-content: space-between;
       gap: 24px; padding: 24px 0;
-      font-size: 1rem; color: var(--text-primary);
-      font-weight: 400; line-height: 1.4; letter-spacing: 0.01em;
+      font-family: 'Raleway', sans-serif; font-size: 1.1rem; color: var(--text-primary);
+      font-weight: 600; line-height: 1.5; letter-spacing: 0.01em;
       transition: color 0.25s;
     }
     .pm-faq-item:hover .pm-faq-q { color: var(--gold); }
@@ -1342,8 +2145,8 @@
     .pm-faq-a {
       max-height: 0; overflow: hidden;
       transition: max-height 0.4s ease, padding 0.3s ease;
-      font-size: 0.93rem; color: var(--text-secondary);
-      line-height: 1.75; padding: 0;
+      font-family: 'Raleway', sans-serif; font-size: 1.05rem;
+      color: rgba(242,237,231,0.72); line-height: 1.7; padding: 0;
     }
     .pm-faq-item.open .pm-faq-a {
       max-height: 300px;
@@ -1579,7 +2382,91 @@
   function pmProgToggle(btn) {
     var wrap = btn.closest('.pm-prog-toggle');
     var isOpen = wrap.classList.toggle('open');
+    var list = wrap.querySelector('.pm-prog-list');
     btn.querySelector('.pm-prog-btn-text').textContent = isOpen ? 'Скрыть программу' : 'Посмотреть подробную программу';
+    if (isOpen) {
+      list.style.maxHeight = list.scrollHeight + 'px';
+      setTimeout(function() {
+        if (wrap.classList.contains('open')) list.style.maxHeight = 'none';
+      }, 550);
+    } else {
+      list.style.maxHeight = list.getBoundingClientRect().height + 'px';
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() { list.style.maxHeight = '0'; });
+      });
+    }
+  }
+  function pmModToggle(btn) {
+    var mod = btn.closest('.pm-prog-module');
+    var detail = mod.querySelector('.pm-mod-detail');
+    var isOpen = mod.classList.toggle('mod-open');
+    var detailH = detail.scrollHeight;
+    detail.style.maxHeight = isOpen ? detailH + 'px' : '0';
+    var list = mod.closest('.pm-prog-list');
+    if (list && list.style.maxHeight && list.style.maxHeight !== 'none') {
+      var listH = parseFloat(list.style.maxHeight) || 0;
+      list.style.maxHeight = (isOpen ? listH + detailH : Math.max(0, listH - detailH)) + 'px';
+    }
+  }
+</script>
+
+<!-- Lightbox -->
+<div id="pm-lightbox">
+  <button id="pm-lb-close" onclick="pmCloseLb()">&#x2715;</button>
+</div>
+
+<script>
+  function pmOpenImg(src) {
+    const lb = document.getElementById('pm-lightbox');
+    lb.innerHTML = '<button id="pm-lb-close" onclick="pmCloseLb()">&#x2715;</button><img src="' + src + '" alt="">';
+    lb.classList.add('open');
+  }
+  function pmOpenVideo(src) {
+    const lb = document.getElementById('pm-lightbox');
+    lb.innerHTML = '<button id="pm-lb-close" onclick="pmCloseLb()">&#x2715;</button><video src="' + src + '" controls autoplay playsinline></video>';
+    lb.classList.add('open');
+  }
+  function pmCloseLb() {
+    const lb = document.getElementById('pm-lightbox');
+    lb.classList.remove('open');
+    lb.innerHTML = '<button id="pm-lb-close" onclick="pmCloseLb()">&#x2715;</button>';
+  }
+  document.getElementById('pm-lightbox').addEventListener('click', function(e) {
+    if (e.target === this) pmCloseLb();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { pmCloseLb(); vrLbHide(); }
+  });
+
+  function ivPlay() {
+    pmOpenVideo('../../Видео/Intro video.MP4');
+  }
+
+  function vrLbShow(src) {
+    var lb = document.getElementById('vrLb');
+    var vid = document.getElementById('vrLbVideo');
+    vid.src = src;
+    lb.classList.add('open');
+    vid.play();
+    document.body.style.overflow = 'hidden';
+  }
+  function vrLbHide() {
+    var lb = document.getElementById('vrLb');
+    var vid = document.getElementById('vrLbVideo');
+    lb.classList.remove('open');
+    vid.pause();
+    vid.src = '';
+    document.body.style.overflow = '';
+  }
+
+  // thread draw on scroll
+  const threadEl = document.getElementById('beliefThread');
+  if (threadEl) {
+    new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        threadEl.classList.add('is-drawn');
+      }
+    }, { threshold: 0.5 }).observe(threadEl);
   }
 </script>
 </body>
