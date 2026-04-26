@@ -8,9 +8,20 @@
   <link rel="icon" type="image/png" href="../../favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,500;1,300;1,400&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Marcellus&family=Cormorant+Garamond:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400&family=Raleway:wght@200;300;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/style.css">
   <style>
+    :root {
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-stats: 'Cormorant Garamond', serif;
+    }
+    .section-eyebrow { font-size: 0.95rem; font-weight: 200; }
+    .pm-hero-sub-num, .pm-hero-meta-num, .pm-price-bg-num,
+    .pm-price-num, .pm-price-card2 .pm-price-num,
+    .pm-cta-bg-text, .result-num, .case-income {
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1;
+    }
     /* ── GRAIN ── */
     html::after {
       content: '';
@@ -39,7 +50,7 @@
       width: 100%; padding: 0 48px; max-width: 1400px; margin: 0 auto;
     }
     .pm-hero-eyebrow {
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.25em;
+      font-size: 0.95rem; font-weight: 200; letter-spacing: 0.25em;
       text-transform: uppercase; color: var(--gold);
       margin-bottom: 20px;
       display: flex; align-items: center; gap: 14px;
@@ -53,10 +64,9 @@
       margin-bottom: 16px;
     }
     .pm-hero-stan {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--font-display);
       font-size: clamp(2.1rem, 3.8vw, 4.2rem);
-      font-weight: 300;
-      font-style: italic;
+      font-weight: 400;
       color: rgba(196,162,101,0.65);
       line-height: 0.9;
       letter-spacing: 0.01em;
@@ -66,6 +76,7 @@
     .pm-hero-sub {
       display: flex; flex-direction: column;
       align-items: flex-start; gap: 0;
+      margin-top: 32px;
       margin-bottom: 40px;
     }
     .pm-hero-sub-label {
@@ -76,10 +87,10 @@
       text-transform: uppercase;
       color: rgba(196,162,101,0.55);
       line-height: 1;
-      margin-bottom: 12px;
+      margin-bottom: 24px;
     }
     .pm-hero-sub-num {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant Garamond', serif; font-weight: 600;
       font-size: clamp(5rem, 11vw, 11rem);
       font-weight: 400;
       color: var(--gold);
@@ -89,7 +100,7 @@
     .pm-hero-sub-num sup {
       font-family: 'Raleway', sans-serif;
       font-size: 0.22em;
-      font-weight: 300;
+      font-weight: 200;
       letter-spacing: 0.08em;
       vertical-align: super;
       color: rgba(196,162,101,0.65);
@@ -98,9 +109,9 @@
     .pm-hero-sub-caption {
       font-family: 'Raleway', sans-serif;
       font-size: clamp(0.75rem, 1.1vw, 0.9rem);
-      font-weight: 300;
+      font-weight: 200;
       letter-spacing: 0.12em;
-      color: rgba(242,237,231,0.58);
+      color: rgba(242,237,231,0.65);
       text-transform: uppercase;
       margin-top: 10px;
     }
@@ -128,8 +139,8 @@
       margin-right: 40px;
     }
     .pm-hero-meta-num {
-      font-family: var(--font-stats, "Jost"), sans-serif;
-      font-size: 2.6rem; font-weight: 700;
+      font-family: var(--font-stats);
+      font-size: 2.6rem; font-weight: 600;
       color: var(--gold); line-height: 1;
     }
     .pm-hero-meta-label {
@@ -243,38 +254,40 @@
 
     /* ── RESULT ── */
     .pm-result {
-      padding: 80px 0;
-      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 50%, #1e1409 100%);
-      text-align: center;
+      padding: 100px 0;
+      background: #0e0b07;
+      border-top: 1px solid rgba(196,162,101,0.08);
     }
     .pm-result-inner {
       max-width: 1200px; margin: 0 auto; padding: 0 48px;
     }
+    .pm-result-header { margin-bottom: 56px; }
     .pm-result h2 {
       font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3rem);
-      color: var(--text-primary); font-weight: 400; margin-bottom: 16px;
-    }
-    .pm-result-sub {
-      font-size: 0.93rem; color: var(--text-muted); margin-bottom: 56px;
+      color: var(--text-primary); font-weight: 400; margin-bottom: 0;
     }
     .result-grid {
-      display: flex; flex-wrap: nowrap;
-      border-top: 1px solid rgba(196,162,101,0.15);
-      padding-top: 36px; gap: 0;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: rgba(196,162,101,0.07);
+      border: 1px solid rgba(196,162,101,0.1);
     }
     .result-card {
-      display: flex; flex-direction: column; gap: 8px;
-      padding-right: 48px;
+      background: #0e0b07;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 10px; padding: 52px 32px;
+      text-align: center;
+      transition: background 0.3s;
     }
-    .result-card:not(:last-child) {
-      border-right: 1px solid rgba(196,162,101,0.12);
-      margin-right: 48px;
-    }
+    .result-card:hover { background: rgba(196,162,101,0.04); }
     .result-num {
-      font-family: var(--font-stats); font-size: clamp(2.2rem, 4vw, 3.2rem);
-      font-weight: 700; color: var(--gold); line-height: 1;
+      font-family: var(--font-stats); font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 600; color: var(--gold); line-height: 1; letter-spacing: -0.03em;
     }
-    .result-label { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; max-width: 180px; }
+    .result-label {
+      font-size: 0.82rem; color: rgba(242,237,231,0.65); line-height: 1.5;
+      letter-spacing: 0.02em; max-width: 160px;
+    }
 
     /* ── PROGRAM ── */
     .pm-program { padding: 80px 0; background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 50%, #1e1409 100%); }
@@ -283,7 +296,7 @@
       font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3rem);
       color: var(--text-primary); font-weight: 400; margin-bottom: 8px;
     }
-    .pm-program-sub { font-family: 'Raleway', sans-serif; font-size: 1.05rem; color: rgba(242,237,231,0.72); line-height: 1.6; margin-bottom: 48px; }
+    .pm-program-sub { font-family: 'Raleway', sans-serif; font-size: 1.05rem; font-weight: 200; color: rgba(242,237,231,0.72); line-height: 1.6; margin-bottom: 48px; }
     .modules { display: flex; flex-direction: column; }
     .module {
       display: grid; grid-template-columns: 80px 1fr;
@@ -301,7 +314,7 @@
       font-size: 1.05rem; font-weight: 500; color: var(--text-primary);
       margin-bottom: 8px; letter-spacing: 0.02em;
     }
-    .module-body p { font-size: 0.93rem; color: var(--text-secondary); line-height: 1.65; }
+    .module-body p { font-size: 0.93rem; font-weight: 200; color: var(--text-secondary); line-height: 1.65; }
 
     /* ── CASES ── */
     .pm-cases { padding: 80px 0; background: radial-gradient(ellipse 60% 70% at 90% 20%, rgba(196,162,101,0.05) 0%, transparent 55%), var(--bg-forest); }
@@ -332,15 +345,372 @@
       color: var(--gold); line-height: 1;
     }
     .case-income-label { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
-    .case-quote { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; font-style: italic; }
+    .case-quote { font-size: 0.85rem; font-weight: 200; color: var(--text-secondary); line-height: 1.65; }
+
+    /* ── CTA AFTER INCLUDED ── */
+    .pm-included-cta {
+      background: var(--gold);
+      padding: 52px 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 40px;
+    }
+    .pm-included-cta-left {
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .pm-included-cta h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      font-weight: 400; color: #08080A;
+      margin: 0; line-height: 1.1;
+    }
+    .pm-included-cta p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.8rem; font-weight: 400;
+      color: rgba(8,8,10,0.55); letter-spacing: 0.06em;
+      text-transform: uppercase; margin: 0;
+    }
+    .btn-dark {
+      display: inline-block;
+      padding: 14px 32px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.95rem; font-weight: 200;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      text-decoration: none;
+      color: var(--gold);
+      background: #08080A;
+      border-radius: 3px;
+      white-space: nowrap;
+      transition: background 0.25s;
+    }
+    .btn-dark:hover { background: #1a1208; }
+
+    /* ── PRICE SECTION ── */
+    .pm-price {
+      background: #0a0806;
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .pm-price-glow {
+      position: absolute;
+      top: -120px; left: -120px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(196,162,101,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .pm-price-bg-num {
+      position: absolute;
+      right: -2vw; top: 50%; transform: translateY(-50%);
+      font-family: 'Cormorant Garamond', serif; font-weight: 600;
+      font-size: 28vw; line-height: 1;
+      color: rgba(196,162,101,0.03);
+      letter-spacing: -0.04em;
+      pointer-events: none; user-select: none;
+      white-space: nowrap;
+    }
+    .pm-price-inner {
+      max-width: 1400px; margin: 0 auto; padding: 0 80px;
+      position: relative; z-index: 1;
+    }
+    .pm-price-layout {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+    }
+    .pm-price-left-col {
+      flex: 0 0 auto;
+      max-width: 700px;
+      width: 100%;
+    }
+    .pm-price-logo-col {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .pm-price-photo {
+      width: 100%;
+      max-width: 420px;
+      height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 4px;
+      display: block;
+    }
+    .pm-price-header {
+      margin-bottom: 36px;
+      border-bottom: 1px solid rgba(196,162,101,0.1);
+      padding-bottom: 20px;
+    }
+    .pm-price-eyebrow {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.95rem; font-weight: 200;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(196,162,101,0.45);
+    }
+    .pm-price-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400; color: var(--text-primary);
+      letter-spacing: 0.03em; line-height: 1.1;
+    }
+    .pm-price-card {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 0;
+      align-items: start;
+    }
+    .pm-price-divider-v {
+      width: 1px; background: rgba(196,162,101,0.12);
+      align-self: stretch; margin: 0 64px;
+    }
+    .pm-price-left { display: flex; flex-direction: column; }
+    .pm-price-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.95rem; font-weight: 200;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(196,162,101,0.45); margin-bottom: 20px;
+    }
+    .pm-price-num {
+      font-family: 'Cormorant Garamond', serif; font-weight: 600;
+      font-size: clamp(4rem, 7vw, 7.5rem);
+      font-weight: 400; color: var(--gold);
+      line-height: 0.88; letter-spacing: -0.02em;
+      margin-bottom: 0;
+    }
+    .pm-price-num sup {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.2em; font-weight: 300;
+      vertical-align: super; color: rgba(196,162,101,0.6);
+    }
+    .pm-price-sep {
+      width: 40px; height: 1px;
+      background: rgba(196,162,101,0.25);
+      margin: 24px 0;
+    }
+    .pm-price-installment {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem; font-weight: 200;
+      color: rgba(242,237,231,0.65); letter-spacing: 0.03em;
+      line-height: 1.7;
+    }
+    .pm-price-installment strong {
+      color: rgba(242,237,231,0.75); font-weight: 500;
+      display: block; font-size: 1.1rem;
+    }
+    .pm-price-roi {
+      margin-top: 28px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.05rem; font-weight: 200;
+      color: rgba(196,162,101,0.55); line-height: 1.5;
+    }
+    .pm-price-right { display: flex; flex-direction: column; gap: 0; }
+    .pm-price-right-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.95rem; font-weight: 200;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(196,162,101,0.45); margin-bottom: 20px;
+    }
+    .pm-price-includes {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column;
+    }
+    .pm-price-includes li {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.92rem; font-weight: 200;
+      color: rgba(242,237,231,0.65); line-height: 1;
+      padding: 12px 0 12px 20px; position: relative;
+      border-bottom: 1px solid rgba(196,162,101,0.07);
+    }
+    .pm-price-includes li:first-child { border-top: 1px solid rgba(196,162,101,0.07); }
+    .pm-price-includes li::before {
+      content: ''; position: absolute; left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--gold); opacity: 0.6;
+    }
+    .pm-price-gift {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 24px;
+      padding: 10px 20px;
+      border: 1px solid rgba(196,162,101,0.3);
+      border-radius: 4px;
+      background: rgba(196,162,101,0.06);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.95rem; font-weight: 200;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .pm-price-gift-icon { font-size: 0.9rem; }
+    .pm-price-cta-row {
+      display: flex; flex-direction: column; align-items: flex-start;
+      gap: 10px; margin-top: 32px;
+    }
+    .pm-price-note {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem; font-weight: 300;
+      color: rgba(242,237,231,0.22); letter-spacing: 0.05em;
+    }
+    .pm-price-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400; color: var(--text-primary);
+      letter-spacing: 0.04em; line-height: 1.1;
+      margin-bottom: 28px;
+    }
+    .pm-price-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pm-price-card2 {
+      display: flex;
+      flex-direction: column;
+      background: var(--gold);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .pm-price-card2:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 48px rgba(196,162,101,0.3);
+    }
+    .pm-price-card2-top {
+      display: flex;
+      align-items: center;
+    }
+    .pm-price-card2-left {
+      flex: 1;
+      padding: 20px 28px;
+      border-right: 1px solid rgba(8,8,10,0.12);
+    }
+    .pm-price-card2-right {
+      width: 220px; flex-shrink: 0;
+      padding: 20px 28px;
+      display: flex; flex-direction: column;
+    }
+    .pm-price-features {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      padding: 12px 28px 16px;
+      border-top: 1px solid rgba(8,8,10,0.1);
+    }
+    .pm-pf {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 5px 12px;
+      border-radius: 50px;
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .pm-pf--yes {
+      background: rgba(34,100,54,0.25);
+      color: #0e4a22;
+    }
+    .pm-pf--yes::before { content: '✓'; font-size: 0.7em; }
+    .pm-pf--no {
+      background: rgba(180,40,60,0.15);
+      color: rgba(140,30,50,0.7);
+      text-decoration: line-through;
+    }
+    .pm-pf--no::before { content: '✕'; font-size: 0.65em; }
+    .pm-pf--muted {
+      background: rgba(8,8,10,0.08);
+      color: rgba(8,8,10,0.35);
+    }
+    .pm-pf--muted::before { content: '—'; font-size: 0.65em; }
+    .pm-price-card2-tag {
+      font-size: 0.95rem; font-weight: 200;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(8,8,10,0.45);
+      margin-bottom: 6px;
+    }
+    .pm-price-card2-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+      font-weight: 400; color: #08080A;
+      line-height: 1.05; letter-spacing: 0.03em;
+    }
+    .pm-price-card2-name span {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.82rem; font-weight: 400;
+      color: rgba(8,8,10,0.5);
+      letter-spacing: 0.04em; margin-top: 6px;
+    }
+    .pm-price-card2 .pm-price-roi {
+      margin-top: 8px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.8rem; font-weight: 400;
+      color: rgba(8,8,10,0.5); line-height: 1.5;
+      font-style: normal;
+    }
+    .pm-price-card2 .pm-price-label {
+      font-size: 0.95rem; font-weight: 200;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(8,8,10,0.45); margin-bottom: 6px;
+    }
+    .pm-price-card2 .pm-price-num {
+      font-family: 'Cormorant Garamond', serif; font-weight: 600;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: #08080A; line-height: 0.9;
+    }
+    .pm-price-card2 .pm-price-num sup {
+      color: rgba(8,8,10,0.5);
+    }
+    .pm-price-card2 .pm-price-installment {
+      font-size: 0.8rem; color: rgba(8,8,10,0.5);
+      margin-top: 6px; font-weight: 400;
+    }
+    .pm-price-card2 .pm-price-cta-row {
+      margin-top: 14px;
+    }
+    .pm-price-card2 .btn-gold--dark {
+      background: #08080A;
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      padding: 14px 32px;
+      border: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .pm-price-card2 .btn-gold--dark:hover {
+      background: #1a1208;
+      box-shadow: 0 6px 28px rgba(0,0,0,0.5);
+      transform: translateY(-1px);
+    }
+    .pm-price-card2 .pm-price-note {
+      color: rgba(8,8,10,0.4);
+    }
+    @media (max-width: 1100px) {
+      .pm-price-logo-col { display: none; }
+      .pm-price-left-col { max-width: 100%; }
+    }
+    @media (max-width: 960px) {
+      .pm-price-inner { padding: 0 40px; }
+    }
+    @media (max-width: 680px) {
+      .pm-price-card2-top { flex-direction: column; }
+      .pm-price-card2-left { border-right: none; border-bottom: 1px solid rgba(8,8,10,0.12); }
+      .pm-price-card2-right { width: 100%; }
+    }
+    @media (max-width: 600px) {
+      .pm-price { padding: 72px 0; }
+      .pm-price-inner { padding: 0 24px; }
+      .pm-price-bg-num { display: none; }
+      .pm-included-cta {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
 
     /* ── CTA LEAD ── */
     .pm-cta-lead {
       position: relative;
       padding: 120px 80px;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196,162,101,0.07) 0%, transparent 60%),
-        linear-gradient(170deg, #1A1408 0%, #0E0C08 50%, #08080A 100%);
+      background: #08080A;
       border-top: 1px solid rgba(196,162,101,0.12);
       overflow: hidden;
     }
@@ -348,6 +718,23 @@
       content: '';
       position: absolute; top: -1px; left: 10%; right: 10%; height: 1px;
       background: linear-gradient(to right, transparent, rgba(196,162,101,0.4), transparent);
+    }
+    .pm-cta-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(196,162,101,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .pm-cta-bg-text {
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif; font-weight: 600;
+      font-size: 38vw; line-height: 0.85;
+      color: rgba(196,162,101,0.028);
+      letter-spacing: -0.05em;
+      white-space: nowrap;
+      pointer-events: none; user-select: none;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
     }
     .pm-cta-top {
       text-align: center; max-width: 640px; margin: 0 auto 72px;
@@ -368,7 +755,7 @@
       align-items: start;
     }
     .pm-cta-col-label {
-      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.22em;
+      font-size: 0.95rem; font-weight: 200; letter-spacing: 0.22em;
       text-transform: uppercase; color: rgba(196,162,101,0.6);
       margin-bottom: 24px;
     }
@@ -377,13 +764,13 @@
     .pm-lead-form { display: flex; flex-direction: column; gap: 10px; }
     .pm-lead-form input {
       width: 100%; padding: 15px 20px;
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(196,162,101,0.15);
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(196,162,101,0.35);
       border-radius: 2px; color: var(--text-primary);
       font-family: var(--font-body); font-size: 0.92rem;
       outline: none; transition: border-color 0.3s;
     }
-    .pm-lead-form input:focus { border-color: rgba(196,162,101,0.45); background: rgba(255,255,255,0.05); }
-    .pm-lead-form input::placeholder { color: rgba(196,162,101,0.35); }
+    .pm-lead-form input:focus { border-color: rgba(196,162,101,0.65); background: rgba(255,255,255,0.1); }
+    .pm-lead-form input::placeholder { color: rgba(196,162,101,0.55); }
     .pm-lead-form .btn { width: 100%; justify-content: center; padding: 17px; font-size: 0.9rem; letter-spacing: 0.14em; margin-top: 4px; }
     .pm-disclaimer { font-size: 0.68rem; color: var(--text-muted); margin-top: 12px; opacity: 0.5; line-height: 1.5; }
     /* Divider */
@@ -397,7 +784,7 @@
     }
     .pm-cta-or::after { background: linear-gradient(to top, transparent, rgba(196,162,101,0.2)); }
     .pm-cta-or span {
-      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em;
+      font-size: 0.95rem; font-weight: 200; letter-spacing: 0.2em;
       text-transform: uppercase; color: rgba(196,162,101,0.4);
     }
     /* Messengers col */
@@ -410,18 +797,18 @@
     .pm-msg-btn {
       display: flex; align-items: center; gap: 14px;
       padding: 14px 20px;
-      border: 1px solid rgba(196,162,101,0.18);
+      border: 1px solid rgba(196,162,101,0.4);
       border-radius: 2px;
       text-decoration: none;
       color: var(--text-primary);
       font-family: var(--font-body); font-size: 0.88rem;
       letter-spacing: 0.04em;
       transition: all 0.25s;
-      background: rgba(255,255,255,0.02);
+      background: rgba(255,255,255,0.06);
     }
     .pm-msg-btn:hover {
-      border-color: rgba(196,162,101,0.5);
-      background: rgba(196,162,101,0.05);
+      border-color: rgba(196,162,101,0.7);
+      background: rgba(196,162,101,0.1);
       color: var(--gold);
     }
     .pm-msg-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
@@ -450,7 +837,7 @@
       .result-grid { grid-template-columns: 1fr; gap: 2px; }
       .cases-grid { grid-template-columns: 1fr; }
       .pm-hero { padding-bottom: 60px; }
-      .pm-hero-meta { gap: 24px; }
+      .pm-hero-meta, .pm-hero-meta-sep { display: none; }
     }
   </style>
 </head>
@@ -497,13 +884,13 @@
     <div class="pm-hero-particles" id="heroParticles"></div>
     <div class="pm-hero-inner">
       <h1 class="fade-up hero-reveal" style="animation-delay:0.5s">
+        <br>
         <span class="pm-hero-stan">Стань</span>
         Мастером перманентного макияжа
       </h1>
       <div class="pm-hero-sub fade-up hero-reveal" style="animation-delay:0.7s">
         <span class="pm-hero-sub-label">За 20 дней получи профессию и зарабатывай от</span>
         <span class="pm-hero-sub-num">120 000<sup>₽</sup></span>
-        <span class="pm-hero-sub-caption">в месяц</span>
       </div>
       <div class="pm-hero-meta-sep fade-up hero-reveal" style="animation-delay:0.85s"></div>
       <div class="pm-hero-meta fade-up hero-reveal" style="animation-delay:0.9s">
@@ -580,13 +967,13 @@
     .arina-intro-h2 {
       font-family: var(--font-display);
       font-size: clamp(2.4rem, 5vw, 4rem);
-      font-weight: 700; line-height: 1.05; color: var(--text-primary);
+      font-weight: 400; line-height: 1.05; color: var(--text-primary);
       letter-spacing: 0.03em; margin-bottom: 16px;
     }
     .arina-intro-h2 em { color: var(--gold); font-style: normal; }
     .arina-intro-role {
       font-family: 'Raleway', sans-serif;
-      font-size: 1.05rem; color: rgba(242,237,231,0.72); line-height: 1.6;
+      font-size: 1.05rem; font-weight: 200; color: rgba(242,237,231,0.72); line-height: 1.6;
       margin-bottom: 32px; padding-bottom: 32px;
       border-bottom: 1px solid var(--border);
     }
@@ -596,7 +983,7 @@
     }
     .arina-creds li {
       font-family: 'Raleway', sans-serif;
-      font-size: 1.05rem; color: rgba(242,237,231,0.72); line-height: 1.6;
+      font-size: 1.05rem; font-weight: 200; color: rgba(242,237,231,0.72); line-height: 1.6;
       padding-left: 18px; position: relative;
     }
     .arina-creds li::before {
@@ -618,7 +1005,7 @@
     }
     .pm-belief-bg-text {
       position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      font-family: var(--font-display);
+      font-family: 'Italiana', serif;
       font-size: 28vw; font-weight: 400;
       color: rgba(196,162,101,0.06);
       white-space: nowrap; pointer-events: none; user-select: none;
@@ -634,9 +1021,9 @@
     }
     .pm-belief-left { display: flex; flex-direction: column; }
     .pm-belief-whisper {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Raleway', sans-serif;
       font-size: clamp(1.4rem, 2vw, 2rem);
-      font-weight: 300; font-style: italic;
+      font-weight: 200;
       color: rgba(196,162,101,0.6);
       line-height: 1.3; letter-spacing: 0.02em;
       margin-bottom: 28px;
@@ -698,19 +1085,23 @@
     }
     .pm-belief-play svg { width: 26px; height: 26px; margin-left: 3px; }
     .pm-belief-arrow-to-video {
-      display: flex; align-items: center; gap: 10px;
-      margin-top: 28px;
-      opacity: 0.45;
+      display: inline-flex; align-items: center; gap: 18px;
+      margin-top: 36px;
+      margin-left: auto;
+      opacity: 0.75;
+      cursor: pointer;
+      transition: opacity 0.25s;
     }
+    .pm-belief-arrow-to-video:hover { opacity: 1; }
     .pm-belief-arrow-to-video span {
       font-family: 'Raleway', sans-serif;
-      font-size: 0.65rem; font-weight: 400;
-      letter-spacing: 0.2em; text-transform: uppercase;
+      font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+      font-weight: 200;
+      letter-spacing: 0.04em;
       color: var(--gold);
+      white-space: nowrap;
     }
-    .pm-belief-arrow-to-video svg {
-      flex-shrink: 0;
-    }
+    .pm-belief-arrow-to-video svg { flex-shrink: 0; }
     .pm-belief-cta {
       margin-top: 52px;
       display: flex; flex-direction: column; align-items: center; gap: 14px;
@@ -721,6 +1112,14 @@
       font-size: 0.72rem; font-weight: 300;
       letter-spacing: 0.14em; text-transform: uppercase;
       color: rgba(196,162,101,0.4);
+    }
+    .pm-belief-video-caption {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem; font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(242,237,231,0.35);
+      text-align: center;
+      margin-top: 10px;
     }
     .arina-intro-photo { position: relative; }
     .arina-photo-wrap {
@@ -768,11 +1167,11 @@
         <div class="pm-belief-whisper">Ты читаешь это не случайно</div>
         <div class="pm-belief-divider"></div>
         <h2 class="pm-belief-headline">Это обучение,<br>которое изменит<br>твою жизнь</h2>
-        <div class="pm-belief-arrow-to-video">
+        <div class="pm-belief-arrow-to-video" onclick="ivPlay()">
           <span>смотри видео</span>
-          <svg width="48" height="14" viewBox="0 0 48 14" fill="none">
-            <line x1="0" y1="7" x2="40" y2="7" stroke="#C4A265" stroke-width="0.8"/>
-            <path d="M36 2 L44 7 L36 12" stroke="#C4A265" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <svg width="56" height="16" viewBox="0 0 56 16" fill="none">
+            <line x1="0" y1="8" x2="46" y2="8" stroke="#C4A265" stroke-width="1"/>
+            <path d="M42 3 L52 8 L42 13" stroke="#C4A265" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </svg>
         </div>
       </div>
@@ -789,7 +1188,7 @@
     </div>
     <div class="pm-belief-cta">
       <a href="#" class="btn btn-gold" onclick="openBookingPopup('академия-пм');return false;">Записаться на курс</a>
-      <span class="pm-belief-cta-note">Старт потока совсем скоро!</span>
+      <span class="pm-belief-cta-note">Набор открыт · осталось 1 место из 4</span>
     </div>
   </section>
 
@@ -925,56 +1324,35 @@
           </div>
         </div>
 
-        <!-- 07: Удаление ПМ -->
-        <div class="pm-item-card pm-card-media">
-          <div class="pm-item-body">
+        <!-- 07-10: Бонусы (сетка 2×2) -->
+        <div class="pm-bonus-grid">
+          <div class="pm-bonus-card">
             <div class="pm-card-num">07</div>
             <div class="pm-card-divider"></div>
-            <h4>Курс по удалению ПМ с отработкой на модели</h4>
+            <h4>Курс по удалению ПМ</h4>
+            <p>С отработкой на модели</p>
             <span class="pm-kit-gift" style="margin-top:14px;display:inline-block">В ПОДАРОК!</span>
           </div>
-          <div class="pm-card-media-slot">
-            <img src="../../Фото/IMG_3099.jpg" alt="Удаление ПМ">
-          </div>
-        </div>
-
-        <!-- 08: Документы -->
-        <div class="pm-item-card">
-          <div class="pm-item-body">
+          <div class="pm-bonus-card">
             <div class="pm-card-num">08</div>
             <div class="pm-card-divider"></div>
             <h4>Пакет документов для работы с клиентами</h4>
-            <p>Договоры, согласия, противопоказания — работай безопасно и профессионально</p>
+            <p>Договоры, согласия, противопоказания</p>
             <span class="pm-kit-gift" style="margin-top:14px;display:inline-block">В ПОДАРОК!</span>
           </div>
-        </div>
-
-        <!-- 09: Онлайн-курс по перекрытию -->
-        <div class="pm-item-card pm-card-media">
-          <div class="pm-item-body">
+          <div class="pm-bonus-card">
             <div class="pm-card-num">09</div>
             <div class="pm-card-divider"></div>
-            <h4>Онлайн-курс по перекрытию</h4>
+            <h4>Курс по перекрытию ПМ</h4>
+            <p>Онлайн-формат</p>
             <span class="pm-kit-gift" style="margin-top:14px;display:inline-block">В ПОДАРОК!</span>
           </div>
-          <div class="pm-card-media-slot">
-            <img src="../../Фото/IMG_3100.jpg" alt="Перекрытие ПМ" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
-          </div>
-        </div>
-
-        <!-- 10: Портфолио -->
-        <div class="pm-item-card pm-card-media">
-          <div class="pm-item-body">
+          <div class="pm-bonus-card">
             <div class="pm-card-num">10</div>
             <div class="pm-card-divider"></div>
-            <h4>Готовое профессиональное портфолио после обучения</h4>
+            <h4>Готовое профессиональное портфолио</h4>
+            <p>После обучения</p>
             <span class="pm-kit-gift" style="margin-top:14px;display:inline-block">В ПОДАРОК!</span>
-          </div>
-          <div class="pm-card-media-slot pm-card-media-slot--portfolio">
-            <img src="../../Фото/Работы/Ученики/IMG_1680.PNG" alt="" onclick="pmOpenImg('../../Фото/Работы/Ученики/IMG_1680.PNG')">
-            <img src="../../Фото/Работы/Ученики/IMG_1678.PNG" alt="" onclick="pmOpenImg('../../Фото/Работы/Ученики/IMG_1678.PNG')">
-            <img src="../../Фото/Работы/Ученики/IMG_1674.PNG" alt="" onclick="pmOpenImg('../../Фото/Работы/Ученики/IMG_1674.PNG')">
-            <img src="../../Фото/Работы/Ученики/IMG_1673.PNG" alt="" onclick="pmOpenImg('../../Фото/Работы/Ученики/IMG_1673.PNG')">
           </div>
         </div>
 
@@ -987,6 +1365,98 @@
     <div class="pm-outcome-label">Итог после обучения</div>
     <div class="pm-outcome-value">+1 счастливая и обеспеченная женщина в этом мире</div>
   </div>
+
+  <!-- PRICE SECTION -->
+  <section class="pm-price">
+    <div class="pm-price-glow"></div>
+    <div class="pm-price-inner">
+      <div class="pm-price-layout">
+      <div class="pm-price-left-col">
+
+      <div class="pm-price-header">
+        <div class="section-eyebrow" style="margin-bottom:14px">Стоимость обучения</div>
+        <h2 class="pm-price-title">Полный базовый курс для начинающих от Арины Шараповой</h2>
+      </div>
+
+      <div class="pm-price-cards">
+
+        <!-- CARD 1: ЛАЙТ -->
+        <div class="pm-price-card2">
+          <div class="pm-price-card2-top">
+            <div class="pm-price-card2-left">
+              <div class="pm-price-card2-tag">Тариф</div>
+              <div class="pm-price-card2-name">Лайт</div>
+            </div>
+            <div class="pm-price-card2-right">
+              <div class="pm-price-label">Рассрочка от</div>
+              <div class="pm-price-num">5 000<sup>₽</sup></div>
+              <div class="pm-price-cta-row">
+                <a href="#" class="btn btn-gold btn-gold--dark" onclick="openBookingPopup('академия-пм');return false;">Записаться</a>
+              </div>
+            </div>
+          </div>
+          <div class="pm-price-features">
+            <span class="pm-pf pm-pf--muted">Отработка на 3 моделях</span>
+            <span class="pm-pf pm-pf--muted">Без стартового набора</span>
+            <span class="pm-pf pm-pf--muted">Без МК по удалению</span>
+            <span class="pm-pf pm-pf--yes">Группа до 4 человек</span>
+          </div>
+        </div>
+
+        <!-- CARD 2: ПРОФИ -->
+        <div class="pm-price-card2">
+          <div class="pm-price-card2-top">
+            <div class="pm-price-card2-left">
+              <div class="pm-price-card2-tag">Тариф</div>
+              <div class="pm-price-card2-name">Профи</div>
+            </div>
+            <div class="pm-price-card2-right">
+              <div class="pm-price-label">Рассрочка от</div>
+              <div class="pm-price-num">9 000<sup>₽</sup></div>
+              <div class="pm-price-cta-row">
+                <a href="#" class="btn btn-gold btn-gold--dark" onclick="openBookingPopup('академия-пм');return false;">Записаться</a>
+              </div>
+            </div>
+          </div>
+          <div class="pm-price-features">
+            <span class="pm-pf pm-pf--yes">Отработка на 6 моделях</span>
+            <span class="pm-pf pm-pf--yes">Стартовый набор</span>
+            <span class="pm-pf pm-pf--yes">МК по удалению</span>
+            <span class="pm-pf pm-pf--yes">Группа до 4 человек</span>
+          </div>
+        </div>
+
+        <!-- CARD 3: ИНДИВИДУАЛЬНЫЙ -->
+        <div class="pm-price-card2 pm-price-card2--featured">
+          <div class="pm-price-card2-top">
+          <div class="pm-price-card2-left">
+            <div class="pm-price-card2-tag">Тариф</div>
+            <div class="pm-price-card2-name">Индивидуальный</div>
+          </div>
+          <div class="pm-price-card2-right">
+            <div class="pm-price-label">Рассрочка от</div>
+            <div class="pm-price-num">15 000<sup>₽</sup></div>
+            <div class="pm-price-cta-row">
+              <a href="#" class="btn btn-gold btn-gold--dark" onclick="openBookingPopup('академия-пм');return false;">Записаться</a>
+            </div>
+          </div>
+          </div><!-- /pm-price-card2-top -->
+          <div class="pm-price-features">
+            <span class="pm-pf pm-pf--yes">Отработка на 6 моделях</span>
+            <span class="pm-pf pm-pf--yes">Стартовый набор</span>
+            <span class="pm-pf pm-pf--yes">МК по удалению</span>
+            <span class="pm-pf pm-pf--yes">Личная работа с тренером</span>
+          </div>
+        </div>
+
+      </div>
+      </div><!-- /pm-price-left-col -->
+      <div class="pm-price-logo-col">
+        <img src="students/IMG_1449.jpg" class="pm-price-photo" alt="">
+      </div>
+      </div><!-- /pm-price-layout -->
+    </div>
+  </section>
 
   <style>
     .pm-included {
@@ -1020,7 +1490,7 @@
     }
     .pm-sticky-from {
       font-family: var(--font-body);
-      font-size: 0.8rem; font-weight: 300;
+      font-size: 0.8rem; font-weight: 200;
       letter-spacing: 0.18em; text-transform: uppercase;
       color: rgba(196,162,101,0.55);
       margin: 20px 0 10px;
@@ -1047,13 +1517,64 @@
       pointer-events: none;
     }
     .pm-card-num {
-      font-family: var(--font-display);
+      font-family: 'Marcellus', serif;
       font-size: 3.2rem;
       color: rgba(196,162,101,0.5);
       line-height: 1;
       margin-bottom: 1.5rem;
+      font-variant-numeric: lining-nums;
     }
     .pm-card-divider { display: none; }
+
+    /* ── BONUS SECTION (07-10) ── */
+    .pm-bonus-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .pm-bonus-card {
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 50%, #1a1208 100%);
+      border: 1px solid rgba(196,162,101,0.25);
+      border-radius: 20px;
+      padding: 32px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .pm-bonus-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,162,101,0.35), transparent);
+      pointer-events: none;
+    }
+    .pm-bonus-card:hover {
+      border-color: rgba(196,162,101,0.5);
+      box-shadow: 0 16px 48px rgba(196,162,101,0.1), 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .pm-bonus-card:hover {
+      background: linear-gradient(135deg, #1f1609 0%, #2d1f0a 100%);
+    }
+    .pm-bonus-card .pm-card-num {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+    }
+    .pm-bonus-card h4 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.05rem; color: var(--text-primary);
+      letter-spacing: 0.03em; line-height: 1.35;
+      margin-bottom: 8px;
+    }
+    .pm-bonus-card p {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 200;
+      font-size: 0.85rem; color: rgba(242,237,231,0.55);
+      line-height: 1.5; letter-spacing: 0.04em;
+    }
+    @media (max-width: 768px) {
+      .pm-bonus-grid { grid-template-columns: 1fr; }
+      .pm-bonus-card { padding: 24px 28px; }
+    }
     .pm-item-card:hover {
       border-color: rgba(196,162,101,0.5);
       box-shadow: 0 16px 48px rgba(196,162,101,0.1), 0 4px 16px rgba(0,0,0,0.3);
@@ -1061,7 +1582,7 @@
     .pm-item-card:hover .pm-item-body h4,
     .pm-item-card:hover .pm-kit-label { color: var(--gold); }
     .pm-num-accent {
-      font-family: var(--font-stats, 'Jost'), sans-serif;
+      font-family: var(--font-stats); font-weight: 600;
       font-size: 1.1em;
       font-weight: 700;
       color: inherit;
@@ -1123,7 +1644,7 @@
       padding: 6px 16px;
     }
     .pm-kit-price {
-      font-family: var(--font-stats, 'Jost'), sans-serif;
+      font-family: var(--font-stats); font-weight: 600;
       font-size: clamp(1.3rem, 2vw, 1.65rem);
       font-weight: 700; color: var(--gold);
       letter-spacing: -0.02em;
@@ -1139,7 +1660,7 @@
       transition: color 0.3s ease;
     }
     .pm-item-body > p {
-      font-size: 1.05rem; color: rgba(242,237,231,0.72); line-height: 1.6;
+      font-size: 1.05rem; font-weight: 200; color: rgba(242,237,231,0.72); line-height: 1.6;
       margin-top: 1.5em;
     }
 
@@ -1282,7 +1803,7 @@
     #pm-lightbox video { width: 88vw; max-height: 85vh; }
     #pm-lb-close {
       position: absolute; top: 20px; right: 24px;
-      font-size: 1.5rem; color: rgba(242,237,231,0.5);
+      font-size: 1.5rem; color: rgba(242,237,231,0.65);
       background: rgba(255,255,255,0.06); border: none;
       border-radius: 50%; width: 40px; height: 40px;
       display: flex; align-items: center; justify-content: center;
@@ -1320,7 +1841,7 @@
     }
     .pm-bonus-group {
       font-family: 'Raleway', sans-serif;
-      font-size: 0.72rem; font-weight: 600;
+      font-size: 0.95rem; font-weight: 200;
       letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--gold); margin-bottom: 10px; opacity: 0.85;
     }
@@ -1330,8 +1851,8 @@
     }
     .pm-bonus-list li {
       font-family: 'Raleway', sans-serif;
-      font-size: 0.84rem; font-weight: 300;
-      color: var(--text-muted); line-height: 1.6;
+      font-size: 1.05rem; font-weight: 200;
+      color: rgba(242,237,231,0.72); line-height: 1.6;
       padding-left: 14px; position: relative;
     }
     .pm-bonus-list li::before {
@@ -1353,7 +1874,7 @@
       color: rgba(8,8,10,0.6); letter-spacing: 0.04em;
     }
     .pm-outcome-value {
-      font-family: var(--font-stats);
+      font-family: var(--font-stats); font-weight: 600;
       font-size: clamp(1.6rem, 3.5vw, 2.8rem);
       font-weight: 700;
       color: #08080A; line-height: 1.2; letter-spacing: -0.01em;
@@ -1804,7 +2325,7 @@
       border-radius: 2px;
     }
     .fw-note-icon { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
-    .fw-note p, .fw-note { font-family: 'Raleway', sans-serif; font-size: 1.05rem; color: rgba(242,237,231,0.72); line-height: 1.6; }
+    .fw-note p, .fw-note { font-family: 'Raleway', sans-serif; font-size: 1.05rem; font-weight: 200; color: rgba(242,237,231,0.72); line-height: 1.6; }
     @media (max-width: 900px) {
       .pm-for-whom-inner { padding: 0 24px; }
       .fw-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1819,26 +2340,28 @@
   </style>
 
   <!-- NUMBERS -->
-  <section class="pm-result">
+  <section class="pm-result" id="pm-result">
     <div class="pm-result-inner">
-      <div class="section-eyebrow fade-up" style="margin-bottom:12px">Цифры говорят сами за себя</div>
-      <h2 class="fade-up" style="margin-bottom:8px">Реальные результаты выпускниц курса</h2>
-      <div class="result-grid fade-up" style="margin-top:40px">
+      <div class="pm-result-header">
+        <div class="section-eyebrow fade-up" style="margin-bottom:12px">Цифры говорят сами за себя</div>
+        <h2 class="fade-up">Реальные результаты выпускниц курса</h2>
+      </div>
+      <div class="result-grid fade-up">
         <div class="result-card">
-          <div class="result-num">250+</div>
+          <div class="result-num" data-count="250" data-suffix="+">0</div>
           <div class="result-label">выпускниц по всей России и за рубежом</div>
         </div>
         <div class="result-card">
-          <div class="result-num">1 мес</div>
-          <div class="result-label">до первых платных клиентов</div>
+          <div class="result-num" data-count="1" data-suffix=" мес">0</div>
+          <div class="result-label">до первых платных клиентов после курса</div>
         </div>
         <div class="result-card">
-          <div class="result-num">от 120k</div>
+          <div class="result-num" data-count="120" data-suffix="k₽">0</div>
           <div class="result-label">средний доход мастера через 3 месяца</div>
         </div>
         <div class="result-card">
-          <div class="result-num">150+</div>
-          <div class="result-label">в среднем клиентов в базе через год</div>
+          <div class="result-num" data-count="150" data-suffix="+">0</div>
+          <div class="result-label">клиентов в базе у мастера в среднем через год</div>
         </div>
       </div>
     </div>
@@ -1849,7 +2372,7 @@
     <div class="pm-gallery-inner">
       <div style="padding: 0 48px; margin-bottom: 28px;">
         <div class="section-eyebrow fade-up" style="margin-bottom:12px">Наши ученики</div>
-        <h2 class="pm-gallery-title fade-up">Академия</h2>
+        <h2 class="pm-gallery-title fade-up">Атмосфера на обучении</h2>
       </div>
       <div class="pm-st-rows" id="stMasonry">
         <div class="pm-st-row">
@@ -2039,7 +2562,8 @@
     }
     .pm-st-row::-webkit-scrollbar { display: none; }
     .pm-st-row:active { cursor: grabbing; }
-    .pm-st-row .pm-mn-item { flex: 0 0 240px; }
+    .pm-st-row .pm-mn-item { flex: 0 0 240px; cursor: pointer; }
+    .pm-st-row .pm-mn-item:hover img { transform: scale(1.04); }
     .pm-students {
       background: var(--bg-deep);
       padding: 60px 0 0;
@@ -2053,7 +2577,7 @@
     .pm-gallery-inner { padding: 0 0 32px; }
     .pm-gallery-title {
       font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 400; color: var(--gold); margin-bottom: 32px;
+      font-weight: 400; color: var(--text-primary); margin-bottom: 32px;
     }
     .pm-masonry {
       display: flex; gap: 4px;
@@ -2211,11 +2735,12 @@
 
   <!-- CTA LEAD FORM -->
   <section class="pm-cta-lead" id="cta">
+    <div class="pm-cta-glow"></div>
+    <div class="pm-cta-bg-text">AP</div>
 
     <div class="pm-cta-top fade-up">
       <div class="section-eyebrow" style="justify-content:center;margin-bottom:20px">Начать обучение</div>
-      <h2>Сделайте первый шаг<br>к <em>новой профессии</em></h2>
-      <p>Оставьте номер — менеджер свяжется в течение часа, расскажет о ближайшем потоке и ответит на любые вопросы</p>
+      <h2>Узнай стоимость и дату старта</h2>
     </div>
 
     <div class="pm-cta-body fade-up">
@@ -2228,7 +2753,6 @@
           <input type="tel" placeholder="+7 (___) ___-__-__" required>
           <button type="submit" class="btn btn-gold">Записаться на курс</button>
         </form>
-        <button class="btn btn-gold" style="width:100%;margin-top:16px;padding:16px;" onclick="openBookingPopup('академия-пм')">Записаться на курс</button>
         <p class="pm-disclaimer">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
       </div>
 
@@ -2238,8 +2762,7 @@
       <!-- Мессенджеры -->
       <div class="pm-cta-msg-col">
         <div class="pm-cta-col-label">Напишите напрямую</div>
-        <p>Удобнее написать? Выберите любой мессенджер — мы ответим быстро</p>
-        <div class="pm-msg-buttons">
+<div class="pm-msg-buttons">
           <a href="https://t.me/agentpermanent" class="pm-msg-btn" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M21.5 2.5L2.5 10l7 2.5M21.5 2.5L14 21.5l-4.5-9M21.5 2.5L9.5 12.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -2362,6 +2885,33 @@
         if (e.key === 'ArrowRight') pmLbStep(1);
         if (e.key === 'ArrowLeft') pmLbStep(-1);
       });
+    })();
+
+    // Counter animation for numbers section
+    (function() {
+      function animateCount(el) {
+        const target = parseInt(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1200;
+        const steps = 50;
+        const step = duration / steps;
+        let current = 0;
+        const timer = setInterval(() => {
+          current++;
+          const val = Math.round((current / steps) * target);
+          el.textContent = val + suffix;
+          if (current >= steps) { el.textContent = target + suffix; clearInterval(timer); }
+        }, step);
+      }
+      const section = document.getElementById('pm-result');
+      if (!section) return;
+      const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          section.querySelectorAll('.result-num[data-count]').forEach(animateCount);
+          observer.disconnect();
+        }
+      }, { threshold: 0.3 });
+      observer.observe(section);
     })();
 
     // Drag scroll for masonry galleries

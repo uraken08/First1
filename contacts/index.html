@@ -160,86 +160,6 @@
       min-height: 420px;
     }
 
-    /* map + reviews section */
-    .ct-map-strip {
-      background: var(--bg-base);
-      border-top: 1px solid rgba(196,162,101,0.08);
-      padding: 60px 0 80px;
-    }
-    .ct-map-strip-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 48px;
-      display: grid; grid-template-columns: 2fr 1fr; gap: 24px;
-      align-items: start;
-    }
-    .ct-map-left {}
-    .ct-map-card {
-      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 60%, #1a1208 100%);
-      border: 1px solid rgba(196,162,101,0.15);
-      border-radius: 20px; overflow: hidden;
-    }
-    .ct-map-frame {
-      aspect-ratio: 1 / 1; overflow: hidden;
-      filter: grayscale(0.3) contrast(1.05) brightness(0.75) sepia(0.15);
-    }
-    .ct-map-frame iframe {
-      width: 100%; height: 100%; border: none; display: block;
-    }
-    .ct-map-info {
-      padding: 28px 32px 32px;
-      display: flex; flex-direction: column; gap: 16px;
-    }
-    .ct-map-label {
-      font-family: var(--font-body); font-size: 0.7rem;
-      letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--gold);
-    }
-    .ct-map-address {
-      font-family: var(--font-display);
-      font-size: clamp(1.3rem, 2vw, 1.8rem);
-      font-weight: 400; color: var(--text-primary); line-height: 1.2;
-    }
-    .ct-map-details {
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .ct-map-detail-row {
-      display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-body); font-size: 0.88rem;
-      color: var(--text-secondary);
-    }
-    .ct-map-metro-dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: #e63946; flex-shrink: 0;
-    }
-    .ct-map-hours {
-      padding-top: 14px; border-top: 1px solid rgba(196,162,101,0.1);
-    }
-    .ct-map-hours-item { display: flex; flex-direction: column; gap: 2px; }
-    .ct-map-hours-day {
-      font-family: var(--font-body); font-size: 0.68rem;
-      letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted);
-    }
-    .ct-map-hours-time {
-      font-family: var(--font-stats); font-size: 0.95rem;
-      color: var(--text-primary);
-    }
-    .ct-map-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--font-body); font-size: 0.82rem;
-      color: var(--gold); text-decoration: none;
-      border-bottom: 1px solid rgba(196,162,101,0.3);
-      padding-bottom: 2px; width: fit-content;
-      transition: opacity 0.2s;
-    }
-    .ct-map-link:hover { opacity: 0.7; }
-
-    /* reviews column */
-    .ct-reviews-col { }
-    .ct-reviews-card {
-      display: flex; flex-direction: column;
-      height: 100%; min-height: 600px;
-    }
-    .ct-reviews-card > div { flex: 1; }
-
     /* ── RIGHT: form ── */
     .ct-form-wrap {
       position: sticky; top: 100px;
@@ -318,62 +238,116 @@
       color: var(--text-muted); margin-bottom: 10px;
     }
 
-    /* ── MAP STRIP ── */
+    /* ── MAP + REVIEWS ── */
     .ct-map-strip {
-      background: #0d0d0f;
+      background: var(--bg-deep);
       border-top: 1px solid rgba(196,162,101,0.08);
+      padding: 60px 48px 72px;
+      max-width: 1296px; margin: 0 auto;
     }
-    .ct-map-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 48px;
-      display: grid; grid-template-columns: 1fr 400px;
-      align-items: center; gap: 0;
+    .ct-map-new-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 20px;
+      height: 546px;
     }
-    .ct-map-frame {
-      height: 340px; overflow: hidden;
-      filter: grayscale(1) contrast(1.1) brightness(0.45) sepia(0.3);
+    .ct-map-card {
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 60%, #1a1208 100%);
+      border: 1px solid rgba(196,162,101,0.2);
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      display: flex; flex-direction: column;
     }
-    .ct-map-frame iframe {
-      width: 100%; height: 100%; border: none; display: block;
+    .ct-map-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 2;
+      background: linear-gradient(90deg, transparent, rgba(196,162,101,0.38), transparent);
+      pointer-events: none;
     }
-    .ct-map-info {
-      padding: 48px; display: flex; flex-direction: column; gap: 20px;
+    /* Map */
+    .ct-map-frame-full {
+      flex: 1; min-height: 0; overflow: hidden;
+      filter: brightness(0.9) saturate(0.85) sepia(0.1);
+    }
+    .ct-map-frame-full iframe { width: 100%; height: 100%; border: none; display: block; }
+    .ct-map-overlay-info {
+      flex-shrink: 0;
+      padding: 18px 28px 20px;
+      background: rgba(14,11,6,0.98);
+      border-top: 1px solid rgba(196,162,101,0.1);
+      display: flex; flex-direction: column; gap: 8px;
     }
     .ct-map-label {
-      font-family: var(--font-body); font-size: 0.7rem;
-      letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--gold);
+      font-family: var(--font-body); font-size: 0.68rem;
+      letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold);
     }
     .ct-map-address {
       font-family: var(--font-display);
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-size: clamp(1.1rem, 1.6vw, 1.4rem);
       font-weight: 400; color: var(--text-primary); line-height: 1.2;
     }
-    .ct-map-metro {
-      display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-body); font-size: 0.85rem;
+    .ct-map-detail-row {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 0.84rem;
       color: var(--text-secondary);
     }
     .ct-map-metro-dot {
-      width: 10px; height: 10px; border-radius: 50%;
+      width: 8px; height: 8px; border-radius: 50%;
       background: #e63946; flex-shrink: 0;
     }
+    .ct-map-hours-inline {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-body);
+    }
+    .ct-map-hours-day { font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
+    .ct-map-hours-sep { color: rgba(196,162,101,0.3); }
+    .ct-map-hours-time { font-family: var(--font-stats); font-size: 0.88rem; color: var(--text-primary); }
     .ct-map-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--font-body); font-size: 0.82rem;
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--font-body); font-size: 0.78rem;
       color: var(--gold); text-decoration: none;
-      border-bottom: 1px solid rgba(196,162,101,0.3);
-      padding-bottom: 2px; width: fit-content;
-      transition: all 0.2s;
+      border-bottom: 1px solid rgba(196,162,101,0.25);
+      padding-bottom: 1px; width: fit-content; transition: opacity 0.2s;
     }
     .ct-map-link:hover { opacity: 0.7; }
+    /* Reviews */
+    .ct-reviews-card { position: relative; }
+    .ct-reviews-header {
+      padding: 18px 22px 12px;
+      border-bottom: 1px solid rgba(196,162,101,0.1);
+      flex-shrink: 0;
+    }
+    .ct-reviews-rating {
+      font-family: var(--font-stats);
+      font-size: 1.05rem; color: var(--gold);
+      margin-top: 4px; letter-spacing: 0.02em;
+    }
+    .ct-reviews-iframe-wrap {
+      flex: 1; min-height: 0; overflow: hidden; position: relative;
+    }
+    .ct-reviews-iframe-wrap iframe {
+      position: absolute;
+      top: -158px; left: 0; right: 0;
+      width: 100%; height: calc(100% + 158px);
+      border: none; display: block;
+    }
+    .ct-reviews-footer {
+      display: block; text-align: center; padding: 8px 0;
+      font-family: var(--font-body); font-size: 0.66rem;
+      color: var(--text-muted); text-decoration: none;
+      border-top: 1px solid rgba(196,162,101,0.08);
+      flex-shrink: 0; transition: color 0.2s;
+    }
+    .ct-reviews-footer:hover { color: var(--gold); }
 
     /* ── MOBILE ── */
     @media (max-width: 960px) {
       .ct-main-inner { grid-template-columns: 1fr; gap: 48px; }
       .ct-form-wrap { position: static; }
-      .ct-map-strip-inner { grid-template-columns: 1fr; }
-      .ct-map-frame { height: 260px; }
-      .ct-map-info { padding: 32px 24px; border-left: none; border-top: 1px solid rgba(196,162,101,0.08); }
+      .ct-map-strip { padding: 40px 24px 60px; }
+      .ct-map-new-grid { grid-template-columns: 1fr; min-height: auto; }
+      .ct-map-frame-full { min-height: 280px; }
       .ct-hero-inner, .ct-main-inner { padding: 0 24px; }
     }
     @media (max-width: 600px) {
@@ -500,9 +474,8 @@
           <div class="ct-yclients-title">Онлайн-запись</div>
           <div class="ct-yclients-sub">Выберите услугу, мастера и удобное время</div>
           <div class="ct-yclients-widget">
-            <!-- Замените XXXXXX на ваш company_id из личного кабинета YClients -->
             <iframe
-              src="https://n1234567.yclients.com/company/1234567/personal/select-master?support_sid=XXXXXX"
+              src="https://n890272.yclients.com/company/890272/personal/select-master"
               frameborder="0"
               scrolling="yes"
               style="width:100%;min-height:420px;border-radius:12px">
@@ -540,55 +513,51 @@
 
   <!-- MAP + REVIEWS -->
   <div class="ct-map-strip">
-    <div class="ct-map-strip-inner">
+    <div class="ct-map-new-grid">
 
-      <!-- LEFT: map + info (2/3) -->
-      <div class="ct-map-left">
-        <div class="ct-map-card">
-          <div class="ct-map-frame">
-            <iframe
-              src="https://yandex.com.tr/map-widget/v1/?ll=37.516653%2C55.801122&mode=search&oid=123024463523&ol=biz&z=15.5"
-              allowfullscreen="true" loading="lazy">
-            </iframe>
+      <!-- LEFT: map fills full height -->
+      <div class="ct-map-card ct-map-card--map">
+        <div class="ct-map-frame-full">
+          <iframe
+            src="https://yandex.com.tr/map-widget/v1/?ll=37.516653%2C55.801122&mode=search&oid=123024463523&ol=biz&z=15.5"
+            allowfullscreen="true" loading="lazy">
+          </iframe>
+        </div>
+        <!-- overlay with address info -->
+        <div class="ct-map-overlay-info">
+          <div class="ct-map-label">Как добраться</div>
+          <div class="ct-map-address">Москва, ул. Новопесчанная, 6к2</div>
+          <div class="ct-map-detail-row">
+            <div class="ct-map-metro-dot"></div>
+            м. Сокол — 7 минут пешком
           </div>
-          <div class="ct-map-info">
-            <div class="ct-map-label">Как добраться</div>
-            <div class="ct-map-address">Москва, ул. Новопесчанная, 6к2</div>
-            <div class="ct-map-details">
-              <div class="ct-map-detail-row">
-                <div class="ct-map-metro-dot"></div>
-                м. Сокол — 7 минут пешком
-              </div>
-            </div>
-            <div class="ct-map-hours">
-              <div class="ct-map-hours-item">
-                <div class="ct-map-hours-day">Пн — Вск</div>
-                <div class="ct-map-hours-time">10:00 — 21:00</div>
-              </div>
-            </div>
-            <a href="https://yandex.com.tr/maps/org/agent_permanent/123024463523/" target="_blank" class="ct-map-link">
-              Открыть в Яндекс Картах
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-            </a>
+          <div class="ct-map-hours-inline">
+            <span class="ct-map-hours-day">Пн — Вск</span>
+            <span class="ct-map-hours-sep">·</span>
+            <span class="ct-map-hours-time">10:00 — 21:00</span>
           </div>
+          <a href="https://yandex.com.tr/maps/org/agent_permanent/123024463523/" target="_blank" class="ct-map-link">
+            Открыть в Яндекс Картах
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
         </div>
       </div>
 
-      <!-- RIGHT: reviews (1/3) -->
-      <div class="ct-reviews-col">
-        <div class="ct-map-card ct-reviews-card">
-          <div class="ct-map-label" style="padding:28px 28px 0">Отзывы клиентов</div>
-          <div style="overflow:hidden;flex:1;position:relative;">
-            <iframe
-              style="width:100%;height:100%;border:none;display:block;"
-              src="https://yandex.ru/maps-reviews-widget/123024463523?comments">
-            </iframe>
-          </div>
-          <a href="https://yandex.com.tr/maps/org/agent_permanent/123024463523/" target="_blank"
-             style="display:block;text-align:center;font-size:10px;color:var(--text-muted);padding:8px 0;text-decoration:none;font-family:var(--font-body)">
-            Agent Permanent на Яндекс Картах
-          </a>
+      <!-- RIGHT: reviews card -->
+      <div class="ct-map-card ct-reviews-card">
+        <div class="ct-reviews-header">
+          <div class="ct-map-label">Отзывы клиентов</div>
+          <div class="ct-reviews-rating">5,0 ★★★★★</div>
         </div>
+        <div class="ct-reviews-iframe-wrap">
+          <iframe
+            src="https://yandex.ru/maps-reviews-widget/123024463523?comments">
+          </iframe>
+        </div>
+        <a href="https://yandex.com.tr/maps/org/agent_permanent/123024463523/"
+           target="_blank" class="ct-reviews-footer">
+          Agent Permanent на Яндекс Картах
+        </a>
       </div>
 
     </div>

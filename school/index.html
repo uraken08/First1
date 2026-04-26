@@ -62,9 +62,12 @@
 
   <div class="parallax-gallery" id="parallaxGallery">
 
-    <a class="prlx-item prlx-link" href="../school/pm/" data-speed="0.3">
+    <a class="prlx-item prlx-link prlx-item--pm" href="../school/pm/" data-speed="0.3">
       <div class="prlx-bg pa1"></div>
-      <div class="prlx-overlay">
+      <div class="prlx-banner-photo">
+        <img src="banner_pm_01.jpg" alt="Мастер перманентного макияжа">
+      </div>
+      <div class="prlx-overlay prlx-overlay--pm">
         <div class="prlx-text">
           <div class="prlx-tag">Перманентный макияж</div>
           <h2 class="prlx-title">Мастер перманентного макияжа</h2>
@@ -75,25 +78,14 @@
       </div>
     </a>
 
-    <a class="prlx-item prlx-link" href="../school/brows/" data-speed="0.25">
+    <a class="prlx-item prlx-link prlx-item--brows" href="../school/brows/" data-speed="0.28">
       <div class="prlx-bg pa2"></div>
       <div class="prlx-overlay prlx-right">
         <div class="prlx-text">
-          <div class="prlx-tag">Брови</div>
-          <h2 class="prlx-title">Бровист</h2>
-          <p class="prlx-desc" style="margin-top:12px">Архитектура и моделирование бровей, окрашивание, ламинирование, коррекция. Востребованная специальность с быстрым стартом.</p>
-          <span class="prlx-arrow">→</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="prlx-item prlx-link" href="../school/lami/" data-speed="0.32">
-      <div class="prlx-bg pa3"></div>
-      <div class="prlx-overlay">
-        <div class="prlx-text">
-          <div class="prlx-tag">Ламинирование</div>
-          <h2 class="prlx-title">Ламимейкер</h2>
-          <p class="prlx-desc" style="margin-top:12px">Ламинирование и окрашивание ресниц и бровей. Современное направление с высоким спросом и минимальными вложениями на старте.</p>
+          <div class="prlx-tag">Брови и ламинирование</div>
+          <h2 class="prlx-title">Бровист и Ламимейкер</h2>
+          <p class="prlx-desc prlx-sub">Комплексный курс</p>
+          <p class="prlx-desc" style="margin-top:12px">Архитектура и моделирование бровей, окрашивание, ламинирование и коррекция. Плюс ламинирование ресниц — два востребованных направления в одном обучении.</p>
           <span class="prlx-arrow">→</span>
         </div>
       </div>
@@ -105,7 +97,7 @@
     .parallax-gallery { overflow: hidden; }
     .prlx-item {
       position: relative;
-      height: 75vh;
+      height: 82vh;
       overflow: hidden;
       margin-bottom: 4px;
     }
@@ -146,12 +138,42 @@
       transform: translateX(0); transition: transform 0.3s;
     }
     .prlx-link:hover .prlx-arrow { transform: translateX(10px); }
-    .pa1 { background: linear-gradient(140deg, #0e0b06 0%, #2a1a08 40%, #1a1008 70%, #0e0b06 100%); }
+    .pa1 { background: var(--bg-deep); }
+    .prlx-item--pm {
+      border: 1px solid rgba(196,162,101,0.2);
+      box-shadow:
+        0 0 0 1px rgba(196,162,101,0.06),
+        inset 0 1px 0 rgba(196,162,101,0.1);
+    }
     .pa2 { background: linear-gradient(120deg, #0b0b0e 0%, #181220 50%, #0f0c14 80%, #0b0b0e 100%); }
     .pa3 { background: linear-gradient(155deg, #0a0d0b 0%, #122018 45%, #0d1810 70%, #0a0d0b 100%); }
+
+    /* PM banner photo */
+    .prlx-banner-photo {
+      position: absolute; inset: 0; z-index: 1;
+      pointer-events: none; overflow: hidden;
+    }
+    .prlx-banner-photo img {
+      position: absolute; right: 0; top: 0;
+      height: 100%; width: auto;
+      object-fit: cover; object-position: center top;
+      display: block;
+      opacity: 0;
+      animation: bannerReveal 1.2s cubic-bezier(0.25,0.46,0.45,0.94) 0.3s forwards;
+    }
+    @keyframes bannerReveal {
+      0%   { opacity: 0; transform: scale(1.05); filter: blur(6px); }
+      100% { opacity: 0.75; transform: scale(1); filter: blur(0); }
+    }
+    .prlx-overlay--pm {
+      background: linear-gradient(to right, rgba(8,8,10,0.88) 40%, rgba(8,8,10,0.4) 70%, transparent 100%);
+    }
+
     @media (max-width: 768px) {
       .prlx-overlay { padding: 0 28px; }
       .prlx-right { justify-content: flex-start; }
+      .prlx-banner-photo { display: none; }
+      .prlx-overlay--pm { background: rgba(8,8,10,0.6); }
     }
   </style>
 

@@ -1,0 +1,5 @@
+.DS_Store
+.superpowers/
+*.backup-*.html
+node_modules/
+.env
