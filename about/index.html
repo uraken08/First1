@@ -899,9 +899,12 @@
         <form class="path-form" onsubmit="handleSubmit(event)">
           <input type="text" placeholder="Ваше имя" required>
           <input type="tel" placeholder="+7 (___) ___-__-__" required>
+          <label class="form-consent">
+            <input type="checkbox" required>
+            <span>Согласен на <a href="../privacy/" target="_blank" rel="noopener">обработку персональных данных</a></span>
+          </label>
           <button type="submit" class="btn btn-gold">Написать Арине</button>
         </form>
-        <p class="cta-disclaimer">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
       </div>
 
     </div>
@@ -1035,7 +1038,7 @@
         <a href="../school/">Академия</a>
         <a href="../portfolio/">Портфолио</a>
         <a href="../contacts/">Контакты</a>
-        <a href="#">Политика конфиденциальности</a>
+        <a href="../privacy/">Политика конфиденциальности</a>
       </div>
       <div class="footer-copy">© 2026 Agent Permanent by Arina Sharapova. Москва.</div>
     </div>
@@ -1067,12 +1070,7 @@
         });
       });
     });
-    function handleSubmit(e) {
-      if (e) e.preventDefault();
-      const btn = e ? e.target.querySelector('button') : document.querySelector('.cta-form button');
-      if (btn) { btn.textContent = 'Заявка отправлена ✓'; btn.disabled = true; }
-      setTimeout(() => alert('Спасибо! Арина свяжется с вами в течение 2 часов.'), 100);
-    }
+    // handleSubmit подключён через js/forms.js
     // Horizontal timeline scroll-drive
     (function() {
       const outer = document.getElementById('tl-outer');
@@ -1264,5 +1262,6 @@
       }
     })();
   </script>
+  <script src="../js/forms.js"></script>
 </body>
 </html>

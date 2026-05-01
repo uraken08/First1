@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="../favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Libre+Caslon+Text:ital@1&family=Plus+Jakarta+Sans:wght@400;500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <style>
     html::after {
@@ -115,20 +115,22 @@
     .prlx-right { justify-content: flex-end; }
     .prlx-text { max-width: 520px; }
     .prlx-tag {
-      font-size: 0.7rem; font-weight: 600;
-      color: var(--gold); letter-spacing: 0.25em;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem; font-weight: 500;
+      color: var(--gold); letter-spacing: 0.30em;
       text-transform: uppercase; margin-bottom: 16px;
       display: flex; align-items: center; gap: 12px;
     }
     .prlx-tag::before { content:''; display:block; width:40px; height:1px; background:var(--gold); }
     .prlx-title {
-      font-family: var(--font-display);
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: clamp(2.2rem, 4vw, 3.8rem);
       color: var(--text-primary); font-weight: 400;
+      letter-spacing: 0.03em;
       line-height: 1.1; margin-bottom: 16px;
     }
-    .prlx-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; }
-    .prlx-sub { font-size: 1.25rem; color: #fff; font-weight: 400; letter-spacing: 0.01em; }
+    .prlx-desc { font-family: 'Raleway', sans-serif; font-size: 0.95rem; font-weight: 300; color: rgba(242,237,231,0.88); line-height: 1.7; letter-spacing: 0.04em; }
+    .prlx-sub { font-family: 'Raleway', sans-serif; font-size: 1.25rem; color: #fff; font-weight: 300; letter-spacing: 0.04em; }
     .prlx-link { display: block; text-decoration: none; cursor: pointer; }
     .prlx-link .prlx-overlay { transition: background 0.4s; }
     .prlx-link:hover .prlx-overlay { background: rgba(8,8,10,0.35); }
@@ -185,9 +187,12 @@
       <form class="cta-form" onsubmit="handleSubmit(event)">
         <input type="text" placeholder="Ваше имя" required>
         <input type="tel" placeholder="+7 (___) ___-__-__" required>
+        <label class="form-consent">
+          <input type="checkbox" required>
+          <span>Согласен на <a href="../privacy/" target="_blank" rel="noopener">обработку персональных данных</a></span>
+        </label>
         <button type="submit" class="btn btn-gold">Получить консультацию</button>
       </form>
-      <p class="cta-disclaimer">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
     </div>
   </section>
 
@@ -207,7 +212,7 @@
         <a href="../school/">Академия</a>
         <a href="../portfolio/">Портфолио</a>
         <a href="../contacts/">Контакты</a>
-        <a href="#">Политика конфиденциальности</a>
+        <a href="../privacy/">Политика конфиденциальности</a>
       </div>
       <div class="footer-copy">© 2026 Agent Permanent by Arina Sharapova. Москва.</div>
     </div>
@@ -238,12 +243,7 @@
       document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
     });
     function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
-    function handleSubmit(e) {
-      if (e) e.preventDefault();
-      const btn = e ? e.target.querySelector('button') : document.querySelector('.cta-form button');
-      if (btn) { btn.textContent = 'Заявка отправлена ✓'; btn.disabled = true; }
-      setTimeout(() => alert('Спасибо! Арина свяжется с вами в течение 2 часов.'), 100);
-    }
+    // handleSubmit подключён через js/forms.js
     (function() {
       const c = document.getElementById('particles');
       if (!c) return;
@@ -255,5 +255,6 @@
       }
     })();
   </script>
+  <script src="../js/forms.js"></script>
 </body>
 </html>

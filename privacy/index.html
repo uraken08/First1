@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Политика конфиденциальности — Agent Permanent</title>
+  <meta name="description" content="Политика обработки персональных данных Agent Permanent. Как мы собираем, храним и используем данные посетителей сайта и клиентов студии.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Libre+Caslon+Text:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .privacy-page {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 140px 32px 96px;
+    }
+    .privacy-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.30em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .privacy-eyebrow::after {
+      content: ''; flex: 1; max-width: 60px;
+      height: 1px; background: var(--gold); opacity: 0.4;
+    }
+    .privacy-page h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400; letter-spacing: 0.03em;
+      color: var(--text-primary);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .privacy-meta {
+      font-family: var(--font-body);
+      font-size: 0.9rem; font-weight: 300;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 56px;
+    }
+    .privacy-page h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+      font-weight: 400; letter-spacing: 0.03em;
+      color: var(--text-primary);
+      margin-top: 48px;
+      margin-bottom: 16px;
+    }
+    .privacy-page p,
+    .privacy-page li {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.98rem;
+      letter-spacing: 0.04em;
+      line-height: 1.75;
+      color: var(--text-secondary);
+    }
+    .privacy-page p { margin-bottom: 14px; }
+    .privacy-page ul { margin: 0 0 14px; padding-left: 22px; }
+    .privacy-page li { margin-bottom: 6px; }
+    .privacy-page a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(196,162,101,0.35);
+      transition: border-color 0.2s;
+    }
+    .privacy-page a:hover { border-color: var(--gold); }
+    .privacy-page strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+    .privacy-back {
+      display: inline-block;
+      margin-top: 56px;
+      font-family: var(--font-body);
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(196,162,101,0.35);
+      padding-bottom: 2px;
+    }
+    .privacy-back:hover { border-bottom-color: var(--gold); }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <a href="../" class="nav-logo">
+      <div class="nav-logo-stack">
+        <span class="nav-logo-main">AGENT</span>
+        <span class="nav-logo-mid">PERMANENT</span>
+      </div>
+      <span class="nav-logo-divider"></span>
+      <span class="nav-logo-sub">by Arina Sharapova</span>
+    </a>
+    <div class="nav-links">
+      <a href="../" class="nav-links-a">Agent Permanent</a>
+      <a href="../studio/" class="nav-links-a">Студия</a>
+      <a href="../school/" class="nav-links-a">Академия</a>
+      <a href="../portfolio/" class="nav-links-a">Портфолио</a>
+      <a href="../contacts/" class="nav-links-a">Контакты</a>
+      <a href="../contacts/" class="nav-links-a nav-cta">Записаться</a>
+    </div>
+    <button class="nav-burger" onclick="toggleMenu()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="../" class="nav-links-a">Agent Permanent</a>
+      <a href="../studio/" class="nav-links-a">Студия</a>
+      <a href="../school/" class="nav-links-a">Академия</a>
+      <a href="../portfolio/" class="nav-links-a">Портфолио</a>
+      <a href="../contacts/" class="nav-links-a">Контакты</a>
+      <a href="../contacts/" class="nav-cta">Записаться</a>
+    </div>
+  </nav>
+
+  <article class="privacy-page">
+    <div class="privacy-eyebrow">Юридическая информация</div>
+    <h1>Политика конфиденциальности</h1>
+    <p class="privacy-meta">Действует с 29 апреля 2026 года</p>
+
+    <h2>1. Общие положения</h2>
+    <p>Настоящая Политика обработки персональных данных (далее — «Политика») разработана в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению их безопасности при использовании сайта <strong>agentpermanent.ru</strong> (далее — «Сайт»).</p>
+    <p><strong>Оператором</strong> персональных данных является Агент Перманент / ИП [укажите ваши реквизиты — ФИО ИП, ОГРНИП, ИНН] (далее — «Оператор»). Адрес: г. Москва, ул. [укажите адрес].</p>
+    <p>Использование Сайта означает безоговорочное согласие пользователя с настоящей Политикой и условиями обработки его персональных данных.</p>
+
+    <h2>2. Какие данные мы собираем</h2>
+    <p>При заполнении форм на Сайте мы собираем следующие данные:</p>
+    <ul>
+      <li>Имя</li>
+      <li>Номер телефона</li>
+      <li>Адрес электронной почты (если указан)</li>
+      <li>Сообщение, оставленное в форме обратной связи</li>
+      <li>Тип услуги, на которую оформляется запись</li>
+    </ul>
+    <p>Также автоматически собираются обезличенные данные о посещении: IP-адрес, информация об устройстве, источник перехода, время визита и просмотренные страницы — через сервисы веб-аналитики (Яндекс.Метрика, Google Analytics).</p>
+
+    <h2>3. Цели обработки данных</h2>
+    <p>Персональные данные обрабатываются для следующих целей:</p>
+    <ul>
+      <li>обработка заявок на услуги студии и обучение в академии;</li>
+      <li>связь с пользователем для подтверждения и уточнения деталей записи;</li>
+      <li>информирование о новых услугах, акциях и мероприятиях (только при отдельном согласии);</li>
+      <li>улучшение работы Сайта и качества сервиса;</li>
+      <li>выполнение требований законодательства Российской Федерации.</li>
+    </ul>
+
+    <h2>4. Правовые основания обработки</h2>
+    <p>Обработка персональных данных осуществляется на основании:</p>
+    <ul>
+      <li>согласия пользователя, выражаемого путём отправки заполненной формы на Сайте;</li>
+      <li>исполнения договора, стороной которого является пользователь;</li>
+      <li>требований Федерального закона № 152-ФЗ.</li>
+    </ul>
+
+    <h2>5. Срок хранения данных</h2>
+    <p>Персональные данные хранятся в течение срока, необходимого для достижения целей обработки, но не более 5 лет с момента последнего взаимодействия с пользователем. Обезличенные аналитические данные хранятся в соответствии с настройками сервисов веб-аналитики.</p>
+
+    <h2>6. Передача данных третьим лицам</h2>
+    <p>Оператор не передаёт персональные данные третьим лицам, за исключением случаев:</p>
+    <ul>
+      <li>передачи технических данных провайдерам аналитики (Яндекс, Google);</li>
+      <li>передачи данных платёжным системам при оформлении оплаты;</li>
+      <li>передачи данных в правоохранительные органы по обоснованному запросу.</li>
+    </ul>
+
+    <h2>7. Ваши права</h2>
+    <p>Пользователь имеет право:</p>
+    <ul>
+      <li>получить информацию о факте обработки своих персональных данных;</li>
+      <li>требовать уточнения, блокировки или уничтожения своих данных;</li>
+      <li>отозвать согласие на обработку данных в любой момент;</li>
+      <li>обратиться в Роскомнадзор для защиты своих прав.</li>
+    </ul>
+
+    <h2>8. Использование cookies</h2>
+    <p>Сайт использует cookies — небольшие файлы, сохраняемые в вашем браузере. Они нужны для корректной работы Сайта и сбора обезличенной аналитики. Вы можете отключить cookies в настройках браузера, однако это может повлиять на работу некоторых функций.</p>
+
+    <h2>9. Изменения Политики</h2>
+    <p>Оператор вправе изменять настоящую Политику. Актуальная версия всегда доступна по адресу <a href="/privacy/">/privacy/</a>. Дата последнего обновления указана в начале документа.</p>
+
+    <h2>10. Контакты</h2>
+    <p>Для вопросов и обращений по обработке персональных данных:</p>
+    <ul>
+      <li>Email: <a href="mailto:info@agentpermanent.ru">info@agentpermanent.ru</a></li>
+      <li>Telegram: <a href="https://t.me/+79998200421" target="_blank" rel="noopener">+7 (999) 820-04-21</a></li>
+      <li>Адрес: г. Москва, [укажите адрес студии]</li>
+    </ul>
+
+    <a href="../" class="privacy-back">← Вернуться на главную</a>
+  </article>
+
+  <script>
+    function toggleMenu(){
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

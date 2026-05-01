@@ -1,0 +1,78 @@
+# Не деплоить служебные файлы и тяжёлые исходники
+.git/
+.claude/
+.superpowers/
+.gitignore
+.cfignore
+*.backup-*
+*.bak
+
+# Локальные превью / артефакты дизайна
+preview-*.html
+font-*.html
+hero-*.html
+font-final*.html
+hero-variants*.html
+hero-copy*.html
+tagline-italic*.html
+preview-cta-line.html
+preview-gallery.html
+preview-backgrounds.html
+preview-logo.html
+design-review.html
+
+# Большие исходники видео — деплоим только сжатые .mp4
+Видео/IMG_*.MOV
+Видео/Intro video.MP4
+Видео/IMG_*.mov
+Видео/*.aae
+Видео/* 2.*
+
+# Тяжёлые сохранённые HTML с Tilda
+Agent Permanent — Студия*.html
+Agent Permanent — Студия*_files/
+Обучение на мастера*.html
+Обучение на мастера*_files/
+
+# Большие исходные фото (оставляем только обрезанные под web)
+*.PNG
+ChatGPT Image*
+IMG_1442*
+IMG_*.JPG
+
+# Из папки Фото/ деплоим только Работы/ (используется в /portfolio/)
+Фото/*.jpg
+Фото/*.png
+Фото/*.JPG
+Фото/*.PNG
+Фото/Баннеры/
+Фото/Гайды/
+Фото/Онлайн подготовка/
+Фото/Студия/
+Фото/Ученики/
+
+# Студия — публикуем только заглушку, черновик прячем
+studio/index.draft.html
+studio/*.draft.html
+
+# Промежуточные дубликаты
+about/index.html
+school/pm/index.backup-*.html
+school/pm/font-*.html
+school/pm/hero-*.html
+school/pm/herosub-*.html
+school/pm/belief-design.html
+school/pm/bodytext-variants.html
+school/pm/card-variants.html
+school/pm/cta-preview.html
+school/pm/gift-variants.html
+school/pm/included-redesign.html
+school/pm/variants-preview.html
+school/pm/zones-variants*.html
+
+# JSX-исходники (не нужны на сайте)
+*.jsx
+
+# Mac служебное
+.DS_Store
+**/.DS_Store

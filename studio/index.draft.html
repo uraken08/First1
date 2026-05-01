@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Студия перманентного макияжа в Москве — Agent Permanent | Арина Шарапова</title>
+  <meta name="description" content="Перманентный макияж бровей, губ и век в Москве. Пудровые брови от 8 000 ₽. Бесплатная консультация. Записаться онлайн.">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* ── Noise overlay ─────────────────────────────────────── */
+    html::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 9998;
+      pointer-events: none; opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 160px;
+    }
+
+    /* ── HERO ──────────────────────────────────────────────── */
+    .studio-hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 0 72px;
+      overflow: hidden;
+    }
+    .studio-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(44,28,8,0.55) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 80% at 15% 80%, rgba(196,162,101,0.06) 0%, transparent 60%),
+        var(--bg-deep);
+    }
+    .studio-hero-wordmark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Italiana', serif;
+      font-size: clamp(18vw, 22vw, 340px);
+      font-weight: 400;
+      line-height: 0.85;
+      letter-spacing: -0.02em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(196,162,101,0.12);
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .studio-hero-line {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 58%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent 0%, rgba(196,162,101,0.18) 20%, rgba(196,162,101,0.25) 50%, rgba(196,162,101,0.18) 80%, transparent 100%);
+      transform-origin: top;
+      animation: lineReveal 1.6s cubic-bezier(0.16,1,0.3,1) 0.3s both;
+    }
+    @keyframes lineReveal {
+      from { transform: scaleY(0); opacity: 0; }
+      to   { transform: scaleY(1); opacity: 1; }
+    }
+    .studio-hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 42%;
+      gap: 0 60px;
+      padding: 0 var(--section-padding, 80px);
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .studio-hero-left {}
+    .studio-hero-eyebrow {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0 0 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.5s both;
+    }
+    .studio-hero-eyebrow::before {
+      content: '';
+      width: 40px; height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .studio-hero-title {
+      font-family: 'Italiana', serif;
+      font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--text-primary);
+      margin: 0 0 32px;
+      animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.65s both;
+    }
+    .studio-hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .studio-hero-sub {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin: 0 0 44px;
+      max-width: 440px;
+      animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.8s both;
+    }
+    .studio-hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.95s both;
+    }
+    .studio-hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 24px;
+      animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 1.1s both;
+    }
+    .studio-hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      border: 1px solid rgba(196,162,101,0.12);
+      background: rgba(196,162,101,0.12);
+    }
+    .studio-hero-stat {
+      padding: 24px 28px;
+      background: rgba(26,18,8,0.7);
+      backdrop-filter: blur(12px);
+    }
+    .studio-hero-stat-num {
+      font-family: 'Italiana', serif;
+      font-size: 2.6rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .studio-hero-stat-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(242,237,231,0.4);
+    }
+    .studio-hero-badge {
+      padding: 16px 24px;
+      border: 1px solid rgba(196,162,101,0.18);
+      background: rgba(26,18,8,0.6);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .studio-hero-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.4; transform: scale(0.7); }
+    }
+    .studio-hero-badge-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: rgba(242,237,231,0.6);
+      line-height: 1.5;
+    }
+    .studio-hero-badge-text strong {
+      display: block;
+      color: var(--text-primary);
+      font-weight: 600;
+      margin-bottom: 1px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SERVICES ──────────────────────────────────────────── */
+    .services-list {
+      margin-top: 56px;
+    }
+    .service-item {
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      align-items: start;
+      gap: 0 32px;
+      padding: 36px 0;
+      border-top: 1px solid rgba(196,162,101,0.1);
+      cursor: default;
+      transition: background 0.4s;
+      position: relative;
+    }
+    .service-item:last-child {
+      border-bottom: 1px solid rgba(196,162,101,0.1);
+    }
+    .service-item::before {
+      content: '';
+      position: absolute;
+      inset: 0 -40px;
+      background: rgba(196,162,101,0.03);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .service-item:hover::before { opacity: 1; }
+    .service-item-num {
+      font-family: 'Italiana', serif;
+      font-size: 3rem;
+      color: rgba(196,162,101,0.2);
+      line-height: 1;
+      transition: color 0.3s;
+      padding-top: 4px;
+    }
+    .service-item:hover .service-item-num {
+      color: rgba(196,162,101,0.55);
+    }
+    .service-item-body { min-width: 0; }
+    .service-item-name {
+      font-family: 'Italiana', serif;
+      font-size: 1.85rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.1;
+      margin: 0 0 12px;
+      transition: color 0.3s;
+    }
+    .service-item:hover .service-item-name { color: var(--gold-light); }
+    .service-item-desc {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 540px;
+      margin: 0 0 8px;
+    }
+    .service-item-note {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgba(196,162,101,0.5);
+    }
+    .service-item-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+      padding-top: 6px;
+      min-width: 160px;
+    }
+    .service-item-price {
+      font-family: 'Italiana', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+    .service-item-action {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(196,162,101,0.25);
+      padding-bottom: 2px;
+      transition: gap 0.3s, border-color 0.3s;
+    }
+    .service-item-action:hover { gap: 14px; border-color: var(--gold); }
+    .service-item-action::after { content: '→'; }
+
+    /* ── PROCESS ───────────────────────────────────────────── */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 56px;
+      background: rgba(196,162,101,0.1);
+    }
+    .process-card {
+      padding: 48px 40px;
+      background: var(--bg-deep);
+      position: relative;
+      overflow: hidden;
+    }
+    .process-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 45%; height: 45%;
+      background: radial-gradient(ellipse at bottom right, rgba(196,162,101,0.07), transparent);
+      pointer-events: none;
+    }
+    .process-card-num {
+      font-family: 'Italiana', serif;
+      font-size: 5rem;
+      color: rgba(196,162,101,0.08);
+      line-height: 1;
+      position: absolute;
+      top: 20px; right: 28px;
+    }
+    .process-card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      opacity: 0.7;
+    }
+    .process-card h4 {
+      font-family: 'Italiana', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin: 0 0 14px;
+    }
+    .process-card p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.87rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* ── PORTFOLIO PREVIEW ─────────────────────────────────── */
+    .portfolio-mosaic {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 280px 200px;
+      gap: 8px;
+      margin-top: 48px;
+    }
+    .portfolio-tile {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a1208, #2d1f0a 50%, #1a1208);
+      border: 1px solid rgba(196,162,101,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.4s;
+    }
+    .portfolio-tile:hover { border-color: rgba(196,162,101,0.25); }
+    .portfolio-tile--tall { grid-row: span 2; }
+    .portfolio-tile-label {
+      position: absolute;
+      bottom: 20px; left: 20px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(196,162,101,0.6);
+      transition: color 0.3s;
+    }
+    .portfolio-tile:hover .portfolio-tile-label { color: var(--gold); }
+    .portfolio-tile-symbol {
+      font-size: 2.5rem;
+      opacity: 0.1;
+      transition: opacity 0.4s;
+    }
+    .portfolio-tile:hover .portfolio-tile-symbol { opacity: 0.2; }
+
+    /* ── REVIEWS ───────────────────────────────────────────── */
+    .reviews-list {
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .review-item {
+      display: grid;
+      grid-template-columns: 200px 1fr 200px;
+      gap: 0 48px;
+      padding: 40px 0;
+      border-top: 1px solid rgba(196,162,101,0.08);
+      align-items: start;
+    }
+    .review-item:last-child { border-bottom: 1px solid rgba(196,162,101,0.08); }
+    .review-item-meta {}
+    .review-item-stars {
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 10px;
+    }
+    .review-item-author {
+      font-family: 'Italiana', serif;
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .review-item-procedure {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(196,162,101,0.5);
+    }
+    .review-item-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+    .review-item-text::before { content: '\201C'; color: var(--gold); font-size: 1.5rem; font-style: normal; line-height: 0; vertical-align: -0.4em; margin-right: 4px; }
+    .review-item-text::after  { content: '\201D'; color: var(--gold); font-size: 1.5rem; font-style: normal; line-height: 0; vertical-align: -0.4em; margin-left: 4px; }
+    .review-item-source {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(242,237,231,0.2);
+      text-align: right;
+    }
+
+    /* ── FAQ ───────────────────────────────────────────────── */
+    .faq-items {
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+    }
+    .faq-entry {
+      border-top: 1px solid rgba(196,162,101,0.1);
+      overflow: hidden;
+    }
+    .faq-entry:last-child { border-bottom: 1px solid rgba(196,162,101,0.1); }
+    .faq-trigger {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .faq-trigger-text {
+      font-family: 'Italiana', serif;
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      transition: color 0.25s;
+    }
+    .faq-entry.open .faq-trigger-text { color: var(--gold-light); }
+    .faq-trigger-icon {
+      width: 28px; height: 28px;
+      border: 1px solid rgba(196,162,101,0.25);
+      border-radius: 50%;
+      flex-shrink: 0;
+      position: relative;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .faq-trigger-icon::before,
+    .faq-trigger-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--gold);
+      border-radius: 1px;
+      top: 50%; left: 50%;
+      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.3s;
+    }
+    .faq-trigger-icon::before { width: 10px; height: 1px; transform: translate(-50%,-50%); }
+    .faq-trigger-icon::after  { width: 1px; height: 10px; transform: translate(-50%,-50%); }
+    .faq-entry.open .faq-trigger-icon::after { transform: translate(-50%,-50%) rotate(90deg); opacity: 0; }
+    .faq-entry.open .faq-trigger-icon { background: rgba(196,162,101,0.08); border-color: rgba(196,162,101,0.4); }
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.16,1,0.3,1);
+    }
+    .faq-entry.open .faq-body { max-height: 300px; }
+    .faq-body p {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      padding: 0 0 28px 0;
+      margin: 0;
+      max-width: 680px;
+    }
+
+    /* ── BOOKING SECTION ───────────────────────────────────── */
+    .booking-section {
+      padding: 120px var(--section-padding, 80px);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      margin-top: 56px;
+      background: rgba(196,162,101,0.12);
+    }
+    .booking-tile {
+      padding: 48px 40px;
+      background: var(--bg-deep);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: background 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .booking-tile:hover { background: rgba(26,18,8,0.9); }
+    .booking-tile::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .booking-tile:hover::before { opacity: 0.5; }
+    .booking-tile-num {
+      font-family: 'Italiana', serif;
+      font-size: 0.85rem;
+      color: rgba(196,162,101,0.35);
+      letter-spacing: 0.1em;
+    }
+    .booking-tile-title {
+      font-family: 'Italiana', serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.1;
+    }
+    .booking-tile-desc {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .booking-tile-action { margin-top: 8px; }
+    .booking-tile-messengers {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .booking-tile-messengers a {
+      flex: 1;
+      padding: 10px 8px;
+      border-radius: 60px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .booking-tile-messengers a:hover { opacity: 0.82; transform: translateY(-1px); }
+    .bm-tg  { background: #229ED9; }
+    .bm-max { background: #005FF9; }
+    .bm-vk  { background: #0077FF; }
+
+    /* ── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .studio-hero-content { grid-template-columns: 1fr; padding: 0 32px; }
+      .studio-hero-right { display: none; }
+      .studio-hero-line { display: none; }
+      .service-item { grid-template-columns: 48px 1fr; }
+      .service-item-right { display: none; }
+      .process-grid { grid-template-columns: 1fr; }
+      .portfolio-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .portfolio-tile--tall { grid-row: auto; }
+      .review-item { grid-template-columns: 1fr; gap: 12px; }
+      .review-item-source { text-align: left; }
+      .booking-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .studio-hero { padding-bottom: 56px; }
+      .studio-hero-content { padding: 0 20px; }
+      .studio-hero-title { font-size: 2.6rem; }
+      .service-item { grid-template-columns: 40px 1fr; gap: 0 16px; padding: 28px 0; }
+      .service-item-name { font-size: 1.45rem; }
+      .portfolio-mosaic { grid-template-columns: 1fr; }
+      .booking-section { padding: 80px 20px; }
+      .booking-tile { padding: 36px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="../" class="nav-logo">
+      <div class="nav-logo-stack">
+        <span class="nav-logo-main">AGENT</span>
+        <span class="nav-logo-mid">PERMANENT</span>
+      </div>
+      <span class="nav-logo-divider"></span>
+      <span class="nav-logo-sub">by Arina Sharapova</span>
+    </a>
+    <div class="nav-links">
+      <a href="../" class="nav-links-a">Agent Permanent</a>
+      <a href="../studio/" class="nav-links-a active">Студия</a>
+      <a href="../school/" class="nav-links-a">Академия</a>
+      <a href="../portfolio/" class="nav-links-a">Портфолио</a>
+      <a href="../contacts/" class="nav-links-a">Контакты</a>
+      <a href="#" class="nav-links-a nav-cta" onclick="openBookingPopup('студия');return false;">Записаться</a>
+    </div>
+    <button class="nav-burger" onclick="toggleMenu()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="../" class="nav-links-a">Agent Permanent</a>
+      <a href="../studio/" class="nav-links-a active">Студия</a>
+      <a href="../school/" class="nav-links-a">Академия</a>
+      <a href="../portfolio/" class="nav-links-a">Портфолио</a>
+      <a href="../contacts/" class="nav-links-a">Контакты</a>
+      <a href="#" class="nav-cta" onclick="openBookingPopup('студия');return false;">Записаться</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="studio-hero">
+    <div class="studio-hero-bg"></div>
+    <div class="studio-hero-wordmark" aria-hidden="true">PM</div>
+    <div class="studio-hero-line" aria-hidden="true"></div>
+
+    <div class="studio-hero-content">
+      <div class="studio-hero-left">
+        <p class="studio-hero-eyebrow">Студия в Москве</p>
+        <h1 class="studio-hero-title">
+          Перманентный<br>
+          макияж, который<br>
+          <em>выглядит дорого</em>
+        </h1>
+        <p class="studio-hero-sub">Брови, губы, межресничка, коррекция. Результат, который радует каждое утро — без кисточки и зеркала.</p>
+        <div class="studio-hero-ctas">
+          <button class="btn btn-gold" onclick="openBookingPopup('студия')">Записаться</button>
+          <a href="#services" class="btn btn-ghost">Услуги и цены</a>
+        </div>
+      </div>
+      <div class="studio-hero-right">
+        <div class="studio-hero-stats">
+          <div class="studio-hero-stat">
+            <div class="studio-hero-stat-num">6 000+</div>
+            <div class="studio-hero-stat-label">процедур</div>
+          </div>
+          <div class="studio-hero-stat">
+            <div class="studio-hero-stat-num">10</div>
+            <div class="studio-hero-stat-label">лет опыта</div>
+          </div>
+          <div class="studio-hero-stat">
+            <div class="studio-hero-stat-num">700+</div>
+            <div class="studio-hero-stat-label">отзывов 5★</div>
+          </div>
+          <div class="studio-hero-stat">
+            <div class="studio-hero-stat-num">TOP</div>
+            <div class="studio-hero-stat-label">мастер России</div>
+          </div>
+        </div>
+        <div class="studio-hero-badge">
+          <div class="studio-hero-badge-dot"></div>
+          <div class="studio-hero-badge-text">
+            <strong>Арина Шарапова</strong>
+            Принимает лично. Каждая процедура — её руки.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-inner">
+      <div class="section-eyebrow fade-up">Услуги</div>
+      <h2 class="section-title fade-up">Перманентный макияж в Москве</h2>
+      <p class="section-subtitle fade-up">Каждая процедура — индивидуальный подбор формы, цвета и техники под вашу внешность</p>
+
+      <div class="services-list">
+        <div class="service-item fade-up">
+          <div class="service-item-num">01</div>
+          <div class="service-item-body">
+            <h3 class="service-item-name">Перманент бровей</h3>
+            <p class="service-item-desc">Пудровое напыление, микроблейдинг, комбинированная техника. Точный подбор формы по вашим чертам лица.</p>
+            <span class="service-item-note">Включает консультацию и коррекцию через 4–6 недель</span>
+          </div>
+          <div class="service-item-right">
+            <span class="service-item-price">от 8 000 ₽</span>
+            <a href="#" class="service-item-action" onclick="openBookingPopup('студия');return false;">Записаться</a>
+          </div>
+        </div>
+
+        <div class="service-item fade-up" style="transition-delay:0.06s">
+          <div class="service-item-num">02</div>
+          <div class="service-item-body">
+            <h3 class="service-item-name">Перманент губ</h3>
+            <p class="service-item-desc">Акварельная техника, контур с растушёвкой, full lips. Натуральный цвет без «кукольного» эффекта. Визуальное увеличение и симметрия.</p>
+            <span class="service-item-note">Бесплатный подбор оттенка пигмента перед процедурой</span>
+          </div>
+          <div class="service-item-right">
+            <span class="service-item-price">от 9 000 ₽</span>
+            <a href="#" class="service-item-action" onclick="openBookingPopup('студия');return false;">Записаться</a>
+          </div>
+        </div>
+
+        <div class="service-item fade-up" style="transition-delay:0.12s">
+          <div class="service-item-num">03</div>
+          <div class="service-item-body">
+            <h3 class="service-item-name">Межресничная линия</h3>
+            <p class="service-item-desc">Заполнение межресничного пространства. Выразительный взгляд без ежедневного макияжа. Безболезненно, около 1 часа.</p>
+            <span class="service-item-note">Подходит для любого типа глаз</span>
+          </div>
+          <div class="service-item-right">
+            <span class="service-item-price">от 6 000 ₽</span>
+            <a href="#" class="service-item-action" onclick="openBookingPopup('студия');return false;">Записаться</a>
+          </div>
+        </div>
+
+        <div class="service-item fade-up" style="transition-delay:0.18s">
+          <div class="service-item-num">04</div>
+          <div class="service-item-body">
+            <h3 class="service-item-name">Удаление ПМ</h3>
+            <p class="service-item-desc">Коррекция и удаление неудачного перманентного макияжа. Лазерное удаление и ремувер. Арина — сертифицированный специалист.</p>
+            <span class="service-item-note">Необходима предварительная консультация</span>
+          </div>
+          <div class="service-item-right">
+            <span class="service-item-price">по запросу</span>
+            <a href="#" class="service-item-action" onclick="openBookingPopup('студия');return false;">Записаться</a>
+          </div>
+        </div>
+
+        <div class="service-item fade-up" style="transition-delay:0.24s">
+          <div class="service-item-num">05</div>
+          <div class="service-item-body">
+            <h3 class="service-item-name">Коррекция</h3>
+            <p class="service-item-desc">Обновление ранее выполненного перманентного макияжа. Осветление, изменение формы или цвета.</p>
+            <span class="service-item-note">Оценка стоимости — на консультации</span>
+          </div>
+          <div class="service-item-right">
+            <span class="service-item-price">от 5 000 ₽</span>
+            <a href="#" class="service-item-action" onclick="openBookingPopup('студия');return false;">Записаться</a>
+          </div>
+        </div>
+
+        <div class="service-item fade-up" style="transition-delay:0.3s">
+          <div class="service-item-num">06</div>
+          <div class="service-item-body">
+            <h3 class="service-item-name">Бесплатная консультация</h3>
+            <p class="service-item-desc">Подбор техники, формы, цвета. Ответы на все вопросы, рассказ о процессе заживления — онлайн или очно в студии.</p>
+            <span class="service-item-note">Онлайн или очно в студии</span>
+          </div>
+          <div class="service-item-right">
+            <span class="service-item-price">Бесплатно</span>
+            <a href="#" class="service-item-action" onclick="openBookingPopup('студия');return false;">Записаться</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section" id="process" style="background:var(--bg-warm)">
+    <div class="section-inner">
+      <div class="section-eyebrow fade-up">Как всё проходит</div>
+      <h2 class="section-title fade-up">Три шага к результату</h2>
+      <p class="section-subtitle fade-up">Всё прозрачно — от первого сообщения до заживления</p>
+      <div class="process-grid fade-up">
+        <div class="process-card">
+          <div class="process-card-num">01</div>
+          <div class="process-card-icon">✦</div>
+          <h4>Консультация</h4>
+          <p>Обсуждаем желаемый результат, подбираем технику и форму. Онлайн или в студии — бесплатно.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-card-num">02</div>
+          <div class="process-card-icon">✧</div>
+          <h4>Процедура</h4>
+          <p>1–2 часа в комфортных условиях. Наносим эскиз, согласовываем — только после вашего одобрения приступаем.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-card-num">03</div>
+          <div class="process-card-icon">◈</div>
+          <h4>Заживление и коррекция</h4>
+          <p>Через 4–6 недель — коррекция для закрепления результата. Арина на связи в процессе заживления.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO PREVIEW -->
+  <section class="section" id="portfolio-preview">
+    <div class="section-inner">
+      <div class="section-eyebrow fade-up">Работы</div>
+      <h2 class="section-title fade-up">Результаты говорят сами</h2>
+      <p class="section-subtitle fade-up">6 000+ процедур — каждая уникальна под конкретную внешность</p>
+      <div class="portfolio-mosaic fade-up">
+        <div class="portfolio-tile portfolio-tile--tall">
+          <span class="portfolio-tile-symbol">✦</span>
+          <span class="portfolio-tile-label">Пудровые брови</span>
+        </div>
+        <div class="portfolio-tile">
+          <span class="portfolio-tile-symbol">✧</span>
+          <span class="portfolio-tile-label">Губы</span>
+        </div>
+        <div class="portfolio-tile">
+          <span class="portfolio-tile-symbol">◈</span>
+          <span class="portfolio-tile-label">Межресничка</span>
+        </div>
+        <div class="portfolio-tile">
+          <span class="portfolio-tile-symbol">◇</span>
+          <span class="portfolio-tile-label">Омбре брови</span>
+        </div>
+        <div class="portfolio-tile">
+          <span class="portfolio-tile-symbol">✦</span>
+          <span class="portfolio-tile-label">Коррекция</span>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px" class="fade-up">
+        <a href="../portfolio/" class="btn btn-ghost">Смотреть всё портфолио →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section" id="reviews" style="background:var(--bg-warm)">
+    <div class="section-inner">
+      <div class="section-eyebrow fade-up">Отзывы клиентов</div>
+      <h2 class="section-title fade-up">Что говорят после процедуры</h2>
+      <div class="reviews-list fade-up">
+        <div class="review-item">
+          <div class="review-item-meta">
+            <div class="review-item-stars">★★★★★</div>
+            <div class="review-item-author">Анастасия К.</div>
+            <div class="review-item-procedure">Пудровые брови</div>
+          </div>
+          <div class="review-item-text">Делала брови у Арины — очень довольна результатом. Форма идеально подходит моему лицу, цвет натуральный. Заживление прошло быстро, корочка почти не беспокоила. Рекомендую!</div>
+          <div class="review-item-source">Яндекс</div>
+        </div>
+        <div class="review-item">
+          <div class="review-item-meta">
+            <div class="review-item-stars">★★★★★</div>
+            <div class="review-item-author">Ирина М.</div>
+            <div class="review-item-procedure">Акварельные губы</div>
+          </div>
+          <div class="review-item-text">Давно хотела сделать перманент губ, но боялась. Арина всё объяснила ещё на консультации, показала работы. Результат превзошёл ожидания — естественно и красиво!</div>
+          <div class="review-item-source">2ГИС</div>
+        </div>
+        <div class="review-item">
+          <div class="review-item-meta">
+            <div class="review-item-stars">★★★★★</div>
+            <div class="review-item-author">Татьяна В.</div>
+            <div class="review-item-procedure">Межресничная линия</div>
+          </div>
+          <div class="review-item-text">Межресничка — лучшее решение. Теперь даже без макияжа взгляд выразительный. Арина профессионал высочайшего уровня. Уже записалась на брови!</div>
+          <div class="review-item-source">Яндекс</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="section-inner">
+      <div class="section-eyebrow fade-up">FAQ</div>
+      <h2 class="section-title fade-up">Частые вопросы</h2>
+      <div class="faq-items fade-up">
+        <div class="faq-entry">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-trigger-text">Больно ли делать перманентный макияж?</span>
+            <span class="faq-trigger-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-body"><p>Перед процедурой наносится анестезирующий крем. Большинство клиентов описывают ощущения как лёгкий дискомфорт. Болевой порог у всех разный — если вы чувствительны, скажите Арине, она учтёт это.</p></div>
+        </div>
+        <div class="faq-entry">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-trigger-text">Сколько держится перманентный макияж?</span>
+            <span class="faq-trigger-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-body"><p>В среднем 1,5–3 года — зависит от техники, типа кожи и ухода. Пудровые брови держатся дольше, чем микроблейдинг. Коррекция раз в 1–2 года позволяет поддерживать результат.</p></div>
+        </div>
+        <div class="faq-entry">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-trigger-text">Как подготовиться к процедуре?</span>
+            <span class="faq-trigger-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-body"><p>За 24 часа — не употреблять алкоголь, кофе и аспирин. Не загорать за 2 недели. Не делать пилинги и ретиноиды за 2 недели. Полный список рекомендаций Арина пришлёт после записи.</p></div>
+        </div>
+        <div class="faq-entry">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-trigger-text">Есть ли противопоказания?</span>
+            <span class="faq-trigger-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-body"><p>Да: беременность и кормление грудью, онкология, сахарный диабет, склонность к келоидным рубцам, аутоиммунные заболевания в стадии обострения. Обсуждаем на консультации индивидуально.</p></div>
+        </div>
+        <div class="faq-entry">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-trigger-text">Сколько времени занимает процедура?</span>
+            <span class="faq-trigger-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-body"><p>Брови — 1,5–2 часа, губы — 2–2,5 часа, межресничка — 1–1,5 часа. Плюс время на анестезию и обсуждение результата. Заложите запас времени и не планируйте важных дел сразу после.</p></div>
+        </div>
+        <div class="faq-entry">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-trigger-text">Включена ли коррекция в стоимость?</span>
+            <span class="faq-trigger-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-body"><p>Да, первая коррекция через 4–6 недель входит в стоимость процедуры. Это обязательный этап для закрепления пигмента и достижения оптимального результата.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="cta" style="background:var(--bg-warm)">
+    <div class="booking-section">
+      <div class="section-eyebrow fade-up">Записаться</div>
+      <h2 class="section-title fade-up">Выберите удобный способ</h2>
+      <div class="booking-grid fade-up">
+        <div class="booking-tile">
+          <div class="booking-tile-num">— 01</div>
+          <div class="booking-tile-title">Заявка на перезвон</div>
+          <div class="booking-tile-desc">Заполните форму — свяжемся в течение часа и подберём удобное время</div>
+          <div class="booking-tile-action">
+            <button class="btn btn-gold" onclick="openBookingPopup('студия')">Оставить заявку</button>
+          </div>
+        </div>
+        <div class="booking-tile">
+          <div class="booking-tile-num">— 02</div>
+          <div class="booking-tile-title">Онлайн-запись</div>
+          <div class="booking-tile-desc">Выберите дату и время прямо сейчас — моментальное подтверждение через YClients</div>
+          <div class="booking-tile-action">
+            <a class="btn btn-gold" href="https://yclients.com" target="_blank" rel="noopener">Выбрать время</a>
+          </div>
+        </div>
+        <div class="booking-tile">
+          <div class="booking-tile-num">— 03</div>
+          <div class="booking-tile-title">Написать нам</div>
+          <div class="booking-tile-desc">Ответим на все вопросы в удобном мессенджере</div>
+          <div class="booking-tile-messengers">
+            <a class="bm-tg" href="https://t.me/+79998200421" target="_blank" rel="noopener">Telegram</a>
+            <a class="bm-max" href="https://max.ru/agentpermanent" target="_blank" rel="noopener">Макс</a>
+            <a class="bm-vk" href="https://vk.com/agentpermanent" target="_blank" rel="noopener">VK</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand" style="display:flex;align-items:center;gap:14px;line-height:1">
+        <div style="display:flex;flex-direction:column;gap:0">
+          <span style="font-family:var(--font-display);font-size:1.45rem;font-weight:700;color:var(--gold);letter-spacing:0.06em;text-transform:uppercase">AGENT</span>
+          <span style="font-family:var(--font-body);font-size:0.62rem;font-weight:600;color:var(--text-secondary);letter-spacing:0.35em;text-transform:uppercase;margin-top:1px">PERMANENT</span>
+        </div>
+        <span style="width:1px;height:32px;background:rgba(196,162,101,0.25)"></span>
+        <span style="font-family:var(--font-body);font-size:0.58rem;font-weight:400;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap">by Arina Sharapova</span>
+      </div>
+      <div class="footer-links">
+        <a href="../">Agent Permanent</a>
+        <a href="../studio/">Студия</a>
+        <a href="../school/">Академия</a>
+        <a href="../portfolio/">Портфолио</a>
+        <a href="../contacts/">Контакты</a>
+        <a href="../privacy/">Политика конфиденциальности</a>
+      </div>
+      <div class="footer-copy">© 2026 Agent Permanent by Arina Sharapova. Москва.</div>
+    </div>
+  </footer>
+
+  <script src="../js/booking.js"></script>
+
+  <div class="float-messengers">
+    <a class="float-btn float-btn--tg" href="https://t.me/+79998200421" target="_blank" rel="noopener" aria-label="Написать в Telegram">✈</a>
+    <a class="float-btn float-btn--max" href="https://max.ru/agentpermanent" target="_blank" rel="noopener" aria-label="Написать в Макс">М</a>
+    <a class="float-btn float-btn--vk" href="https://vk.com/agentpermanent" target="_blank" rel="noopener" aria-label="Написать ВКонтакте">ВК</a>
+  </div>
+
+  <script>
+    /* Scroll animations */
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+    /* Nav scroll */
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    /* Mobile menu */
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+    }
+
+    /* FAQ accordion */
+    function toggleFaq(btn) {
+      const entry = btn.closest('.faq-entry');
+      const isOpen = entry.classList.contains('open');
+      document.querySelectorAll('.faq-entry.open').forEach(e => e.classList.remove('open'));
+      if (!isOpen) entry.classList.add('open');
+    }
+
+    /* Hero smooth scroll */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+</body>
+</html>
