@@ -476,12 +476,27 @@
   background: rgba(8,8,10,0.97);
   backdrop-filter: blur(24px);
   align-items: center;
-  justify-content: center;
-  gap: 28px;
+  justify-content: flex-start;
+  gap: 22px;
   z-index: 199;
-  padding: 88px 24px 40px;
+  padding-top: calc(96px + env(safe-area-inset-top, 0px));
+  padding-right: 24px;
+  padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px));
+  padding-left: 24px;
   box-sizing: border-box;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+.nav-mobile::before {
+  content: '';
+  flex: 1 0 8px;
+  min-height: 8px;
+}
+.nav-mobile::after {
+  content: '';
+  flex: 1 0 8px;
+  min-height: 8px;
 }
 .nav-mobile.active { display: flex; }
 .nav-mobile a { font-size: 1.2rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.3s; }
