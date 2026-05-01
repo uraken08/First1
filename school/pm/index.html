@@ -891,10 +891,13 @@
       <div class="pm-hero-sub fade-up" style="transition-delay:0.15s">
         <span class="pm-hero-sub-label" style="white-space:nowrap; color: var(--gold);">и зарабатывай от</span>
         <div style="display:flex; align-items:flex-end; gap:18px;">
-          <span class="pm-hero-sub-num">120 000</span>
+          <span class="pm-hero-sub-num">120 000<sup class="pm-income-mark">*</sup></span>
           <span class="pm-hero-sub-caption" style="padding-bottom:0.15em; color: var(--gold);">₽ в месяц</span>
         </div>
       </div>
+      <p class="pm-income-disclaimer fade-up" style="transition-delay:0.2s">
+        <span aria-hidden="true">*</span> Доход не&nbsp;гарантируется. Указанная сумма&nbsp;— возможный ориентир и&nbsp;зависит от&nbsp;региона, цен, количества клиентов, качества работ, продвижения, расходов и&nbsp;личной активности ученика.
+      </p>
       <div class="pm-hero-meta-sep fade-up" style="transition-delay:0.25s"></div>
       <div class="pm-hero-meta fade-up" style="transition-delay:0.3s">
         <div class="pm-hero-meta-item">
@@ -2688,6 +2691,38 @@
       padding-bottom: 24px;
     }
     @media (max-width: 768px) { .pm-faq { padding: 80px 24px; } }
+
+    /* ── Звёздочка + сноска про доход (юридический disclaimer) ── */
+    .pm-income-mark {
+      font-size: 0.45em;
+      color: var(--gold);
+      vertical-align: super;
+      line-height: 0;
+      margin-left: 2px;
+      font-weight: 400;
+    }
+    .pm-income-disclaimer {
+      font-family: var(--font-body);
+      font-size: 0.74rem;
+      font-weight: 300;
+      color: rgba(242,237,231,0.45);
+      line-height: 1.55;
+      letter-spacing: 0.01em;
+      max-width: 620px;
+      margin: 18px 0 0;
+      padding: 0;
+    }
+    .pm-income-disclaimer span[aria-hidden] {
+      color: var(--gold);
+      margin-right: 4px;
+    }
+    @media (max-width: 768px) {
+      .pm-income-disclaimer {
+        font-size: 0.72rem;
+        margin-top: 14px;
+        max-width: 100%;
+      }
+    }
 
     /* ── MOBILE SAFETY-NET: грид-блоки, у которых не было явных правил для узких экранов ── */
     @media (max-width: 900px) {
