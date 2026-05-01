@@ -2709,20 +2709,22 @@
       .pm-belief-headline { font-size: clamp(1.6rem, 7vw, 2.2rem); }
     }
 
-    /* ── Жирные заголовки на странице курса ПМ ── */
-    .pm-hero h1,
-    .pm-program-title, .pm-program-headline,
-    .pm-belief-headline, .pm-belief-whisper,
-    .pm-included h2, .pm-included h3, .pm-included h4,
-    .pm-included .pm-sticky-title,
-    .pm-card-num, .pm-item-card h4,
-    .pm-bonus-card-title,
-    .pm-cta h2, .pm-cta-title,
-    .pm-video-reviews h2,
-    .pm-faq-section h2, .pm-faq-q span,
-    .pm-faq-section h3,
-    .arina-intro-text h2, .arina-name {
-      font-weight: 700;
+    /* ── Жирные заголовки на странице курса ПМ — только на mobile ── */
+    @media (max-width: 900px) {
+      .pm-hero h1,
+      .pm-program-title, .pm-program-headline,
+      .pm-belief-headline, .pm-belief-whisper,
+      .pm-included h2, .pm-included h3, .pm-included h4,
+      .pm-included .pm-sticky-title,
+      .pm-card-num, .pm-item-card h4,
+      .pm-bonus-card-title,
+      .pm-cta h2, .pm-cta-title,
+      .pm-video-reviews h2,
+      .pm-faq-section h2, .pm-faq-q span,
+      .pm-faq-section h3,
+      .arina-intro-text h2, .arina-name {
+        font-weight: 700;
+      }
     }
 
     /* ── Карточка с видео в pm-included: компоновка для mobile ── */
