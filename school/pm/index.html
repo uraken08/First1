@@ -2708,6 +2708,74 @@
       .pm-belief-whisper { font-size: 1.25rem; margin-bottom: 22px; }
       .pm-belief-headline { font-size: clamp(1.6rem, 7vw, 2.2rem); }
     }
+
+    /* ── Жирные заголовки на странице курса ПМ ── */
+    .pm-hero h1,
+    .pm-program-title, .pm-program-headline,
+    .pm-belief-headline, .pm-belief-whisper,
+    .pm-included h2, .pm-included h3, .pm-included h4,
+    .pm-included .pm-sticky-title,
+    .pm-card-num, .pm-item-card h4,
+    .pm-bonus-card-title,
+    .pm-cta h2, .pm-cta-title,
+    .pm-video-reviews h2,
+    .pm-faq-section h2, .pm-faq-q span,
+    .pm-faq-section h3,
+    .arina-intro-text h2, .arina-name {
+      font-weight: 700;
+    }
+
+    /* ── Карточка с видео в pm-included: компоновка для mobile ── */
+    @media (max-width: 900px) {
+      /* Заголовок «Что входит в обучение?» — горизонтально, не вертикально */
+      .pm-included .pm-sticky-title {
+        writing-mode: horizontal-tb !important;
+        flex: none !important;
+        font-size: clamp(2rem, 7vw, 2.6rem) !important;
+        font-weight: 700 !important;
+        line-height: 1.15 !important;
+        letter-spacing: 0.02em !important;
+        padding: 0 !important;
+        margin: 0 0 24px !important;
+        white-space: normal !important;
+        text-align: left;
+        color: var(--text-primary);
+      }
+      .pm-included .pm-sticky-content {
+        align-items: flex-start;
+      }
+      .pm-included .section-eyebrow {
+        margin-bottom: 16px !important;
+      }
+
+      /* Видео-превью: явный aspect, не растягиваем-не режем */
+      .pm-card-media .pm-video-thumb {
+        min-height: auto !important;
+        aspect-ratio: 9 / 16;
+        max-height: 540px;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        background: #0a0a0c;
+      }
+      .pm-card-media .pm-video-thumb video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Lightbox видео: на iPhone не вылезает за viewport, есть отступ под home indicator */
+      #pm-lightbox video {
+        width: auto !important;
+        max-width: 96vw;
+        max-height: calc(100dvh - 96px);
+        height: auto;
+      }
+      #pm-lb-close {
+        top: calc(16px + env(safe-area-inset-top, 0px));
+        right: 16px;
+      }
+    }
   </style>
 
 
