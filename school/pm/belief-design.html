@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belief Section — варианты дизайна</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,500;1,300;1,400&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C4A265;
+      --gold2: #e8cf78;
+      --bg: #08080A;
+      --text: #F2EDE7;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #050505; font-family: 'Raleway', sans-serif; }
+
+    .v-label {
+      background: rgba(196,162,101,0.06);
+      border-top: 2px solid rgba(196,162,101,0.2);
+      padding: 16px 48px;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(196,162,101,0.55);
+      display: flex; align-items: center; gap: 16px;
+    }
+    .v-label em { color: rgba(196,162,101,0.28); font-style: normal; }
+
+    /* ══════════════════════════════════════════════
+       V1: АКЦЕНТЫ НА ФРАЗАХ — золотое свечение
+       Каждая фраза — отдельный визуальный момент.
+       Whisper: маленький с подсветкой.
+       Headline: слово-акцент в золоте.
+       Видео: вертикальный центр с мягкой рамкой.
+    ══════════════════════════════════════════════ */
+    .v1 {
+      background: #0c0a07;
+      padding: 0;
+      display: flex; flex-direction: column; align-items: center;
+      position: relative; overflow: hidden;
+    }
+
+    /* 1а — шёпот */
+    .v1-beat1 {
+      width: 100%; padding: 80px 48px 72px;
+      display: flex; flex-direction: column; align-items: center;
+      position: relative;
+    }
+    .v1-beat1::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(196,162,101,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .v1-whisper-box {
+      display: inline-flex; align-items: center; gap: 18px;
+      padding: 14px 28px;
+      border: 1px solid rgba(196,162,101,0.2);
+      border-radius: 60px;
+      background: rgba(196,162,101,0.05);
+      position: relative; z-index: 1;
+    }
+    .v1-whisper-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); opacity: 0.7; flex-shrink: 0;
+    }
+    .v1-whisper-text {
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.26em; text-transform: uppercase;
+      color: rgba(196,162,101,0.7);
+    }
+
+    /* разделитель между битами */
+    .v1-divider {
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, rgba(196,162,101,0.25), rgba(196,162,101,0.05));
+    }
+
+    /* 1б — заголовок */
+    .v1-beat2 {
+      width: 100%; padding: 72px 48px 80px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      position: relative;
+    }
+    .v1-beat2::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(196,162,101,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .v1-headline {
+      font-family: 'Italiana', serif;
+      font-size: clamp(2.6rem, 5.5vw, 5.4rem);
+      font-weight: 400; line-height: 1.06; letter-spacing: 0.02em;
+      color: var(--text); position: relative; z-index: 1;
+      max-width: 860px;
+    }
+    .v1-headline .gold { color: var(--gold); }
+
+    /* 1в — мост */
+    .v1-bridge {
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(242,237,231,0.3);
+      padding: 0 0 64px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .v1-bridge::before, .v1-bridge::after {
+      content: ''; width: 28px; height: 1px;
+      background: rgba(242,237,231,0.15);
+    }
+
+    /* 1г — видео вертикальное */
+    .v1-video-wrap {
+      width: 100%; display: flex; justify-content: center;
+      padding: 0 48px 80px;
+    }
+    .v1-video {
+      width: 360px; max-width: 100%;
+      position: relative; border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(196,162,101,0.2);
+      box-shadow:
+        0 0 0 1px rgba(196,162,101,0.06),
+        0 40px 100px rgba(0,0,0,0.7),
+        0 0 60px rgba(196,162,101,0.05);
+      cursor: pointer; background: #0a0906;
+    }
+    .v1-video::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,162,101,0.5), transparent); z-index: 3;
+    }
+    .v1-mock { width: 100%; aspect-ratio: 9/16; background: #111; }
+    .v1-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+      background: rgba(8,8,10,0.3);
+      transition: background 0.4s;
+    }
+    .v1-play {
+      width: 80px; height: 80px; border-radius: 50%;
+      border: 1.5px solid rgba(196,162,101,0.65);
+      background: rgba(8,8,10,0.55); backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .v1-play::before {
+      content: '';
+      position: absolute; inset: -9px; border-radius: 50%;
+      border: 1px solid rgba(196,162,101,0.18);
+      animation: pulse 2.6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.18); opacity: 0; }
+    }
+    .v1-play svg { width: 28px; height: 28px; margin-left: 4px; }
+    .v1-dur {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(196,162,101,0.55);
+    }
+
+    /* ══════════════════════════════════════════════
+       V2: ПОЛОСЫ — каждый бит на своём фоне
+       Контраст через смену фона между секциями.
+       Whisper — тёмная полоса с тонкой рамкой.
+       Headline — чуть светлее, другой оттенок.
+       Видео — самый тёмный.
+    ══════════════════════════════════════════════ */
+    .v2 {
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .v2-strip1 {
+      width: 100%; padding: 64px 48px;
+      background: #0e0b08;
+      display: flex; justify-content: center; align-items: center;
+      border-bottom: 1px solid rgba(196,162,101,0.08);
+    }
+    .v2-whisper {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.36em; text-transform: uppercase;
+      color: rgba(196,162,101,0.6);
+      display: flex; align-items: center; gap: 18px;
+    }
+    .v2-whisper::before, .v2-whisper::after {
+      content: ''; width: 50px; height: 1px;
+      background: rgba(196,162,101,0.25);
+    }
+    .v2-strip2 {
+      width: 100%; padding: 80px 48px 88px;
+      background: linear-gradient(180deg, #0e0b08 0%, #141008 50%, #0e0b08 100%);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      border-bottom: 1px solid rgba(196,162,101,0.08);
+      position: relative;
+    }
+    .v2-strip2::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,162,101,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .v2-headline {
+      font-family: 'Italiana', serif;
+      font-size: clamp(2.8rem, 5.5vw, 5.6rem);
+      font-weight: 400; line-height: 1.05; letter-spacing: 0.02em;
+      color: var(--text); position: relative; z-index: 1;
+    }
+    .v2-headline .hl {
+      background: linear-gradient(135deg, #e8d08a 0%, #C4A265 60%, #a8854a 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .v2-strip3 {
+      width: 100%; padding: 80px 48px;
+      background: #09080a;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .v2-bridge {
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.26em; text-transform: uppercase;
+      color: rgba(242,237,231,0.25);
+      margin-bottom: 52px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .v2-bridge::before, .v2-bridge::after {
+      content: ''; width: 24px; height: 1px;
+      background: rgba(242,237,231,0.12);
+    }
+    .v2-video {
+      width: 340px; max-width: calc(100% - 96px);
+      position: relative; border-radius: 18px; overflow: hidden;
+      border: 1px solid rgba(196,162,101,0.18);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.8), 0 0 50px rgba(196,162,101,0.04);
+      cursor: pointer; background: #0a0906;
+    }
+    .v2-video::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,162,101,0.5), transparent); z-index: 3;
+    }
+    .v2-mock { width: 100%; aspect-ratio: 9/16; background: #111; }
+    .v2-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+      background: rgba(8,8,10,0.25);
+    }
+    .v2-play {
+      width: 76px; height: 76px; border-radius: 50%;
+      border: 1.5px solid rgba(196,162,101,0.65);
+      background: rgba(8,8,10,0.5); backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .v2-play::before {
+      content: '';
+      position: absolute; inset: -9px; border-radius: 50%;
+      border: 1px solid rgba(196,162,101,0.18);
+      animation: pulse 2.6s ease-in-out infinite;
+    }
+    .v2-play svg { width: 26px; height: 26px; margin-left: 4px; }
+    .v2-dur {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(196,162,101,0.5);
+    }
+
+    /* ══════════════════════════════════════════════
+       V3: РАЗВОРОТ — текст слева, видео справа
+       Горизонтальный split: нарратив слева,
+       вертикальное видео справа.
+       Взгляд идёт: читаешь → понимаешь → смотришь.
+    ══════════════════════════════════════════════ */
+    .v3 {
+      background: #0c0a07;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .v3::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 70% at 30% 50%, rgba(196,162,101,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 75% 50%, rgba(196,162,101,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .v3-inner {
+      width: 100%; max-width: 1300px; margin: 0 auto;
+      padding: 80px 64px;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 80px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .v3-left {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .v3-whisper {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(196,162,101,0.55);
+      margin-bottom: 36px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .v3-whisper::before {
+      content: ''; width: 40px; height: 1px;
+      background: rgba(196,162,101,0.3);
+    }
+    .v3-headline {
+      font-family: 'Italiana', serif;
+      font-size: clamp(2.8rem, 4.5vw, 5.2rem);
+      font-weight: 400; line-height: 1.06; letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 40px;
+    }
+    .v3-headline .gold {
+      color: var(--gold);
+    }
+    .v3-sep {
+      width: 48px; height: 1px;
+      background: linear-gradient(to right, rgba(196,162,101,0.4), transparent);
+      margin-bottom: 32px;
+    }
+    .v3-bridge {
+      font-size: 0.95rem; font-weight: 400;
+      font-style: italic;
+      color: rgba(242,237,231,0.4);
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+    }
+    .v3-right {}
+    .v3-video {
+      width: 320px;
+      position: relative; border-radius: 18px; overflow: hidden;
+      border: 1px solid rgba(196,162,101,0.2);
+      box-shadow:
+        0 0 0 1px rgba(196,162,101,0.06),
+        0 40px 100px rgba(0,0,0,0.65),
+        0 0 60px rgba(196,162,101,0.05);
+      cursor: pointer; background: #0a0906;
+    }
+    .v3-video::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,162,101,0.5), transparent); z-index: 3;
+    }
+    .v3-mock { width: 100%; aspect-ratio: 9/16; background: #111; }
+    .v3-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+      background: rgba(8,8,10,0.25);
+    }
+    .v3-play {
+      width: 76px; height: 76px; border-radius: 50%;
+      border: 1.5px solid rgba(196,162,101,0.65);
+      background: rgba(8,8,10,0.5); backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .v3-play::before {
+      content: '';
+      position: absolute; inset: -9px; border-radius: 50%;
+      border: 1px solid rgba(196,162,101,0.18);
+      animation: pulse 2.6s ease-in-out infinite;
+    }
+    .v3-play svg { width: 26px; height: 26px; margin-left: 4px; }
+    .v3-dur {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(196,162,101,0.5);
+    }
+    @media (max-width: 900px) {
+      .v3-inner { grid-template-columns: 1fr; justify-items: center; }
+      .v3-left { text-align: center; align-items: center; }
+      .v3-whisper::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── V1: БИТЫ — каждая фраза своя сцена ─── -->
+  <div class="v-label">Вариант 1 — Каждая фраза свой визуальный момент <em>· столбец, взгляд сверху вниз</em></div>
+  <section class="v1">
+    <div class="v1-beat1">
+      <div class="v1-whisper-box">
+        <span class="v1-whisper-dot"></span>
+        <span class="v1-whisper-text">Ты читаешь это не случайно</span>
+        <span class="v1-whisper-dot"></span>
+      </div>
+    </div>
+
+    <div class="v1-divider"></div>
+
+    <div class="v1-beat2">
+      <h2 class="v1-headline">
+        Это <span class="gold">обучение,</span><br>которое изменит твою жизнь
+      </h2>
+    </div>
+
+    <div class="v1-bridge">посмотри, как это выглядит изнутри</div>
+
+    <div class="v1-video-wrap">
+      <div class="v1-video">
+        <div class="v1-mock"></div>
+        <div class="v1-overlay">
+          <div class="v1-play">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M8 5l20 11L8 27V5z" fill="#C4A265"/>
+            </svg>
+          </div>
+          <div class="v1-dur">2 минуты</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── V2: ПОЛОСЫ — смена фона между битами ─── -->
+  <div class="v-label">Вариант 2 — Смена фона между секциями <em>· контраст через разные полосы</em></div>
+  <section class="v2">
+    <div class="v2-strip1">
+      <div class="v2-whisper">Ты читаешь это не случайно</div>
+    </div>
+    <div class="v2-strip2">
+      <h2 class="v2-headline">
+        Это <span class="hl">обучение,</span><br>которое изменит твою жизнь
+      </h2>
+    </div>
+    <div class="v2-strip3">
+      <div class="v2-bridge">посмотри, как это выглядит изнутри</div>
+      <div class="v2-video">
+        <div class="v2-mock"></div>
+        <div class="v2-overlay">
+          <div class="v2-play">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M8 5l20 11L8 27V5z" fill="#C4A265"/>
+            </svg>
+          </div>
+          <div class="v2-dur">2 минуты</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── V3: РАЗВОРОТ — текст слева, видео справа ─── -->
+  <div class="v-label">Вариант 3 — Текст слева, вертикальное видео справа <em>· горизонтальный сплит</em></div>
+  <section class="v3">
+    <div class="v3-inner">
+      <div class="v3-left">
+        <div class="v3-whisper">Ты читаешь это не случайно</div>
+        <h2 class="v3-headline">
+          Это <span class="gold">обучение,</span><br>которое изменит твою жизнь
+        </h2>
+        <div class="v3-sep"></div>
+        <p class="v3-bridge">Посмотри, как это выглядит изнутри</p>
+      </div>
+      <div class="v3-right">
+        <div class="v3-video">
+          <div class="v3-mock"></div>
+          <div class="v3-overlay">
+            <div class="v3-play">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path d="M8 5l20 11L8 27V5z" fill="#C4A265"/>
+              </svg>
+            </div>
+            <div class="v3-dur">2 минуты</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

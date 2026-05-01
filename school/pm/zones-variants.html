@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zones Card Variants</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C4A265;
+      --gold2: #D4BA85;
+      --bg: #08080A;
+      --card-bg: linear-gradient(135deg, #1a1208 0%, #2d1f0a 50%, #1a1208 100%);
+      --text: #F2EDE7;
+      --muted: rgba(242,237,231,0.45);
+      --border: rgba(196,162,101,0.25);
+      --D: 'Italiana', serif;
+      --B: 'Raleway', sans-serif;
+      --S: 'Jost', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: var(--B); padding: 60px 40px; }
+
+    .page-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.28em;
+      text-transform: uppercase; color: rgba(196,162,101,0.45);
+      margin-bottom: 48px;
+    }
+    .v-block { margin-bottom: 72px; max-width: 700px; }
+    .v-tag {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(196,162,101,0.4);
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .v-tag::after { content:''; flex:1; height:1px; background:rgba(196,162,101,0.08); }
+
+    /* shared card chrome */
+    .card-chrome {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    .card-chrome::after {
+      content:''; position:absolute; top:0; left:0; right:0; height:1px;
+      background: linear-gradient(90deg, transparent, rgba(196,162,101,0.4), transparent);
+    }
+
+    /* photo placeholders — used when actual images load */
+    .ph-lips   { background: linear-gradient(160deg, #2a1018 0%, #3d1525 100%); }
+    .ph-brows  { background: linear-gradient(160deg, #101820 0%, #152030 100%); }
+    .ph-lash   { background: linear-gradient(160deg, #0e1a10 0%, #152515 100%); }
+
+    /* ═══════════════════════════════════════════════
+       V1 — CINEMATIC TRIPTYCH
+       Три фото на всю ширину, как кинопанели.
+       Текст поверх с градиентом снизу.
+    ═══════════════════════════════════════════════ */
+    .v1 { }
+    .v1-photos {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      height: 260px;
+    }
+    .v1-photo {
+      position: relative; overflow: hidden;
+    }
+    .v1-photo img {
+      width:100%; height:100%; object-fit:cover; object-position:center top;
+      display:block; transition: transform 0.6s ease;
+    }
+    .v1:hover .v1-photo img { transform: scale(1.04); }
+    .v1-photo::after {
+      content:''; position:absolute; inset:0;
+      background: linear-gradient(to top, rgba(8,8,10,0.85) 0%, rgba(8,8,10,0.1) 60%);
+    }
+    .v1-photo-label {
+      position: absolute; bottom: 14px; left: 0; right: 0;
+      text-align: center; z-index: 2;
+      font-family: var(--S); font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(242,237,231,0.6);
+    }
+    .v1-photo:not(:last-child) { border-right: 1px solid rgba(196,162,101,0.12); }
+    .v1-body { padding: 24px 28px 26px; }
+    .v1-num {
+      font-family: var(--D); font-size: 2.8rem;
+      color: rgba(196,162,101,0.45); line-height:1; margin-bottom:4px;
+    }
+    .v1-divider { width:28px; height:1px; background:rgba(196,162,101,0.3); margin-bottom:10px; }
+    .v1-body h4 {
+      font-family: var(--D); font-size: clamp(1.2rem,2vw,1.55rem);
+      font-weight:400; color:var(--text); line-height:1.25; margin-bottom:6px;
+    }
+    .v1-body p { font-size:0.83rem; color:var(--muted); line-height:1.65; }
+
+    /* ═══════════════════════════════════════════════
+       V2 — ASYMMETRIC SPLIT
+       Текст слева, одно большое фото справа,
+       две маленькие зоны как теги.
+    ═══════════════════════════════════════════════ */
+    .v2 { display:grid; grid-template-columns:1fr 42%; min-height:220px; }
+    .v2-body { padding:28px 28px 26px; display:flex; flex-direction:column; justify-content:space-between; }
+    .v2-top {}
+    .v2-num {
+      font-family:var(--D); font-size:2.8rem;
+      color:rgba(196,162,101,0.45); line-height:1; margin-bottom:4px;
+    }
+    .v2-divider { width:28px; height:1px; background:rgba(196,162,101,0.3); margin-bottom:10px; }
+    .v2-body h4 {
+      font-family:var(--D); font-size:clamp(1.15rem,2vw,1.5rem);
+      font-weight:400; color:var(--text); line-height:1.25; margin-bottom:8px;
+    }
+    .v2-body p { font-size:0.82rem; color:var(--muted); line-height:1.6; }
+    .v2-zones {
+      display:flex; gap:8px; margin-top:16px; flex-wrap:wrap;
+    }
+    .v2-zone-tag {
+      font-family:var(--S); font-size:0.68rem; font-weight:600;
+      letter-spacing:0.14em; text-transform:uppercase;
+      color:rgba(196,162,101,0.7);
+      border:1px solid rgba(196,162,101,0.2);
+      border-radius:40px; padding:4px 12px;
+    }
+    .v2-photo {
+      border-left:1px solid rgba(196,162,101,0.1);
+      overflow:hidden;
+    }
+    .v2-photo img {
+      width:100%; height:100%; object-fit:cover; object-position:center top;
+      display:block; transition: transform 0.5s;
+    }
+    .v2:hover .v2-photo img { transform:scale(1.05); }
+    .v2-photo {
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
+      mask-image: linear-gradient(to right, transparent 0%, black 20%);
+    }
+
+    /* ═══════════════════════════════════════════════
+       V3 — THREE OVALS
+       Три круглых портрета с именами зон,
+       расположены горизонтально под заголовком.
+    ═══════════════════════════════════════════════ */
+    .v3 { padding:28px 28px 26px; }
+    .v3-num {
+      font-family:var(--D); font-size:2.8rem;
+      color:rgba(196,162,101,0.45); line-height:1; margin-bottom:4px;
+    }
+    .v3-divider { width:28px; height:1px; background:rgba(196,162,101,0.3); margin-bottom:10px; }
+    .v3 h4 {
+      font-family:var(--D); font-size:clamp(1.2rem,2vw,1.55rem);
+      font-weight:400; color:var(--text); line-height:1.25; margin-bottom:6px;
+    }
+    .v3 p { font-size:0.82rem; color:var(--muted); line-height:1.6; margin-bottom:24px; }
+    .v3-ovals {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+    }
+    .v3-oval { text-align:center; }
+    .v3-oval-frame {
+      width:100%; aspect-ratio:3/4;
+      border-radius:120px;
+      overflow:hidden;
+      border:1px solid rgba(196,162,101,0.18);
+      position:relative;
+      margin-bottom:10px;
+    }
+    .v3-oval-frame img {
+      width:100%; height:100%; object-fit:cover; object-position:center top;
+      display:block; transition:transform 0.5s;
+    }
+    .v3:hover .v3-oval-frame img { transform:scale(1.04); }
+    .v3-oval-frame::after {
+      content:''; position:absolute; bottom:0; left:0; right:0; height:40%;
+      background: linear-gradient(to top, rgba(8,8,10,0.6), transparent);
+    }
+    .v3-oval-name {
+      font-family:var(--S); font-size:0.7rem; font-weight:600;
+      letter-spacing:0.16em; text-transform:uppercase;
+      color:rgba(242,237,231,0.5);
+    }
+
+    /* ═══════════════════════════════════════════════
+       V4 — EDITORIAL FULLBLEED
+       Одно фото как фон всей карточки,
+       текст поверх слева, маленькие плашки зон справа.
+    ═══════════════════════════════════════════════ */
+    .v4 { position:relative; min-height:280px; }
+    .v4-bg {
+      position:absolute; inset:0;
+      overflow:hidden;
+    }
+    .v4-bg img {
+      width:100%; height:100%; object-fit:cover; object-position:center 20%;
+      display:block; transition:transform 0.6s;
+    }
+    .v4:hover .v4-bg img { transform:scale(1.03); }
+    .v4-bg::after {
+      content:''; position:absolute; inset:0;
+      background: linear-gradient(100deg, rgba(8,8,10,0.92) 40%, rgba(8,8,10,0.5) 75%, rgba(8,8,10,0.15) 100%);
+    }
+    .v4-content {
+      position:relative; z-index:2;
+      display:grid; grid-template-columns:1fr auto;
+      align-items:end; height:280px;
+      padding:28px;
+    }
+    .v4-left {}
+    .v4-num {
+      font-family:var(--D); font-size:2.8rem;
+      color:rgba(196,162,101,0.5); line-height:1; margin-bottom:4px;
+    }
+    .v4-divider { width:28px; height:1px; background:rgba(196,162,101,0.35); margin-bottom:10px; }
+    .v4 h4 {
+      font-family:var(--D); font-size:clamp(1.2rem,2vw,1.6rem);
+      font-weight:400; color:var(--text); line-height:1.25; margin-bottom:6px;
+    }
+    .v4 p { font-size:0.82rem; color:var(--muted); line-height:1.6; max-width:340px; }
+    .v4-right {
+      display:flex; flex-direction:column; gap:8px; align-items:flex-end;
+    }
+    .v4-zone-pill {
+      display:flex; align-items:center; gap:8px;
+      background:rgba(8,8,10,0.55); backdrop-filter:blur(8px);
+      border:1px solid rgba(196,162,101,0.18);
+      border-radius:40px; padding:5px 14px 5px 8px;
+    }
+    .v4-zone-dot {
+      width:22px; height:22px; border-radius:50%;
+      overflow:hidden; flex-shrink:0;
+    }
+    .v4-zone-dot img { width:100%; height:100%; object-fit:cover; }
+    .v4-zone-pill span {
+      font-family:var(--S); font-size:0.65rem; font-weight:600;
+      letter-spacing:0.14em; text-transform:uppercase;
+      color:rgba(242,237,231,0.65);
+    }
+
+    /* ═══════════════════════════════════════════════
+       V5 — LUXURY HORIZONTAL BAND
+       Три зоны как горизонтальные строки
+       с фото-превью и золотой типографикой.
+    ═══════════════════════════════════════════════ */
+    .v5 { padding:28px 28px 0; }
+    .v5-header { margin-bottom:20px; }
+    .v5-num {
+      font-family:var(--D); font-size:2.8rem;
+      color:rgba(196,162,101,0.45); line-height:1; margin-bottom:4px;
+    }
+    .v5-divider { width:28px; height:1px; background:rgba(196,162,101,0.3); margin-bottom:10px; }
+    .v5 h4 {
+      font-family:var(--D); font-size:clamp(1.2rem,2vw,1.55rem);
+      font-weight:400; color:var(--text); line-height:1.25; margin-bottom:6px;
+    }
+    .v5 > p { font-size:0.82rem; color:var(--muted); line-height:1.6; }
+    .v5-rows { margin-top:20px; }
+    .v5-row {
+      display:grid; grid-template-columns:48px 1fr 56px;
+      align-items:center; gap:16px;
+      padding:14px 0;
+      border-top:1px solid rgba(196,162,101,0.08);
+      transition: background 0.2s;
+    }
+    .v5-row:last-child { border-bottom:1px solid rgba(196,162,101,0.08); margin-bottom:0; }
+    .v5-row-num {
+      font-family:var(--S); font-size:0.65rem; font-weight:700;
+      letter-spacing:0.18em; color:rgba(196,162,101,0.4);
+    }
+    .v5-row-name {
+      font-family:var(--D); font-size:1.25rem; font-weight:400;
+      color:var(--text); letter-spacing:0.02em;
+    }
+    .v5-row-thumb {
+      width:56px; height:56px; border-radius:8px;
+      overflow:hidden;
+      border:1px solid rgba(196,162,101,0.12);
+      flex-shrink:0;
+    }
+    .v5-row-thumb img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+  </style>
+</head>
+<body>
+
+<div class="page-label">01 — Три основные зоны · варианты карточки</div>
+
+<!-- V1 -->
+<div class="v-block">
+  <div class="v-tag">Вариант 1 — Три фото сверху, текст снизу</div>
+  <div class="card-chrome v1">
+    <div class="v1-photos">
+      <div class="v1-photo ph-lips">
+        <img src="works/lips_zone.jpg" alt="" onerror="this.style.display='none'">
+        <div class="v1-photo-label">Губы</div>
+      </div>
+      <div class="v1-photo ph-brows">
+        <img src="works/brows_zone.jpg" alt="" onerror="this.style.display='none'">
+        <div class="v1-photo-label">Брови</div>
+      </div>
+      <div class="v1-photo ph-lash">
+        <img src="works/lash_zone.jpg" alt="" onerror="this.style.display='none'">
+        <div class="v1-photo-label">Межресничка</div>
+      </div>
+    </div>
+    <div class="v1-body">
+      <div class="v1-num">01</div>
+      <div class="v1-divider"></div>
+      <h4>Три основные зоны перманентного макияжа</h4>
+      <p>Освоив самые востребованные зоны, вы закроете потребности большинства клиентов с первого дня</p>
+    </div>
+  </div>
+</div>
+
+<!-- V2 -->
+<div class="v-block">
+  <div class="v-tag">Вариант 2 — Текст слева, фото справа, теги зон</div>
+  <div class="card-chrome v2">
+    <div class="v2-body">
+      <div class="v2-top">
+        <div class="v2-num">01</div>
+        <div class="v2-divider"></div>
+        <h4>Три основные зоны перманентного макияжа</h4>
+        <p>Освоив самые востребованные зоны, вы закроете потребности большинства клиентов с первого дня</p>
+      </div>
+      <div class="v2-zones">
+        <span class="v2-zone-tag">Губы</span>
+        <span class="v2-zone-tag">Брови</span>
+        <span class="v2-zone-tag">Межресничка</span>
+      </div>
+    </div>
+    <div class="v2-photo ph-brows">
+      <img src="works/brows_zone.jpg" alt="" onerror="this.style.display='none'">
+    </div>
+  </div>
+</div>
+
+<!-- V3 -->
+<div class="v-block">
+  <div class="v-tag">Вариант 3 — Овальные портреты зон</div>
+  <div class="card-chrome v3">
+    <div class="v3-num">01</div>
+    <div class="v3-divider"></div>
+    <h4>Три основные зоны перманентного макияжа</h4>
+    <p>Освоив самые востребованные зоны, вы закроете потребности большинства клиентов с первого дня</p>
+    <div class="v3-ovals">
+      <div class="v3-oval">
+        <div class="v3-oval-frame ph-lips">
+          <img src="works/lips_zone.jpg" alt="" onerror="this.style.display='none'">
+        </div>
+        <div class="v3-oval-name">Губы</div>
+      </div>
+      <div class="v3-oval">
+        <div class="v3-oval-frame ph-brows">
+          <img src="works/brows_zone.jpg" alt="" onerror="this.style.display='none'">
+        </div>
+        <div class="v3-oval-name">Брови</div>
+      </div>
+      <div class="v3-oval">
+        <div class="v3-oval-frame ph-lash">
+          <img src="works/lash_zone.jpg" alt="" onerror="this.style.display='none'">
+        </div>
+        <div class="v3-oval-name">Межресничка</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- V4 -->
+<div class="v-block">
+  <div class="v-tag">Вариант 4 — Fullbleed фон, плашки зон справа</div>
+  <div class="card-chrome v4">
+    <div class="v4-bg ph-lips">
+      <img src="works/lips_zone.jpg" alt="" onerror="this.style.display='none'">
+    </div>
+    <div class="v4-content">
+      <div class="v4-left">
+        <div class="v4-num">01</div>
+        <div class="v4-divider"></div>
+        <h4>Три основные зоны перманентного макияжа</h4>
+        <p>Освоив самые востребованные зоны, вы закроете потребности большинства клиентов с первого дня</p>
+      </div>
+      <div class="v4-right">
+        <div class="v4-zone-pill">
+          <div class="v4-zone-dot ph-lips"><img src="works/lips_zone.jpg" alt="" onerror="this.style.display='none'"></div>
+          <span>Губы</span>
+        </div>
+        <div class="v4-zone-pill">
+          <div class="v4-zone-dot ph-brows"><img src="works/brows_zone.jpg" alt="" onerror="this.style.display='none'"></div>
+          <span>Брови</span>
+        </div>
+        <div class="v4-zone-pill">
+          <div class="v4-zone-dot ph-lash"><img src="works/lash_zone.jpg" alt="" onerror="this.style.display='none'"></div>
+          <span>Межресничка</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- V5 -->
+<div class="v-block">
+  <div class="v-tag">Вариант 5 — Строки-зоны с превью</div>
+  <div class="card-chrome v5">
+    <div class="v5-header">
+      <div class="v5-num">01</div>
+      <div class="v5-divider"></div>
+      <h4>Три основные зоны перманентного макияжа</h4>
+      <p>Освоив самые востребованные зоны, вы закроете потребности большинства клиентов с первого дня</p>
+    </div>
+    <div class="v5-rows">
+      <div class="v5-row">
+        <span class="v5-row-num">I</span>
+        <span class="v5-row-name">Губы</span>
+        <div class="v5-row-thumb ph-lips"><img src="works/lips_zone.jpg" alt="" onerror="this.style.display='none'"></div>
+      </div>
+      <div class="v5-row">
+        <span class="v5-row-num">II</span>
+        <span class="v5-row-name">Брови</span>
+        <div class="v5-row-thumb ph-brows"><img src="works/brows_zone.jpg" alt="" onerror="this.style.display='none'"></div>
+      </div>
+      <div class="v5-row">
+        <span class="v5-row-num">III</span>
+        <span class="v5-row-name">Межресничка</span>
+        <div class="v5-row-thumb ph-lash"><img src="works/lash_zone.jpg" alt="" onerror="this.style.display='none'"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

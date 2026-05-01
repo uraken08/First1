@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Variants — Agent Permanent</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C4A265;
+      --bg: #08080A;
+      --bg-card: #1a1208;
+      --text: #F2EDE7;
+      --text-muted: rgba(242,237,231,0.45);
+      --font-display: 'Italiana', serif;
+      --font-body: 'Raleway', sans-serif;
+      --font-stats: 'Jost', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      padding: 60px 40px;
+    }
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .page-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 60px;
+    }
+    .variant-block {
+      margin-bottom: 80px;
+    }
+    .variant-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(196,162,101,0.5);
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .variant-label::after { content: ''; flex: 1; height: 1px; background: rgba(196,162,101,0.1); }
+    .cards-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 700px;
+    }
+
+    /* ═══════════════════════════════════════
+       ВАРИАНТ A — Число как левая полоса
+       Число вертикально вдоль левого края,
+       контент смещён вправо
+    ═══════════════════════════════════════ */
+    .card-a {
+      position: relative;
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 50%, #1a1208 100%);
+      border: 1px solid rgba(196,162,101,0.22);
+      border-radius: 20px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      min-height: 110px;
+      transition: border-color 0.3s;
+    }
+    .card-a::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,162,101,0.35), transparent);
+    }
+    .card-a:hover { border-color: rgba(196,162,101,0.5); }
+    .card-a-num {
+      display: flex; align-items: center; justify-content: center;
+      border-right: 1px solid rgba(196,162,101,0.1);
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: rgba(196,162,101,0.55);
+      letter-spacing: 0.05em;
+      padding: 24px 0;
+    }
+    .card-a-body {
+      padding: 24px 28px;
+    }
+    .card-a-body h4 {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-weight: 400; color: var(--text);
+      margin-bottom: 6px; line-height: 1.25;
+    }
+    .card-a-body p {
+      font-size: 0.85rem; color: var(--text-muted); line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════════════
+       ВАРИАНТ B — Число-акцент вверху слева
+       Маленькое, чёткое, с линией-разделителем
+    ═══════════════════════════════════════ */
+    .card-b {
+      position: relative;
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 50%, #1a1208 100%);
+      border: 1px solid rgba(196,162,101,0.22);
+      border-radius: 20px;
+      padding: 28px 32px 26px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .card-b::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,162,101,0.35), transparent);
+    }
+    .card-b:hover { border-color: rgba(196,162,101,0.5); }
+    .card-b-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 14px;
+    }
+    .card-b-num {
+      font-family: var(--font-stats);
+      font-size: 0.72rem; font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.18em;
+      background: rgba(196,162,101,0.1);
+      border: 1px solid rgba(196,162,101,0.2);
+      border-radius: 4px;
+      padding: 3px 8px;
+      flex-shrink: 0;
+    }
+    .card-b-line { flex: 1; height: 1px; background: rgba(196,162,101,0.1); }
+    .card-b h4 {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-weight: 400; color: var(--text);
+      margin-bottom: 6px; line-height: 1.25;
+    }
+    .card-b p {
+      font-size: 0.85rem; color: var(--text-muted); line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════════════
+       ВАРИАНТ C — Число крупное, но изолировано
+       Число большое слева, текст ПОД ним,
+       нет наложения
+    ═══════════════════════════════════════ */
+    .card-c {
+      position: relative;
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 50%, #1a1208 100%);
+      border: 1px solid rgba(196,162,101,0.22);
+      border-radius: 20px;
+      padding: 20px 28px 26px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .card-c::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,162,101,0.35), transparent);
+    }
+    .card-c:hover { border-color: rgba(196,162,101,0.5); }
+    .card-c-num {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      color: rgba(196,162,101,0.45);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .card-c-divider {
+      width: 32px; height: 1px;
+      background: rgba(196,162,101,0.3);
+      margin-bottom: 10px;
+    }
+    .card-c h4 {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-weight: 400; color: var(--text);
+      margin-bottom: 6px; line-height: 1.25;
+    }
+    .card-c p {
+      font-size: 0.85rem; color: var(--text-muted); line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════════════
+       ВАРИАНТ D — Число справа, но в блоке
+       Число справа в отдельной колонке,
+       вертикально по центру
+    ═══════════════════════════════════════ */
+    .card-d {
+      position: relative;
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 50%, #1a1208 100%);
+      border: 1px solid rgba(196,162,101,0.22);
+      border-radius: 20px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 80px;
+      min-height: 110px;
+      transition: border-color 0.3s;
+    }
+    .card-d::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,162,101,0.35), transparent);
+    }
+    .card-d:hover { border-color: rgba(196,162,101,0.5); }
+    .card-d-body {
+      padding: 26px 28px;
+    }
+    .card-d-body h4 {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-weight: 400; color: var(--text);
+      margin-bottom: 6px; line-height: 1.25;
+    }
+    .card-d-body p {
+      font-size: 0.85rem; color: var(--text-muted); line-height: 1.65;
+    }
+    .card-d-num {
+      display: flex; align-items: center; justify-content: center;
+      border-left: 1px solid rgba(196,162,101,0.1);
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: rgba(196,162,101,0.4);
+      padding: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-title">Варианты карточек</div>
+  <div class="page-sub">Что входит в обучение — Agent Permanent</div>
+
+  <!-- VARIANT A -->
+  <div class="variant-block">
+    <div class="variant-label">Вариант A — число как левая колонка</div>
+    <div class="cards-grid">
+
+      <div class="card-a">
+        <div class="card-a-num">01</div>
+        <div class="card-a-body">
+          <h4>Три основные зоны перманентного макияжа</h4>
+          <p>Освоив самые востребованные зоны, вы закроете потребности большинства клиентов с первого дня</p>
+        </div>
+      </div>
+
+      <div class="card-a">
+        <div class="card-a-num">02</div>
+        <div class="card-a-body">
+          <h4>Стартовый набор стоимостью <span style="font-family:var(--font-stats);font-weight:700;color:var(--gold)">30 000₽</span> — в подарок</h4>
+          <p>Машинка, пигменты и всё необходимое — с первого дня готова работать</p>
+        </div>
+      </div>
+
+      <div class="card-a">
+        <div class="card-a-num">05</div>
+        <div class="card-a-body">
+          <h4><span style="font-family:var(--font-display);font-size:1.8rem;color:var(--gold)">14</span> дней насыщенной онлайн-подготовки</h4>
+          <p>Теория, видеоуроки по техникам и материалам — в удобном темпе из любой точки мира</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VARIANT B -->
+  <div class="variant-block">
+    <div class="variant-label">Вариант B — число как badge-метка</div>
+    <div class="cards-grid">
+
+      <div class="card-b">
+        <div class="card-b-header">
+          <span class="card-b-num">01</span>
+          <span class="card-b-line"></span>
+        </div>
+        <h4>Три основные зоны перманентного макияжа</h4>
+        <p>Освоив самые востребованные зоны, вы закроете потребности большинства клиентов с первого дня</p>
+      </div>
+
+      <div class="card-b">
+        <div class="card-b-header">
+          <span class="card-b-num">02</span>
+          <span class="card-b-line"></span>
+        </div>
+        <h4>Стартовый набор стоимостью <span style="font-family:var(--font-stats);font-weight:700;color:var(--gold)">30 000₽</span> — в подарок</h4>
+        <p>Машинка, пигменты и всё необходимое — с первого дня готова работать</p>
+      </div>
+
+      <div class="card-b">
+        <div class="card-b-header">
+          <span class="card-b-num">05</span>
+          <span class="card-b-line"></span>
+        </div>
+        <h4><span style="font-family:var(--font-display);font-size:1.8rem;color:var(--gold)">14</span> дней насыщенной онлайн-подготовки</h4>
+        <p>Теория, видеоуроки по техникам и материалам — в удобном темпе из любой точки мира</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VARIANT C -->
+  <div class="variant-block">
+    <div class="variant-label">Вариант C — число сверху как декор, текст ниже</div>
+    <div class="cards-grid">
+
+      <div class="card-c">
+        <div class="card-c-num">01</div>
+        <div class="card-c-divider"></div>
+        <h4>Три основные зоны перманентного макияжа</h4>
+        <p>Освоив самые востребованные зоны, вы закроете потребности большинства клиентов с первого дня</p>
+      </div>
+
+      <div class="card-c">
+        <div class="card-c-num">02</div>
+        <div class="card-c-divider"></div>
+        <h4>Стартовый набор стоимостью <span style="font-family:var(--font-stats);font-weight:700;color:var(--gold)">30 000₽</span> — в подарок</h4>
+        <p>Машинка, пигменты и всё необходимое — с первого дня готова работать</p>
+      </div>
+
+      <div class="card-c">
+        <div class="card-c-num">05</div>
+        <div class="card-c-divider"></div>
+        <h4><span style="font-family:var(--font-display);font-size:1.8rem;color:var(--gold)">14</span> дней насыщенной онлайн-подготовки</h4>
+        <p>Теория, видеоуроки по техникам и материалам — в удобном темпе из любой точки мира</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VARIANT D -->
+  <div class="variant-block">
+    <div class="variant-label">Вариант D — число справа в отдельной колонке</div>
+    <div class="cards-grid">
+
+      <div class="card-d">
+        <div class="card-d-body">
+          <h4>Три основные зоны перманентного макияжа</h4>
+          <p>Освоив самые востребованные зоны, вы закроете потребности большинства клиентов с первого дня</p>
+        </div>
+        <div class="card-d-num">01</div>
+      </div>
+
+      <div class="card-d">
+        <div class="card-d-body">
+          <h4>Стартовый набор стоимостью <span style="font-family:var(--font-stats);font-weight:700;color:var(--gold)">30 000₽</span> — в подарок</h4>
+          <p>Машинка, пигменты и всё необходимое — с первого дня готова работать</p>
+        </div>
+        <div class="card-d-num">02</div>
+      </div>
+
+      <div class="card-d">
+        <div class="card-d-body">
+          <h4><span style="font-family:var(--font-display);font-size:1.8rem;color:var(--gold)">14</span> дней насыщенной онлайн-подготовки</h4>
+          <p>Теория, видеоуроки по техникам и материалам — в удобном темпе из любой точки мира</p>
+        </div>
+        <div class="card-d-num">05</div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

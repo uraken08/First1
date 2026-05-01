@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Варианты — Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,400&family=Raleway:wght@200;300;400;500;600;700&family=Jost:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C4A265;
+  --text:#F2EDE7;
+  --bg:#0a0806;
+}
+html::after{
+  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0.05;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:160px;
+}
+body{font-family:'Raleway',sans-serif;color:var(--text);background:var(--bg);}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;background:rgba(10,8,5,0.92);
+  border-bottom:1px solid rgba(196,162,101,0.1);
+  backdrop-filter:blur(12px);
+}
+.nav a{
+  flex:1;text-align:center;padding:14px 8px;
+  font-size:0.6rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;
+  text-decoration:none;color:rgba(196,162,101,0.45);
+  border-right:1px solid rgba(196,162,101,0.08);
+  transition:color 0.2s,background 0.2s;
+}
+.nav a:last-child{border-right:none}
+.nav a:hover,.nav a.active{color:var(--gold);background:rgba(196,162,101,0.04)}
+
+/* SECTION WRAPPER */
+.section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 48px 80px;position:relative;}
+.section-label{
+  position:absolute;top:76px;left:48px;
+  font-size:0.56rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;
+  color:rgba(196,162,101,0.22);
+}
+
+/* ═══════════════════════════════
+   ЦИФРЫ — ВАРИАНТ А  (Editorial Columns)
+═══════════════════════════════ */
+#numA{ background: linear-gradient(135deg,#0e0b07 0%,#161008 50%,#0e0b07 100%); }
+.num-a-inner{
+  width:100%;max-width:1300px;
+  position:relative;
+}
+.num-a-header{
+  display:flex;align-items:baseline;gap:20px;
+  padding-bottom:24px;
+  border-bottom:1px solid rgba(196,162,101,0.1);
+  margin-bottom:64px;
+}
+.num-a-eyebrow{
+  font-size:0.65rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;
+  color:rgba(196,162,101,0.4);
+}
+.num-a-title{
+  font-family:'Italiana',serif;font-size:clamp(1.8rem,3vw,2.6rem);
+  font-weight:400;color:var(--text);letter-spacing:0.02em;
+}
+.num-a-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;
+}
+.num-a-card{
+  padding:0 48px 0 0;
+  border-right:1px solid rgba(196,162,101,0.1);
+  margin-right:48px;
+  display:flex;flex-direction:column;
+}
+.num-a-card:last-child{border-right:none;margin-right:0;padding-right:0;}
+.num-a-num{
+  font-family:'Italiana',serif;
+  font-size:clamp(4rem,7vw,7rem);
+  color:var(--gold);
+  line-height:0.88;letter-spacing:-0.02em;
+  margin-bottom:16px;
+}
+.num-a-label{
+  font-family:'Raleway',sans-serif;
+  font-size:0.88rem;font-weight:300;
+  color:rgba(242,237,231,0.5);line-height:1.55;
+  padding-top:12px;
+  border-top:1px solid rgba(196,162,101,0.1);
+}
+
+/* ═══════════════════════════════
+   ЦИФРЫ — ВАРИАНТ Б  (Counter Animation)
+═══════════════════════════════ */
+#numB{ background:#0e0b07; }
+.num-b-inner{
+  width:100%;max-width:1100px;
+  text-align:center;
+}
+.num-b-pretitle{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.2rem,2vw,1.8rem);font-weight:300;font-style:italic;
+  color:rgba(196,162,101,0.55);margin-bottom:64px;
+}
+.num-b-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2px;
+  background:rgba(196,162,101,0.06);
+  border:1px solid rgba(196,162,101,0.1);
+}
+.num-b-card{
+  background:var(--bg);
+  padding:52px 32px;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  transition:background 0.3s;
+}
+.num-b-card:hover{background:rgba(196,162,101,0.04);}
+.num-b-num{
+  font-family:'Jost',sans-serif;
+  font-size:clamp(3rem,5vw,4.5rem);
+  font-weight:700;color:var(--gold);
+  line-height:1;letter-spacing:-0.03em;
+}
+.num-b-suffix{
+  font-family:'Raleway',sans-serif;
+  font-size:0.7em;font-weight:300;
+  color:rgba(196,162,101,0.65);
+  vertical-align:super;
+}
+.num-b-label{
+  font-family:'Raleway',sans-serif;
+  font-size:0.82rem;font-weight:300;
+  color:rgba(242,237,231,0.45);
+  letter-spacing:0.04em;line-height:1.5;
+  margin-top:4px;
+}
+/* Counter animation */
+.num-b-num[data-count]{
+  opacity:0;transform:translateY(20px);
+  transition:opacity 0.4s,transform 0.4s;
+}
+.num-b-num.counted{opacity:1;transform:translateY(0);}
+
+/* ═══════════════════════════════
+   ЦИФРЫ — ВАРИАНТ В  (Dark Gold Banner)
+═══════════════════════════════ */
+#numC{ background:#08080a; }
+.num-c-inner{width:100%;max-width:1300px;}
+.num-c-top{
+  margin-bottom:48px;
+}
+.num-c-eyebrow{
+  font-size:0.65rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;
+  color:rgba(196,162,101,0.4);margin-bottom:12px;display:block;
+}
+.num-c-title{
+  font-family:'Italiana',serif;font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:400;color:var(--text);
+}
+.num-c-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:rgba(196,162,101,0.06);
+  border-top:1px solid rgba(196,162,101,0.2);
+  border-bottom:1px solid rgba(196,162,101,0.2);
+}
+.num-c-item{
+  padding:40px 36px;
+  border-right:1px solid rgba(196,162,101,0.1);
+  display:flex;flex-direction:column;gap:6px;
+}
+.num-c-item:last-child{border-right:none;}
+.num-c-num{
+  font-family:'Italiana',serif;
+  font-size:clamp(2.8rem,4.5vw,4.5rem);
+  color:var(--gold);line-height:1;letter-spacing:-0.01em;
+}
+.num-c-desc{
+  font-family:'Raleway',sans-serif;
+  font-size:0.85rem;font-weight:300;
+  color:rgba(242,237,231,0.5);line-height:1.5;
+}
+
+
+/* ═══════════════════════════════
+   АРИНА — ВАРИАНТ А  (только шрифт 400)
+═══════════════════════════════ */
+#arinaA{ background:#0e0b07; }
+.arina-a-inner{
+  width:100%;max-width:1200px;
+  display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:center;
+}
+.arina-a-h2{
+  font-family:'Italiana',serif;
+  font-size:clamp(2.4rem,5vw,4rem);
+  font-weight:400;line-height:1.05;color:var(--text);
+  letter-spacing:0.03em;margin-bottom:16px;
+}
+.arina-a-h2 em{color:var(--gold);font-style:normal;}
+.arina-a-role{
+  font-family:'Raleway',sans-serif;
+  font-size:1.05rem;color:rgba(242,237,231,0.65);line-height:1.6;
+  margin-bottom:32px;padding-bottom:32px;
+  border-bottom:1px solid rgba(196,162,101,0.12);
+}
+.arina-a-creds{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;}
+.arina-a-creds li{
+  font-family:'Raleway',sans-serif;font-size:1rem;color:rgba(242,237,231,0.65);line-height:1.6;
+  padding-left:18px;position:relative;
+}
+.arina-a-creds li::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:0.55rem;top:4px;}
+.arina-photo-box{
+  position:relative;background:rgba(196,162,101,0.06);
+  border:1px solid rgba(196,162,101,0.15);border-radius:4px;
+  height:500px;display:flex;align-items:center;justify-content:center;
+}
+.arina-photo-ph{font-family:'Italiana',serif;font-size:2rem;color:rgba(196,162,101,0.2);}
+
+
+/* ═══════════════════════════════
+   АРИНА — ВАРИАНТ Б  (numbered editorial creds)
+═══════════════════════════════ */
+#arinaB{ background:#0e0b07; }
+.arina-b-inner{
+  width:100%;max-width:1200px;
+  display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:start;
+}
+.arina-b-h2{
+  font-family:'Italiana',serif;
+  font-size:clamp(2.4rem,5vw,4rem);
+  font-weight:400;line-height:1.05;color:var(--text);
+  letter-spacing:0.03em;margin-bottom:8px;
+}
+.arina-b-h2 em{color:var(--gold);font-style:normal;}
+.arina-b-role{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,1.6vw,1.3rem);font-weight:300;font-style:italic;
+  color:rgba(196,162,101,0.55);line-height:1.5;
+  margin-bottom:40px;
+}
+.arina-b-creds{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;}
+.arina-b-cred{
+  display:grid;grid-template-columns:44px 1fr;
+  gap:0;align-items:start;
+  border-top:1px solid rgba(196,162,101,0.08);
+  padding:14px 0;
+}
+.arina-b-cred:last-child{border-bottom:1px solid rgba(196,162,101,0.08);}
+.arina-b-cred-num{
+  font-family:'Italiana',serif;
+  font-size:1.8rem;font-weight:400;
+  color:rgba(196,162,101,0.2);line-height:1;
+  padding-top:2px;
+}
+.arina-b-cred-text{
+  font-family:'Raleway',sans-serif;font-size:0.92rem;font-weight:300;
+  color:rgba(242,237,231,0.6);line-height:1.6;
+  padding-top:4px;
+}
+
+
+/* ═══════════════════════════════
+   АРИНА — ВАРИАНТ В  (quote + stats bar)
+═══════════════════════════════ */
+#arinaC{ background:#0e0b07; }
+.arina-c-inner{
+  width:100%;max-width:1200px;
+  display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:start;
+}
+.arina-c-h2{
+  font-family:'Italiana',serif;
+  font-size:clamp(2.4rem,5vw,4rem);
+  font-weight:400;line-height:1.05;color:var(--text);
+  letter-spacing:0.03em;margin-bottom:8px;
+}
+.arina-c-h2 em{color:var(--gold);font-style:normal;}
+.arina-c-role{
+  font-family:'Raleway',sans-serif;
+  font-size:1rem;color:rgba(242,237,231,0.55);line-height:1.6;
+  margin-bottom:32px;padding-bottom:32px;
+  border-bottom:1px solid rgba(196,162,101,0.1);
+}
+.arina-c-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.1rem,1.8vw,1.5rem);font-weight:300;font-style:italic;
+  color:rgba(242,237,231,0.75);line-height:1.55;
+  padding-left:20px;
+  border-left:2px solid rgba(196,162,101,0.4);
+  margin-bottom:40px;
+}
+.arina-c-stats{
+  display:flex;gap:0;
+}
+.arina-c-stat{
+  display:flex;flex-direction:column;gap:4px;
+  padding-right:32px;
+  border-right:1px solid rgba(196,162,101,0.12);
+  margin-right:32px;
+}
+.arina-c-stat:last-child{border-right:none;margin-right:0;}
+.arina-c-stat-num{
+  font-family:'Jost',sans-serif;font-size:2rem;font-weight:700;
+  color:var(--gold);line-height:1;
+}
+.arina-c-stat-label{
+  font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:300;
+  color:rgba(242,237,231,0.4);letter-spacing:0.04em;
+}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#numA" class="active">Цифры А</a>
+  <a href="#numB">Цифры Б</a>
+  <a href="#numC">Цифры В</a>
+  <a href="#arinaA">Арина А</a>
+  <a href="#arinaB">Арина Б</a>
+  <a href="#arinaC">Арина В</a>
+</nav>
+
+
+<!-- ══ ЦИФРЫ А — Editorial Columns ══ -->
+<section class="section" id="numA">
+  <div class="section-label">Цифры А — Editorial Columns (Italiana крупно)</div>
+  <div class="num-a-inner">
+    <div class="num-a-header">
+      <span class="num-a-eyebrow">Цифры говорят сами за себя</span>
+      <span class="num-a-title">Реальные результаты выпускниц</span>
+    </div>
+    <div class="num-a-grid">
+      <div class="num-a-card">
+        <div class="num-a-num">250<span style="font-family:'Raleway',sans-serif;font-size:0.3em;font-weight:300;vertical-align:super;color:rgba(196,162,101,0.6)">+</span></div>
+        <div class="num-a-label">выпускниц по всей России и за рубежом</div>
+      </div>
+      <div class="num-a-card">
+        <div class="num-a-num">1<span style="font-family:'Raleway',sans-serif;font-size:0.22em;font-weight:300;margin-left:6px;color:rgba(196,162,101,0.6)">МЕС</span></div>
+        <div class="num-a-label">до первых платных клиентов после окончания курса</div>
+      </div>
+      <div class="num-a-card">
+        <div class="num-a-num">120k<span style="font-family:'Raleway',sans-serif;font-size:0.22em;font-weight:300;vertical-align:super;color:rgba(196,162,101,0.6)">₽</span></div>
+        <div class="num-a-label">средний доход мастера через 3 месяца работы</div>
+      </div>
+      <div class="num-a-card">
+        <div class="num-a-num">150<span style="font-family:'Raleway',sans-serif;font-size:0.3em;font-weight:300;vertical-align:super;color:rgba(196,162,101,0.6)">+</span></div>
+        <div class="num-a-label">клиентов в базе у мастера в среднем через год</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ЦИФРЫ Б — Counter Grid ══ -->
+<section class="section" id="numB">
+  <div class="section-label">Цифры Б — Grid с счётчиком при скролле (Jost Bold)</div>
+  <div class="num-b-inner">
+    <p class="num-b-pretitle">За 4 года работы академии</p>
+    <div class="num-b-grid">
+      <div class="num-b-card">
+        <div class="num-b-num" data-count="250" data-suffix="+">0</div>
+        <div class="num-b-label">выпускниц по всей России<br>и за рубежом</div>
+      </div>
+      <div class="num-b-card">
+        <div class="num-b-num" data-count="1" data-suffix=" мес">0</div>
+        <div class="num-b-label">до первых платных клиентов<br>после окончания курса</div>
+      </div>
+      <div class="num-b-card">
+        <div class="num-b-num" data-count="120" data-suffix="k₽">0</div>
+        <div class="num-b-label">средний доход мастера<br>через 3 месяца</div>
+      </div>
+      <div class="num-b-card">
+        <div class="num-b-num" data-count="150" data-suffix="+">0</div>
+        <div class="num-b-label">клиентов в базе через год<br>в среднем</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ЦИФРЫ В — Banner Strip ══ -->
+<section class="section" id="numC">
+  <div class="section-label">Цифры В — Full-width Strip (Italiana средний)</div>
+  <div class="num-c-inner">
+    <div class="num-c-top">
+      <span class="num-c-eyebrow">Цифры говорят сами за себя</span>
+      <div class="num-c-title">Реальные результаты выпускниц курса</div>
+    </div>
+    <div class="num-c-strip">
+      <div class="num-c-item">
+        <div class="num-c-num">250+</div>
+        <div class="num-c-desc">выпускниц по всей России и за рубежом</div>
+      </div>
+      <div class="num-c-item">
+        <div class="num-c-num">1 мес</div>
+        <div class="num-c-desc">до первых платных клиентов</div>
+      </div>
+      <div class="num-c-item">
+        <div class="num-c-num">120k₽</div>
+        <div class="num-c-desc">средний доход через 3 месяца</div>
+      </div>
+      <div class="num-c-item">
+        <div class="num-c-num">150+</div>
+        <div class="num-c-desc">клиентов в базе через год</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ АРИНА А — только шрифт 400 ══ -->
+<section class="section" id="arinaA">
+  <div class="section-label">Арина А — только шрифт 400 (минимальное изменение)</div>
+  <div class="arina-a-inner">
+    <div>
+      <div style="font-size:0.65rem;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:rgba(196,162,101,0.45);margin-bottom:20px;">Ваш тренер</div>
+      <h2 class="arina-a-h2">Здравствуй,<br>меня зовут<br><em>Арина Шарапова</em></h2>
+      <p class="arina-a-role">Дипломированный тренер по перманентному макияжу с опытом 10 лет</p>
+      <ul class="arina-a-creds">
+        <li>Основатель студии и академии Agent Permanent в Москве</li>
+        <li>Создатель конференции Agent Permanent Event для бьюти-мастеров</li>
+        <li>Топ-100 лучших мастеров России по версии «Global Permanent» 2023</li>
+        <li>Дипломированный специалист по удалению некачественного ПМ</li>
+        <li>Тимлидер и лучший куратор самого крупного тренерского курса в РФ</li>
+        <li>Создатель авторской техники натурального ПМ бровей и губ</li>
+      </ul>
+    </div>
+    <div class="arina-photo-box"><span class="arina-photo-ph">фото</span></div>
+  </div>
+</section>
+
+
+<!-- ══ АРИНА Б — numbered creds ══ -->
+<section class="section" id="arinaB">
+  <div class="section-label">Арина Б — нумерованные credentials в editorial-стиле</div>
+  <div class="arina-b-inner">
+    <div>
+      <div style="font-size:0.65rem;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:rgba(196,162,101,0.45);margin-bottom:20px;">Ваш тренер</div>
+      <h2 class="arina-b-h2">Здравствуй,<br>меня зовут<br><em>Арина Шарапова</em></h2>
+      <p class="arina-b-role">Дипломированный тренер по перманентному макияжу с опытом 10 лет</p>
+      <ul class="arina-b-creds">
+        <li class="arina-b-cred">
+          <span class="arina-b-cred-num">01</span>
+          <span class="arina-b-cred-text">Основатель студии и академии Agent Permanent в Москве</span>
+        </li>
+        <li class="arina-b-cred">
+          <span class="arina-b-cred-num">02</span>
+          <span class="arina-b-cred-text">Создатель конференции Agent Permanent Event для бьюти-мастеров</span>
+        </li>
+        <li class="arina-b-cred">
+          <span class="arina-b-cred-num">03</span>
+          <span class="arina-b-cred-text">Топ-100 лучших мастеров России по версии «Global Permanent» 2023</span>
+        </li>
+        <li class="arina-b-cred">
+          <span class="arina-b-cred-num">04</span>
+          <span class="arina-b-cred-text">Специалист по удалению некачественного ПМ лазером и ремувером</span>
+        </li>
+        <li class="arina-b-cred">
+          <span class="arina-b-cred-num">05</span>
+          <span class="arina-b-cred-text">Тимлидер и лучший куратор самого крупного тренерского курса в РФ</span>
+        </li>
+        <li class="arina-b-cred">
+          <span class="arina-b-cred-num">06</span>
+          <span class="arina-b-cred-text">Создатель авторской техники натурального ПМ бровей и губ</span>
+        </li>
+      </ul>
+    </div>
+    <div class="arina-photo-box"><span class="arina-photo-ph">фото</span></div>
+  </div>
+</section>
+
+
+<!-- ══ АРИНА В — quote + stats ══ -->
+<section class="section" id="arinaC">
+  <div class="section-label">Арина В — цитата + статы + список сокращённый</div>
+  <div class="arina-c-inner">
+    <div>
+      <div style="font-size:0.65rem;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:rgba(196,162,101,0.45);margin-bottom:20px;">Ваш тренер</div>
+      <h2 class="arina-c-h2">Здравствуй,<br>меня зовут<br><em>Арина Шарапова</em></h2>
+      <p class="arina-c-role">Дипломированный тренер по перманентному макияжу · 10 лет опыта · Москва</p>
+      <blockquote class="arina-c-quote">«Я не просто учу технике. Я учу как стать мастером, которого клиенты рекомендуют друзьям»</blockquote>
+      <div class="arina-c-stats">
+        <div class="arina-c-stat">
+          <div class="arina-c-stat-num">6 000+</div>
+          <div class="arina-c-stat-label">процедур ПМ</div>
+        </div>
+        <div class="arina-c-stat">
+          <div class="arina-c-stat-num">10</div>
+          <div class="arina-c-stat-label">лет опыта</div>
+        </div>
+        <div class="arina-c-stat">
+          <div class="arina-c-stat-num">250+</div>
+          <div class="arina-c-stat-label">учениц</div>
+        </div>
+      </div>
+    </div>
+    <div class="arina-photo-box"><span class="arina-photo-ph">фото</span></div>
+  </div>
+</section>
+
+
+<script>
+  /* Nav active */
+  const links = document.querySelectorAll('.nav a');
+  const sections = document.querySelectorAll('section');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        links.forEach(l => l.classList.remove('active'));
+        const a = document.querySelector(`.nav a[href="#${e.target.id}"]`);
+        if(a) a.classList.add('active');
+      }
+    });
+  },{threshold:0.4});
+  sections.forEach(s => obs.observe(s));
+
+  /* Counter animation for Вариант Б */
+  function animateCount(el) {
+    const target = parseInt(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1400;
+    const step = 16;
+    const steps = Math.floor(duration / step);
+    let current = 0;
+    el.classList.add('counted');
+    const timer = setInterval(() => {
+      current++;
+      const value = Math.round((current / steps) * target);
+      el.textContent = value + suffix;
+      if(current >= steps) {
+        el.textContent = target + suffix;
+        clearInterval(timer);
+      }
+    }, step);
+  }
+
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        e.target.querySelectorAll('.num-b-num[data-count]').forEach(el => animateCount(el));
+        counterObs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.3});
+  const numB = document.getElementById('numB');
+  if(numB) counterObs.observe(numB);
+</script>
+</body>
+</html>

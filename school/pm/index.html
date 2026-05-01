@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Libre+Caslon+Text:ital@1&family=Plus+Jakarta+Sans:wght@400;500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/style.css?v=2026-05-01b">
   <style>
     :root {
       --font-display: 'Plus Jakarta Sans', sans-serif;
@@ -2690,12 +2690,20 @@
     @media (max-width: 768px) { .pm-faq { padding: 80px 24px; } }
 
     /* ── MOBILE SAFETY-NET: грид-блоки, у которых не было явных правил для узких экранов ── */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .pm-belief-layout {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        max-width: 100%;
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+        max-width: 100% !important;
       }
+      .pm-belief-left,
+      .pm-belief-video,
+      .pm-belief-right {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+    @media (max-width: 768px) {
       .pm-included-cta {
         grid-template-columns: 1fr;
         padding: 36px 24px;

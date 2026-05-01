@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Body Text Variants</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C4A265; --gold2: #D4BA85;
+      --bg: #08080A; --text: #F2EDE7;
+      --D: 'Italiana', serif; --B: 'Raleway', sans-serif; --S: 'Jost', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: var(--B); padding: 60px 48px; }
+
+    .block { margin-bottom: 52px; max-width: 520px; }
+    .v-tag {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(196,162,101,0.35);
+      margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+    }
+    .v-tag::after { content:''; flex:1; height:1px; background:rgba(196,162,101,0.07); }
+
+    .card {
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 50%, #1a1208 100%);
+      border: 1px solid rgba(196,162,101,0.25);
+      border-radius: 20px; padding: 18px 28px 24px;
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:1px;
+      background: linear-gradient(90deg, transparent, rgba(196,162,101,0.4), transparent);
+    }
+    .card-num { font-family: var(--D); font-size: 2.8rem; color: rgba(196,162,101,0.45); line-height:1; margin-bottom:4px; }
+    .card-rule { width:28px; height:1px; background:rgba(196,162,101,0.3); margin-bottom:12px; }
+    .card-title { font-family: var(--D); font-size: 1.5rem; font-weight:400; color:var(--text); line-height:1.25; margin-bottom:10px; }
+
+    /* V1: чуть крупнее + светлее */
+    .p-v1 {
+      font-size: 0.96rem; font-weight: 400;
+      color: rgba(242,237,231,0.65);
+      line-height: 1.65; letter-spacing: 0.02em;
+    }
+
+    /* V2: заметно крупнее, средний вес */
+    .p-v2 {
+      font-size: 1.05rem; font-weight: 400;
+      color: rgba(242,237,231,0.72);
+      line-height: 1.6; letter-spacing: 0.01em;
+    }
+
+    /* V3: крупнее + светлый, с золотой первой буквой */
+    .p-v3 {
+      font-size: 1.05rem; font-weight: 400;
+      color: rgba(242,237,231,0.75);
+      line-height: 1.6;
+    }
+    .p-v3::first-letter {
+      color: var(--gold); font-weight: 600;
+    }
+
+    /* V4: крупнее + выше контраст + разрядка */
+    .p-v4 {
+      font-size: 1rem; font-weight: 400;
+      color: rgba(242,237,231,0.8);
+      line-height: 1.7; letter-spacing: 0.025em;
+    }
+
+    /* V5: крупнее + italic serif */
+    .p-v5 {
+      font-family: var(--D);
+      font-style: italic;
+      font-size: 1.15rem; font-weight: 400;
+      color: rgba(242,237,231,0.65);
+      line-height: 1.55; letter-spacing: 0.01em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="block">
+    <div class="v-tag">Сейчас — для сравнения (0.83rem, 0.45 opacity)</div>
+    <div class="card">
+      <div class="card-num">04</div><div class="card-rule"></div>
+      <div class="card-title">Много практики на реальных моделях</div>
+      <p style="font-size:0.83rem;color:rgba(242,237,231,0.45);line-height:1.65">Работа с разными типами кожи под личным наблюдением Арины</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="v-tag">Вариант 1 — 0.96rem, opacity 0.65</div>
+    <div class="card">
+      <div class="card-num">04</div><div class="card-rule"></div>
+      <div class="card-title">Много практики на реальных моделях</div>
+      <p class="p-v1">Работа с разными типами кожи под личным наблюдением Арины</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="v-tag">Вариант 2 — 1.05rem, opacity 0.72</div>
+    <div class="card">
+      <div class="card-num">04</div><div class="card-rule"></div>
+      <div class="card-title">Много практики на реальных моделях</div>
+      <p class="p-v2">Работа с разными типами кожи под личным наблюдением Арины</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="v-tag">Вариант 3 — 1.05rem + золотая первая буква</div>
+    <div class="card">
+      <div class="card-num">04</div><div class="card-rule"></div>
+      <div class="card-title">Много практики на реальных моделях</div>
+      <p class="p-v3">Работа с разными типами кожи под личным наблюдением Арины</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="v-tag">Вариант 4 — 1rem, opacity 0.8, разрядка</div>
+    <div class="card">
+      <div class="card-num">04</div><div class="card-rule"></div>
+      <div class="card-title">Много практики на реальных моделях</div>
+      <p class="p-v4">Работа с разными типами кожи под личным наблюдением Арины</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="v-tag">Вариант 5 — Italiana italic 1.15rem</div>
+    <div class="card">
+      <div class="card-num">04</div><div class="card-rule"></div>
+      <div class="card-title">Много практики на реальных моделях</div>
+      <p class="p-v5">Работа с разными типами кожи под личным наблюдением Арины</p>
+    </div>
+  </div>
+
+</body>
+</html>

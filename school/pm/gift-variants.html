@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gift Card Variants</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C4A265; --gold2: #D4BA85;
+      --bg: #08080A; --text: #F2EDE7;
+      --muted: rgba(242,237,231,0.45);
+      --D: 'Italiana', serif;
+      --B: 'Raleway', sans-serif;
+      --S: 'Jost', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: var(--B); padding: 60px 48px; }
+
+    .block { margin-bottom: 56px; max-width: 500px; }
+    .v-tag {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(196,162,101,0.35);
+      margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+    }
+    .v-tag::after { content:''; flex:1; height:1px; background:rgba(196,162,101,0.07); }
+
+    /* Card shell */
+    .card {
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 50%, #1a1208 100%);
+      border: 1px solid rgba(196,162,101,0.25);
+      border-radius: 20px;
+      padding: 22px 28px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:1px;
+      background: linear-gradient(90deg, transparent, rgba(196,162,101,0.4), transparent);
+    }
+    .card-num { font-family: var(--D); font-size: 2.8rem; color: rgba(196,162,101,0.45); line-height:1; margin-bottom:4px; }
+    .card-rule { width:28px; height:1px; background:rgba(196,162,101,0.3); margin-bottom:12px; }
+    .card-sub { font-size: 0.83rem; color: var(--muted); line-height: 1.6; margin-top: 7px; }
+
+    /* ── V1: всё в одну строку, цена и тег рядом ── */
+    .h-v1 { font-family: var(--D); font-size: clamp(1.2rem,2vw,1.55rem); font-weight:400; color:var(--text); line-height:1.3; }
+    .h-v1 .price { font-family: var(--S); font-weight:700; color:var(--gold); font-size:1.1em; }
+    .h-v1 .gift {
+      font-family: var(--B); font-size: 0.52em; font-weight:700;
+      letter-spacing:0.14em; text-transform:uppercase;
+      color: var(--gold); vertical-align: middle;
+    }
+
+    /* ── V2: цена как большой акцент, «в подарок» отдельной строкой сверху ── */
+    .h-v2 { }
+    .h-v2 .label {
+      font-family: var(--B); font-size: 0.72rem; font-weight:600;
+      letter-spacing:0.18em; text-transform:uppercase;
+      color: var(--gold); margin-bottom: 6px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .h-v2 .label::before { content:''; width:18px; height:1px; background:var(--gold); }
+    .h-v2 .main { font-family: var(--D); font-size: clamp(1.2rem,2vw,1.55rem); font-weight:400; color:var(--text); line-height:1.25; }
+    .h-v2 .price { font-family: var(--S); font-weight:700; color:var(--gold); }
+
+    /* ── V3: цена огромная, остальное мелко над ней ── */
+    .h-v3 { }
+    .h-v3 .top {
+      font-family: var(--B); font-size: 0.78rem; font-weight:400;
+      color: var(--muted); letter-spacing:0.04em; margin-bottom: 2px;
+    }
+    .h-v3 .big {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .h-v3 .price {
+      font-family: var(--S); font-size: clamp(1.8rem,3vw,2.4rem);
+      font-weight:700; color:var(--gold); line-height:1; letter-spacing:-0.02em;
+    }
+    .h-v3 .gift-badge {
+      font-family: var(--B); font-size: 0.68rem; font-weight:700;
+      letter-spacing:0.14em; text-transform:uppercase;
+      background: rgba(196,162,101,0.12);
+      border: 1px solid rgba(196,162,101,0.3);
+      color: var(--gold);
+      padding: 4px 10px; border-radius: 4px;
+      align-self: center;
+    }
+
+    /* ── V4: две строки, «в подарок» как отдельная строка с тире ── */
+    .h-v4 { font-family: var(--D); font-size: clamp(1.2rem,2vw,1.55rem); font-weight:400; color:var(--text); line-height:1.3; }
+    .h-v4 .price { font-family: var(--S); font-weight:700; color:var(--gold); }
+    .h-v4 .gift-line {
+      display: block;
+      font-family: var(--B); font-size: 0.72rem; font-weight:700;
+      letter-spacing:0.2em; text-transform:uppercase;
+      color: var(--gold); margin-top: 6px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .h-v4 .gift-line::before { content:''; width:24px; height:1px; background:rgba(196,162,101,0.5); }
+
+    /* ── V5: стоимость и подарок в две колонки ── */
+    .h-v5 { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .h-v5 .left { }
+    .h-v5 .title-small {
+      font-family: var(--B); font-size: 0.75rem; font-weight:400;
+      color: var(--muted); margin-bottom: 2px;
+    }
+    .h-v5 .price {
+      font-family: var(--S); font-size: clamp(1.5rem,2.5vw,2rem);
+      font-weight:700; color:var(--gold); line-height:1; letter-spacing:-0.02em;
+    }
+    .h-v5 .sep { width:1px; height:44px; background:rgba(196,162,101,0.18); flex-shrink:0; }
+    .h-v5 .right { }
+    .h-v5 .gift-big {
+      font-family: var(--D); font-size: clamp(1.1rem,1.8vw,1.4rem);
+      color: var(--text); line-height:1.2;
+    }
+    .h-v5 .gift-sub {
+      font-family: var(--B); font-size: 0.7rem; font-weight:600;
+      letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);
+      margin-top:3px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- V1 -->
+  <div class="block">
+    <div class="v-tag">Вариант 1 — Всё в одну строку, «в подарок» рядом с ценой</div>
+    <div class="card">
+      <div class="card-num">02</div>
+      <div class="card-rule"></div>
+      <div class="h-v1">
+        Стартовый набор стоимостью <span class="price">30 000₽</span> <span class="gift">в подарок</span>
+      </div>
+      <p class="card-sub">Машинка, пигменты и всё необходимое — с первого дня готова работать</p>
+    </div>
+  </div>
+
+  <!-- V2 -->
+  <div class="block">
+    <div class="v-tag">Вариант 2 — «В ПОДАРОК» сверху как метка, цена внизу</div>
+    <div class="card">
+      <div class="card-num">02</div>
+      <div class="card-rule"></div>
+      <div class="h-v2">
+        <div class="label">В подарок</div>
+        <div class="main">Стартовый набор стоимостью <span class="price">30 000₽</span></div>
+      </div>
+      <p class="card-sub">Машинка, пигменты и всё необходимое — с первого дня готова работать</p>
+    </div>
+  </div>
+
+  <!-- V3 -->
+  <div class="block">
+    <div class="v-tag">Вариант 3 — Цена крупно + badge «В ПОДАРОК» рядом</div>
+    <div class="card">
+      <div class="card-num">02</div>
+      <div class="card-rule"></div>
+      <div class="h-v3">
+        <div class="top">Стартовый набор</div>
+        <div class="big">
+          <span class="price">30 000₽</span>
+          <span class="gift-badge">в подарок</span>
+        </div>
+      </div>
+      <p class="card-sub">Машинка, пигменты и всё необходимое — с первого дня готова работать</p>
+    </div>
+  </div>
+
+  <!-- V4 -->
+  <div class="block">
+    <div class="v-tag">Вариант 4 — «В ПОДАРОК» отдельной строкой с линией</div>
+    <div class="card">
+      <div class="card-num">02</div>
+      <div class="card-rule"></div>
+      <div class="h-v4">
+        Стартовый набор стоимостью <span class="price">30 000₽</span>
+        <span class="gift-line">В ПОДАРОК</span>
+      </div>
+      <p class="card-sub">Машинка, пигменты и всё необходимое — с первого дня готова работать</p>
+    </div>
+  </div>
+
+  <!-- V5 -->
+  <div class="block">
+    <div class="v-tag">Вариант 5 — Цена слева, текст справа через разделитель</div>
+    <div class="card">
+      <div class="card-num">02</div>
+      <div class="card-rule"></div>
+      <div class="h-v5">
+        <div class="left">
+          <div class="title-small">стартовый набор</div>
+          <div class="price">30 000₽</div>
+        </div>
+        <div class="sep"></div>
+        <div class="right">
+          <div class="gift-big">полностью<br>укомплектован</div>
+          <div class="gift-sub">в подарок</div>
+        </div>
+      </div>
+      <p class="card-sub">Машинка, пигменты и всё необходимое — с первого дня готова работать</p>
+    </div>
+  </div>
+
+</body>
+</html>

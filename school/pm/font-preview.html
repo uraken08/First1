@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Font Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    body { background: #0a0806; color: #F2EDE7; margin: 0; padding: 60px; }
+    .row { display: flex; gap: 80px; align-items: baseline; margin-bottom: 64px; }
+    .col { display: flex; flex-direction: column; gap: 8px; }
+    .label { font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(196,162,101,0.5); margin-bottom: 12px; }
+    .num-italiana { font-family: 'Italiana', serif; color: #C4A265; }
+    .num-jost { font-family: 'Jost', sans-serif; color: #C4A265; }
+    .s1 { font-size: 5rem; }
+    .s2 { font-size: 3.5rem; }
+    .s3 { font-size: 2rem; }
+    .s4 { font-size: 1.2rem; }
+    .divider { border: none; border-top: 1px solid rgba(196,162,101,0.1); margin: 48px 0; }
+    .context { display: flex; gap: 60px; flex-wrap: wrap; }
+    .context-card { background: #C4A265; border-radius: 6px; padding: 24px 32px; min-width: 220px; }
+    .context-card .label { color: rgba(8,8,10,0.5); }
+    .context-card .num-italiana,
+    .context-card .num-jost { color: #08080A; }
+    .context-stat { display: flex; flex-direction: column; gap: 4px; }
+    .context-stat .sub { font-family: 'Jost', sans-serif; font-size: 0.72rem; color: rgba(196,162,101,0.5); letter-spacing: 0.08em; }
+  </style>
+</head>
+<body>
+
+  <div style="font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(196,162,101,0.4);margin-bottom:48px">
+    Сравнение шрифтов для цифр
+  </div>
+
+  <!-- Размеры -->
+  <div class="row">
+    <div class="col">
+      <div class="label">Italiana</div>
+      <div class="num-italiana s1">120 000</div>
+      <div class="num-italiana s2">9 000</div>
+      <div class="num-italiana s3">200+</div>
+      <div class="num-italiana s4">0123456789</div>
+    </div>
+    <div class="col">
+      <div class="label">Jost (сейчас)</div>
+      <div class="num-jost s1">120 000</div>
+      <div class="num-jost s2">9 000</div>
+      <div class="num-jost s3">200+</div>
+      <div class="num-jost s4">0123456789</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- В контексте карточек цены -->
+  <div style="font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(196,162,101,0.4);margin-bottom:32px">
+    В карточках цены
+  </div>
+  <div class="context">
+    <div class="context-card">
+      <div class="label">Italiana</div>
+      <div class="num-italiana" style="font-size:3rem;line-height:0.9">9 000<sup style="font-size:0.4em;color:rgba(8,8,10,0.5)">₽</sup></div>
+    </div>
+    <div class="context-card">
+      <div class="label">Jost (сейчас)</div>
+      <div class="num-jost" style="font-size:3rem;line-height:0.9;font-weight:200">9 000<sup style="font-size:0.4em;color:rgba(8,8,10,0.5)">₽</sup></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- В контексте статистики -->
+  <div style="font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(196,162,101,0.4);margin-bottom:32px">
+    В блоке статистики
+  </div>
+  <div style="display:flex;gap:80px">
+    <div class="context-stat">
+      <div class="label">Italiana</div>
+      <div class="num-italiana" style="font-size:4.5rem;line-height:0.9;color:#C4A265">200<span style="font-size:0.5em">+</span></div>
+      <div class="sub">выпускниц</div>
+    </div>
+    <div class="context-stat">
+      <div class="label">Jost (сейчас)</div>
+      <div class="num-jost" style="font-size:4.5rem;line-height:0.9;font-weight:200;color:#C4A265">200<span style="font-size:0.5em">+</span></div>
+      <div class="sub">выпускниц</div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -181,6 +181,11 @@
     .stats-grid { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 40px; }
     @media (max-width: 600px) {
       .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px 20px; }
+      .stat-num { font-size: 1.8rem; white-space: nowrap; }
+      .stat-label { font-size: 0.55rem; letter-spacing: 0.22em; }
+    }
+    @media (max-width: 380px) {
+      .stat-num { font-size: 1.55rem; letter-spacing: 0; }
     }
     .stat { text-align: center; }
     .stat-num { font-family: var(--font-num); font-size: 2.4rem; font-weight: 500; color: var(--gold); line-height: 1; margin-bottom: 8px; letter-spacing: 0.02em; }

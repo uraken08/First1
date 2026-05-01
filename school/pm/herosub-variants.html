@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Sub — gold max</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --gold: #C4A265; --bg: #08080A; --text: #F2EDE7; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Raleway', sans-serif; padding: 80px 60px; }
+    .block { margin-bottom: 80px; }
+    .v-tag {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(196,162,101,0.32);
+      margin-bottom: 22px; display: flex; align-items: center; gap: 10px;
+    }
+    .v-tag::after { content:''; flex:1; height:1px; background:rgba(196,162,101,0.06); }
+    .mock-h1 {
+      font-family: 'Italiana', serif;
+      font-size: 3.4rem; font-weight: 400; color: var(--text);
+      line-height: 1.08; margin-bottom: 26px;
+    }
+    .mock-h1 span { font-size: 0.52em; color: var(--gold); display: block; line-height: 0.9; margin-bottom: 2px; }
+    .txt { font-size: clamp(1.1rem, 1.6vw, 1.28rem); font-weight: 600; letter-spacing: 0.04em; }
+
+    /* ── V1: ГЛУБОКОЕ МЕТАЛЛИЧЕСКОЕ ЗОЛОТО
+       Многослойный градиент, тёмный текст,
+       рельефная подложка с highlight сверху ── */
+    .sub-v1 {
+      display: inline-block;
+      padding: 13px 30px;
+      border-radius: 4px;
+      color: #1a0f00;
+      background:
+        linear-gradient(180deg,
+          rgba(255,255,255,0.18) 0%,
+          rgba(255,255,255,0) 40%
+        ),
+        linear-gradient(135deg,
+          #7a5010 0%,
+          #c49840 15%,
+          #e8cf78 32%,
+          #c4a040 50%,
+          #a07828 65%,
+          #d4b858 80%,
+          #8a6018 100%
+        );
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.35) inset,
+        0 -1px 0 rgba(0,0,0,0.3) inset,
+        0 4px 24px rgba(196,162,101,0.35),
+        0 1px 3px rgba(0,0,0,0.4);
+      margin-bottom: 36px;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    }
+
+    /* ── V2: ЖИДКОЕ ЗОЛОТО С ЖИВЫМ БЛЕСКОМ
+       Градиент движется — как расплавленный металл ── */
+    .sub-v2 {
+      display: inline-block;
+      padding: 13px 30px;
+      border-radius: 4px;
+      color: #120a00;
+      background: linear-gradient(
+        105deg,
+        #5a3a08 0%,
+        #b88830 18%,
+        #f0d878 35%,
+        #c8a040 50%,
+        #f5e080 65%,
+        #b07820 82%,
+        #5a3a08 100%
+      );
+      background-size: 300% 100%;
+      animation: liquidGold 3s ease-in-out infinite;
+      box-shadow:
+        0 4px 28px rgba(196,162,101,0.45),
+        0 1px 0 rgba(255,240,160,0.5) inset;
+      font-weight: 700;
+      margin-bottom: 36px;
+    }
+    @keyframes liquidGold {
+      0%   { background-position: 0% 0; }
+      50%  { background-position: 100% 0; }
+      100% { background-position: 0% 0; }
+    }
+
+    /* ── V3: МАТОВОЕ СТАРИННОЕ ЗОЛОТО
+       Как тиснение на коже — глубокое, неяркое ── */
+    .sub-v3 {
+      display: inline-block;
+      padding: 13px 30px;
+      border-radius: 3px;
+      color: #08080A;
+      background: linear-gradient(160deg,
+        #a07830 0%,
+        #c8a850 25%,
+        #b89040 50%,
+        #d4b860 75%,
+        #a07830 100%
+      );
+      background-size: 200% 200%;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 2px 0 rgba(255,220,120,0.4) inset,
+        0 -2px 0 rgba(80,50,0,0.4) inset,
+        0 6px 32px rgba(160,120,48,0.4),
+        0 2px 8px rgba(0,0,0,0.5);
+      margin-bottom: 36px;
+    }
+    .sub-v3::before {
+      content: '';
+      position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+      animation: goldShine 4s ease-in-out infinite;
+    }
+    .sub-v3 span { position: relative; z-index: 1; }
+    @keyframes goldShine {
+      0%   { left: -100%; }
+      50%  { left: 150%; }
+      100% { left: 150%; }
+    }
+
+    /* ── V4: GOLD FOIL — как фольга ── */
+    .sub-v4 {
+      display: inline-block;
+      padding: 13px 30px;
+      border-radius: 4px;
+      color: #0d0800;
+      font-weight: 700;
+      background:
+        repeating-linear-gradient(
+          75deg,
+          transparent 0px,
+          rgba(255,255,255,0.04) 1px,
+          transparent 2px,
+          transparent 6px
+        ),
+        linear-gradient(135deg,
+          #7a5510 0%,
+          #d4aa40 20%,
+          #f8e878 40%,
+          #c89830 55%,
+          #f0d060 70%,
+          #a07020 85%,
+          #c8a040 100%
+        );
+      box-shadow:
+        0 2px 0 rgba(255,240,180,0.5) inset,
+        0 -1px 0 rgba(60,30,0,0.5) inset,
+        0 8px 40px rgba(196,162,101,0.5),
+        0 2px 4px rgba(0,0,0,0.6);
+      margin-bottom: 36px;
+    }
+
+    /* ── V5: КОРОЛЕВСКОЕ ЗОЛОТО С ОБВОДКОЙ
+       Тёмная подложка + яркая золотая рамка с гало ── */
+    .sub-v5 {
+      display: inline-block;
+      padding: 13px 30px;
+      border-radius: 4px;
+      color: #f0d878;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      background: linear-gradient(135deg,
+        #1a0e04 0%,
+        #2d1e08 50%,
+        #1a0e04 100%
+      );
+      border: 1px solid #c4a040;
+      box-shadow:
+        0 0 0 1px rgba(240,216,120,0.15),
+        0 0 20px rgba(196,162,101,0.3),
+        0 0 60px rgba(196,162,101,0.12),
+        0 2px 0 rgba(240,200,80,0.6) inset,
+        0 -1px 0 rgba(80,50,0,0.5) inset;
+      text-shadow: 0 0 20px rgba(240,200,80,0.5), 0 1px 2px rgba(0,0,0,0.8);
+      margin-bottom: 36px;
+      animation: royalGlow 3s ease-in-out infinite;
+    }
+    @keyframes royalGlow {
+      0%, 100% { box-shadow: 0 0 0 1px rgba(240,216,120,0.15), 0 0 20px rgba(196,162,101,0.3), 0 0 60px rgba(196,162,101,0.12), 0 2px 0 rgba(240,200,80,0.6) inset, 0 -1px 0 rgba(80,50,0,0.5) inset; }
+      50%       { box-shadow: 0 0 0 1px rgba(240,216,120,0.3),  0 0 32px rgba(196,162,101,0.5), 0 0 80px rgba(196,162,101,0.2),  0 2px 0 rgba(240,200,80,0.6) inset, 0 -1px 0 rgba(80,50,0,0.5) inset; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="block">
+    <div class="v-tag">Вариант 1 — Глубокое рельефное золото</div>
+    <div class="mock-h1"><span>Стань</span>Мастером перманентного макияжа</div>
+    <p class="sub-v1 txt">За 20 дней получи новую профессию и начни зарабатывать от 120 тысяч руб!</p>
+  </div>
+
+  <div class="block">
+    <div class="v-tag">Вариант 2 — Жидкое золото, живой блеск</div>
+    <div class="mock-h1"><span>Стань</span>Мастером перманентного макияжа</div>
+    <p class="sub-v2 txt">За 20 дней получи новую профессию и начни зарабатывать от 120 тысяч руб!</p>
+  </div>
+
+  <div class="block">
+    <div class="v-tag">Вариант 3 — Матовое антикварное золото с бликом</div>
+    <div class="mock-h1"><span>Стань</span>Мастером перманентного макияжа</div>
+    <p class="sub-v3 txt"><span>За 20 дней получи новую профессию и начни зарабатывать от 120 тысяч руб!</span></p>
+  </div>
+
+  <div class="block">
+    <div class="v-tag">Вариант 4 — Золотая фольга</div>
+    <div class="mock-h1"><span>Стань</span>Мастером перманентного макияжа</div>
+    <p class="sub-v4 txt">За 20 дней получи новую профессию и начни зарабатывать от 120 тысяч руб!</p>
+  </div>
+
+  <div class="block">
+    <div class="v-tag">Вариант 5 — Королевское золото, тёмный фон + свечение</div>
+    <div class="mock-h1"><span>Стань</span>Мастером перманентного макияжа</div>
+    <p class="sub-v5 txt">За 20 дней получи новую профессию и начни зарабатывать от 120 тысяч руб!</p>
+  </div>
+
+</body>
+</html>

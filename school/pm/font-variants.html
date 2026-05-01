@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Варианты шрифтов — Что входит в обучение</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C4A265;
+      --gold2: #e8cf78;
+      --bg: #08080A;
+      --bg-card: linear-gradient(135deg, #1a1208 0%, #2d1f0a 50%, #1a1208 100%);
+      --border: rgba(196,162,101,0.25);
+      --text: #F2EDE7;
+      --text-dim: rgba(242,237,231,0.72);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Raleway', sans-serif;
+      padding: 60px 40px;
+    }
+    html::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 9999;
+      pointer-events: none; opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 160px;
+    }
+
+    /* ── PAGE STRUCTURE ── */
+    .page-label {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em;
+      text-transform: uppercase; color: rgba(196,162,101,0.35);
+      margin-bottom: 64px; display: flex; align-items: center; gap: 14px;
+    }
+    .page-label::after { content: ''; flex: 1; height: 1px; background: rgba(196,162,101,0.08); }
+
+    .variant-block { margin-bottom: 100px; }
+    .variant-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 36px;
+    }
+    .variant-tag-num {
+      width: 26px; height: 26px; border-radius: 50%;
+      border: 1px solid rgba(196,162,101,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem;
+    }
+    .variant-tag-desc {
+      color: rgba(196,162,101,0.5); font-weight: 400;
+      letter-spacing: 0.04em; text-transform: none; font-size: 0.8rem;
+    }
+    .variant-divider {
+      width: 100%; height: 1px;
+      background: linear-gradient(to right, rgba(196,162,101,0.15), transparent);
+      margin-bottom: 100px;
+    }
+
+    /* ── CARDS GRID ── */
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 960px;
+    }
+
+    /* ── BASE CARD ── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+    .card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,162,101,0.3), transparent);
+      pointer-events: none;
+    }
+    .card-body { padding: 20px 24px 24px; }
+    .card-divider {
+      width: 28px; height: 1px;
+      background: rgba(196,162,101,0.3);
+      margin-bottom: 10px;
+    }
+    .card-desc {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem; color: var(--text-dim);
+      line-height: 1.6; margin-top: 10px;
+    }
+    .card-tag {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(196,162,101,0.45);
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .card-tag::before { content: ''; width: 20px; height: 1px; background: rgba(196,162,101,0.3); }
+
+    /* ── VARIANT 1: Строгое разделение ролей ── */
+    /* Italiana: только числа + sticky title  |  Raleway: h4 600  |  Jost: stats */
+    .v1 .card-num {
+      font-family: 'Italiana', serif;
+      font-size: 2.8rem; color: rgba(196,162,101,0.45);
+      line-height: 1; margin-bottom: 2px;
+    }
+    .v1 .card-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.15rem; font-weight: 600;
+      color: var(--text); line-height: 1.3;
+      letter-spacing: 0.01em;
+    }
+    .v1 .card-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem; font-weight: 500;
+      color: var(--text); line-height: 1.3;
+    }
+    .v1 .stat-num {
+      font-family: 'Jost', sans-serif;
+      font-size: 2rem; font-weight: 700;
+      color: var(--gold); letter-spacing: -0.03em; line-height: 1;
+    }
+    .v1 .stat-gift {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(196,162,101,0.3);
+      border-radius: 4px; padding: 4px 10px;
+      display: inline-block; margin-top: 6px;
+    }
+
+    /* ── VARIANT 2: Два шрифта ── */
+    /* Italiana: только sticky / декор числа  |  Raleway: всё остальное  |  Jost: числа-статистики */
+    .v2 .card-num {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.2em; color: rgba(196,162,101,0.4);
+      margin-bottom: 10px;
+    }
+    .v2 .card-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.15rem; font-weight: 600;
+      color: var(--text); line-height: 1.3;
+      letter-spacing: 0.01em;
+    }
+    .v2 .card-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem; font-weight: 500;
+      color: var(--text); line-height: 1.3;
+    }
+    .v2 .stat-num {
+      font-family: 'Jost', sans-serif;
+      font-size: 2rem; font-weight: 700;
+      color: var(--gold); letter-spacing: -0.03em; line-height: 1;
+    }
+    .v2 .stat-gift {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(196,162,101,0.3);
+      border-radius: 4px; padding: 4px 10px;
+      display: inline-block; margin-top: 6px;
+    }
+
+    /* ── VARIANT 3: Унификация без смены шрифтов ── */
+    /* Italiana везде: числа + h4 + label  |  но единый размер и вес */
+    .v3 .card-num {
+      font-family: 'Italiana', serif;
+      font-size: 2.8rem; color: rgba(196,162,101,0.45);
+      line-height: 1; margin-bottom: 2px;
+    }
+    .v3 .card-title {
+      font-family: 'Italiana', serif;
+      font-size: 1.45rem; font-weight: 400;
+      color: var(--text); line-height: 1.25;
+      letter-spacing: 0.025em;
+    }
+    .v3 .card-label {
+      font-family: 'Italiana', serif;
+      font-size: 1.45rem; font-weight: 400;
+      color: var(--text); line-height: 1.25;
+    }
+    .v3 .stat-num {
+      font-family: 'Jost', sans-serif;
+      font-size: 2rem; font-weight: 700;
+      color: var(--gold); letter-spacing: -0.03em; line-height: 1;
+    }
+    .v3 .stat-gift {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(196,162,101,0.3);
+      border-radius: 4px; padding: 4px 10px;
+      display: inline-block; margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-label">Сравнение вариантов шрифтов — блок «Что входит в обучение»</div>
+
+  <!-- ══════════════════════════════════════════
+       ВАРИАНТ 1 — Строгое разделение ролей
+  ══════════════════════════════════════════ -->
+  <div class="variant-block v1">
+    <div class="variant-tag">
+      <span class="variant-tag-num">1</span>
+      Строгое разделение ролей
+      <span class="variant-tag-desc">— Italiana: только крупные числа &amp; заголовок блока · Raleway 600: заголовки карточек · Jost: статистика</span>
+    </div>
+    <div class="cards-row">
+
+      <!-- Карточка 01 -->
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Три основные зоны</div>
+          <div class="card-num">01</div>
+          <div class="card-divider"></div>
+          <div class="card-title">Три основные зоны перманентного макияжа</div>
+          <p class="card-desc">Освоив самые востребованные зоны, вы закроете потребности большинства клиентов</p>
+        </div>
+      </div>
+
+      <!-- Карточка 02 -->
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Стартовый набор</div>
+          <div class="card-num">02</div>
+          <div class="card-divider"></div>
+          <div class="card-label">Стартовый набор стоимостью</div>
+          <div style="display:flex;align-items:baseline;gap:10px;margin-top:6px;flex-wrap:wrap">
+            <span class="stat-num">30 000 ₽</span>
+          </div>
+          <div class="stat-gift">В ПОДАРОК</div>
+          <p class="card-desc">Машинка, пигменты и всё необходимое</p>
+        </div>
+      </div>
+
+      <!-- Карточка 05 -->
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Онлайн-подготовка</div>
+          <div class="card-num">05</div>
+          <div class="card-divider"></div>
+          <div class="card-title"><span class="stat-num" style="font-size:1.6rem;vertical-align:baseline">16</span> дней насыщенной онлайн-подготовки</div>
+          <p class="card-desc">Теория, видеоуроки по техникам и материалам — в удобном темпе</p>
+        </div>
+      </div>
+
+      <!-- Карточка 03 -->
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Документы</div>
+          <div class="card-num">03</div>
+          <div class="card-divider"></div>
+          <div class="card-title">Диплом государственного образца о присвоении профессии</div>
+          <p class="card-desc">Гос. диплом, свидетельство и сертификат — полный пакет документов</p>
+        </div>
+      </div>
+
+      <!-- Карточка 07 -->
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Доп. курс</div>
+          <div class="card-num">07</div>
+          <div class="card-divider"></div>
+          <div class="card-title">Курс по удалению ПМ с отработкой на модели</div>
+          <p class="card-desc">Востребованная услуга — дополнительный доход с первых месяцев</p>
+        </div>
+      </div>
+
+      <!-- Карточка 08 -->
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Работа с клиентами</div>
+          <div class="card-num">08</div>
+          <div class="card-divider"></div>
+          <div class="card-title">Пакет документов для работы с клиентами</div>
+          <p class="card-desc">Договоры, согласия, противопоказания — работай безопасно и профессионально</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="variant-divider"></div>
+
+  <!-- ══════════════════════════════════════════
+       ВАРИАНТ 2 — Два шрифта
+  ══════════════════════════════════════════ -->
+  <div class="variant-block v2">
+    <div class="variant-tag">
+      <span class="variant-tag-num">2</span>
+      Два шрифта
+      <span class="variant-tag-desc">— Italiana: только sticky-заголовок &amp; лого · Raleway 600: всё содержимое карточек · Jost: числа-статистики</span>
+    </div>
+    <div class="cards-row">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Три основные зоны</div>
+          <div class="card-num">01</div>
+          <div class="card-divider"></div>
+          <div class="card-title">Три основные зоны перманентного макияжа</div>
+          <p class="card-desc">Освоив самые востребованные зоны, вы закроете потребности большинства клиентов</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Стартовый набор</div>
+          <div class="card-num">02</div>
+          <div class="card-divider"></div>
+          <div class="card-label">Стартовый набор стоимостью</div>
+          <div style="display:flex;align-items:baseline;gap:10px;margin-top:6px;flex-wrap:wrap">
+            <span class="stat-num">30 000 ₽</span>
+          </div>
+          <div class="stat-gift">В ПОДАРОК</div>
+          <p class="card-desc">Машинка, пигменты и всё необходимое</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Онлайн-подготовка</div>
+          <div class="card-num">05</div>
+          <div class="card-divider"></div>
+          <div class="card-title"><span class="stat-num" style="font-size:1.6rem;vertical-align:baseline">16</span> дней насыщенной онлайн-подготовки</div>
+          <p class="card-desc">Теория, видеоуроки по техникам и материалам — в удобном темпе</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Документы</div>
+          <div class="card-num">03</div>
+          <div class="card-divider"></div>
+          <div class="card-title">Диплом государственного образца о присвоении профессии</div>
+          <p class="card-desc">Гос. диплом, свидетельство и сертификат — полный пакет документов</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Доп. курс</div>
+          <div class="card-num">07</div>
+          <div class="card-divider"></div>
+          <div class="card-title">Курс по удалению ПМ с отработкой на модели</div>
+          <p class="card-desc">Востребованная услуга — дополнительный доход с первых месяцев</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Работа с клиентами</div>
+          <div class="card-num">08</div>
+          <div class="card-divider"></div>
+          <div class="card-title">Пакет документов для работы с клиентами</div>
+          <p class="card-desc">Договоры, согласия, противопоказания — работай безопасно и профессионально</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="variant-divider"></div>
+
+  <!-- ══════════════════════════════════════════
+       ВАРИАНТ 3 — Унификация без смены шрифтов
+  ══════════════════════════════════════════ -->
+  <div class="variant-block v3">
+    <div class="variant-tag">
+      <span class="variant-tag-num">3</span>
+      Унификация без смены шрифтов
+      <span class="variant-tag-desc">— Italiana везде, но единый размер 1.45rem и вес для всех заголовков карточек</span>
+    </div>
+    <div class="cards-row">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Три основные зоны</div>
+          <div class="card-num">01</div>
+          <div class="card-divider"></div>
+          <div class="card-title">Три основные зоны перманентного макияжа</div>
+          <p class="card-desc">Освоив самые востребованные зоны, вы закроете потребности большинства клиентов</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Стартовый набор</div>
+          <div class="card-num">02</div>
+          <div class="card-divider"></div>
+          <div class="card-label">Стартовый набор стоимостью</div>
+          <div style="display:flex;align-items:baseline;gap:10px;margin-top:6px;flex-wrap:wrap">
+            <span class="stat-num">30 000 ₽</span>
+          </div>
+          <div class="stat-gift">В ПОДАРОК</div>
+          <p class="card-desc">Машинка, пигменты и всё необходимое</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Онлайн-подготовка</div>
+          <div class="card-num">05</div>
+          <div class="card-divider"></div>
+          <div class="card-title"><span class="stat-num" style="font-size:1.6rem;vertical-align:baseline">16</span> дней насыщенной онлайн-подготовки</div>
+          <p class="card-desc">Теория, видеоуроки по техникам и материалам — в удобном темпе</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Документы</div>
+          <div class="card-num">03</div>
+          <div class="card-divider"></div>
+          <div class="card-title">Диплом государственного образца о присвоении профессии</div>
+          <p class="card-desc">Гос. диплом, свидетельство и сертификат — полный пакет документов</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Доп. курс</div>
+          <div class="card-num">07</div>
+          <div class="card-divider"></div>
+          <div class="card-title">Курс по удалению ПМ с отработкой на модели</div>
+          <p class="card-desc">Востребованная услуга — дополнительный доход с первых месяцев</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-tag">Работа с клиентами</div>
+          <div class="card-num">08</div>
+          <div class="card-divider"></div>
+          <div class="card-title">Пакет документов для работы с клиентами</div>
+          <p class="card-desc">Договоры, согласия, противопоказания — работай безопасно и профессионально</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
