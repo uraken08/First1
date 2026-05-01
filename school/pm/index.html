@@ -2688,6 +2688,26 @@
       padding-bottom: 24px;
     }
     @media (max-width: 768px) { .pm-faq { padding: 80px 24px; } }
+
+    /* ── MOBILE SAFETY-NET: грид-блоки, у которых не было явных правил для узких экранов ── */
+    @media (max-width: 768px) {
+      .pm-belief-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        max-width: 100%;
+      }
+      .pm-included-cta {
+        grid-template-columns: 1fr;
+        padding: 36px 24px;
+        gap: 20px;
+        text-align: center;
+      }
+      .pm-included-cta-left { align-items: center; }
+    }
+    @media (max-width: 480px) {
+      .pm-belief-whisper { font-size: 1.25rem; margin-bottom: 22px; }
+      .pm-belief-headline { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+    }
   </style>
 
 
