@@ -315,6 +315,14 @@
       .reviews-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: repeat(3, 1fr); }
     }
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px 20px; }
+      .stat-num { font-size: 1.8rem; white-space: nowrap; }
+      .stat-label { font-size: 0.55rem; letter-spacing: 0.22em; }
+    }
+    @media (max-width: 380px) {
+      .stat-num { font-size: 1.55rem; letter-spacing: 0; }
+    }
     @media (max-width: 768px) {
       .nav { padding: 14px 20px; }
       .nav-links { display: none; }
