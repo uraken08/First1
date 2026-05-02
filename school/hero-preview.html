@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Превью hero — Академия — Agent Permanent</title>
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Libre+Caslon+Text:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=2026-05-02d">
+  <style>
+    body { background: #08080A; color: var(--text-primary); margin: 0; font-family: var(--font-body); }
+    .preview-nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(8,8,10,0.95); backdrop-filter: blur(12px);
+      padding: 18px 24px;
+      display: flex; gap: 24px; flex-wrap: wrap; align-items: center;
+      border-bottom: 1px solid rgba(196,162,101,0.18);
+    }
+    .preview-nav-title {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
+      font-size: 0.85rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .preview-nav a {
+      font-size: 0.8rem; text-decoration: none;
+      color: rgba(242,237,231,0.75);
+      letter-spacing: 0.04em;
+      padding: 6px 14px; border: 1px solid rgba(196,162,101,0.25);
+      border-radius: 50px;
+      transition: all 0.2s;
+    }
+    .preview-nav a:hover {
+      color: var(--gold); border-color: var(--gold);
+    }
+    .preview-section {
+      border-bottom: 1px dashed rgba(196,162,101,0.25);
+    }
+    .preview-label {
+      padding: 24px 32px;
+      font-family: var(--font-body); font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(196,162,101,0.04);
+      border-bottom: 1px solid rgba(196,162,101,0.12);
+    }
+    .preview-label small {
+      display: block; margin-top: 6px;
+      font-size: 0.72rem; font-weight: 300; letter-spacing: 0.04em;
+      text-transform: none; color: rgba(242,237,231,0.55);
+    }
+
+    /* ===== VARIANT A: Cinematic photo-hero ===== */
+    .v-a-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 140px 32px 80px;
+      overflow: hidden;
+      background: #000;
+    }
+    .v-a-stage { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+    .v-a-slide {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center 25%;
+      opacity: 0;
+      transition: opacity 1.6s ease;
+      filter: grayscale(0.20) contrast(1.06) brightness(0.6);
+    }
+    .v-a-slide.active {
+      opacity: 1;
+      animation: vaKenBurns 11s ease-out forwards;
+    }
+    @keyframes vaKenBurns {
+      from { transform: scale(1.0); }
+      to   { transform: scale(1.12); }
+    }
+    .v-a-veil {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(8,8,10,0.55) 0%, rgba(8,8,10,0.4) 38%, rgba(8,8,10,0.85) 92%, rgba(8,8,10,1) 100%);
+    }
+    .v-a-vignette {
+      position: absolute; inset: 0; z-index: 1;
+      background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, rgba(8,8,10,0.55) 100%);
+    }
+    .v-a-text {
+      position: relative; z-index: 2;
+      max-width: 880px; text-align: center;
+    }
+    .v-a-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex; align-items: center; gap: 14px;
+      margin-bottom: 32px;
+    }
+    .v-a-eyebrow::before, .v-a-eyebrow::after {
+      content: ''; width: 28px; height: 1px; background: var(--gold);
+    }
+    .v-a-text h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      font-weight: 400;
+      line-height: 1.05; letter-spacing: 0.02em;
+      color: var(--text-primary);
+      margin: 0 0 24px;
+    }
+    .v-a-text h1 em {
+      font-family: 'Italiana', serif; font-style: italic;
+      color: var(--gold); font-weight: 400;
+      letter-spacing: 0.005em;
+    }
+    .v-a-text p {
+      font-family: var(--font-body);
+      font-size: 1.05rem; font-weight: 300;
+      color: rgba(242,237,231,0.8);
+      line-height: 1.75; letter-spacing: 0.03em;
+      max-width: 520px; margin: 0 auto;
+    }
+
+    /* ===== VARIANT B: Editorial typography ===== */
+    .v-b-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 140px 32px 80px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 60% 70% at 30% 50%, rgba(196,162,101,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 70% 50%, rgba(196,162,101,0.05) 0%, transparent 60%),
+        #08080A;
+    }
+    .v-b-bg-text {
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 500;
+      font-size: 38vw; line-height: 0.85;
+      color: rgba(196,162,101,0.04);
+      letter-spacing: -0.04em;
+      pointer-events: none; user-select: none;
+      white-space: nowrap;
+    }
+    .v-b-text {
+      position: relative; z-index: 2;
+      max-width: 920px; text-align: center;
+    }
+    .v-b-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.34em; text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex; align-items: center; gap: 16px;
+      margin-bottom: 36px;
+    }
+    .v-b-eyebrow::before, .v-b-eyebrow::after {
+      content: ''; width: 32px; height: 1px; background: var(--gold);
+    }
+    .v-b-text h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 300;
+      line-height: 1.0; letter-spacing: 0.02em;
+      color: var(--text-primary);
+      margin: 0 0 8px;
+    }
+    .v-b-text h1 em {
+      display: block;
+      font-family: 'Italiana', serif; font-style: italic;
+      color: var(--gold); font-weight: 400;
+      font-size: 1.15em;
+      margin-top: 4px;
+    }
+    .v-b-divider {
+      width: 80px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 36px auto;
+    }
+    .v-b-text p {
+      font-family: var(--font-body);
+      font-size: 1.05rem; font-weight: 300;
+      color: rgba(242,237,231,0.65);
+      line-height: 1.75; letter-spacing: 0.04em;
+      max-width: 520px; margin: 0 auto;
+    }
+
+    /* ===== VARIANT C: Split — text + photo ===== */
+    .v-c-hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #08080A;
+    }
+    .v-c-left {
+      padding: 140px 56px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+      max-width: 640px; margin-left: auto;
+    }
+    .v-c-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.74rem; font-weight: 500;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--gold);
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px;
+    }
+    .v-c-eyebrow::before {
+      content: ''; width: 36px; height: 1px; background: var(--gold);
+    }
+    .v-c-left h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.6rem, 4.5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.05; letter-spacing: 0.02em;
+      color: var(--text-primary);
+      margin: 0 0 24px;
+    }
+    .v-c-left h1 em {
+      font-family: 'Italiana', serif; font-style: italic;
+      color: var(--gold); font-weight: 400;
+    }
+    .v-c-left p {
+      font-family: var(--font-body);
+      font-size: 1.02rem; font-weight: 300;
+      color: rgba(242,237,231,0.8);
+      line-height: 1.75; letter-spacing: 0.03em;
+      margin: 0 0 40px;
+      max-width: 460px;
+    }
+    .v-c-stats {
+      display: flex; gap: 0;
+      border-top: 1px solid rgba(196,162,101,0.15);
+      padding-top: 28px;
+      width: fit-content;
+    }
+    .v-c-stat {
+      padding-right: 36px;
+    }
+    .v-c-stat:not(:last-child) {
+      margin-right: 36px;
+      border-right: 1px solid rgba(196,162,101,0.12);
+    }
+    .v-c-stat-num {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 500;
+      font-size: 1.8rem; color: var(--gold); line-height: 1;
+    }
+    .v-c-stat-lbl {
+      font-size: 0.68rem; color: rgba(242,237,231,0.55);
+      letter-spacing: 0.06em; margin-top: 6px;
+    }
+    .v-c-right {
+      position: relative;
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 50%, #1a1208 100%);
+      overflow: hidden;
+    }
+    .v-c-photo {
+      position: absolute; inset: 0;
+      background-image: url('../about/works/img_5765.jpg');
+      background-size: cover;
+      background-position: center 15%;
+      filter: grayscale(0.15) contrast(1.05) brightness(0.85);
+    }
+    .v-c-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(8,8,10,0.6) 0%, transparent 25%, transparent 75%, rgba(8,8,10,0.5) 100%);
+    }
+    .v-c-frame {
+      position: absolute; inset: 32px;
+      border: 1px solid rgba(196,162,101,0.25);
+      pointer-events: none;
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .v-a-hero, .v-b-hero { padding: 120px 24px 60px; min-height: 90vh; }
+      .v-c-hero { grid-template-columns: 1fr; }
+      .v-c-left { padding: 120px 24px 40px; max-width: 100%; margin: 0; }
+      .v-c-right { min-height: 60vh; }
+      .v-c-frame { inset: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="preview-nav">
+  <div class="preview-nav-title">Hero — Академия (превью)</div>
+  <a href="#var-a">A — Cinematic</a>
+  <a href="#var-b">B — Editorial</a>
+  <a href="#var-c">C — Split + photo</a>
+  <a href="../school/" style="margin-left:auto">Текущая версия</a>
+</div>
+
+<div class="preview-section" id="var-a">
+  <div class="preview-label">
+    Вариант A — Cinematic photo-hero
+    <small>3 фото плавно меняются + Ken Burns зум + dark vignette. Самый сильный «вау». Использует существующие фото портфолио.</small>
+  </div>
+  <section class="v-a-hero">
+    <div class="v-a-stage" aria-hidden="true">
+      <div class="v-a-slide active" style="background-image:url('../about/works/img_5765.jpg')"></div>
+      <div class="v-a-slide" style="background-image:url('../about/works/img_8138.jpg')"></div>
+      <div class="v-a-slide" style="background-image:url('../about/works/img_5402.jpg')"></div>
+      <div class="v-a-veil"></div>
+      <div class="v-a-vignette"></div>
+    </div>
+    <div class="v-a-text">
+      <div class="v-a-eyebrow">Академия</div>
+      <h1>Обучение&nbsp;beauty <em>мастеров</em></h1>
+      <p>Профессиональные курсы с нуля до практикующего специалиста. Выберите своё направление.</p>
+    </div>
+  </section>
+</div>
+
+<div class="preview-section" id="var-b">
+  <div class="preview-label">
+    Вариант B — Editorial typography
+    <small>Без фото. Огромный фоновый текст BEAUTY, заголовок с курсивным акцентом «мастеров» в Italiana, золотая разделительная линия. Минимализм и журнальная подача.</small>
+  </div>
+  <section class="v-b-hero">
+    <div class="v-b-bg-text">BEAUTY</div>
+    <div class="v-b-text">
+      <div class="v-b-eyebrow">Академия</div>
+      <h1>Обучение beauty <em>мастеров</em></h1>
+      <div class="v-b-divider"></div>
+      <p>Профессиональные курсы с&nbsp;нуля до&nbsp;практикующего специалиста. Выберите своё направление.</p>
+    </div>
+  </section>
+</div>
+
+<div class="preview-section" id="var-c">
+  <div class="preview-label">
+    Вариант C — Split: text + photo
+    <small>Слева текст с метриками (250+ выпускниц, 10 потоков), справа большое фото с золотой рамкой. Информативно + презентабельно. На мобиле фото сверху, текст снизу.</small>
+  </div>
+  <section class="v-c-hero">
+    <div class="v-c-left">
+      <div class="v-c-eyebrow">Академия</div>
+      <h1>Обучение beauty <em>мастеров</em></h1>
+      <p>Профессиональные курсы с нуля до практикующего специалиста. Выберите своё направление.</p>
+      <div class="v-c-stats">
+        <div class="v-c-stat">
+          <div class="v-c-stat-num">250+</div>
+          <div class="v-c-stat-lbl">выпускниц</div>
+        </div>
+        <div class="v-c-stat">
+          <div class="v-c-stat-num">2</div>
+          <div class="v-c-stat-lbl">направления</div>
+        </div>
+        <div class="v-c-stat">
+          <div class="v-c-stat-num">5,0&nbsp;★</div>
+          <div class="v-c-stat-lbl">Яндекс</div>
+        </div>
+      </div>
+    </div>
+    <div class="v-c-right">
+      <div class="v-c-photo"></div>
+      <div class="v-c-frame"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+  /* Cinematic slideshow для A варианта */
+  (function(){
+    const slides = document.querySelectorAll('.v-a-slide');
+    if (slides.length < 2) return;
+    let idx = 0;
+    setInterval(() => {
+      slides[idx].classList.remove('active');
+      idx = (idx + 1) % slides.length;
+      const next = slides[idx];
+      next.classList.add('active');
+      next.style.animation = 'none';
+      void next.offsetWidth;
+      next.style.animation = '';
+    }, 5500);
+  })();
+</script>
+</body>
+</html>

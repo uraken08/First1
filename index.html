@@ -2023,6 +2023,26 @@
       .pm-cta-form-col { padding-right: 0; }
       .pm-cta-msg-col { padding-left: 0; }
     }
+    /* Чекбокс согласия — приведём к одинаковому виду что в popup'е ПМ */
+    .pm-cta-lead .form-consent {
+      color: rgba(242,237,231,0.55);
+      font-size: 0.78rem;
+    }
+    .pm-cta-lead .form-consent a {
+      color: var(--gold) !important;
+      text-decoration: none !important;
+      border-bottom: 1px solid rgba(196,162,101,0.35) !important;
+    }
+    .pm-cta-lead .form-consent a:hover { border-bottom-color: var(--gold) !important; }
+    .pm-cta-lead .form-consent input[type="checkbox"] {
+      width: 18px !important; height: 18px !important;
+      border: 1px solid rgba(196,162,101,0.45) !important;
+      border-radius: 0 !important;
+    }
+    .pm-cta-lead .form-consent input[type="checkbox"]:checked {
+      background: var(--gold) !important;
+      border-color: var(--gold) !important;
+    }
 </style>
 
   <footer class="footer">

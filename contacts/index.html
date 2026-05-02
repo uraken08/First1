@@ -317,6 +317,56 @@
     .ct-map-link:hover { opacity: 0.7; }
     /* Reviews */
     .ct-reviews-card { position: relative; }
+    .ct-reviews-compact {
+      display: flex; align-items: center; justify-content: center;
+      padding: 56px 32px;
+    }
+    .ct-reviews-mini {
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      gap: 6px;
+    }
+    .ct-reviews-mini-brand {
+      font-family: var(--font-head);
+      font-size: 1.05rem; font-weight: 500;
+      color: var(--text-primary);
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .ct-reviews-mini-rating {
+      font-family: var(--font-stats);
+      font-size: clamp(3.4rem, 6vw, 4.6rem);
+      font-weight: 500;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .ct-reviews-mini-stars {
+      color: var(--gold);
+      font-size: 1.15rem;
+      letter-spacing: 4px;
+      margin: 4px 0 2px;
+    }
+    .ct-reviews-mini-count {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 22px;
+    }
+    .ct-reviews-mini-link {
+      font-family: var(--font-body);
+      font-size: 0.82rem; font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(196,162,101,0.35);
+      padding-bottom: 2px;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .ct-reviews-mini-link:hover {
+      border-bottom-color: var(--gold);
+      opacity: 0.85;
+    }
     .ct-reviews-header {
       padding: 18px 22px 12px;
       border-bottom: 1px solid rgba(196,162,101,0.1);
@@ -555,21 +605,18 @@
         </div>
       </div>
 
-      <!-- RIGHT: reviews card -->
-      <div class="ct-map-card ct-reviews-card">
-        <div class="ct-reviews-header">
-          <div class="ct-map-label">Отзывы клиентов</div>
-          <div class="ct-reviews-rating">5,0 ★★★★★</div>
+      <!-- RIGHT: reviews card (компактный — без полного списка) -->
+      <div class="ct-map-card ct-reviews-card ct-reviews-compact">
+        <div class="ct-reviews-mini">
+          <div class="ct-reviews-mini-brand">Agent Permanent</div>
+          <div class="ct-reviews-mini-rating">5,0</div>
+          <div class="ct-reviews-mini-stars">★★★★★</div>
+          <div class="ct-reviews-mini-count">187 оценок</div>
+          <a href="https://yandex.com.tr/maps/org/agent_permanent/123024463523/"
+             target="_blank" rel="noopener" class="ct-reviews-mini-link">
+            Все отзывы на Яндекс Картах →
+          </a>
         </div>
-        <div class="ct-reviews-iframe-wrap">
-          <iframe
-            src="https://yandex.ru/maps-reviews-widget/123024463523?comments">
-          </iframe>
-        </div>
-        <a href="https://yandex.com.tr/maps/org/agent_permanent/123024463523/"
-           target="_blank" class="ct-reviews-footer">
-          Agent Permanent на Яндекс Картах
-        </a>
       </div>
 
     </div>
