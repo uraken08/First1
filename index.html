@@ -752,15 +752,6 @@
           <a href="school/" class="btn btn-ghost">Академия</a>
         </div>
 
-        <!-- Mini-stats прямо под CTA -->
-        <div class="cine-stats">
-          <div><div class="cine-stat-num num">10&nbsp;000+</div><div class="cine-stat-lbl">процедур</div></div>
-          <div class="cine-stat-divider"></div>
-          <div><div class="cine-stat-num num">250+</div><div class="cine-stat-lbl">выпускниц</div></div>
-          <div class="cine-stat-divider"></div>
-          <div><div class="cine-stat-num num">5,0&nbsp;★</div><div class="cine-stat-lbl">Яндекс</div></div>
-        </div>
-
         <!-- ── Slide indicators (под статами) ── -->
         <div class="cine-dots" aria-hidden="true">
           <button class="cine-dot active" data-idx="0"></button>
@@ -860,7 +851,7 @@
       <div class="stat fade-up"><div class="stat-num">2016</div><div class="stat-label">год основания</div></div>
       <div class="stat fade-up" style="transition-delay:0.1s"><div class="stat-num">10 000+</div><div class="stat-label">процедур в студии</div></div>
       <div class="stat fade-up" style="transition-delay:0.2s"><div class="stat-num">250+</div><div class="stat-label">выпускниц академии</div></div>
-      <div class="stat fade-up" style="transition-delay:0.3s"><div class="stat-num">5</div><div class="stat-label">бьюти-направлений</div></div>
+      <div class="stat fade-up" style="transition-delay:0.3s"><div class="stat-num">5,0&nbsp;★</div><div class="stat-label">на Яндекс картах</div></div>
       <div class="stat fade-up" style="transition-delay:0.4s"><div class="stat-num">700+</div><div class="stat-label">отзывов ★★★★★</div></div>
       <div class="stat fade-up" style="transition-delay:0.5s"><div class="stat-num">10</div><div class="stat-label">стран мира</div></div>
     </div>
@@ -1111,8 +1102,8 @@
   </section>
 
     <!-- TIMELINE SCROLL -->
-  <section id="tl-outer" class="tl-outer-section" style="position:relative;background:var(--bg-warm)">
-    <div id="tl-sticky" class="tl-sticky-wrap">
+  <section id="tl-outer" style="height:500vh;position:relative;background:var(--bg-warm)">
+    <div id="tl-sticky" style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center">
 
       <div class="section-inner" style="margin-bottom:40px">
         <div class="section-eyebrow">Достижения</div>
@@ -1123,7 +1114,7 @@
       <div style="position:relative;padding:0 48px">
         <div style="position:absolute;top:50%;left:80px;right:80px;height:1px;background:linear-gradient(to right,transparent,rgba(196,162,101,0.3),rgba(196,162,101,0.5),rgba(196,162,101,0.3),transparent);transform:translateY(-50%)"></div>
 
-        <div id="tl-track" class="tl-track-row">
+        <div id="tl-track" style="display:flex;gap:0;align-items:center;will-change:transform">
 
           <div class="tl-item" data-year="2016">
             <div class="tl-dot"></div>
@@ -1249,9 +1240,9 @@
     .tl-year {
       font-family: var(--font-stats);
       font-size: 0.75rem;
-      font-weight: 500;
+      font-weight: 700;
       color: var(--gold);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.12em;
       margin-bottom: 12px;
       transition: font-size 0.4s ease;
     }
@@ -1477,16 +1468,16 @@
   </section>
 
   <!-- BRAND STORY BLOCK -->
-  <section class="section" style="background:#090805">
+  <section class="section" style="background:var(--bg-warm)">
     <div class="section-inner">
-      <div class="brand-story-grid fade-up">
+      <div style="display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:center" class="fade-up">
         <div style="flex-shrink:0;display:flex;align-items:center;justify-content:center">
-          <img src="about/brand_logo_full.jpg" alt="Agent Permanent by Arina Sharapova" style="width:100%;max-width:420px;display:block">
+          <img src="logo_2000x2000.png" alt="Agent Permanent Logo" style="width:clamp(160px,14vw,200px);filter:grayscale(1) brightness(1.1) sepia(1) saturate(3) hue-rotate(4deg) drop-shadow(0 0 10px rgba(196,162,101,0.65)) drop-shadow(0 0 24px rgba(196,162,101,0.3)) drop-shadow(0 0 50px rgba(196,162,101,0.12));opacity:0.95">
         </div>
         <div>
           <div class="section-eyebrow">Что такое Agent Permanent</div>
           <h2 class="section-title" style="margin-bottom:32px">Больше, чем студия</h2>
-          <div class="brand-story-text-grid">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
         <div>
           <p style="color:var(--text-secondary);line-height:1.8;font-size:0.97rem"><strong style="color:var(--text-primary);font-weight:600">Agent Permanent</strong> — это бренд, который вырос из одной идеи: красота — в естественности.</p>
           <p style="color:var(--text-secondary);line-height:1.8;font-size:0.97rem;margin-top:16px">Основательница <strong style="color:var(--text-primary);font-weight:600">Арина Шарапова</strong> начала с одной процедуры в 2016 году. Сегодня это студия с 10 000+ работ и международная академия, выпускницы которой успешно работают по всей России и за рубежом.</p>
@@ -1675,7 +1666,7 @@
       <div class="stat fade-up"><div class="stat-num">2016</div><div class="stat-label">год основания</div></div>
       <div class="stat fade-up" style="transition-delay:0.1s"><div class="stat-num">10 000+</div><div class="stat-label">процедур в студии</div></div>
       <div class="stat fade-up" style="transition-delay:0.2s"><div class="stat-num">250+</div><div class="stat-label">выпускниц академии</div></div>
-      <div class="stat fade-up" style="transition-delay:0.3s"><div class="stat-num">5</div><div class="stat-label">бьюти-направлений</div></div>
+      <div class="stat fade-up" style="transition-delay:0.3s"><div class="stat-num">5,0&nbsp;★</div><div class="stat-label">на Яндекс картах</div></div>
       <div class="stat fade-up" style="transition-delay:0.4s"><div class="stat-num">700+</div><div class="stat-label">отзывов ★★★★★</div></div>
       <div class="stat fade-up" style="transition-delay:0.5s"><div class="stat-num">10</div><div class="stat-label">стран мира</div></div>
     </div>
@@ -2160,18 +2151,18 @@
   <style id="mobile-overrides">
     /* Mobile fixes — последние, гарантированно побеждают */
     @media (max-width: 900px) {
-      section#tl-outer.tl-outer-section {
+      section#tl-outer {
         height: auto !important;
         min-height: auto !important;
         padding: 80px 0 60px !important;
       }
-      div#tl-sticky.tl-sticky-wrap {
+      div#tl-sticky {
         position: static !important;
         height: auto !important;
         overflow: visible !important;
         display: block !important;
       }
-      div#tl-track.tl-track-row {
+      div#tl-track {
         display: flex !important;
         flex-direction: column !important;
         gap: 0 !important;
@@ -2182,7 +2173,7 @@
         transform: none !important;
         will-change: auto !important;
       }
-      div#tl-track.tl-track-row::before {
+      div#tl-track::before {
         content: '';
         position: absolute;
         top: 0; bottom: 0;
