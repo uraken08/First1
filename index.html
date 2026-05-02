@@ -1707,6 +1707,104 @@
     </div>
   </section>
 
+  <!-- TELEGRAM COMMUNITY -->
+  <section class="tg-community-section">
+    <div class="tg-community-inner">
+      <div class="tg-community-icon" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="56" height="56" fill="none">
+          <path d="M53.5 12.5 8.2 30.6c-2.3.9-2.3 4.2 0 5.1l11.7 4.5 4.6 14.4c.6 1.9 2.9 2.5 4.4 1.2l6.5-5.6 11 8.1c2 1.5 4.9.4 5.4-2L57.7 16c.5-2.5-2-4.5-4.2-3.5Zm-9.6 11.4-19 16.7-.6 7.5L21 40l22.9-16.1Z" fill="#08080A"/>
+        </svg>
+      </div>
+      <div class="tg-community-text">
+        <div class="tg-community-eyebrow">Сообщество</div>
+        <h2 class="section-title">Присоединяйтесь к&nbsp;нам в&nbsp;<em>Telegram</em></h2>
+        <p class="tg-community-sub">Полезные посты от Арины, истории выпускниц, скидки и анонсы новых потоков. Без спама.</p>
+        <a class="btn btn-gold tg-community-btn" href="https://t.me/agentpermanent" target="_blank" rel="noopener">
+          Подписаться <span class="tg-community-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <style>
+    .tg-community-section {
+      padding: 96px 48px;
+      background:
+        radial-gradient(ellipse 60% 70% at 30% 50%, rgba(196,162,101,0.08) 0%, transparent 60%),
+        var(--bg-warm);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .tg-community-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .tg-community-icon {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #d4ba85);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 16px 60px rgba(196,162,101,0.35), 0 0 0 1px rgba(196,162,101,0.4);
+      flex-shrink: 0;
+      margin: 0 auto;
+    }
+    .tg-community-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.30em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .tg-community-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .tg-community-text .section-title {
+      margin-bottom: 18px;
+    }
+    .tg-community-text .section-title em {
+      font-family: var(--font-italic);
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 400;
+    }
+    .tg-community-sub {
+      font-family: var(--font-body);
+      font-size: 1rem; font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 540px;
+      margin-bottom: 32px;
+    }
+    .tg-community-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .tg-community-arrow {
+      transition: transform 0.3s;
+    }
+    .tg-community-btn:hover .tg-community-arrow {
+      transform: translateX(4px);
+    }
+    @media (max-width: 900px) {
+      .tg-community-section { padding: 64px 24px; }
+      .tg-community-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        text-align: center;
+      }
+      .tg-community-icon { width: 120px; height: 120px; }
+      .tg-community-icon svg { width: 44px; height: 44px; }
+      .tg-community-eyebrow { justify-content: center; }
+      .tg-community-sub { margin-left: auto; margin-right: auto; }
+    }
+  </style>
+
 
   <section class="split-paths-section" id="cta">
     <div class="split-paths-inner">
@@ -1736,10 +1834,58 @@
         </form>
       </div>
 
+      <div class="path-socials fade-up" style="transition-delay:0.25s">
+        <div class="path-socials-divider"><span>или напишите сами</span></div>
+        <div class="path-socials-buttons">
+          <a class="path-social path-social--tg" href="https://t.me/agentpermanent" target="_blank" rel="noopener">Telegram</a>
+          <a class="path-social path-social--max" href="https://max.ru/agentpermanent" target="_blank" rel="noopener">Макс</a>
+          <a class="path-social path-social--vk" href="https://vk.com/agentpermanent" target="_blank" rel="noopener">VK</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <style>
+    .path-socials {
+      max-width: 580px;
+      margin: 36px auto 0;
+    }
+    .path-socials-divider {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 20px;
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .path-socials-divider::before,
+    .path-socials-divider::after {
+      content: ''; flex: 1; height: 1px;
+      background: rgba(196,162,101,0.18);
+    }
+    .path-socials-buttons {
+      display: flex; gap: 12px;
+    }
+    .path-social {
+      flex: 1;
+      padding: 14px 12px;
+      border-radius: 50px;
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      color: #fff;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .path-social:hover { opacity: 0.85; transform: translateY(-2px); }
+    .path-social--tg  { background: #229ED9; }
+    .path-social--max { background: #005FF9; }
+    .path-social--vk  { background: #0077FF; }
+    @media (max-width: 600px) {
+      .path-socials-buttons { flex-direction: column; }
+      .path-social { padding: 13px 16px; }
+    }
     .split-paths-section {
       background: var(--bg-warm);
       padding: 100px 0;
