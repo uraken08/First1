@@ -671,11 +671,16 @@
 }
 .form-consent a:hover { border-bottom-color: var(--gold); }
 
-/* ── Mobile overflow safety net (хард) ── */
-html, body {
-  overflow-x: hidden !important;
-  max-width: 100vw !important;
-  width: 100% !important;
+/* ── Mobile overflow safety net (хард) ──
+   Применяется только на мобилке: на десктопе overflow:hidden у html/body
+   ломает position:sticky у потомков (например, форма заявки на /contacts/).
+*/
+@media (max-width: 960px) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+  }
 }
 section, footer, header, nav.nav, main {
   max-width: 100vw;
