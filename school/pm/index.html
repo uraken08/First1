@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Libre+Caslon+Text:ital@1&family=Plus+Jakarta+Sans:wght@400;500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/style.css?v=2026-05-02b">
+  <link rel="stylesheet" href="../../css/style.css?v=2026-05-02c">
   <style>
     :root {
       --font-display: 'Plus Jakarta Sans', sans-serif;
@@ -932,6 +932,14 @@
       <div class="pm-hero-photo pm-hero-photo--3"><img src="hero_1464.jpg" alt=""></div>
       <div class="pm-hero-photo pm-hero-photo--2"><img src="hero_1463.jpg" alt=""></div>
       <div class="pm-hero-photo pm-hero-photo--1"><img src="hero_1462.jpg" alt=""></div>
+    </div>
+    <!-- Mobile-only: cine-stage с плавной сменой 3 фото и Ken Burns (как на главной) -->
+    <div class="pm-cine-stage" aria-hidden="true">
+      <div class="pm-cine-slide active" style="background-image:url('hero_1462.jpg'); background-position:center 30%"></div>
+      <div class="pm-cine-slide" style="background-image:url('hero_1463.jpg'); background-position:center 35%"></div>
+      <div class="pm-cine-slide" style="background-image:url('hero_1464.jpg'); background-position:center 30%"></div>
+      <div class="pm-cine-veil"></div>
+      <div class="pm-cine-vignette"></div>
     </div>
     <div class="pm-hero-glow"></div>
     <div class="pm-hero-particles" id="heroParticles"></div>
@@ -2759,6 +2767,54 @@
       .pm-price-card2 .pm-section-h { color: #08080A !important; }
     }
 
+    /* ── Cinematic hero (как на главной) — только mobile ── */
+    .pm-cine-stage { display: none; }
+    @media (max-width: 900px) {
+      .pm-cine-stage {
+        display: block;
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        overflow: hidden;
+        background: #000;
+      }
+      .pm-cine-slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1.6s ease;
+        filter: grayscale(0.20) contrast(1.06) brightness(0.6);
+      }
+      .pm-cine-slide.active {
+        opacity: 1;
+        animation: pmCineKenBurns 11s ease-out forwards;
+      }
+      @keyframes pmCineKenBurns {
+        from { transform: scale(1.0); }
+        to   { transform: scale(1.12); }
+      }
+      .pm-cine-veil {
+        position: absolute; inset: 0;
+        background: linear-gradient(180deg,
+          rgba(8,8,10,0.55) 0%,
+          rgba(8,8,10,0.35) 38%,
+          rgba(8,8,10,0.85) 92%,
+          rgba(8,8,10,1)    100%);
+      }
+      .pm-cine-vignette {
+        position: absolute; inset: 0;
+        background: radial-gradient(ellipse 80% 70% at 50% 55%,
+          transparent 30%,
+          rgba(8,8,10,0.55) 100%);
+      }
+      /* На mobile прячем старые узкие столбцы — теперь работает cine-stage */
+      .pm-hero-photos { display: none !important; }
+      /* cine-veil уже даёт затемнение, поэтому ::after overlay не нужен */
+      .pm-hero::after { display: none !important; }
+    }
+
     /* ── Mobile hero: статы вернуть, число «120 000» nowrap,
        подпись и звёздочку увеличить, фото пригасить ── */
     @media (max-width: 900px) {
@@ -3323,6 +3379,25 @@
       }
     }, { threshold: 0.5 }).observe(threadEl);
   }
+</script>
+<script>
+  /* Cinematic hero slideshow — только на mobile (≤900px) */
+  (function(){
+    if (!window.matchMedia('(max-width: 900px)').matches) return;
+    const slides = document.querySelectorAll('.pm-cine-slide');
+    if (slides.length < 2) return;
+    let idx = 0;
+    setInterval(() => {
+      slides[idx].classList.remove('active');
+      idx = (idx + 1) % slides.length;
+      const next = slides[idx];
+      next.classList.add('active');
+      // Перезапустить Ken Burns
+      next.style.animation = 'none';
+      void next.offsetWidth;
+      next.style.animation = '';
+    }, 5500);
+  })();
 </script>
 <script src="../../js/forms.js"></script>
 </body>

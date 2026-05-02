@@ -586,6 +586,28 @@
 .float-btn:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(196,162,101,0.55); }
 .float-btn--tg, .float-btn--max, .float-btn--vk { background: var(--gold); color: #08080A; }
 
+/* ── Унифицированный стиль заголовков на mobile (как у «Что входит в обучение?»)
+   Применяется ко всему сайту: h2/h3/h4 + .section-title + .page-hero h1 ── */
+@media (max-width: 900px) {
+  h2, h3, h4,
+  .section-title,
+  .pm-sticky-title,
+  .page-hero h1,
+  .privacy-page h1,
+  .privacy-page h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: clamp(2rem, 7vw, 2.6rem) !important;
+    line-height: 1 !important;
+    letter-spacing: 0.02em !important;
+    text-transform: none !important;
+  }
+  /* h1 в больших hero'ях оставляем крупнее — только line-height и letter-spacing */
+  h1 {
+    line-height: 1 !important;
+  }
+}
+
 /* ── Form consent checkbox (152-ФЗ) ── */
 .form-consent {
   display: flex;
