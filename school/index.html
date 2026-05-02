@@ -52,13 +52,85 @@
     </div>
   </nav>
 
-  <section class="page-hero" style="background:var(--bg-deep)">
-    <div class="page-hero-inner">
-      <div class="page-hero-badge fade-up">Академия</div>
-      <h1 class="fade-up">Обучение beauty мастеров</h1>
-      <p class="fade-up" style="transition-delay:0.1s">Профессиональные курсы с нуля до практикующего специалиста.<br>Выберите своё направление.</p>
+  <section class="school-hero">
+    <div class="school-hero-bg-text" aria-hidden="true">BEAUTY</div>
+    <div class="school-hero-inner fade-up">
+      <div class="school-hero-eyebrow">Академия</div>
+      <h1>Обучение beauty <em>мастеров</em></h1>
+      <div class="school-hero-divider"></div>
+      <p>Профессиональные курсы с&nbsp;нуля до&nbsp;практикующего специалиста. Выберите своё направление.</p>
     </div>
   </section>
+  <style>
+    .school-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 140px 32px 80px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 60% 70% at 30% 50%, rgba(196,162,101,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 70% 50%, rgba(196,162,101,0.05) 0%, transparent 60%),
+        #08080A;
+    }
+    .school-hero-bg-text {
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 500;
+      font-size: 38vw; line-height: 0.85;
+      color: rgba(196,162,101,0.04);
+      letter-spacing: -0.04em;
+      pointer-events: none; user-select: none;
+      white-space: nowrap;
+      z-index: 0;
+    }
+    .school-hero-inner {
+      position: relative; z-index: 2;
+      max-width: 920px; text-align: center;
+    }
+    .school-hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.34em; text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex; align-items: center; gap: 16px;
+      margin-bottom: 36px;
+    }
+    .school-hero-eyebrow::before, .school-hero-eyebrow::after {
+      content: ''; width: 32px; height: 1px; background: var(--gold);
+    }
+    .school-hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 300;
+      line-height: 1.0; letter-spacing: 0.02em;
+      color: var(--text-primary);
+      margin: 0 0 8px;
+    }
+    .school-hero h1 em {
+      display: block;
+      font-family: 'Italiana', serif; font-style: italic;
+      color: var(--gold); font-weight: 400;
+      font-size: 1.15em;
+      margin-top: 4px;
+    }
+    .school-hero-divider {
+      width: 80px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 36px auto;
+    }
+    .school-hero p {
+      font-family: var(--font-body);
+      font-size: 1.05rem; font-weight: 300;
+      color: rgba(242,237,231,0.65);
+      line-height: 1.75; letter-spacing: 0.04em;
+      max-width: 520px; margin: 0 auto;
+    }
+    @media (max-width: 900px) {
+      .school-hero { padding: 120px 24px 60px; min-height: 90vh; }
+      .school-hero-bg-text { font-size: 50vw; }
+    }
+  </style>
 
   <div class="parallax-gallery" id="parallaxGallery">
 
