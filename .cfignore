@@ -21,12 +21,20 @@ preview-backgrounds.html
 preview-logo.html
 design-review.html
 
-# Большие исходники видео — деплоим только сжатые .mp4
-Видео/IMG_*.MOV
-Видео/Intro video.MP4
-Видео/IMG_*.mov
-Видео/*.aae
-Видео/* 2.*
+# Большие исходники видео — папка Видео/ исключена,
+# но нужные для сайта файлы оставлены через !-исключения
+Видео/
+!Видео/Intro video.mp4
+!Видео/img_4465.mp4
+!Видео/img_4466.mp4
+!Видео/img_7769.mp4
+!Видео/img_4465_poster.jpg
+!Видео/img_4466_poster.jpg
+!Видео/img_7769_poster.jpg
+
+*.mov
+*.MOV
+*.aae
 
 # Тяжёлые сохранённые HTML с Tilda
 Agent Permanent — Студия*.html
@@ -40,7 +48,7 @@ ChatGPT Image*
 IMG_1442*
 IMG_*.JPG
 
-# Из папки Фото/ деплоим только Работы/ (используется в /portfolio/)
+# Из Фото/ деплоим только Работы/ (используется в /portfolio/)
 Фото/*.jpg
 Фото/*.png
 Фото/*.JPG
@@ -76,3 +84,12 @@ school/pm/zones-variants*.html
 # Mac служебное
 .DS_Store
 **/.DS_Store
+
+# PNG-исходники, заменённые на .webp (3-25× меньше)
+school/pm/online_1.png
+school/pm/online_3.png
+school/pm/online_4.png
+about/brand_studio.png
+
+# .mov-исходник, заменён на .mp4
+school/pm/video_0574.mov
