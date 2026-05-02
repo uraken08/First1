@@ -20,6 +20,6 @@
 ## Запуск
 
 ```bash
-python3 tools/seo/run_all.sh   # обновить все теги
+bash    tools/seo/run_all.sh   # обновить все теги
 bash tools/seo/smoke_test.sh   # проверить
 ```
