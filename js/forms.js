@@ -22,6 +22,8 @@ const TELEGRAM_CHAT_ID   = '-1003923624579';
     if (activeTags.length) {
       out.tags = Array.from(activeTags).map(t => t.textContent.trim()).join(', ');
     }
+    const consent = form.querySelector('.form-consent input[type="checkbox"]');
+    out.consent = !!(consent && consent.checked);
     return out;
   }
 
@@ -32,6 +34,14 @@ const TELEGRAM_CHAT_ID   = '-1003923624579';
     if (data.email) lines.push(`✉️ Email: ${data.email}`);
     if (data.tags)  lines.push(`🏷  Услуга: ${data.tags}`);
     lines.push('');
+    if (data.consent) {
+      const ts = new Date().toLocaleString('ru-RU', {
+        timeZone: 'Europe/Moscow',
+        day: '2-digit', month: '2-digit', year: 'numeric',
+        hour: '2-digit', minute: '2-digit',
+      });
+      lines.push(`✓ Согласие 152-ФЗ: дано ${ts} МСК`);
+    }
     lines.push(`📄 Страница: ${document.title}`);
     lines.push(`🔗 ${window.location.href}`);
     return lines.join('\n');

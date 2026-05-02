@@ -30,7 +30,7 @@ async function sendToTelegram(name, phone, source) {
   const referer = document.referrer ? `\nОткуда: ${document.referrer}` : '';
 
   const text =
-    `📩 Новая заявка ${tag}\n\nИмя: ${name}\nТелефон: ${phone}\n──────────────────\nСтраница: ${source}\nВремя: ${now} МСК${utmLine}${referer}`;
+    `📩 Новая заявка ${tag}\n\nИмя: ${name}\nТелефон: ${phone}\n──────────────────\nСтраница: ${source}\nВремя: ${now} МСК\nСогласие 152-ФЗ: ✓ дано${utmLine}${referer}`;
 
   const res = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
     method:  'POST',
@@ -251,12 +251,12 @@ function injectPopup() {
     .ap-consent input[type="checkbox"] {
       appearance: none;
       -webkit-appearance: none;
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       flex-shrink: 0;
-      margin-top: 2px;
-      border: 1px solid rgba(196,162,101,0.4);
-      border-radius: 3px;
+      margin-top: 1px;
+      border: 1px solid rgba(196,162,101,0.45);
+      border-radius: 0;
       background: transparent;
       cursor: pointer;
       position: relative;
@@ -270,11 +270,13 @@ function injectPopup() {
     .ap-consent input[type="checkbox"]:checked::after {
       content: '';
       position: absolute;
-      left: 4px; top: 0;
-      width: 5px; height: 10px;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 10px;
       border: solid #08080A;
       border-width: 0 2px 2px 0;
-      transform: rotate(45deg);
+      transform: translate(-50%, -60%) rotate(45deg);
     }
     .ap-consent a {
       color: #c4a265;
