@@ -234,9 +234,59 @@ function injectPopup() {
     #ap-tg-link  { background: #229ED9; }
     #ap-max-link { background: #005FF9; }
     #ap-vk-link  { background: #0077FF; }
+    .ap-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 6px 0 2px;
+      cursor: pointer;
+      user-select: none;
+      font-family: 'Raleway', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(242,237,231,0.55);
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+    }
+    .ap-consent input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      border: 1px solid rgba(196,162,101,0.4);
+      border-radius: 3px;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .ap-consent input[type="checkbox"]:hover { border-color: #c4a265; }
+    .ap-consent input[type="checkbox"]:checked {
+      background: #c4a265;
+      border-color: #c4a265;
+    }
+    .ap-consent input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      left: 4px; top: 0;
+      width: 5px; height: 10px;
+      border: solid #08080A;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    .ap-consent a {
+      color: #c4a265;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(196,162,101,0.35);
+      transition: border-color 0.2s;
+    }
+    .ap-consent a:hover { border-bottom-color: #c4a265; }
     @media (max-width: 480px) {
       #ap-booking-box { padding: 40px 24px 32px; border-radius: 20px; }
       #ap-popup-title { font-size: 26px; }
+      .ap-consent { font-size: 11.5px; }
     }
   `;
   document.head.appendChild(style);
@@ -272,6 +322,10 @@ function injectPopup() {
           autocomplete="tel"
           required
         />
+        <label class="ap-consent">
+          <input type="checkbox" id="ap-popup-consent" required>
+          <span>Согласен на <a href="/privacy/" target="_blank" rel="noopener">обработку персональных данных</a> в соответствии с&nbsp;152-ФЗ</span>
+        </label>
         <button id="ap-popup-btn" type="submit"></button>
         <p id="ap-popup-status"></p>
       </form>
@@ -299,17 +353,22 @@ function injectPopup() {
   document.getElementById('ap-popup-form').addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    const nameEl   = document.getElementById('ap-popup-name');
-    const phoneEl  = document.getElementById('ap-popup-phone');
-    const btn      = document.getElementById('ap-popup-btn');
-    const status   = document.getElementById('ap-popup-status');
-    const source   = overlay.dataset.source || 'сайт';
+    const nameEl    = document.getElementById('ap-popup-name');
+    const phoneEl   = document.getElementById('ap-popup-phone');
+    const consentEl = document.getElementById('ap-popup-consent');
+    const btn       = document.getElementById('ap-popup-btn');
+    const status    = document.getElementById('ap-popup-status');
+    const source    = overlay.dataset.source || 'сайт';
 
     const name  = nameEl.value.trim();
     const phone = phoneEl.value.trim();
 
     if (!name || !phone) {
       status.textContent = 'Пожалуйста, заполните все поля.';
+      return;
+    }
+    if (consentEl && !consentEl.checked) {
+      status.textContent = 'Нужно согласие на обработку персональных данных.';
       return;
     }
 
