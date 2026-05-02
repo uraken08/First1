@@ -1,14 +1,116 @@
 // ───── Конфиг Telegram-бота ─────
-// Чтобы заявки начали приходить, заполните 2 строки ниже:
-//   1. TELEGRAM_BOT_TOKEN — токен от @BotFather (вида '8123456789:AAEx...')
-//   2. TELEGRAM_CHAT_ID   — id чата (личного или группового), где будут приходить заявки
-// Подробная инструкция — в README или у разработчика.
 const TELEGRAM_BOT_TOKEN = '8009961717:AAG8WDDRp1g_Y6zoXYaO0WseU9mf33JCyqA';
 const TELEGRAM_CHAT_ID   = '-1003923624579';
 // ────────────────────────────────
 
 (function () {
-  // Получает значения полей формы по эвристике (имя, телефон, пр.)
+  // ── Источник трафика: UTM-метки, кликовые ID, referrer ──
+  function captureSource() {
+    const params = new URLSearchParams(location.search);
+    const utm = {
+      utm_source:   params.get('utm_source'),
+      utm_medium:   params.get('utm_medium'),
+      utm_campaign: params.get('utm_campaign'),
+      utm_content:  params.get('utm_content'),
+      utm_term:     params.get('utm_term'),
+      yclid:        params.get('yclid'),  // Яндекс.Директ
+      gclid:        params.get('gclid'),  // Google Ads
+      fbclid:       params.get('fbclid'),
+    };
+    const hasAny = Object.values(utm).some(v => v);
+    if (hasAny) {
+      try {
+        sessionStorage.setItem('ap_source', JSON.stringify({
+          ...utm,
+          first_referrer: document.referrer,
+          landing: location.href,
+          ts: Date.now(),
+        }));
+      } catch (e) {}
+    }
+  }
+
+  function getSource() {
+    let src = {};
+    try {
+      const raw = sessionStorage.getItem('ap_source');
+      if (raw) src = JSON.parse(raw);
+    } catch (e) {}
+    if (!src.first_referrer) src.first_referrer = document.referrer;
+    return src;
+  }
+
+  function sourceLabel(src) {
+    if (src.yclid)  return '🎯 Яндекс.Директ';
+    if (src.gclid)  return '🎯 Google Ads';
+    if (src.fbclid) return '🎯 Facebook Ads';
+    const u = (src.utm_source || '').toLowerCase();
+    if (u) {
+      if (u.includes('vk'))                 return '🔵 ВКонтакте (UTM)';
+      if (u.includes('insta'))              return '📷 Instagram (UTM)';
+      if (u.includes('yandex'))             return '🟡 Яндекс (UTM)';
+      if (u.includes('google'))             return '🔍 Google (UTM)';
+      if (u.includes('tg') || u.includes('telegram')) return '💬 Telegram (UTM)';
+      return `🏷 ${u} (UTM)`;
+    }
+    const r = (src.first_referrer || '').toLowerCase();
+    if (!r) return '📑 Прямой переход / закладки';
+    if (r.includes('vk.com') || r.includes('vk.ru'))     return '🔵 ВКонтакте';
+    if (r.includes('instagram.com'))                     return '📷 Instagram';
+    if (r.includes('yandex.'))                           return '🟡 Яндекс';
+    if (r.includes('google.'))                           return '🔍 Google';
+    if (r.includes('t.me') || r.includes('telegram'))    return '💬 Telegram';
+    if (r.includes('wa.me') || r.includes('whatsapp'))   return '🟢 WhatsApp';
+    if (r.includes('agentpermanent'))                    return '↪️ Внутренний переход';
+    try {
+      const host = new URL(src.first_referrer).hostname;
+      return `🌐 ${host}`;
+    } catch (e) { return '🌐 Внешний сайт'; }
+  }
+
+  // Хэш-теги по разделу сайта
+  function pageTags() {
+    const path = location.pathname.toLowerCase();
+    if (path.startsWith('/school/pm'))    return ['#академия', '#пм'];
+    if (path.startsWith('/school/brows')) return ['#академия', '#брови'];
+    if (path.startsWith('/school'))       return ['#академия'];
+    if (path.startsWith('/studio'))       return ['#студия'];
+    if (path.startsWith('/contacts'))     return ['#контакты'];
+    if (path.startsWith('/portfolio'))    return ['#портфолио'];
+    if (path.startsWith('/about'))        return ['#о_бренде'];
+    if (path === '/' || path === '/index.html' || path.startsWith('/index')) return ['#главная'];
+    return ['#сайт'];
+  }
+
+  // ── Телефон: +7 как префикс с возможностью стереть ──
+  function initPhoneFields() {
+    document.querySelectorAll('input[type="tel"]').forEach(inp => {
+      inp.removeAttribute('placeholder');
+      if (!inp.value) inp.value = '+7 ';
+
+      inp.addEventListener('focus', () => {
+        // Подставляем +7 только если поле НИ РАЗУ не редактировалось.
+        // Если пользователь стёр всё (включая +7) — оставляем пустым,
+        // чтобы он мог ввести другой код страны.
+        if (!inp.value && !inp.dataset.touched) inp.value = '+7 ';
+        setTimeout(() => {
+          const len = inp.value.length;
+          try { inp.setSelectionRange(len, len); } catch (e) {}
+        }, 0);
+      });
+
+      inp.addEventListener('input', () => { inp.dataset.touched = '1'; });
+
+      inp.addEventListener('blur', () => {
+        // Если поле осталось только с префиксом — очищаем, чтобы required ругался
+        if (inp.value === '+7 ' || inp.value === '+7' || inp.value.trim() === '+7') {
+          inp.value = '';
+        }
+      });
+    });
+  }
+
+  // ── Чтение полей формы ──
   function extractFormData(form) {
     const out = {};
     const nameEl  = form.querySelector('input[type="text"], input[name="name"]');
@@ -17,14 +119,12 @@ const TELEGRAM_CHAT_ID   = '-1003923624579';
     if (nameEl)  out.name  = nameEl.value.trim();
     if (phoneEl) out.phone = phoneEl.value.trim();
     if (emailEl) out.email = emailEl.value.trim();
-    // Тэги (например, на странице контактов: «Брови / Губы / Обучение»)
     const activeTags = form.querySelectorAll('.ct-tag.active, [data-tag-active]');
     if (activeTags.length) {
       out.tags = Array.from(activeTags).map(t => t.textContent.trim()).join(', ');
     }
     const consent = form.querySelector('.form-consent input[type="checkbox"]');
     out.consent = !!(consent && consent.checked);
-    // Из какого блока пришла заявка (заголовок ближайшей section)
     const sec = form.closest('section, [id]');
     if (sec) {
       const h = sec.querySelector('h1, h2, h3');
@@ -34,24 +134,35 @@ const TELEGRAM_CHAT_ID   = '-1003923624579';
     return out;
   }
 
+  // ── Шаблон сообщения в Telegram ──
   function buildTelegramMessage(data) {
-    const lines = ['🔔 Новая заявка с сайта', ''];
-    if (data.name)  lines.push(`👤 Имя: ${data.name}`);
-    if (data.phone) lines.push(`📞 Телефон: ${data.phone}`);
-    if (data.email) lines.push(`✉️ Email: ${data.email}`);
-    if (data.tags)  lines.push(`🏷  Услуга: ${data.tags}`);
-    if (data.block) lines.push(`📍 Блок: ${data.block}`);
+    const baseTags = pageTags();
+    const serviceTags = data.tags
+      ? data.tags.split(',').map(t => '#' + t.trim().toLowerCase().replace(/\s+/g, '_'))
+      : [];
+    const tagLine = [...baseTags, ...serviceTags].join(' ');
+
+    const ts = new Date().toLocaleString('ru-RU', {
+      timeZone: 'Europe/Moscow',
+      day: '2-digit', month: '2-digit', year: 'numeric',
+      hour: '2-digit', minute: '2-digit',
+    });
+    const src = getSource();
+
+    const lines = [];
+    lines.push(`📩 Новая заявка ${tagLine}`);
     lines.push('');
-    if (data.consent) {
-      const ts = new Date().toLocaleString('ru-RU', {
-        timeZone: 'Europe/Moscow',
-        day: '2-digit', month: '2-digit', year: 'numeric',
-        hour: '2-digit', minute: '2-digit',
-      });
-      lines.push(`✓ Согласие 152-ФЗ: дано ${ts} МСК`);
-    }
-    lines.push(`📄 Страница: ${document.title}`);
-    lines.push(`🔗 ${window.location.href}`);
+    lines.push(`Имя: ${data.name || '—'}`);
+    lines.push(`Телефон: ${data.phone || '—'}`);
+    if (data.email)   lines.push(`Email: ${data.email}`);
+    if (data.tags)    lines.push(`Услуга: ${data.tags}`);
+    lines.push('──────────────────');
+    lines.push(`Страница: ${document.title}`);
+    if (data.block)   lines.push(`Блок: ${data.block}`);
+    lines.push(`Время: ${ts} МСК`);
+    lines.push(`Согласие 152-ФЗ: ${data.consent ? '✓ дано' : '— не дано'}`);
+    lines.push(`Откуда: ${location.href}`);
+    lines.push(`Источник: ${sourceLabel(src)}`);
     return lines.join('\n');
   }
 
@@ -71,18 +182,27 @@ const TELEGRAM_CHAT_ID   = '-1003923624579';
     }
   }
 
-  // Универсальный обработчик. Подключается через onsubmit="handleSubmit(event)"
   window.handleSubmit = async function (e) {
     if (e && e.preventDefault) e.preventDefault();
     const form = e.target;
     const btn = form.querySelector('button[type="submit"]');
     const originalLabel = btn ? btn.textContent : '';
 
-    // Проверка чекбокса согласия (если есть)
     const consent = form.querySelector('.form-consent input[type="checkbox"]');
     if (consent && !consent.checked) {
       alert('Пожалуйста, подтвердите согласие на обработку персональных данных.');
       return;
+    }
+
+    // Минимальная валидация телефона: должно быть >= 10 цифр
+    const phoneEl = form.querySelector('input[type="tel"]');
+    if (phoneEl) {
+      const digits = (phoneEl.value || '').replace(/\D/g, '');
+      if (digits.length < 10) {
+        alert('Пожалуйста, введите корректный номер телефона.');
+        phoneEl.focus();
+        return;
+      }
     }
 
     if (btn) {
@@ -92,7 +212,6 @@ const TELEGRAM_CHAT_ID   = '-1003923624579';
 
     const data = extractFormData(form);
     const text = buildTelegramMessage(data);
-
     const ok = await sendToTelegram(text);
 
     if (ok) {
@@ -102,9 +221,10 @@ const TELEGRAM_CHAT_ID   = '-1003923624579';
         btn.style.color = 'var(--gold)';
       }
       form.reset();
+      // После reset вернуть префикс +7
+      form.querySelectorAll('input[type="tel"]').forEach(i => { i.value = '+7 '; });
     } else {
-      // Бот ещё не настроен или не отвечает — даём fallback
-      console.warn('[forms] Заявка не отправлена (бот не настроен или сеть). Данные:', data);
+      console.warn('[forms] Заявка не отправлена. Данные:', data);
       if (btn) {
         btn.disabled = false;
         btn.textContent = originalLabel;
@@ -112,4 +232,15 @@ const TELEGRAM_CHAT_ID   = '-1003923624579';
       alert('Спасибо за заявку! Сейчас системы записи временно недоступны — пожалуйста, напишите нам в Telegram или WhatsApp по номеру +7 (999) 820-04-21.');
     }
   };
+
+  // Инициализация
+  function init() {
+    captureSource();
+    initPhoneFields();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
