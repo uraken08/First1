@@ -2427,11 +2427,17 @@
           <div class="result-label">до первых платных клиентов после курса</div>
         </div>
         <div class="result-card">
-          <div class="result-num" data-count="120" data-suffix="k₽">0</div>
+          <div class="result-num-row">
+            <div class="result-num" data-count="120" data-suffix="k₽">0</div>
+            <a href="#income-disclaimer" class="pm-income-mark pm-income-mark--inline" aria-label="Сноска о доходе">*</a>
+          </div>
           <div class="result-label">средний доход мастера через 3 месяца</div>
         </div>
         <div class="result-card">
-          <div class="result-num" data-count="150" data-suffix="+">0</div>
+          <div class="result-num-row">
+            <div class="result-num" data-count="150" data-suffix="+">0</div>
+            <a href="#income-disclaimer" class="pm-income-mark pm-income-mark--inline" aria-label="Сноска о доходе">*</a>
+          </div>
           <div class="result-label">клиентов в базе у мастера в среднем через год</div>
         </div>
       </div>
@@ -2907,17 +2913,35 @@
 
     /* ── Звёздочка-ссылка + сноска про доход в конце страницы ── */
     .pm-income-mark {
-      font-size: 0.5em;
+      font-size: 0.7em;
       color: var(--gold);
       vertical-align: super;
       line-height: 0;
-      margin-left: 2px;
-      font-weight: 400;
+      margin-left: 4px;
+      font-weight: 700;
       text-decoration: none;
       cursor: pointer;
       transition: opacity 0.2s;
+      display: inline-block;
+      transform: translateY(-0.05em);
     }
     .pm-income-mark:hover { opacity: 0.7; }
+    /* Звёздочка inline-flex рядом с большим числом (result-num cards) */
+    .result-num-row {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 4px;
+      width: 100%;
+      justify-content: center;
+    }
+    .pm-income-mark--inline {
+      font-size: 0.55em;
+      vertical-align: top;
+      line-height: 1;
+      margin-left: 0;
+      align-self: flex-start;
+      transform: translateY(0.1em);
+    }
     .pm-disclaimer-section {
       background: var(--bg-deep);
       padding: 32px 0 40px;
