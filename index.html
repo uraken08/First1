@@ -587,10 +587,9 @@
   box-shadow: 0 4px 16px rgba(0,0,0,0.4);
   transition: transform 0.2s;
 }
-.float-btn:hover { transform: scale(1.1); }
-.float-btn--tg  { background: #229ED9; }
-.float-btn--max { background: #005FF9; }
-.float-btn--vk  { background: #0077FF; }
+.float-btn:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(196,162,101,0.55); }
+.float-btn { color: #08080A; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; }
+.float-btn--tg, .float-btn--max, .float-btn--vk { background: var(--gold); color: #08080A; }
 
 </style>
   <style>
@@ -2093,9 +2092,9 @@
     })();
   </script>
   <div class="float-messengers">
-    <a class="float-btn float-btn--tg" href="https://t.me/+79998200421" target="_blank" rel="noopener" aria-label="Написать в Telegram">✈</a>
-    <a class="float-btn float-btn--max" href="https://max.ru/agentpermanent" target="_blank" rel="noopener" aria-label="Написать в Макс">М</a>
-    <a class="float-btn float-btn--vk" href="https://vk.com/agentpermanent" target="_blank" rel="noopener" aria-label="Написать ВКонтакте">ВК</a>
+    <a class="float-btn float-btn--tg" href="https://t.me/+79998200421" target="_blank" rel="noopener" aria-label="Написать в Telegram">TG</a>
+    <a class="float-btn float-btn--max" href="https://max.ru/agentpermanent" target="_blank" rel="noopener" aria-label="Написать в Макс">Макс</a>
+    <a class="float-btn float-btn--vk" href="https://vk.com/agentpermanent" target="_blank" rel="noopener" aria-label="Написать ВКонтакте">VK</a>
   </div>
   <script src="js/forms.js"></script>
   <style id="mobile-overrides">

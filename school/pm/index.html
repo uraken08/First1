@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Libre+Caslon+Text:ital@1&family=Plus+Jakarta+Sans:wght@400;500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/style.css?v=2026-05-02">
+  <link rel="stylesheet" href="../../css/style.css?v=2026-05-02b">
   <style>
     :root {
       --font-display: 'Plus Jakarta Sans', sans-serif;
@@ -2755,6 +2755,62 @@
         text-transform: none !important;
         color: var(--text-primary) !important;
       }
+      /* Тарифные карточки на золотом фоне — текст чёрный */
+      .pm-price-card2 .pm-section-h { color: #08080A !important; }
+    }
+
+    /* ── Mobile hero: статы вернуть, число «120 000» nowrap,
+       подпись и звёздочку увеличить, фото пригасить ── */
+    @media (max-width: 900px) {
+      .pm-hero-sub-num {
+        white-space: nowrap !important;
+        font-size: clamp(3.6rem, 16vw, 6rem) !important;
+      }
+      .pm-hero-sub-caption {
+        font-size: clamp(1rem, 3.6vw, 1.25rem) !important;
+        font-weight: 500;
+      }
+      .pm-income-mark {
+        font-size: 0.7em !important;
+      }
+      /* Статы вернуть, переформатировать в 2x2 на мобиле */
+      .pm-hero-meta,
+      .pm-hero-meta-sep { display: grid !important; }
+      .pm-hero-meta {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 16px 24px !important;
+        padding-top: 22px !important;
+        margin-bottom: 32px !important;
+        width: 100% !important;
+      }
+      .pm-hero-meta-item {
+        padding-right: 0 !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+      }
+      .pm-hero-meta-item:not(:last-child) {
+        border-right: none !important;
+        margin-right: 0 !important;
+      }
+      .pm-hero-meta-num {
+        font-size: 1.7rem !important;
+      }
+      .pm-hero-meta-label {
+        font-size: 0.78rem !important;
+      }
+      .pm-hero-meta-sep {
+        height: 1px !important;
+        background: linear-gradient(to right, rgba(196,162,101,0.3), transparent) !important;
+      }
+      /* Фото в hero — приглушить чтобы текст читался */
+      .pm-hero::after {
+        background:
+          linear-gradient(180deg,
+            rgba(8,8,10,0.55) 0%,
+            rgba(8,8,10,0.50) 35%,
+            rgba(8,8,10,0.78) 75%,
+            rgba(8,8,10,0.95) 100%) !important;
+      }
     }
 
     /* ── Звёздочка-ссылка + сноска про доход в конце страницы ── */
@@ -3066,9 +3122,9 @@
 
   <script src="../../booking.js"></script>
   <div class="float-messengers">
-    <a class="float-btn float-btn--tg" href="https://t.me/+79998200421" target="_blank" rel="noopener" aria-label="Написать в Telegram">✈</a>
-    <a class="float-btn float-btn--max" href="https://max.ru/agentpermanent" target="_blank" rel="noopener" aria-label="Написать в Макс">М</a>
-    <a class="float-btn float-btn--vk" href="https://vk.com/agentpermanent" target="_blank" rel="noopener" aria-label="Написать ВКонтакте">ВК</a>
+    <a class="float-btn float-btn--tg" href="https://t.me/+79998200421" target="_blank" rel="noopener" aria-label="Написать в Telegram">TG</a>
+    <a class="float-btn float-btn--max" href="https://max.ru/agentpermanent" target="_blank" rel="noopener" aria-label="Написать в Макс">Макс</a>
+    <a class="float-btn float-btn--vk" href="https://vk.com/agentpermanent" target="_blank" rel="noopener" aria-label="Написать ВКонтакте">VK</a>
   </div>
   <script>
     // Hero particles
