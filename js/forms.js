@@ -82,6 +82,20 @@ const TELEGRAM_CHAT_ID   = '-1003923624579';
     return ['#сайт'];
   }
 
+  // Человекочитаемое имя страницы для строки "Страница: ..." в TG
+  function pageName() {
+    const path = location.pathname.toLowerCase();
+    if (path.startsWith('/school/pm'))    return 'Академия — Обучение ПМ';
+    if (path.startsWith('/school/brows')) return 'Академия — Брови';
+    if (path.startsWith('/school'))       return 'Академия';
+    if (path.startsWith('/studio'))       return 'Студия';
+    if (path.startsWith('/contacts'))     return 'Контакты';
+    if (path.startsWith('/portfolio'))    return 'Портфолио';
+    if (path.startsWith('/about'))        return 'О бренде';
+    if (path === '/' || path === '/index.html' || path.startsWith('/index')) return 'Главная';
+    return document.title;
+  }
+
   // ── Телефон: +7 как префикс с возможностью стереть ──
   function initPhoneFields() {
     document.querySelectorAll('input[type="tel"]').forEach(inp => {
@@ -157,7 +171,7 @@ const TELEGRAM_CHAT_ID   = '-1003923624579';
     if (data.email)   lines.push(`Email: ${data.email}`);
     if (data.tags)    lines.push(`Услуга: ${data.tags}`);
     lines.push('──────────────────');
-    lines.push(`Страница: ${document.title}`);
+    lines.push(`Страница: ${pageName()}`);
     if (data.block)   lines.push(`Блок: ${data.block}`);
     lines.push(`Время: ${ts} МСК`);
     lines.push(`Согласие 152-ФЗ: ${data.consent ? '✓ дано' : '— не дано'}`);
