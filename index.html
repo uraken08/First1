@@ -1806,281 +1806,6 @@
   </style>
 
 
-  <section class="split-paths-section" id="cta">
-    <div class="split-paths-inner">
-
-      <div class="ap-bottom-card fade-up">
-        <div class="ap-bottom-eyebrow">Связь с нами</div>
-        <h3 class="ap-bottom-title">Получить <em>консультацию</em></h3>
-        <form class="ap-bottom-form" onsubmit="handleSubmit(event)">
-          <input class="ap-bottom-field" type="text" placeholder="Ваше имя" required>
-          <input class="ap-bottom-field" type="tel" placeholder="+7 (___) ___-__-__" required>
-          <label class="form-consent">
-            <input type="checkbox" required>
-            <span>Согласен на&nbsp;<a href="privacy/" target="_blank" rel="noopener">обработку персональных данных</a> в&nbsp;соответствии с&nbsp;152-ФЗ</span>
-          </label>
-          <button type="submit" class="ap-bottom-submit">ПЕРЕЗВОНИТЕ МНЕ →</button>
-        </form>
-        <div class="ap-bottom-divider">или напишите сами</div>
-        <div class="ap-bottom-messengers">
-          <a class="ap-bottom-msg ap-bottom-msg--tg"  href="https://t.me/agentpermanent"  target="_blank" rel="noopener">Telegram</a>
-          <a class="ap-bottom-msg ap-bottom-msg--max" href="https://max.ru/agentpermanent" target="_blank" rel="noopener">Макс</a>
-          <a class="ap-bottom-msg ap-bottom-msg--vk"  href="https://vk.com/agentpermanent"  target="_blank" rel="noopener">VK</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <style>
-    /* Bottom CTA card — стиль идентичен popup'у курса ПМ */
-    .ap-bottom-card {
-      max-width: 460px;
-      margin: 0 auto;
-      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 40%, #1a1208 100%);
-      border: 1px solid rgba(196,162,101,0.2);
-      border-radius: 28px;
-      padding: 48px 40px 40px;
-      box-sizing: border-box;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(196,162,101,0.06);
-    }
-    .ap-bottom-eyebrow {
-      font-family: 'Raleway', sans-serif;
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .ap-bottom-eyebrow::before {
-      content: ''; width: 24px; height: 1px;
-      background: var(--gold);
-    }
-    .ap-bottom-title {
-      font-family: var(--font-head);
-      font-size: clamp(1.6rem, 2.4vw, 1.9rem);
-      font-weight: 400;
-      color: var(--text-primary);
-      line-height: 1.15;
-      margin: 0 0 28px;
-    }
-    .ap-bottom-title em {
-      font-family: var(--font-italic);
-      font-style: italic;
-      color: var(--gold);
-      font-weight: 400;
-    }
-    .ap-bottom-form {
-      display: flex; flex-direction: column; gap: 12px;
-    }
-    .ap-bottom-field {
-      width: 100%;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(196,162,101,0.18);
-      border-radius: 60px;
-      padding: 14px 20px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 14px;
-      color: var(--text-primary);
-      outline: none;
-      box-sizing: border-box;
-      transition: border-color 0.25s, background 0.25s;
-    }
-    .ap-bottom-field::placeholder { color: rgba(242,237,231,0.3); }
-    .ap-bottom-field:focus {
-      border-color: rgba(196,162,101,0.5);
-      background: rgba(196,162,101,0.05);
-    }
-    .ap-bottom-submit {
-      width: 100%;
-      margin-top: 4px;
-      padding: 16px 24px;
-      background: linear-gradient(135deg, var(--gold), #d4ba85);
-      border: none;
-      border-radius: 60px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 13px; font-weight: 700;
-      letter-spacing: 0.1em;
-      color: #08080A;
-      cursor: pointer;
-      box-shadow: 0 4px 24px rgba(196,162,101,0.28);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.2s;
-    }
-    .ap-bottom-submit:hover  { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(196,162,101,0.38); }
-    .ap-bottom-submit:active { transform: scale(0.98); }
-    .ap-bottom-divider {
-      display: flex; align-items: center; gap: 12px;
-      margin: 22px 0 16px;
-      font-size: 11px; letter-spacing: 0.12em;
-      color: rgba(242,237,231,0.3);
-      text-transform: uppercase;
-    }
-    .ap-bottom-divider::before,
-    .ap-bottom-divider::after {
-      content: ''; flex: 1; height: 1px;
-      background: rgba(196,162,101,0.15);
-    }
-    .ap-bottom-messengers {
-      display: flex; gap: 10px;
-    }
-    .ap-bottom-msg {
-      flex: 1;
-      display: flex; align-items: center; justify-content: center;
-      padding: 12px 8px;
-      border-radius: 60px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 12px; font-weight: 600;
-      letter-spacing: 0.06em;
-      color: #fff;
-      text-decoration: none;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-    .ap-bottom-msg:hover  { opacity: 0.85; transform: translateY(-1px); }
-    .ap-bottom-msg:active { transform: scale(0.97); }
-    .ap-bottom-msg--tg  { background: #229ED9; }
-    .ap-bottom-msg--max { background: #005FF9; }
-    .ap-bottom-msg--vk  { background: #0077FF; }
-    @media (max-width: 480px) {
-      .ap-bottom-card { padding: 40px 24px 32px; border-radius: 20px; }
-      .ap-bottom-title { font-size: 1.5rem; }
-    }
-    @media (max-width: 600px) {
-      .path-socials-buttons { flex-direction: column; }
-      .path-social { padding: 13px 16px; }
-    }
-    .split-paths-section {
-      background: var(--bg-warm);
-      padding: 100px 0;
-    }
-    .split-paths-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 48px;
-    }
-    .split-paths-grid {
-      display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0;
-      margin-bottom: 64px;
-    }
-    .split-paths-grid--solo {
-      grid-template-columns: 1fr;
-    }
-    .split-paths-grid--solo .path-tile {
-      padding: 40px 0;
-      justify-content: center; gap: 24px;
-    }
-    /* Mobile: скрыть «Услуги» и разделитель, остаётся только «Обучение» */
-    @media (max-width: 900px) {
-      .split-paths-grid {
-        grid-template-columns: 1fr !important;
-      }
-      .path-tile--studio,
-      .split-paths-grid > .path-tile-divider {
-        display: none !important;
-      }
-      .split-paths-grid .path-tile {
-        padding: 40px 0 !important;
-        justify-content: center;
-        gap: 24px;
-      }
-    }
-    .path-tile {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 40px 0; text-decoration: none;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      transition: padding-left 0.35s ease;
-    }
-    .path-tile:first-child { padding-right: 48px; }
-    .path-tile:last-child  { padding-left: 48px; }
-    .path-tile:hover { padding-left: 16px; }
-    .path-tile:first-child:hover { padding-left: 0; padding-right: 32px; }
-    .path-tile-label {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: 0.02em;
-      line-height: 1;
-      transition: color 0.3s;
-    }
-    .path-tile:hover .path-tile-label { color: var(--gold); }
-    .path-tile-arrow {
-      font-size: 1.5rem; color: var(--gold); opacity: 0;
-      transform: translateX(-8px); transition: opacity 0.3s, transform 0.3s;
-    }
-    .path-tile:hover .path-tile-arrow { opacity: 1; transform: translateX(0); }
-    .path-tile-divider {
-      background: var(--border); width: 1px;
-    }
-    .path-mosaic {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 64px;
-    }
-    .path-mosaic-tile {
-      position: relative;
-      overflow: hidden;
-      height: 240px;
-      background: linear-gradient(135deg, #1a1208, #2d1f0a 50%, #1a1208);
-      border: 1px solid rgba(196,162,101,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: border-color 0.4s, transform 0.4s;
-      text-decoration: none;
-    }
-    .path-mosaic-tile:hover {
-      border-color: rgba(196,162,101,0.25);
-    }
-    .path-mosaic-symbol {
-      font-size: 2.5rem;
-      color: var(--gold);
-      opacity: 0.1;
-      transition: opacity 0.4s;
-    }
-    .path-mosaic-tile:hover .path-mosaic-symbol { opacity: 0.2; }
-    .path-mosaic-label {
-      position: absolute;
-      bottom: 20px; left: 20px;
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.30em;
-      text-transform: uppercase;
-      color: var(--gold);
-      transition: color 0.3s;
-    }
-    .path-mosaic-tile:hover .path-mosaic-label { color: var(--gold-light); }
-    @media (max-width: 700px) {
-      .path-mosaic { grid-template-columns: 1fr; }
-      .path-mosaic-tile { height: 180px; }
-    }
-    .path-form-wrap {
-      display: flex; flex-direction: column; align-items: center; gap: 12px;
-    }
-    .path-form-hint {
-      font-size: 0.82rem; color: var(--text-muted); letter-spacing: 0.04em;
-    }
-    .path-form {
-      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
-      width: 100%; max-width: 580px;
-    }
-    .path-form input {
-      flex: 1; min-width: 160px;
-      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-      border-radius: 2px; padding: 14px 20px;
-      color: var(--text-primary); font-family: var(--font-body); font-size: 0.9rem;
-      outline: none; transition: border-color 0.3s;
-    }
-    .path-form input:focus { border-color: rgba(196,162,101,0.4); }
-    @media (max-width: 768px) {
-      .split-paths-grid { grid-template-columns: 1fr; }
-      .path-tile-divider { display: none; }
-      .path-tile:first-child { padding-right: 0; }
-      .path-tile:last-child  { padding-left: 0; }
-    }
-  </style>
-
   <!-- LIGHTBOX -->
   <div class="lb-overlay" id="lb" onclick="lbClose(event)">
     <button class="lb-close" onclick="lbHide()">✕</button>
@@ -2129,6 +1854,175 @@
       font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.15em;
     }
   </style>
+
+
+  <!-- CTA LEAD FORM -->
+  <section class="pm-cta-lead" id="cta">
+    <div class="pm-cta-glow"></div>
+    <div class="pm-cta-bg-text">AP</div>
+
+    <div class="pm-cta-top fade-up">
+      <div class="section-eyebrow" style="justify-content:center;margin-bottom:20px">Связь с нами</div>
+      <h2 class="pm-section-h">Записаться в студию</h2>
+      
+    </div>
+
+    <div class="pm-cta-body fade-up">
+      <div class="pm-cta-form-col">
+        <div class="pm-cta-col-label">Оставьте заявку</div>
+        <form class="pm-lead-form" onsubmit="handleSubmit(event)">
+          <input type="text" placeholder="Ваше имя" required>
+          <input type="tel" placeholder="+7 (___) ___-__-__" required>
+          <label class="form-consent">
+            <input type="checkbox" required>
+            <span>Согласен на <a href="privacy/" target="_blank" rel="noopener">обработку персональных данных</a></span>
+          </label>
+          <button type="submit" class="btn btn-gold">Отправить</button>
+        </form>
+      </div>
+      <div class="pm-cta-or"><span>или</span></div>
+      <div class="pm-cta-msg-col">
+        <div class="pm-cta-col-label">Напишите напрямую</div>
+        <div class="pm-msg-buttons">
+          <a href="https://t.me/+79998200421" class="pm-msg-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.04 15.32 8.7 19.27c.5 0 .72-.21 1-.46l2.4-2.32 4.97 3.64c.91.5 1.55.24 1.8-.84L21.99 4.3c.29-1.34-.48-1.86-1.36-1.54L2.43 9.93c-1.32.5-1.3 1.24-.23 1.57l4.74 1.48 11.01-6.94c.52-.34.99-.15.6.19z"/></svg>
+            Telegram
+          </a>
+          <a href="https://vk.com/agentpermanent" class="pm-msg-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.587-1.496c.598-.188 1.368 1.259 2.184 1.814.616.42 1.084.328 1.084.328l2.178-.03s1.14-.07.599-.964c-.044-.073-.314-.661-1.618-1.869-1.366-1.265-1.183-1.06.462-3.246.999-1.33 1.398-2.142 1.273-2.489-.12-.331-.857-.244-.857-.244l-2.45.015s-.182-.025-.317.056c-.131.079-.216.263-.216.263s-.387 1.028-.903 1.903c-1.089 1.85-1.524 1.948-1.702 1.834-.414-.265-.31-1.065-.31-1.634 0-1.776.27-2.517-.525-2.708-.264-.064-.459-.106-1.135-.113-.867-.009-1.602.003-2.017.207-.277.136-.491.439-.361.456.161.021.525.098.718.36.249.338.24 1.096.24 1.096s.143 2.09-.334 2.349c-.327.178-.775-.185-1.737-1.845-.492-.85-.864-1.79-.864-1.79s-.072-.176-.2-.271c-.155-.115-.372-.151-.372-.151l-2.328.015s-.33.009-.451.153c-.108.128-.009.393-.009.393s1.818 4.258 3.877 6.403c1.887 1.965 4.032 1.835 4.032 1.835h.971z"/></svg>
+            ВКонтакте
+          </a>
+          <a href="https://max.ru/agentpermanent" class="pm-msg-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7 17V7h2.4l2.6 4 2.6-4H17v10h-2.5v-6l-2.5 3.8L9.5 11v6H7z"/></svg>
+            MAX
+          </a>
+        </div>
+        <div class="pm-msg-time">Отвечаем ежедневно с 9:00 до 21:00</div>
+      </div>
+    </div>
+  </section>
+  <style>
+    .pm-cta-lead {
+      position: relative;
+      padding: 120px 80px;
+      background: #08080A;
+      border-top: 1px solid rgba(196,162,101,0.12);
+      overflow: hidden;
+    }
+    .pm-cta-lead::before {
+      content: '';
+      position: absolute; top: -1px; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(196,162,101,0.4), transparent);
+    }
+    .pm-cta-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(196,162,101,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .pm-cta-bg-text {
+      position: absolute;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 500;
+      font-size: 38vw; line-height: 0.85;
+      color: rgba(196,162,101,0.028);
+      letter-spacing: -0.05em;
+      white-space: nowrap;
+      pointer-events: none; user-select: none;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+    }
+    .pm-cta-top {
+      text-align: center; max-width: 640px; margin: 0 auto 72px;
+      position: relative; z-index: 2;
+    }
+    .pm-cta-top h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--text-primary); font-weight: 400; line-height: 1.1;
+      letter-spacing: 0.02em; margin-bottom: 16px;
+    }
+    .pm-cta-top h2 em { color: var(--gold); font-style: normal; }
+    .pm-cta-top p {
+      font-size: 1rem; color: var(--text-secondary);
+      line-height: 1.75; max-width: 520px; margin: 0 auto;
+    }
+    .pm-cta-body {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      gap: 0; max-width: 900px; margin: 0 auto;
+      align-items: start;
+      position: relative; z-index: 2;
+    }
+    .pm-cta-col-label {
+      font-size: 0.95rem; font-weight: 300; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(196,162,101,0.6);
+      margin-bottom: 24px;
+    }
+    .pm-cta-form-col { padding-right: 64px; }
+    .pm-lead-form { display: flex; flex-direction: column; gap: 10px; }
+    .pm-lead-form input {
+      width: 100%; padding: 15px 20px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(196,162,101,0.35);
+      border-radius: 2px; color: var(--text-primary);
+      font-family: var(--font-body); font-size: 0.92rem;
+      outline: none; transition: border-color 0.3s;
+      box-sizing: border-box;
+    }
+    .pm-lead-form input:focus { border-color: rgba(196,162,101,0.65); background: rgba(255,255,255,0.1); }
+    .pm-lead-form input::placeholder { color: rgba(196,162,101,0.55); }
+    .pm-lead-form .btn { width: 100%; justify-content: center; padding: 17px; font-size: 0.9rem; letter-spacing: 0.14em; margin-top: 4px; }
+    .pm-cta-or {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 12px; padding-top: 40px;
+    }
+    .pm-cta-or::before, .pm-cta-or::after {
+      content: ''; display: block; width: 1px; height: 60px;
+      background: linear-gradient(to bottom, transparent, rgba(196,162,101,0.2));
+    }
+    .pm-cta-or::after { background: linear-gradient(to top, transparent, rgba(196,162,101,0.2)); }
+    .pm-cta-or span {
+      font-size: 0.95rem; font-weight: 300; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(196,162,101,0.4);
+    }
+    .pm-cta-msg-col { padding-left: 64px; }
+    .pm-cta-msg-col p {
+      font-size: 0.85rem; color: var(--text-secondary);
+      line-height: 1.65; margin-bottom: 28px;
+    }
+    .pm-msg-buttons { display: flex; flex-direction: column; gap: 10px; }
+    .pm-msg-btn {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 20px;
+      border: 1px solid rgba(196,162,101,0.4);
+      border-radius: 2px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-family: var(--font-body); font-size: 0.88rem;
+      letter-spacing: 0.04em;
+      transition: all 0.25s;
+      background: rgba(255,255,255,0.06);
+    }
+    .pm-msg-btn:hover {
+      border-color: rgba(196,162,101,0.7);
+      background: rgba(196,162,101,0.1);
+      color: var(--gold);
+    }
+    .pm-msg-btn svg { width: 22px; height: 22px; flex-shrink: 0; color: var(--gold); }
+    .pm-msg-time {
+      margin-top: 20px;
+      font-size: 0.72rem; color: var(--text-muted);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .pm-msg-time::before { content:''; display:block; width:6px; height:6px; border-radius:50%; background:#4CAF50; flex-shrink:0; }
+    @media (max-width: 860px) {
+      .pm-cta-lead { padding: 80px 24px; }
+      .pm-cta-body { grid-template-columns: 1fr; gap: 48px; }
+      .pm-cta-or { flex-direction: row; padding-top: 0; }
+      .pm-cta-or::before, .pm-cta-or::after { width: 60px; height: 1px;
+        background: linear-gradient(to right, transparent, rgba(196,162,101,0.2));
+      }
+      .pm-cta-form-col { padding-right: 0; }
+      .pm-cta-msg-col { padding-left: 0; }
+    }
+</style>
 
   <footer class="footer">
     <div class="footer-inner">
