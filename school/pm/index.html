@@ -1298,7 +1298,7 @@
             <span class="pm-kit-gift" style="margin-top:14px;display:inline-block">В ПОДАРОК!</span>
           </div>
           <div class="pm-card-media-slot pm-video-thumb" onclick="pmOpenVideo('video_0574.mov')">
-            <video muted loop playsinline preload="metadata" style="pointer-events:none">
+            <video muted loop autoplay playsinline preload="metadata" style="pointer-events:none">
               <source src="video_0574.mov" type="video/mp4">
             </video>
             <div class="pm-video-label">Смотри видео!</div>
@@ -2913,34 +2913,70 @@
 
     /* ── Звёздочка-ссылка + сноска про доход в конце страницы ── */
     .pm-income-mark {
-      font-size: 2.8em;
+      font-size: 4em;
       color: var(--gold);
       vertical-align: super;
       line-height: 0;
-      margin-left: 6px;
+      margin-left: 8px;
       font-weight: 700;
       text-decoration: none;
       cursor: pointer;
       transition: opacity 0.2s;
       display: inline-block;
-      transform: translateY(0.1em);
+      transform: translateY(0.15em);
     }
     .pm-income-mark:hover { opacity: 0.75; }
-    /* Звёздочка inline-flex рядом с большим числом (result-num cards) */
     .result-num-row {
       display: inline-flex;
       align-items: flex-start;
-      gap: 6px;
+      gap: 8px;
       width: 100%;
       justify-content: center;
     }
     .pm-income-mark--inline {
-      font-size: 2.2em;
+      font-size: 3.2em;
       vertical-align: top;
-      line-height: 0.6;
+      line-height: 0.5;
       margin-left: 0;
       align-self: flex-start;
       transform: translateY(0);
+    }
+
+    /* ── Доп. mobile-фиксы по списку Игоря ── */
+    @media (max-width: 900px) {
+      /* (2) подпись под цифрами белее */
+      .result-label { color: rgba(242,237,231,0.95) !important; }
+      /* (4) заголовки карточек "Что входит" — вернуть исходный размер (мой
+            унифицированный clamp 2rem-2.6rem делал их слишком большими) */
+      .pm-included .pm-item-card h4 {
+        font-size: clamp(1.05rem, 4vw, 1.3rem) !important;
+        line-height: 1.25 !important;
+      }
+      /* (5) кнопка "Записаться на курс" внутри pm-included — отступ снизу
+            чтобы не наезжала на "Итог после обучения" */
+      .pm-included .pm-sticky-content > .btn-gold,
+      .pm-included .pm-included-wrap > .btn-gold {
+        margin: 32px 0 56px !important;
+      }
+      .pm-included { padding-bottom: 24px !important; }
+      /* (6) символ ₽ в pm-price-num — той же высоты что цифры */
+      .pm-price-card2 .pm-price-num sup {
+        font-size: 0.7em !important;
+        vertical-align: baseline !important;
+      }
+      /* (7) длинные пункты программы — переносим, не уезжаем за экран */
+      .pm-mod-list li,
+      .pm-mod-content,
+      .pm-program li,
+      .pm-program p {
+        overflow-wrap: anywhere !important;
+        word-break: break-word !important;
+      }
+      .pm-mod-content { max-width: 100% !important; padding-right: 0 !important; }
+    }
+    @media (max-width: 600px) {
+      .pm-income-mark { font-size: 3em; margin-left: 4px; }
+      .pm-income-mark--inline { font-size: 2.4em; }
     }
     .pm-disclaimer-section {
       background: var(--bg-deep);

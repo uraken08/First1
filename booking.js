@@ -231,9 +231,14 @@ function injectPopup() {
     }
     .ap-messenger-links a:hover  { opacity: 0.85; transform: translateY(-1px); }
     .ap-messenger-links a:active { transform: scale(0.97); }
-    #ap-tg-link  { background: #229ED9; }
-    #ap-max-link { background: #005FF9; }
-    #ap-vk-link  { background: #0077FF; }
+    .ap-messenger-links a {
+      background: linear-gradient(135deg, #c4a265, #d4ba85) !important;
+      color: #08080A !important;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      box-shadow: 0 4px 16px rgba(196,162,101,0.22);
+    }
+    .ap-messenger-links a:hover { box-shadow: 0 6px 22px rgba(196,162,101,0.35); }
     .ap-consent {
       display: flex;
       align-items: flex-start;
