@@ -1809,37 +1809,23 @@
   <section class="split-paths-section" id="cta">
     <div class="split-paths-inner">
 
-      <div class="split-paths-grid fade-up">
-        <a href="studio/" class="path-tile path-tile--studio">
-          <div class="path-tile-label">Услуги</div>
-          <div class="path-tile-arrow">→</div>
-        </a>
-        <div class="path-tile-divider"></div>
-        <a href="school/" class="path-tile">
-          <div class="path-tile-label">Обучение</div>
-          <div class="path-tile-arrow">→</div>
-        </a>
-      </div>
-
-      <div class="path-form-wrap fade-up" style="transition-delay:0.15s">
-        <p class="path-form-hint">Не знаете с чего начать — напишите, подскажем</p>
-        <form class="path-form" onsubmit="handleSubmit(event)">
-          <input type="text" placeholder="Ваше имя" required>
-          <input type="tel" placeholder="+7 (___) ___-__-__" required>
+      <div class="ap-bottom-card fade-up">
+        <div class="ap-bottom-eyebrow">Связь с нами</div>
+        <h3 class="ap-bottom-title">Получить <em>консультацию</em></h3>
+        <form class="ap-bottom-form" onsubmit="handleSubmit(event)">
+          <input class="ap-bottom-field" type="text" placeholder="Ваше имя" required>
+          <input class="ap-bottom-field" type="tel" placeholder="+7 (___) ___-__-__" required>
           <label class="form-consent">
             <input type="checkbox" required>
-            <span>Согласен на <a href="privacy/" target="_blank" rel="noopener">обработку персональных данных</a></span>
+            <span>Согласен на&nbsp;<a href="privacy/" target="_blank" rel="noopener">обработку персональных данных</a> в&nbsp;соответствии с&nbsp;152-ФЗ</span>
           </label>
-          <button type="submit" class="btn btn-gold">Написать Арине</button>
+          <button type="submit" class="ap-bottom-submit">ПЕРЕЗВОНИТЕ МНЕ →</button>
         </form>
-      </div>
-
-      <div class="path-socials fade-up" style="transition-delay:0.25s">
-        <div class="path-socials-divider"><span>или напишите сами</span></div>
-        <div class="path-socials-buttons">
-          <a class="path-social path-social--tg" href="https://t.me/agentpermanent" target="_blank" rel="noopener">Telegram</a>
-          <a class="path-social path-social--max" href="https://max.ru/agentpermanent" target="_blank" rel="noopener">Макс</a>
-          <a class="path-social path-social--vk" href="https://vk.com/agentpermanent" target="_blank" rel="noopener">VK</a>
+        <div class="ap-bottom-divider">или напишите сами</div>
+        <div class="ap-bottom-messengers">
+          <a class="ap-bottom-msg ap-bottom-msg--tg"  href="https://t.me/agentpermanent"  target="_blank" rel="noopener">Telegram</a>
+          <a class="ap-bottom-msg ap-bottom-msg--max" href="https://max.ru/agentpermanent" target="_blank" rel="noopener">Макс</a>
+          <a class="ap-bottom-msg ap-bottom-msg--vk"  href="https://vk.com/agentpermanent"  target="_blank" rel="noopener">VK</a>
         </div>
       </div>
 
@@ -1847,41 +1833,117 @@
   </section>
 
   <style>
-    .path-socials {
-      max-width: 580px;
-      margin: 36px auto 0;
+    /* Bottom CTA card — стиль идентичен popup'у курса ПМ */
+    .ap-bottom-card {
+      max-width: 460px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 40%, #1a1208 100%);
+      border: 1px solid rgba(196,162,101,0.2);
+      border-radius: 28px;
+      padding: 48px 40px 40px;
+      box-sizing: border-box;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(196,162,101,0.06);
     }
-    .path-socials-divider {
-      display: flex; align-items: center; gap: 14px;
-      margin-bottom: 20px;
-      font-size: 0.7rem; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--text-muted);
+    .ap-bottom-eyebrow {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 10px;
     }
-    .path-socials-divider::before,
-    .path-socials-divider::after {
+    .ap-bottom-eyebrow::before {
+      content: ''; width: 24px; height: 1px;
+      background: var(--gold);
+    }
+    .ap-bottom-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 2.4vw, 1.9rem);
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.15;
+      margin: 0 0 28px;
+    }
+    .ap-bottom-title em {
+      font-family: var(--font-italic);
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 400;
+    }
+    .ap-bottom-form {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .ap-bottom-field {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(196,162,101,0.18);
+      border-radius: 60px;
+      padding: 14px 20px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+      color: var(--text-primary);
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .ap-bottom-field::placeholder { color: rgba(242,237,231,0.3); }
+    .ap-bottom-field:focus {
+      border-color: rgba(196,162,101,0.5);
+      background: rgba(196,162,101,0.05);
+    }
+    .ap-bottom-submit {
+      width: 100%;
+      margin-top: 4px;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, var(--gold), #d4ba85);
+      border: none;
+      border-radius: 60px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #08080A;
+      cursor: pointer;
+      box-shadow: 0 4px 24px rgba(196,162,101,0.28);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.2s;
+    }
+    .ap-bottom-submit:hover  { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(196,162,101,0.38); }
+    .ap-bottom-submit:active { transform: scale(0.98); }
+    .ap-bottom-divider {
+      display: flex; align-items: center; gap: 12px;
+      margin: 22px 0 16px;
+      font-size: 11px; letter-spacing: 0.12em;
+      color: rgba(242,237,231,0.3);
+      text-transform: uppercase;
+    }
+    .ap-bottom-divider::before,
+    .ap-bottom-divider::after {
       content: ''; flex: 1; height: 1px;
-      background: rgba(196,162,101,0.18);
+      background: rgba(196,162,101,0.15);
     }
-    .path-socials-buttons {
-      display: flex; gap: 12px;
+    .ap-bottom-messengers {
+      display: flex; gap: 10px;
     }
-    .path-social {
+    .ap-bottom-msg {
       flex: 1;
-      padding: 14px 12px;
-      border-radius: 50px;
-      text-align: center;
-      font-family: var(--font-body);
-      font-size: 0.82rem; font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      padding: 12px 8px;
+      border-radius: 60px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 12px; font-weight: 600;
       letter-spacing: 0.06em;
-      text-decoration: none;
       color: #fff;
+      text-decoration: none;
       transition: opacity 0.2s, transform 0.2s;
     }
-    .path-social:hover { opacity: 0.85; transform: translateY(-2px); }
-    .path-social--tg  { background: #229ED9; }
-    .path-social--max { background: #005FF9; }
-    .path-social--vk  { background: #0077FF; }
+    .ap-bottom-msg:hover  { opacity: 0.85; transform: translateY(-1px); }
+    .ap-bottom-msg:active { transform: scale(0.97); }
+    .ap-bottom-msg--tg  { background: #229ED9; }
+    .ap-bottom-msg--max { background: #005FF9; }
+    .ap-bottom-msg--vk  { background: #0077FF; }
+    @media (max-width: 480px) {
+      .ap-bottom-card { padding: 40px 24px 32px; border-radius: 20px; }
+      .ap-bottom-title { font-size: 1.5rem; }
+    }
     @media (max-width: 600px) {
       .path-socials-buttons { flex-direction: column; }
       .path-social { padding: 13px 16px; }
@@ -2297,22 +2359,26 @@
   <script>
     /* Stats counter — анимация при попадании ribbon в viewport */
     (function () {
-      function format(n) { return n.toLocaleString('ru-RU'); }
+      function format(n, plain) {
+        return plain ? String(n) : n.toLocaleString('ru-RU');
+      }
       function animateCount(el) {
         if (el.dataset.animated) return;
         el.dataset.animated = '1';
         const target = parseInt(el.dataset.count, 10);
         const from   = parseInt(el.dataset.from, 10) || 0;
         const suffix = el.dataset.suffix || '';
-        const duration = 1500;
+        // years (data-from is set) — без разделителя тысяч
+        const plain  = el.hasAttribute('data-from');
+        const duration = 2000;
         const start = performance.now();
         function tick(now) {
           const t = Math.min(1, (now - start) / duration);
           const eased = 1 - Math.pow(1 - t, 3);
           const val = Math.round(from + (target - from) * eased);
-          el.textContent = format(val) + suffix;
+          el.textContent = format(val, plain) + suffix;
           if (t < 1) requestAnimationFrame(tick);
-          else el.textContent = format(target) + suffix;
+          else el.textContent = format(target, plain) + suffix;
         }
         requestAnimationFrame(tick);
       }
