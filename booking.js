@@ -53,7 +53,7 @@ const POPUP_CONFIG = {
   'академия-пм': {
     eyebrow: 'Академия Agent Permanent',
     title:   'Курс мастера ПМ',
-    btn:     'УЗНАТЬ ДАТУ И СТОИМОСТЬ →',
+    btn:     'БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ →',
     tg:  'https://t.me/agentpermanent',
     max: 'https://max.ru/agentpermanent',
     vk:  'https://vk.com/agentpermanent',
