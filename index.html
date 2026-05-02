@@ -867,39 +867,8 @@
   </div>
   </div><!-- /100vh wrapper -->
 
-  <!-- SPLIT SCREEN — full-width блок про Академию (студия временно скрыта) -->
-  <section class="split-screen-section split-screen-solo">
-    <div class="split-wrap">
-      <a href="school/" class="split-side split-school">
-        <div class="split-photo"><img src="about/studio/img_1454.jpg" alt="Академия Agent Permanent"></div>
-        <div class="split-overlay split-overlay--school"></div>
-        <div class="split-inner">
-          <div class="split-kicker">Для учеников</div>
-          <h3 class="split-heading">Академия</h3>
-          <p class="split-tagline">Обучение и быстрый старт в новой профессии</p>
-          <ul class="split-list">
-            <li>Мастер перманентного макияжа</li>
-            <li>Бровист и ламимейкер</li>
-          </ul>
-        </div>
-        <div class="split-foot">
-          <span class="split-price" style="color:var(--gold);">250+ успешных выпускниц</span>
-          <span class="split-arrow">Программы →</span>
-        </div>
-      </a>
-    </div>
-  </section>
-  <style>
-    .split-screen-solo .split-wrap { min-height: 64vh; }
-    .split-screen-solo .split-side { flex: 1; padding: 64px 52px; }
-    @media (max-width: 768px) {
-      .split-screen-solo .split-wrap { min-height: 70vh; }
-      .split-screen-solo .split-side { padding: 48px 24px; }
-    }
-  </style>
-
-  <!-- ORIGINAL SPLIT SCREEN (студия + академия) — спрятано до запуска студии
-  <section class="split-screen-section">
+  <!-- SPLIT SCREEN — desktop: студия + академия; mobile: только академия -->
+  <section class="split-screen-section split-screen-full">
     <div class="split-wrap">
       <a href="studio/" class="split-side split-studio">
         <div class="split-photo"><img src="about/studio/img_1465.jpg" alt="Студия Agent Permanent"></div>
@@ -923,10 +892,59 @@
       <div class="split-divider-line">
         <div class="split-center-badge"><span>AP</span></div>
       </div>
-      <a href="school/" class="split-side split-school">...</a>
+      <a href="school/" class="split-side split-school">
+        <div class="split-photo"><img src="about/studio/img_1454.jpg" alt="Академия Agent Permanent"></div>
+        <div class="split-overlay split-overlay--school"></div>
+        <div class="split-inner">
+          <div class="split-kicker">Для учеников</div>
+          <h3 class="split-heading">Академия</h3>
+          <p class="split-tagline">Обучение и быстрый старт в новой профессии</p>
+          <ul class="split-list">
+            <li>Мастер перманентного макияжа</li>
+            <li>Бровист и ламимейкер</li>
+          </ul>
+        </div>
+        <div class="split-foot">
+          <span class="split-price" style="color:var(--gold);">250+ успешных выпускниц</span>
+          <span class="split-arrow">Программы →</span>
+        </div>
+      </a>
     </div>
   </section>
-  -->
+
+  <!-- Mobile-only: одиночный блок про Академию -->
+  <section class="split-screen-section split-screen-solo">
+    <div class="split-wrap">
+      <a href="school/" class="split-side split-school">
+        <div class="split-photo"><img src="about/studio/img_1454.jpg" alt="Академия Agent Permanent"></div>
+        <div class="split-overlay split-overlay--school"></div>
+        <div class="split-inner">
+          <div class="split-kicker">Для учеников</div>
+          <h3 class="split-heading">Академия</h3>
+          <p class="split-tagline">Обучение и быстрый старт в новой профессии</p>
+          <ul class="split-list">
+            <li>Мастер перманентного макияжа</li>
+            <li>Бровист и ламимейкер</li>
+          </ul>
+        </div>
+        <div class="split-foot">
+          <span class="split-price" style="color:var(--gold);">250+ успешных выпускниц</span>
+          <span class="split-arrow">Программы →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+  <style>
+    .split-screen-solo { display: none; }
+    .split-screen-solo .split-wrap { min-height: 64vh; }
+    .split-screen-solo .split-side { flex: 1; padding: 64px 52px; }
+    @media (max-width: 900px) {
+      .split-screen-full { display: none; }
+      .split-screen-solo { display: block; }
+      .split-screen-solo .split-wrap { min-height: 70vh; }
+      .split-screen-solo .split-side { padding: 48px 24px; }
+    }
+  </style>
 
 
   <style>
@@ -1702,7 +1720,12 @@
   <section class="split-paths-section" id="cta">
     <div class="split-paths-inner">
 
-      <div class="split-paths-grid split-paths-grid--solo fade-up">
+      <div class="split-paths-grid fade-up">
+        <a href="studio/" class="path-tile path-tile--studio">
+          <div class="path-tile-label">Услуги</div>
+          <div class="path-tile-arrow">→</div>
+        </a>
+        <div class="path-tile-divider"></div>
         <a href="school/" class="path-tile">
           <div class="path-tile-label">Обучение</div>
           <div class="path-tile-arrow">→</div>
@@ -1743,6 +1766,21 @@
     .split-paths-grid--solo .path-tile {
       padding: 40px 0;
       justify-content: center; gap: 24px;
+    }
+    /* Mobile: скрыть «Услуги» и разделитель, остаётся только «Обучение» */
+    @media (max-width: 900px) {
+      .split-paths-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .path-tile--studio,
+      .split-paths-grid > .path-tile-divider {
+        display: none !important;
+      }
+      .split-paths-grid .path-tile {
+        padding: 40px 0 !important;
+        justify-content: center;
+        gap: 24px;
+      }
     }
     .path-tile {
       display: flex; align-items: center; justify-content: space-between;
