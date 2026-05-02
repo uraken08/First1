@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Бровист и Ламимейкер — Agent Permanent</title>
+  <meta name="description" content="Курс «Бровист и Ламимейкер» в разработке. Скоро здесь появится программа курса по бровям и ламинированию ресниц.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/png" href="../../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Libre+Caslon+Text:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css?v=2026-05-02c">
+  <style>
+    .soon-page {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 140px 24px 80px;
+      position: relative;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,162,101,0.06) 0%, transparent 60%), var(--bg-warm);
+    }
+    .soon-inner {
+      max-width: 640px; margin: 0 auto;
+      text-align: center;
+      position: relative; z-index: 2;
+    }
+    .soon-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.30em; text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex; align-items: center; gap: 14px;
+      margin-bottom: 28px;
+    }
+    .soon-eyebrow::before,
+    .soon-eyebrow::after {
+      content: ''; display: block; width: 32px; height: 1px;
+      background: var(--gold); opacity: 0.5;
+    }
+    .soon-page h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.15;
+      letter-spacing: 0.03em;
+      margin-bottom: 20px;
+    }
+    .soon-page h1 em {
+      font-family: var(--font-italic);
+      font-style: italic;
+      color: var(--gold);
+      letter-spacing: 0.005em;
+      font-weight: 400;
+    }
+    .soon-page p {
+      font-family: var(--font-body);
+      font-size: 1rem; font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.75; letter-spacing: 0.04em;
+      max-width: 480px; margin: 0 auto 40px;
+    }
+    .soon-actions {
+      display: flex; gap: 16px;
+      justify-content: center; flex-wrap: wrap;
+    }
+    .soon-actions .btn {
+      padding: 14px 32px;
+      border-radius: 60px;
+      font-family: var(--font-body);
+      font-size: 0.85rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .soon-actions .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #08080a; border: 1px solid var(--gold);
+    }
+    .soon-actions .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196,162,101,0.3);
+    }
+    .soon-actions .btn-ghost {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(196,162,101,0.4);
+    }
+    .soon-actions .btn-ghost:hover {
+      border-color: var(--gold);
+      background: rgba(196,162,101,0.06);
+    }
+    @media (max-width: 600px) {
+      .soon-page { padding: 120px 20px 64px; }
+      .soon-actions .btn { padding: 13px 26px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <a href="../../" class="nav-logo">
+      <div class="nav-logo-stack">
+        <span class="nav-logo-main">AGENT</span>
+        <span class="nav-logo-mid">PERMANENT</span>
+      </div>
+      <span class="nav-logo-divider"></span>
+      <span class="nav-logo-sub">by Arina Sharapova</span>
+    </a>
+    <div class="nav-links">
+      <a href="../../" class="nav-links-a">Agent Permanent</a>
+      <a href="../../studio/" class="nav-links-a">Студия</a>
+      <a href="../../school/" class="nav-links-a active">Академия</a>
+      <a href="../../portfolio/" class="nav-links-a">Портфолио</a>
+      <a href="../../contacts/" class="nav-links-a">Контакты</a>
+      <a href="../../contacts/" class="nav-links-a nav-cta">Записаться</a>
+    </div>
+    <button class="nav-burger" onclick="toggleMenu()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="../../" class="nav-links-a">Agent Permanent</a>
+      <a href="../../studio/" class="nav-links-a">Студия</a>
+      <a href="../../school/" class="nav-links-a active">Академия</a>
+      <a href="../../portfolio/" class="nav-links-a">Портфолио</a>
+      <a href="../../contacts/" class="nav-links-a">Контакты</a>
+      <a href="../../contacts/" class="nav-cta">Записаться</a>
+    </div>
+  </nav>
+
+  <main class="soon-page">
+    <div class="soon-inner">
+      <div class="soon-eyebrow">Курс</div>
+      <h1>Страница <em>в разработке</em></h1>
+      <p>Здесь скоро появится подробное описание курса «Бровист и Ламимейкер» — архитектура и моделирование бровей, окрашивание, ламинирование, плюс ламинирование ресниц.</p>
+      <p>А пока — узнать о курсах и оставить заявку можно на странице Академии.</p>
+      <div class="soon-actions">
+        <a href="../../contacts/" class="btn btn-gold">Оставить заявку</a>
+        <a href="../../school/" class="btn btn-ghost">К Академии</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand" style="display:flex;align-items:center;gap:14px;line-height:1">
+        <div style="display:flex;flex-direction:column;gap:0">
+          <span style="font-family:var(--font-display);font-size:1.45rem;font-weight:700;color:var(--gold);letter-spacing:0.06em;text-transform:uppercase">AGENT</span>
+          <span style="font-family:var(--font-body);font-size:0.62rem;font-weight:600;color:var(--text-secondary);letter-spacing:0.35em;text-transform:uppercase;margin-top:1px">PERMANENT</span>
+        </div>
+        <span style="width:1px;height:32px;background:rgba(196,162,101,0.25)"></span>
+        <span style="font-family:var(--font-body);font-size:0.58rem;font-weight:400;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap">by Arina Sharapova</span>
+      </div>
+      <div class="footer-links">
+        <a href="../../">Agent Permanent</a>
+        <a href="../../studio/">Студия</a>
+        <a href="../../school/">Академия</a>
+        <a href="../../portfolio/">Портфолио</a>
+        <a href="../../contacts/">Контакты</a>
+        <a href="../../privacy/">Политика конфиденциальности</a>
+      </div>
+      <div class="footer-copy">© 2026 Agent Permanent by Arina Sharapova. Москва.</div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+</body>
+</html>

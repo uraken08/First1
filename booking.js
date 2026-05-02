@@ -7,7 +7,7 @@ const TG_TOKEN   = '8009961717:AAG8WDDRp1g_Y6zoXYaO0WseU9mf33JCyqA';
 const TG_CHAT_ID = '-1003923624579';
 
 /* ── Telegram ─────────────────────────────────────────────── */
-async function sendToTelegram(name, phone, source) {
+async function sendToTelegram(name, phone, source, block) {
   const tag = {
     'студия':         '#студия',
     'академия-пм':    '#академия #пм',
@@ -29,8 +29,9 @@ async function sendToTelegram(name, phone, source) {
 
   const referer = document.referrer ? `\nОткуда: ${document.referrer}` : '';
 
+  const blockLine = block ? `\nБлок: ${block}` : '';
   const text =
-    `📩 Новая заявка ${tag}\n\nИмя: ${name}\nТелефон: ${phone}\n──────────────────\nСтраница: ${source}\nВремя: ${now} МСК\nСогласие 152-ФЗ: ✓ дано${utmLine}${referer}`;
+    `📩 Новая заявка ${tag}\n\nИмя: ${name}\nТелефон: ${phone}\n──────────────────\nСтраница: ${source}${blockLine}\nВремя: ${now} МСК\nСогласие 152-ФЗ: ✓ дано${utmLine}${referer}`;
 
   const res = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
     method:  'POST',
@@ -366,6 +367,7 @@ function injectPopup() {
     const btn       = document.getElementById('ap-popup-btn');
     const status    = document.getElementById('ap-popup-status');
     const source    = overlay.dataset.source || 'сайт';
+    const block     = overlay.dataset.block || '';
 
     const name  = nameEl.value.trim();
     const phone = phoneEl.value.trim();
@@ -383,7 +385,7 @@ function injectPopup() {
     status.textContent = 'Отправляем...';
 
     try {
-      await sendToTelegram(name, phone, source);
+      await sendToTelegram(name, phone, source, block);
       status.textContent = 'Заявка отправлена ✓';
       nameEl.value  = '';
       phoneEl.value = '';
@@ -424,6 +426,24 @@ function _apEscHandler(e) {
   if (e.key === 'Escape') closeBookingPopup();
 }
 
+/* ── Last-clicked tracker (для авто-определения блока заявки) ── */
+let _apLastClicked = null;
+document.addEventListener('click', function (e) {
+  _apLastClicked = e.target;
+}, true);
+
+function _apDetectBlock(trigger) {
+  if (!trigger) return '';
+  const el = trigger.closest ? trigger.closest('section, [id]') : null;
+  if (!el) return '';
+  // Сначала ищем заголовок секции
+  const h = el.querySelector('h1, h2, h3');
+  if (h && h.textContent.trim()) return h.textContent.trim();
+  // Иначе — id
+  if (el.id) return el.id;
+  return '';
+}
+
 /* ── Open ─────────────────────────────────────────────────── */
 window.openBookingPopup = function (source) {
   injectPopup();
@@ -450,6 +470,7 @@ window.openBookingPopup = function (source) {
 
   /* Save source for form handler */
   overlay.dataset.source = source || 'сайт';
+  overlay.dataset.block  = _apDetectBlock(_apLastClicked);
 
   /* Escape key — re-register each open to avoid duplicates */
   document.removeEventListener('keydown', _apEscHandler);

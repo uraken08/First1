@@ -24,6 +24,13 @@ const TELEGRAM_CHAT_ID   = '-1003923624579';
     }
     const consent = form.querySelector('.form-consent input[type="checkbox"]');
     out.consent = !!(consent && consent.checked);
+    // Из какого блока пришла заявка (заголовок ближайшей section)
+    const sec = form.closest('section, [id]');
+    if (sec) {
+      const h = sec.querySelector('h1, h2, h3');
+      if (h && h.textContent.trim()) out.block = h.textContent.trim();
+      else if (sec.id) out.block = sec.id;
+    }
     return out;
   }
 
@@ -33,6 +40,7 @@ const TELEGRAM_CHAT_ID   = '-1003923624579';
     if (data.phone) lines.push(`📞 Телефон: ${data.phone}`);
     if (data.email) lines.push(`✉️ Email: ${data.email}`);
     if (data.tags)  lines.push(`🏷  Услуга: ${data.tags}`);
+    if (data.block) lines.push(`📍 Блок: ${data.block}`);
     lines.push('');
     if (data.consent) {
       const ts = new Date().toLocaleString('ru-RU', {
