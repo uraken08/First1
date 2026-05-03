@@ -24,8 +24,7 @@ def og_image_for(page_type: str) -> str:
 
 
 def og_type_for(page_type: str) -> str:
-    if page_type in ("course_pm", "course_brows"):
-        return "website"  # есть Course schema, но og:type оставляем website
+    """Возвращает 'website' (Course schema обработана отдельно)."""
     return "website"
 
 
