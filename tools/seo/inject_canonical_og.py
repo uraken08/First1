@@ -58,6 +58,7 @@ def inject(rel_path: str, block: str) -> bool:
         print(f"  ⚠  {rel_path} not found — skip")
         return False
     content = path.read_text(encoding="utf-8")
+    original_content = content
 
     # Если уже есть наш блок — удаляем (чтобы заменить)
     if START in content and END in content:
@@ -71,7 +72,7 @@ def inject(rel_path: str, block: str) -> bool:
             return False
         new_content = content.replace("</head>", f"  {block}\n</head>", 1)
 
-    if new_content != path.read_text(encoding="utf-8"):
+    if new_content != original_content:
         path.write_text(new_content, encoding="utf-8")
         return True
     return False

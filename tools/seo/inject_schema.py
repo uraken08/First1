@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT / "tools" / "seo"))
 from PAGES import (  # noqa: E402
     PAGES, SITE_URL, SITE_BRAND, SITE_OWNER,
-    ADDRESS, GEO, PHONE, OPENING_HOURS, RATING, SAME_AS, LOGO_URL,
+    ADDRESS, GEO, PHONE, RATING, SAME_AS, LOGO_URL,
 )
 
 START = "<!-- SEO:schema:start -->"
@@ -184,6 +184,7 @@ def inject(rel_path: str, block: str) -> bool:
         print(f"  ⚠  {rel_path} not found")
         return False
     content = path.read_text(encoding="utf-8")
+    original_content = content
     if START in content and END in content:
         pattern = re.compile(re.escape(START) + r".*?" + re.escape(END), re.DOTALL)
         content = pattern.sub("__SCHEMA_PH__", content)
@@ -192,7 +193,7 @@ def inject(rel_path: str, block: str) -> bool:
         if "</head>" not in content:
             return False
         new_content = content.replace("</head>", f"  {block}\n</head>", 1)
-    if new_content != path.read_text(encoding="utf-8"):
+    if new_content != original_content:
         path.write_text(new_content, encoding="utf-8")
         return True
     return False
