@@ -74,7 +74,7 @@ ADDRESS = {
 GEO = {"latitude": 55.801122, "longitude": 37.516653}
 PHONE = "+7 (999) 820-04-21"
 EMAIL = "ixar.sell@gmail.com"  # для контакт-данных Schema.org
-OPENING_HOURS = "Mo-Su 10:00-21:00"
+OPENING_HOURS = "Mo-Su 10:00-22:00"
 RATING = {"value": "5.0", "count": 187}
 SAME_AS = [
     "https://t.me/+79998200421",
