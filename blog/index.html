@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="yandex-verification" content="365272d72e492e95">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог Agent Permanent — статьи о перманентном макияже</title>
+  <meta name="description" content="Экспертные статьи о перманентном макияже от мастера Арины Шараповой: заживление, уход, выбор техники, ответы на частые вопросы клиентов.">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Libre+Caslon+Text:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=2026-05-03b">
+  <style>
+    :root {
+      --bg-deep: #08080A; --bg-warm: #15120D; --bg-card: #111113;
+      --bg-card-hover: #18181B; --bg-elevated: #1C1B1F;
+      --gold: #C4A265; --gold-light: #D4BA85; --gold-pale: #E8D5B0;
+      --gold-glow: rgba(196,162,101,0.12); --gold-glow-strong: rgba(196,162,101,0.25);
+      --text-primary: #F2EDE7; --text-secondary: rgba(242,237,231,0.88); --text-muted: rgba(242,237,231,0.50);
+      --border: rgba(196,162,101,0.1); --border-hover: rgba(196,162,101,0.25);
+      --bg-cool: #0A0B10; --bg-forest: #090D0A;
+      --font-display: 'Italiana', serif;
+      --font-head: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Raleway', sans-serif;
+      --font-italic: 'Libre Caslon Text', serif;
+    }
+
+    .blog-hero {
+      padding: 180px 48px 80px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .blog-hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      display: inline-block;
+      padding: 0 18px;
+      position: relative;
+    }
+    .blog-hero-eyebrow::before, .blog-hero-eyebrow::after {
+      content: '';
+      position: absolute; top: 50%;
+      width: 40px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .blog-hero-eyebrow::before { right: 100%; }
+    .blog-hero-eyebrow::after { left: 100%; transform: scaleX(-1); }
+    .blog-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+    .blog-hero h1 em {
+      color: var(--gold);
+      font-style: normal;
+    }
+    .blog-hero-sub {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .blog-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 48px 120px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .blog-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 48px rgba(196,162,101,0.15);
+    }
+    .blog-card-cover {
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, #1C1B1F 0%, #15120D 50%, #08080A 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .blog-card-cover::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 40%, rgba(196,162,101,0.18), transparent);
+    }
+    .blog-card-cover-text {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 0 24px;
+      line-height: 1.1;
+    }
+    .blog-card-body {
+      padding: 28px 28px 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card-tag {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .blog-card-title {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--text-primary);
+      letter-spacing: 0.03em;
+      margin-bottom: 14px;
+    }
+    .blog-card-dek {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      flex: 1;
+    }
+    .blog-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+    .blog-card-cta {
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+    }
+
+    .blog-card-ghost {
+      background: var(--bg-card);
+      border: 1px dashed var(--border);
+      border-radius: 16px;
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.4;
+    }
+    .blog-card-ghost-text {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .blog-cta-strip {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      padding: 64px 48px;
+      background: var(--bg-warm);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .blog-cta-strip h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+    .blog-cta-strip p {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+    .blog-cta-strip .btn { margin: 0 8px; }
+
+    @media (max-width: 768px) {
+      .blog-hero { padding: 130px 20px 60px; }
+      .blog-grid { padding: 30px 20px 80px; gap: 20px; grid-template-columns: 1fr; }
+      .blog-cta-strip { padding: 48px 20px; margin: 0 20px 60px; }
+    }
+  </style>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109018359', 'ym');
+
+      ym(109018359, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/109018359" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+  <!-- SEO:canonical_og:start -->
+  <link rel="canonical" href="https://agentpermanent.ru/blog/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Agent Permanent">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://agentpermanent.ru/blog/">
+  <meta property="og:title" content="Блог Agent Permanent — статьи о перманентном макияже">
+  <meta property="og:description" content="Экспертные статьи о перманентном макияже от мастера Арины Шараповой: заживление, уход, выбор техники, ответы на частые вопросы клиентов.">
+  <meta property="og:image" content="https://agentpermanent.ru/og-image-studio.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Блог Agent Permanent — статьи о перманентном макияже">
+  <meta name="twitter:description" content="Экспертные статьи о перманентном макияже от мастера Арины Шараповой: заживление, уход, выбор техники, ответы на частые вопросы клиентов.">
+  <meta name="twitter:image" content="https://agentpermanent.ru/og-image-studio.jpg">
+  <!-- SEO:canonical_og:end -->
+  <!-- SEO:schema:start -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Блог Agent Permanent",
+    "description": "Экспертные статьи о перманентном макияже от мастера Арины Шараповой.",
+    "url": "https://agentpermanent.ru/blog/",
+    "inLanguage": "ru-RU",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Agent Permanent",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://agentpermanent.ru/logo_2000x2000.png"
+      }
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://agentpermanent.ru/" },
+      { "@type": "ListItem", "position": 2, "name": "Блог", "item": "https://agentpermanent.ru/blog/" }
+    ]
+  }
+  </script>
+  <!-- SEO:schema:end -->
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <a href="../" class="nav-logo">
+      <div class="nav-logo-stack">
+        <span class="nav-logo-main">AGENT</span>
+        <span class="nav-logo-mid">PERMANENT</span>
+      </div>
+      <span class="nav-logo-divider"></span>
+      <span class="nav-logo-sub">by Arina Sharapova</span>
+    </a>
+    <div class="nav-links">
+      <a href="../" class="nav-links-a">Agent Permanent</a>
+      <a href="../studio/" class="nav-links-a">Студия</a>
+      <a href="../school/" class="nav-links-a">Академия</a>
+      <a href="../portfolio/" class="nav-links-a">Портфолио</a>
+      <a href="./" class="nav-links-a active">Блог</a>
+      <a href="../contacts/" class="nav-links-a">Контакты</a>
+      <a href="../contacts/" class="nav-links-a nav-cta">Записаться</a>
+    </div>
+    <button class="nav-burger" onclick="toggleMenu()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="../" class="nav-links-a">Agent Permanent</a>
+      <a href="../studio/" class="nav-links-a">Студия</a>
+      <a href="../school/" class="nav-links-a">Академия</a>
+      <a href="../portfolio/" class="nav-links-a">Портфолио</a>
+      <a href="./" class="nav-links-a active">Блог</a>
+      <a href="../contacts/" class="nav-links-a">Контакты</a>
+      <a href="../contacts/" class="nav-cta">Записаться</a>
+    </div>
+  </nav>
+
+  <header class="blog-hero">
+    <span class="blog-hero-eyebrow">Журнал студии</span>
+    <h1>Блог <em>Agent Permanent</em></h1>
+    <p class="blog-hero-sub">Экспертные статьи о перманентном макияже: что происходит на коже, как заживает пигмент, как выбрать технику и мастера. Без маркетинговой воды — то, что мы рассказываем клиенткам на консультации.</p>
+  </header>
+
+  <main class="blog-grid">
+    <a href="zazhivlenie-permanentnogo-makiyazha/" class="blog-card">
+      <div class="blog-card-cover">
+        <span class="blog-card-cover-text">Заживление<br>день за днём</span>
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">Заживление</span>
+        <h3 class="blog-card-title">Как проходит заживление перманентного макияжа</h3>
+        <p class="blog-card-dek">Заживление перманента — быстрее и проще, чем кажется. Корочки сходят за 7 дней, финальный цвет — через месяц. Что вы реально увидите по дням.</p>
+        <div class="blog-card-meta">
+          <span>4 минуты чтения</span>
+          <span class="blog-card-cta">Читать →</span>
+        </div>
+      </div>
+    </a>
+
+    <div class="blog-card-ghost">
+      <span class="blog-card-ghost-text">Скоро<br>новый материал</span>
+    </div>
+    <div class="blog-card-ghost">
+      <span class="blog-card-ghost-text">Скоро<br>новый материал</span>
+    </div>
+    <div class="blog-card-ghost">
+      <span class="blog-card-ghost-text">Скоро<br>новый материал</span>
+    </div>
+  </main>
+
+  <section class="blog-cta-strip">
+    <h2>Остались вопросы по перманенту?</h2>
+    <p>Запишитесь на консультацию — Арина ответит лично</p>
+    <a href="../contacts/" class="btn btn-gold">Записаться</a>
+    <a href="https://wa.me/79998200421" class="btn btn-ghost" rel="noopener">Написать в WhatsApp</a>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand" style="display:flex;align-items:center;gap:14px;line-height:1">
+        <div style="display:flex;flex-direction:column;gap:0">
+          <span style="font-family:var(--font-display);font-size:1.45rem;font-weight:700;color:var(--gold);letter-spacing:0.06em;text-transform:uppercase">AGENT</span>
+          <span style="font-family:var(--font-body);font-size:0.62rem;font-weight:600;color:var(--text-secondary);letter-spacing:0.35em;text-transform:uppercase;margin-top:1px">PERMANENT</span>
+        </div>
+        <span style="width:1px;height:32px;background:rgba(196,162,101,0.25)"></span>
+        <span style="font-family:var(--font-body);font-size:0.58rem;font-weight:400;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap">by Arina Sharapova</span>
+      </div>
+      <div class="footer-links">
+        <a href="../">Agent Permanent</a>
+        <a href="../studio/">Студия</a>
+        <a href="../school/">Академия</a>
+        <a href="../portfolio/">Портфолио</a>
+        <a href="./">Блог</a>
+        <a href="../contacts/">Контакты</a>
+        <a href="../privacy/">Политика конфиденциальности</a>
+      </div>
+      <div class="footer-copy">© 2026 Agent Permanent by Arina Sharapova. Москва.</div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+    });
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
+  </script>
+</body>
+</html>
