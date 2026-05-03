@@ -15,11 +15,14 @@ from PAGES import PAGES, SITE_URL  # noqa: E402
 
 
 def file_lastmod(rel_path: str) -> str:
-    """Возвращает дату последней модификации файла в формате YYYY-MM-DD."""
+    """Возвращает дату последней модификации файла в формате YYYY-MM-DD.
+
+    Raises FileNotFoundError if the file does not exist — this catches
+    typos/missing entries in PAGES.py instead of silently using today's date.
+    """
     p = ROOT / rel_path
     if not p.exists():
-        # fallback to today
-        return datetime.date.today().isoformat()
+        raise FileNotFoundError(f"PAGES.py references non-existent file: {rel_path}")
     ts = datetime.datetime.fromtimestamp(p.stat().st_mtime)
     return ts.date().isoformat()
 
