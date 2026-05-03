@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+
+# Закрываем технические/служебные пути
+Disallow: /tools/
+Disallow: /docs/
+Disallow: /.wrangler/
+Disallow: /Видео/
+Disallow: /Фото/Студия/
+Disallow: /Фото/Гайды/
+Disallow: /Фото/Баннеры/
+
+# Закрываем ИИ-ботов от тренировки на нашем контенте
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# Sitemap
+Sitemap: https://agentpermanent.ru/sitemap.xml
