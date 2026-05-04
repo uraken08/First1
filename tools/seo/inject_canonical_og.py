@@ -81,6 +81,12 @@ def inject(rel_path: str, block: str) -> bool:
 def main() -> int:
     changed = 0
     for rel_path, url_path, page_type, title, description in PAGES:
+        # blog_post страницы имеют свой богатый блок canonical+og с article:*
+        # meta (published_time, author, section, tag) — наш стандартный
+        # шаблон беднее, поэтому статьи мы не трогаем. Управляются вручную.
+        if page_type == "blog_post":
+            print(f"    {rel_path} (skip: blog_post has manual canonical+og block)")
+            continue
         block = build_block(rel_path, url_path, page_type, title, description)
         if inject(rel_path, block):
             print(f"  ✓ {rel_path}")

@@ -165,6 +165,26 @@ SCHEMA_MAP = {
     "legal": lambda: [
         breadcrumb([("Главная", "/"), ("Конфиденциальность", "/privacy/")]),
     ],
+    "blog_index": lambda: [
+        {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "name": "Блог Agent Permanent",
+            "description": "Экспертные статьи о перманентном макияже от мастера Арины Шараповой.",
+            "url": SITE_URL + "/blog/",
+            "inLanguage": "ru-RU",
+            "publisher": {
+                "@type": "Organization",
+                "name": SITE_BRAND,
+                "logo": {"@type": "ImageObject", "url": LOGO_URL},
+            },
+        },
+        breadcrumb([("Главная", "/"), ("Блог", "/blog/")]),
+    ],
+    # blog_post — намеренно отсутствует в SCHEMA_MAP. У отдельной статьи свой
+    # ручной Schema.org блок (BlogPosting + FAQPage + BreadcrumbList) с уникальным
+    # содержимым (вопросы, дата публикации, автор). Скрипт пропускает blog_post
+    # с предупреждением — статья остаётся нетронутой.
 }
 
 
