@@ -117,6 +117,24 @@
       position: absolute; inset: 0;
       background: radial-gradient(ellipse 60% 60% at 50% 40%, rgba(196,162,101,0.18), transparent);
     }
+    .blog-card-cover img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .blog-card:hover .blog-card-cover img {
+      transform: scale(1.04);
+    }
+    .blog-card-cover::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(8,8,10,0) 55%, rgba(8,8,10,0.45) 100%);
+      pointer-events: none;
+    }
     .blog-card-cover-text {
       font-family: var(--font-display);
       font-size: 2.4rem;
@@ -334,7 +352,7 @@
   <main class="blog-grid">
     <a href="zazhivlenie-permanentnogo-makiyazha/" class="blog-card">
       <div class="blog-card-cover">
-        <span class="blog-card-cover-text">Заживление<br>день за днём</span>
+        <img src="zazhivlenie-permanentnogo-makiyazha/img/hero.jpg" alt="Перманентный макияж бровей — работа Арины Шараповой" loading="lazy">
       </div>
       <div class="blog-card-body">
         <span class="blog-card-tag">Заживление</span>

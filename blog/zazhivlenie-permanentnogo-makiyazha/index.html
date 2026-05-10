@@ -136,6 +136,10 @@
       transition: all 0.3s;
     }
     .article-body a:hover { color: var(--gold-light); border-color: var(--gold); }
+    .article-body a.btn { border-bottom: none; }
+    .article-body a.btn-gold { color: var(--bg-deep); }
+    .article-body a.btn-gold:hover { color: var(--bg-deep); border-color: transparent; }
+    .article-body a.btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
 
     .article-body h2 {
       font-family: var(--font-head);
@@ -359,6 +363,63 @@
       flex-wrap: wrap;
     }
 
+    /* Portfolio teaser */
+    .portfolio-teaser {
+      margin: 48px 0 36px;
+      padding: 28px 32px;
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .portfolio-teaser-text {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 1.02rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      flex: 1 1 280px;
+      margin: 0;
+    }
+    .portfolio-teaser-text strong {
+      font-family: var(--font-head);
+      font-style: normal;
+      font-weight: 500;
+      color: var(--text-primary);
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--gold);
+    }
+    .article-body a.portfolio-teaser-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 26px;
+      border-radius: 60px;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--border-hover);
+      background: transparent;
+      white-space: nowrap;
+      transition: all 0.3s;
+    }
+    .article-body a.portfolio-teaser-link:hover {
+      background: var(--gold-glow);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
     /* Highlight box */
     .highlight-box {
       margin: 32px 0;
@@ -490,6 +551,8 @@
       .cta-card { padding: 36px 24px; }
       .cta-card-buttons { flex-direction: column; }
       .cta-card-buttons .btn { width: 100%; justify-content: center; }
+      .portfolio-teaser { padding: 24px 22px; flex-direction: column; align-items: stretch; gap: 18px; }
+      .article-body a.portfolio-teaser-link { justify-content: center; width: 100%; }
       .author-byline { flex-direction: column; padding: 24px 20px; }
     }
   </style>
@@ -757,6 +820,14 @@
       <li>Хотите более яркий, носибельный, долгий эффект «как макияж» — используем более плотные пигменты</li>
     </ul>
     <p>Это решается до процедуры, не во время. Если мастер не задаёт эти вопросы — это первый сигнал ехать к другому мастеру. У нас в студии этот разговор всегда идёт первым: какую насыщенность вы хотите видеть по заживлению, какой образ жизни ведёте, как часто готовы делать коррекции.</p>
+
+    <div class="portfolio-teaser">
+      <p class="portfolio-teaser-text">
+        <strong>Хотите увидеть, как это выглядит вживую</strong>
+        Посмотрите готовые работы Арины — фото бровей, губ и век по заживлению, разные техники и оттенки.
+      </p>
+      <a href="../../portfolio/" class="portfolio-teaser-link">Перейти в портфолио →</a>
+    </div>
 
     <div class="cta-card">
       <span class="cta-card-eyebrow">Запись в студию</span>
