@@ -1901,43 +1901,193 @@
     </div>
   </div>
 
-  <section class="section">
-    <div class="section-inner">
-      <div class="section-eyebrow fade-up">Квалификация</div>
-      <h2 class="section-title fade-up">Дипломы и сертификаты</h2>
-      <div class="studio-slider fade-up" style="transition-delay:0.2s;margin-top:40px">
-        <div class="studio-track" id="certTrack">
-          <div class="studio-slide" style="width:260px">
-            <div class="studio-slide-bg" style="height:360px"><img src="about/certificates/diploma-prof-universum-2025.jpg" alt="Диплом — Преподаватель ДПО, Проф Универсум" loading="lazy"></div>
-            <div class="studio-slide-caption"><span class="slide-title">Преподаватель ДПО — Проф Универсум</span></div>
-          </div>
-          <div class="studio-slide" style="width:260px">
-            <div class="studio-slide-bg" style="height:360px"><img src="about/certificates/diploma-asmentor-brovist-2026.jpg" alt="Диплом — Преподаватель бровист, АС МЕНТОР" loading="lazy"></div>
-            <div class="studio-slide-caption"><span class="slide-title">Преподаватель бровист — АС МЕНТОР</span></div>
-          </div>
-          <div class="studio-slide" style="width:260px">
-            <div class="studio-slide-bg" style="height:360px"><img src="about/certificates/diploma-asmentor-prilozhenie-2025.jpg" alt="Приложение к диплому — Преподаватель, АС МЕНТОР" loading="lazy"></div>
-            <div class="studio-slide-caption"><span class="slide-title">Приложение к диплому — Преподаватель</span></div>
-          </div>
-          <div class="studio-slide" style="width:260px">
-            <div class="studio-slide-bg" style="height:360px"><img src="about/certificates/udostov-asmentor-2025.jpg" alt="Удостоверение о повышении квалификации, АС МЕНТОР" loading="lazy"></div>
-            <div class="studio-slide-caption"><span class="slide-title">Повышение квалификации — АС МЕНТОР</span></div>
-          </div>
-          <div class="studio-slide" style="width:260px">
-            <div class="studio-slide-bg" style="height:360px"><img src="about/certificates/cert-missiris-hitch-trainer.jpg" alt="Сертификат MissIris HITCH — тренерский курс ПМ" loading="lazy"></div>
-            <div class="studio-slide-caption"><span class="slide-title">MissIris HITCH — тренерский курс</span></div>
-          </div>
-          <div class="studio-slide" style="width:260px">
-            <div class="studio-slide-bg" style="height:360px"><img src="about/certificates/cert-julia-vasilkova-2025.jpg" alt="Сертификат Julia Vasilkova — мастер-класс" loading="lazy"></div>
-            <div class="studio-slide-caption"><span class="slide-title">Julia Vasilkova — мастер-класс</span></div>
-          </div>
-          <div class="studio-slide" style="width:260px">
-            <div class="studio-slide-bg" style="height:360px"><img src="about/certificates/cert-global-permanent-2023.jpg" alt="Сертификат Global Permanent World Championship Congress" loading="lazy"></div>
-            <div class="studio-slide-caption"><span class="slide-title">Global Permanent — мастер-класс</span></div>
-          </div>
-        </div>
+  <!-- DIPLOMAS — Pinterest-style 2-row marquee -->
+  <section id="certificates" style="padding:80px 0 0;background:var(--bg-warm);border-top:1px solid var(--border);overflow:hidden">
+    <div style="max-width:1280px;margin:0 auto;padding:0 48px 48px">
+      <div class="section-eyebrow fade-up" style="margin-bottom:12px">Квалификация</div>
+      <h2 class="section-title fade-up" style="margin-bottom:0">Дипломы и сертификаты</h2>
+    </div>
+
+    <!-- Row 1: left → right (mix portrait + landscape) -->
+    <div class="cert-track-wrap">
+      <div class="cert-track cert-track--fwd" id="certRow1">
+        <div class="cert-item" data-idx="0"><img src="about/certificates/diploma-prof-universum-2025.jpg" alt="Диплом — Преподаватель ДПО, Проф Универсум" loading="lazy"><span class="cert-tag">Преподаватель ДПО · Проф Универсум</span></div>
+        <div class="cert-item" data-idx="1"><img src="about/certificates/cert-julia-vasilkova-2025.jpg" alt="Julia Vasilkova — мастер-класс" loading="lazy"><span class="cert-tag">Julia Vasilkova · мастер-класс</span></div>
+        <div class="cert-item" data-idx="2"><img src="about/certificates/diploma-asmentor-brovist-2026.jpg" alt="Диплом — Преподаватель бровист, АС МЕНТОР" loading="lazy"><span class="cert-tag">Преподаватель бровист · АС МЕНТОР</span></div>
+        <div class="cert-item" data-idx="3"><img src="about/certificates/cert-missiris-hitch-trainer.jpg" alt="MissIris HITCH — тренерский курс" loading="lazy"><span class="cert-tag">MissIris · тренерский курс</span></div>
+        <!-- duplicate for seamless loop -->
+        <div class="cert-item" data-idx="0"><img src="about/certificates/diploma-prof-universum-2025.jpg" alt="" loading="lazy"><span class="cert-tag">Преподаватель ДПО · Проф Универсум</span></div>
+        <div class="cert-item" data-idx="1"><img src="about/certificates/cert-julia-vasilkova-2025.jpg" alt="" loading="lazy"><span class="cert-tag">Julia Vasilkova · мастер-класс</span></div>
+        <div class="cert-item" data-idx="2"><img src="about/certificates/diploma-asmentor-brovist-2026.jpg" alt="" loading="lazy"><span class="cert-tag">Преподаватель бровист · АС МЕНТОР</span></div>
+        <div class="cert-item" data-idx="3"><img src="about/certificates/cert-missiris-hitch-trainer.jpg" alt="" loading="lazy"><span class="cert-tag">MissIris · тренерский курс</span></div>
       </div>
     </div>
+
+    <!-- Row 2: right → left (mix portrait + landscape) -->
+    <div class="cert-track-wrap" style="margin-top:12px;padding-bottom:80px">
+      <div class="cert-track cert-track--bwd" id="certRow2">
+        <div class="cert-item" data-idx="4"><img src="about/certificates/diploma-asmentor-prilozhenie-2025.jpg" alt="Приложение к диплому ПМ" loading="lazy"><span class="cert-tag">Приложение · Преподаватель</span></div>
+        <div class="cert-item" data-idx="5"><img src="about/certificates/udostov-asmentor-2025.jpg" alt="Удостоверение о повышении квалификации" loading="lazy"><span class="cert-tag">Повышение квалификации · АС МЕНТОР</span></div>
+        <div class="cert-item" data-idx="6"><img src="about/certificates/cert-global-permanent-2023.jpg" alt="Global Permanent World Championship Congress" loading="lazy"><span class="cert-tag">Global Permanent · World Championship</span></div>
+        <!-- duplicate for seamless loop -->
+        <div class="cert-item" data-idx="4"><img src="about/certificates/diploma-asmentor-prilozhenie-2025.jpg" alt="" loading="lazy"><span class="cert-tag">Приложение · Преподаватель</span></div>
+        <div class="cert-item" data-idx="5"><img src="about/certificates/udostov-asmentor-2025.jpg" alt="" loading="lazy"><span class="cert-tag">Повышение квалификации · АС МЕНТОР</span></div>
+        <div class="cert-item" data-idx="6"><img src="about/certificates/cert-global-permanent-2023.jpg" alt="" loading="lazy"><span class="cert-tag">Global Permanent · World Championship</span></div>
+      </div>
+    </div>
+
+    <style>
+      .cert-track-wrap { overflow: hidden; width: 100%; }
+      .cert-track {
+        display: flex; gap: 14px;
+        width: max-content;
+        will-change: transform;
+        padding: 8px 0;
+      }
+      .cert-track--fwd { animation: certScrollFwd 88s linear infinite; }
+      .cert-track--bwd { animation: certScrollBwd 76s linear infinite; }
+      .cert-track:hover { animation-play-state: paused; }
+      @keyframes certScrollFwd {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-50%); }
+      }
+      @keyframes certScrollBwd {
+        from { transform: translateX(-50%); }
+        to   { transform: translateX(0); }
+      }
+      .cert-item {
+        flex-shrink: 0;
+        height: 290px;
+        overflow: hidden;
+        border-radius: 4px;
+        cursor: pointer;
+        background: #f7f4ee;
+        box-shadow: 0 10px 28px rgba(0,0,0,0.42), 0 0 0 1px rgba(196,162,101,0.14);
+        position: relative;
+        transition: transform 0.45s ease, box-shadow 0.45s ease;
+      }
+      .cert-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 22px 44px rgba(0,0,0,0.5), 0 0 0 1px rgba(196,162,101,0.4);
+      }
+      .cert-item img {
+        height: 100%; width: auto; display: block; user-select: none; pointer-events: none;
+      }
+      .cert-tag {
+        position: absolute; left: 0; right: 0; bottom: 0;
+        padding: 28px 18px 14px;
+        background: linear-gradient(to top, rgba(8,8,10,0.92) 30%, transparent);
+        color: var(--text-primary);
+        font-family: var(--font-body);
+        font-size: 0.7rem; font-weight: 500;
+        letter-spacing: 0.08em;
+        opacity: 0; transform: translateY(8px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        pointer-events: none;
+      }
+      .cert-item:hover .cert-tag { opacity: 1; transform: translateY(0); }
+      @media (max-width: 700px) {
+        .cert-item { height: 220px; }
+        .cert-track { gap: 10px; }
+        .cert-track--fwd { animation-duration: 64s; }
+        .cert-track--bwd { animation-duration: 56s; }
+      }
+
+      /* Lightbox */
+      #certLb {
+        display: none; position: fixed; inset: 0; z-index: 1000;
+        background: rgba(8,8,10,0.96);
+        -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+        align-items: center; justify-content: center;
+      }
+      #certLb.active { display: flex; }
+      #certLbImg {
+        max-width: 92vw; max-height: 80vh; object-fit: contain;
+        border-radius: 4px;
+        box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+      }
+      #certLbClose {
+        position: absolute; top: 24px; right: 32px;
+        background: none; border: none; color: var(--text-muted);
+        font-size: 1.4rem; cursor: pointer; transition: color 0.2s; padding: 8px;
+      }
+      #certLbClose:hover { color: var(--gold); }
+      .cert-lb-nav {
+        position: absolute; top: 50%; transform: translateY(-50%);
+        background: none; border: none; color: rgba(196,162,101,0.5);
+        font-size: 4rem; cursor: pointer; transition: color 0.2s;
+        padding: 0 24px; line-height: 1; user-select: none;
+      }
+      .cert-lb-nav:hover { color: var(--gold); }
+      #certLbCaption {
+        position: absolute; left: 50%; transform: translateX(-50%);
+        bottom: 44px;
+        font-family: var(--font-body);
+        font-size: 0.78rem; font-weight: 500;
+        color: var(--text-primary); letter-spacing: 0.1em;
+        text-align: center; max-width: 88vw;
+      }
+      #certLbCounter {
+        position: absolute; left: 50%; transform: translateX(-50%);
+        bottom: 20px;
+        font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.18em;
+      }
+      @media (max-width: 700px) {
+        .cert-lb-nav { font-size: 2.5rem; padding: 0 12px; }
+        #certLbImg { max-height: 70vh; }
+      }
+    </style>
+
+    <div id="certLb" onclick="if(event.target===this)certLbHide()">
+      <button id="certLbClose" onclick="certLbHide()" aria-label="Закрыть">✕</button>
+      <button class="cert-lb-nav" style="left:0" onclick="certLbStep(-1)" aria-label="Назад">‹</button>
+      <img id="certLbImg" src="" alt="">
+      <button class="cert-lb-nav" style="right:0" onclick="certLbStep(1)" aria-label="Вперёд">›</button>
+      <div id="certLbCaption"></div>
+      <div id="certLbCounter"></div>
+    </div>
+
+    <script>
+    (function(){
+      const items = [
+        ['about/certificates/diploma-prof-universum-2025.jpg', 'Диплом · Преподаватель ДПО — Проф Универсум · 2025'],
+        ['about/certificates/cert-julia-vasilkova-2025.jpg',   'Сертификат · Julia Vasilkova — мастер-класс · 2025'],
+        ['about/certificates/diploma-asmentor-brovist-2026.jpg','Диплом · Преподаватель бровист — АС МЕНТОР · 2026'],
+        ['about/certificates/cert-missiris-hitch-trainer.jpg', 'Сертификат · MissIris HITCH — тренерский курс ПМ'],
+        ['about/certificates/diploma-asmentor-prilozhenie-2025.jpg','Приложение к диплому · Преподаватель — АС МЕНТОР'],
+        ['about/certificates/udostov-asmentor-2025.jpg',       'Удостоверение · Повышение квалификации — АС МЕНТОР · 2025'],
+        ['about/certificates/cert-global-permanent-2023.jpg',  'Сертификат · Global Permanent — World Championship · 2023']
+      ];
+      const lb = document.getElementById('certLb');
+      const lbImg = document.getElementById('certLbImg');
+      const lbCap = document.getElementById('certLbCaption');
+      const lbCnt = document.getElementById('certLbCounter');
+      let cur = 0;
+      function show(i){
+        cur = (i + items.length) % items.length;
+        lbImg.src = items[cur][0];
+        lbCap.textContent = items[cur][1];
+        lbCnt.textContent = (cur+1) + ' / ' + items.length;
+        lb.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      function hide(){
+        lb.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      document.querySelectorAll('#certificates .cert-item').forEach(el => {
+        el.addEventListener('click', () => show(parseInt(el.dataset.idx, 10)));
+      });
+      window.certLbHide = hide;
+      window.certLbStep = d => show(cur + d);
+      document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('active')) return;
+        if (e.key === 'Escape') hide();
+        if (e.key === 'ArrowLeft') show(cur - 1);
+        if (e.key === 'ArrowRight') show(cur + 1);
+      });
+    })();
+    </script>
   </section>
 
   <!-- TELEGRAM COMMUNITY -->
@@ -2548,22 +2698,7 @@
       });
     })();
 
-    // Cert slider drag scroll
-    (function() {
-      const track = document.getElementById('certTrack');
-      if (!track) return;
-      let isDown = false, startX, scrollLeft;
-      track.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; track.style.cursor = 'grabbing'; });
-      track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
-      track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
-      track.addEventListener('mousemove', e => {
-        if (!isDown) return;
-        e.preventDefault();
-        track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX) * 1.5;
-      });
-    })();
-
-        // Gold dust particles
+    // Gold dust particles
     (function() {
       const hero = document.querySelector('.hero-aurora');
       if (!hero) return;
