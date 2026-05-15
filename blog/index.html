@@ -7,6 +7,8 @@
   <title>Блог Agent Permanent — статьи о перманентном макияже</title>
   <meta name="description" content="Экспертные статьи о перманентном макияже от мастера Арины Шараповой: заживление, уход, выбор техники, ответы на частые вопросы клиентов.">
   <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#C4A265">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Libre+Caslon+Text:ital@0;1&display=swap" rel="stylesheet">
@@ -182,6 +184,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
       padding-top: 18px;
       border-top: 1px solid var(--border);
       font-family: var(--font-body);
@@ -189,6 +192,7 @@
       color: var(--text-muted);
       letter-spacing: 0.06em;
     }
+    .blog-card-meta time { color: var(--text-muted); }
     .blog-card-cta {
       color: var(--gold);
       font-weight: 600;
@@ -284,18 +288,50 @@
   {
     "@context": "https://schema.org",
     "@type": "Blog",
+    "@id": "https://agentpermanent.ru/blog/#blog",
     "name": "Блог Agent Permanent",
     "description": "Экспертные статьи о перманентном макияже от мастера Арины Шараповой.",
     "url": "https://agentpermanent.ru/blog/",
     "inLanguage": "ru-RU",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Agent Permanent",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://agentpermanent.ru/logo_2000x2000.png"
+    "publisher": { "@id": "https://agentpermanent.ru/#organization" },
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "Как выбрать мастера перманентного макияжа в Москве",
+        "url": "https://agentpermanent.ru/blog/kak-vybrat-mastera-permanentnogo-makiyazha/",
+        "datePublished": "2026-05-13",
+        "author": { "@id": "https://agentpermanent.ru/about/#arina" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Как проходит заживление перманентного макияжа",
+        "url": "https://agentpermanent.ru/blog/zazhivlenie-permanentnogo-makiyazha/",
+        "datePublished": "2026-05-03",
+        "dateModified": "2026-05-10",
+        "author": { "@id": "https://agentpermanent.ru/about/#arina" }
       }
-    }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "url": "https://agentpermanent.ru/blog/kak-vybrat-mastera-permanentnogo-makiyazha/",
+        "name": "Как выбрать мастера перманентного макияжа в Москве"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "url": "https://agentpermanent.ru/blog/zazhivlenie-permanentnogo-makiyazha/",
+        "name": "Как проходит заживление перманентного макияжа"
+      }
+    ]
   }
   </script>
   <script type="application/ld+json">
@@ -359,6 +395,7 @@
         <h3 class="blog-card-title">Как выбрать мастера перманентного макияжа в Москве</h3>
         <p class="blog-card-dek">На что смотреть при выборе мастера перманента: портфолио, сертификаты, гигиена, консультация. Как не попасть к новичку и найти профессионала в Москве.</p>
         <div class="blog-card-meta">
+          <time datetime="2026-05-13">13 мая 2026</time>
           <span>6 минут чтения</span>
           <span class="blog-card-cta">Читать →</span>
         </div>
@@ -374,6 +411,7 @@
         <h3 class="blog-card-title">Как проходит заживление перманентного макияжа</h3>
         <p class="blog-card-dek">Заживление перманента — быстрее и проще, чем кажется. Корочки сходят за 7 дней, финальный цвет — через месяц. Что вы реально увидите по дням.</p>
         <div class="blog-card-meta">
+          <time datetime="2026-05-03">3 мая 2026</time>
           <span>4 минуты чтения</span>
           <span class="blog-card-cta">Читать →</span>
         </div>

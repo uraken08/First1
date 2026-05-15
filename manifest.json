@@ -1,0 +1,25 @@
+{
+  "name": "Agent Permanent — Студия и академия перманентного макияжа",
+  "short_name": "Agent Permanent",
+  "description": "Студия перманентного макияжа Арины Шараповой в Москве. Брови, губы, межресничка. 6000+ процедур, 5.0 на Яндекс.Картах.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#08080A",
+  "theme_color": "#C4A265",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo_2000x2000.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

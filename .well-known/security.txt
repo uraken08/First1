@@ -1,0 +1,4 @@
+Contact: mailto:ixar.sell@gmail.com
+Expires: 2027-05-15T00:00:00.000Z
+Preferred-Languages: ru, en
+Canonical: https://agentpermanent.ru/.well-known/security.txt
