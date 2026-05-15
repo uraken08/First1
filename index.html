@@ -836,6 +836,62 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Больно ли делать перманентный макияж?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Процедура проходит под аппликационной анестезией — крем наносится на кожу. Лёгкое неприятное ощущение возможно, но острой боли нет. На бровях большинство клиенток оценивают дискомфорт на 2–3 из 10, на губах — чуть выше из-за чувствительной кожи, но тоже терпимо."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Сколько держится перманентный макияж?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "После коррекции через месяц эффект держится 1–1,5 года. Скорость выцветания зависит от типа кожи, цвета пигмента, солнца и средств с кислотами. Перманент уходит мягко, без резкой границы."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Через сколько нужна коррекция перманентного макияжа?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Коррекция делается через месяц после первой процедуры, но не позже 1,5 месяцев. На коррекции мастер дорисовывает места, где пигмент не закрепился, и доводит цвет до финального. Без коррекции результат держится в 2–3 раза меньше."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Можно ли делать перманент при беременности и кормлении?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "При беременности и активном грудном вскармливании — нет. Гормональный фон делает реакцию кожи непредсказуемой: цвет может уйти в холодный или не закрепиться. Лучше дождаться окончания ГВ и нормализации цикла."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Как ухаживать за перманентом в первые дни после процедуры?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Первые 7 дней: не мочить, не распаривать, не сдирать корочки, обрабатывать хлоргексидином. Никаких бань, бассейнов, активного спорта."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Есть ли противопоказания к перманентному макияжу?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Главные противопоказания: онкология, декомпенсированный диабет, нарушения свёртываемости, обострение герпеса (для губ), беременность и кормление, приём ретиноидов. Полный список обсуждается на консультации."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://agentpermanent.ru/#website",
   "url": "https://agentpermanent.ru/",
@@ -2032,6 +2088,123 @@
     }
   </style>
 
+
+  <!-- FAQ -->
+  <style>
+    .home-faq {
+      padding: 100px 32px;
+      background: var(--bg-warm);
+      border-top: 1px solid var(--border);
+    }
+    .home-faq-inner { max-width: 880px; margin: 0 auto; }
+    .home-faq-head { text-align: center; margin-bottom: 56px; }
+    .home-faq-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--gold);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 18px;
+      display: inline-block;
+    }
+    .home-faq-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 400;
+      color: var(--text-primary);
+      letter-spacing: 0.01em;
+      line-height: 1.15;
+    }
+    .home-faq-list details {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 8px;
+      margin-bottom: 14px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .home-faq-list details[open] {
+      background: rgba(196,162,101,0.04);
+      border-color: var(--border-hover);
+      border-left-color: var(--gold);
+    }
+    .home-faq-list summary {
+      padding: 22px 28px;
+      cursor: pointer;
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      list-style: none;
+      position: relative;
+      padding-right: 60px;
+      transition: color 0.3s;
+    }
+    .home-faq-list summary:hover { color: var(--gold); }
+    .home-faq-list summary::-webkit-details-marker { display: none; }
+    .home-faq-list summary::after {
+      content: '+';
+      position: absolute;
+      right: 28px; top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      transition: transform 0.3s;
+    }
+    .home-faq-list details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+    .home-faq-list .home-faq-answer {
+      padding: 0 28px 26px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    @media (max-width: 720px) {
+      .home-faq { padding: 64px 20px; }
+      .home-faq-head { margin-bottom: 36px; }
+      .home-faq-list summary { padding: 18px 22px 18px 22px; padding-right: 52px; font-size: 1rem; }
+      .home-faq-list summary::after { right: 22px; }
+      .home-faq-list .home-faq-answer { padding: 0 22px 22px; font-size: 0.95rem; }
+    }
+  </style>
+  <section class="home-faq" id="faq">
+    <div class="home-faq-inner">
+      <div class="home-faq-head">
+        <span class="home-faq-eyebrow">Часто спрашивают</span>
+        <h2 class="home-faq-h2">О перманентном макияже</h2>
+      </div>
+      <div class="home-faq-list">
+        <details>
+          <summary>Больно ли делать перманентный макияж?</summary>
+          <div class="home-faq-answer">Процедура проходит под аппликационной анестезией — это крем, который наносится на кожу. Лёгкое неприятное ощущение возможно, но острой боли нет. На бровях большинство клиенток оценивают дискомфорт на 2–3 из 10, на губах — чуть выше из-за чувствительной кожи, но тоже терпимо.</div>
+        </details>
+        <details>
+          <summary>Сколько держится перманентный макияж?</summary>
+          <div class="home-faq-answer">После коррекции через месяц эффект держится 1–1,5 года. Скорость выцветания зависит от типа кожи (на жирной уходит быстрее), цвета пигмента (светлые держатся меньше), солнца и средств с кислотами. Это плюс: перманент уходит мягко, без резкой границы.</div>
+        </details>
+        <details>
+          <summary>Через сколько нужна коррекция?</summary>
+          <div class="home-faq-answer">Коррекция делается через месяц после первой процедуры, но не позже 1,5 месяцев. На коррекции мастер дорисовывает места, где пигмент не закрепился, и доводит цвет до финального. Без коррекции результат держится в 2–3 раза меньше.</div>
+        </details>
+        <details>
+          <summary>Можно ли делать перманент при беременности и кормлении?</summary>
+          <div class="home-faq-answer">При беременности и активном грудном вскармливании — нет. Это связано не с пигментом, а с гормональным фоном: кожа реагирует непредсказуемо, цвет может уйти в холодный или вообще не закрепиться. Лучше дождаться окончания ГВ и нормализации цикла.</div>
+        </details>
+        <details>
+          <summary>Как ухаживать после процедуры в первые дни?</summary>
+          <div class="home-faq-answer">Первые 7 дней: не мочить, не распаривать, не сдирать корочки, обрабатывать хлоргексидином. Никаких бань, бассейнов, активного спорта. Подробный план по дням — в нашей <a href="/blog/zazhivlenie-permanentnogo-makiyazha/" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--border-hover)">статье про заживление</a>.</div>
+        </details>
+        <details>
+          <summary>Есть ли противопоказания?</summary>
+          <div class="home-faq-answer">Главные: онкология, диабет в стадии декомпенсации, нарушения свёртываемости, обострение герпеса (для губ), беременность и кормление, приём ретиноидов. Полный список обсуждается на консультации — Арина или мастер студии разбирает каждый случай индивидуально.</div>
+        </details>
+      </div>
+    </div>
+  </section>
 
   <!-- CTA LEAD FORM -->
   <section class="pm-cta-lead" id="cta">
