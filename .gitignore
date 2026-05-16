@@ -1,5 +1,7 @@
 .DS_Store
 .superpowers/
 *.backup-*.html
+*.mojibake-backup
 node_modules/
 .env
+agent-blog-bot/
